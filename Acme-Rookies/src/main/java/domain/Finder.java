@@ -100,19 +100,19 @@ public class Finder extends DomainEntity {
 
 	// Relationships
 
-	private Hacker					hacker;
+	private Rookie					rookie;
 	private Collection<Position>	positions;
 
 
 	@Valid
 	@NotNull
 	@OneToOne(optional = false)
-	public Hacker getHacker() {
-		return this.hacker;
+	public Rookie getRookie() {
+		return this.rookie;
 	}
 
-	public void setHacker(final Hacker hacker) {
-		this.hacker = hacker;
+	public void setRookie(final Rookie rookie) {
+		this.rookie = rookie;
 	}
 
 	@NotNull

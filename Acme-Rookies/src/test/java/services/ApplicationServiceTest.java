@@ -49,7 +49,7 @@ public class ApplicationServiceTest extends AbstractTest {
 	public void testDataNumerApplicationPerHacker() {
 		Double[] data;
 
-		data = this.applicationService.findDataNumberApplicationPerHacker();
+		data = this.applicationService.findDataNumberApplicationPerRookie();
 
 		Assert.isTrue(data[0] == 1.5556);
 		Assert.isTrue(data[1] == 0.0);

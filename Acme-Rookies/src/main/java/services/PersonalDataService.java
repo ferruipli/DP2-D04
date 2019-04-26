@@ -8,7 +8,7 @@ import org.springframework.util.Assert;
 
 import repositories.PersonalDataRepository;
 import domain.Curriculum;
-import domain.Hacker;
+import domain.Rookie;
 import domain.PersonalData;
 
 @Service
@@ -23,7 +23,7 @@ public class PersonalDataService {
 	// Other supporting services -----------------------------------------
 
 	@Autowired
-	private HackerService			hackerService;
+	private RookieService			hackerService;
 
 	@Autowired
 	private CurriculumService		curriculumService;
@@ -52,7 +52,7 @@ public class PersonalDataService {
 		this.checkProfileURL(personalData);
 		this.checkCurriculumIsOriginal(personalData);
 
-		final Hacker principal = this.hackerService.findByPrincipal();
+		final Rookie principal = this.hackerService.findByPrincipal();
 		PersonalData saved;
 
 		this.checkOwner(principal, personalData.getId());
@@ -97,7 +97,7 @@ public class PersonalDataService {
 		return res;
 	}
 
-	protected void checkFullname(final Hacker hacker, final PersonalData personalData) {
+	protected void checkFullname(final Rookie hacker, final PersonalData personalData) {
 		Assert.isTrue(hacker.getFullname().equals(personalData.getFullname()), "Fullname does not match");
 	}
 
@@ -117,14 +117,14 @@ public class PersonalDataService {
 	}
 
 	private void checkOwner(final int personalDataId) {
-		Hacker principal;
+		Rookie principal;
 
 		principal = this.hackerService.findByPrincipal();
 		this.checkOwner(principal, personalDataId);
 	}
 
-	private void checkOwner(final Hacker hacker, final int personalDataId) {
-		Hacker owner;
+	private void checkOwner(final Rookie hacker, final int personalDataId) {
+		Rookie owner;
 
 		owner = this.hackerService.findByPersonalDataId(personalDataId);
 

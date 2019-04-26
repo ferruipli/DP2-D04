@@ -18,8 +18,8 @@ public interface FinderRepository extends JpaRepository<Finder, Integer> {
 	@Query("select count(f)/(select count(ff) from Finder ff where ff.keyword != '' or ff.deadline is not null or ff.minimumSalary is not null or ff.maximumDeadline is not null)*1.0 from Finder f where f.keyword = '' and f.deadline is null and f.minimumSalary is null and f.maximumDeadline is null")
 	Double findRatioEmptyVsNonEmpty();
 
-	@Query("select f from Finder f where f.hacker.id = ?1")
-	Finder findByHackerId(int hackerId);
+	@Query("select f from Finder f where f.rookie.id = ?1")
+	Finder findByRookieId(int rookieId);
 
 	@Query("select f from Finder f join f.positions p where p.id =?1")
 	Collection<Finder> findAllByPosition(int positionId);

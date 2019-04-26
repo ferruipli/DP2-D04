@@ -14,7 +14,7 @@ import org.springframework.util.Assert;
 import repositories.EducationDataRepository;
 import domain.Curriculum;
 import domain.EducationData;
-import domain.Hacker;
+import domain.Rookie;
 
 @Service
 @Transactional
@@ -31,7 +31,7 @@ public class EducationDataService {
 	private CurriculumService		curriculumService;
 
 	@Autowired
-	private HackerService			hackerService;
+	private RookieService			hackerService;
 
 
 	// Constructors ------------------------------------------------------
@@ -141,7 +141,7 @@ public class EducationDataService {
 	}
 
 	private void checkOwner(final int educationDataId) {
-		Hacker principal, owner;
+		Rookie principal, owner;
 
 		principal = this.hackerService.findByPrincipal();
 		owner = this.hackerService.findByEducationDataId(educationDataId);

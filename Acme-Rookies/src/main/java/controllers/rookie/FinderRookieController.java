@@ -1,5 +1,5 @@
 
-package controllers.hacker;
+package controllers.rookie;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +16,7 @@ import domain.Finder;
 
 @Controller
 @RequestMapping("finder/hacker/")
-public class FinderHackerController extends AbstractController {
+public class FinderRookieController extends AbstractController {
 
 	// Services ---------------------------------------------------------------
 
@@ -29,7 +29,7 @@ public class FinderHackerController extends AbstractController {
 
 	// Constructors -----------------------------------------------------------
 
-	public FinderHackerController() {
+	public FinderRookieController() {
 		super();
 	}
 
@@ -44,7 +44,7 @@ public class FinderHackerController extends AbstractController {
 
 		customisation = this.customisationService.find();
 		numberOfResults = customisation.getMaxNumberResults();
-		finder = this.finderService.findByHackerPrincipal();
+		finder = this.finderService.findByRookiePrincipal();
 		finder = this.finderService.evaluateSearch(finder);
 
 		result = new ModelAndView("position/finder");
@@ -60,7 +60,7 @@ public class FinderHackerController extends AbstractController {
 		ModelAndView result;
 		Finder finder;
 
-		finder = this.finderService.findByHackerPrincipal();
+		finder = this.finderService.findByRookiePrincipal();
 		result = this.createEditModelAndView(finder);
 
 		return result;
@@ -71,7 +71,7 @@ public class FinderHackerController extends AbstractController {
 		ModelAndView result;
 		Finder finder;
 
-		finder = this.finderService.findByHackerPrincipal();
+		finder = this.finderService.findByRookiePrincipal();
 		this.finderService.clear(finder);
 
 		result = new ModelAndView("redirect:display.do");

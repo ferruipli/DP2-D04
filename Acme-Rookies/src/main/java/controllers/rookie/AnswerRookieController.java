@@ -1,5 +1,5 @@
 
-package controllers.hacker;
+package controllers.rookie;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -20,7 +20,7 @@ import domain.Application;
 
 @Controller
 @RequestMapping(value = "/answer/hacker")
-public class AnswerHackerController extends AbstractController {
+public class AnswerRookieController extends AbstractController {
 
 	// Services------------------------------------
 
@@ -33,7 +33,7 @@ public class AnswerHackerController extends AbstractController {
 
 	// Constructors -----------------------------------------------------------
 
-	public AnswerHackerController() {
+	public AnswerRookieController() {
 		super();
 	}
 
@@ -89,7 +89,7 @@ public class AnswerHackerController extends AbstractController {
 			result = this.createEditModelAndView(answer, applicationId);
 		else
 			try {
-				application = this.applicationService.findOneToHacker(applicationId);
+				application = this.applicationService.findOneToRookie(applicationId);
 				this.answerService.save(answer, application);
 				result = new ModelAndView("redirect:../../application/hacker/list.do");
 			}

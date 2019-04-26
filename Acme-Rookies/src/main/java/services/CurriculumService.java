@@ -17,10 +17,10 @@ import repositories.CurriculumRepository;
 import domain.Application;
 import domain.Curriculum;
 import domain.EducationData;
-import domain.Hacker;
 import domain.MiscellaneousData;
 import domain.PersonalData;
 import domain.PositionData;
+import domain.Rookie;
 
 @Service
 @Transactional
@@ -46,7 +46,7 @@ public class CurriculumService {
 	private MiscellaneousDataService	miscellaneousDataService;
 
 	@Autowired
-	private HackerService				hackerService;
+	private RookieService				rookieService;
 
 	@Autowired
 	private Validator					validator;
@@ -62,14 +62,14 @@ public class CurriculumService {
 
 	public Curriculum create() {
 		Curriculum result;
-		Hacker principal;
+		Rookie principal;
 		PersonalData personalData;
 
-		principal = this.hackerService.findByPrincipal();
+		principal = this.rookieService.findByPrincipal();
 		personalData = this.personalDataService.create(principal.getFullname());
 		result = new Curriculum();
 
-		result.setHacker(principal);
+		result.setRookie(principal);
 		result.setIsOriginal(true);
 		result.setPersonalData(personalData);
 		result.setPositionDatas(new HashSet<PositionData>());
@@ -83,11 +83,11 @@ public class CurriculumService {
 		Assert.notNull(curriculum);
 		Assert.isTrue(curriculum.getIsOriginal());
 
-		Hacker principal;
+		Rookie principal;
 
 		if (!this.curriculumRepository.exists(curriculum.getId())) {
 			this.personalDataService.checkProfileURL(curriculum.getPersonalData());
-			principal = this.hackerService.findByPrincipal();
+			principal = this.rookieService.findByPrincipal();
 			this.checkOwner(principal, curriculum);
 			this.personalDataService.checkFullname(principal, curriculum.getPersonalData());
 		} else
@@ -120,9 +120,9 @@ public class CurriculumService {
 
 	public List<Curriculum> originalCurriculaByPrincipal() {
 		List<Curriculum> results;
-		Hacker principal;
+		Rookie principal;
 
-		principal = this.hackerService.findByPrincipal();
+		principal = this.rookieService.findByPrincipal();
 
 		results = new ArrayList<>(this.curriculumRepository.originalCurricula(principal.getId()));
 
@@ -139,21 +139,21 @@ public class CurriculumService {
 		return result;
 	}
 
-	public Collection<Curriculum> findOriginalByHackerPrincipal() {
+	public Collection<Curriculum> findOriginalByRookiePrincipal() {
 		Collection<Curriculum> result;
-		Hacker principal;
+		Rookie principal;
 
-		principal = this.hackerService.findByPrincipal();
+		principal = this.rookieService.findByPrincipal();
 		result = this.curriculumRepository.originalCurricula(principal.getId());
 		Assert.notNull(result);
 
 		return result;
 	}
 
-	public Double[] findDataNumberCurriculumPerHacker() {
+	public Double[] findDataNumberCurriculumPerRookie() {
 		Double[] result;
 
-		result = this.curriculumRepository.findDataNumberCurriculumPerHacker();
+		result = this.curriculumRepository.findDataNumberCurriculumPerRookie();
 		Assert.notNull(result);
 
 		return result;
@@ -198,11 +198,11 @@ public class CurriculumService {
 	}
 
 	public boolean checkIsOwner(final Curriculum curriculum) {
-		Hacker hacker;
+		Rookie rookie;
 
-		hacker = this.hackerService.findByPrincipal();
+		rookie = this.rookieService.findByPrincipal();
 
-		return curriculum.getHacker().equals(hacker);
+		return curriculum.getRookie().equals(rookie);
 	}
 
 	public Curriculum reconstruct(final Curriculum curriculum, final BindingResult binding) {
@@ -225,7 +225,7 @@ public class CurriculumService {
 			curriculumStored = this.curriculumRepository.findOne(curriculum.getId());
 
 			result.setEducationDatas(curriculumStored.getEducationDatas());
-			result.setHacker(curriculumStored.getHacker());
+			result.setRookie(curriculumStored.getRookie());
 			result.setId(curriculumStored.getId());
 			result.setIsOriginal(curriculumStored.getIsOriginal());
 			result.setMiscellaneousDatas(curriculumStored.getMiscellaneousDatas());
@@ -273,10 +273,10 @@ public class CurriculumService {
 		return saved;
 	}
 
-	protected List<Curriculum> originalCurricula(final int hackerId) {
+	protected List<Curriculum> originalCurricula(final int rookieId) {
 		List<Curriculum> results;
 
-		results = new ArrayList<>(this.curriculumRepository.originalCurricula(hackerId));
+		results = new ArrayList<>(this.curriculumRepository.originalCurricula(rookieId));
 
 		return results;
 	}
@@ -289,10 +289,10 @@ public class CurriculumService {
 		this.curriculumRepository.delete(curriculum);
 	}
 
-	protected void deleteCurriculums(final Hacker hacker) {
+	protected void deleteCurriculums(final Rookie rookie) {
 		Collection<Curriculum> curriculums;
 
-		curriculums = this.curriculumRepository.findAllByHacker(hacker.getId());
+		curriculums = this.curriculumRepository.findAllByRookie(rookie.getId());
 
 		this.curriculumRepository.deleteInBatch(curriculums);
 	}
@@ -310,7 +310,7 @@ public class CurriculumService {
 		miscellaneousDatas = this.miscellaneousDataService.copy(curriculum.getMiscellaneousDatas());
 		positionDatas = this.positionDataService.copy(curriculum.getPositionDatas());
 
-		result.setHacker(curriculum.getHacker());
+		result.setRookie(curriculum.getRookie());
 		result.setIsOriginal(false);
 		result.setTitle(curriculum.getTitle());
 		result.setEducationDatas(educationDatas);
@@ -325,7 +325,7 @@ public class CurriculumService {
 		Assert.isTrue(this.checkIsOwner(curriculum));
 	}
 
-	private void checkOwner(final Hacker hacker, final Curriculum curriculum) {
-		Assert.isTrue(hacker.equals(curriculum.getHacker()));
+	private void checkOwner(final Rookie rookie, final Curriculum curriculum) {
+		Assert.isTrue(rookie.equals(curriculum.getRookie()));
 	}
 }

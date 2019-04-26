@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.CompanyService;
-import services.HackerService;
+import services.RookieService;
 import domain.Company;
-import domain.Hacker;
+import domain.Rookie;
 import forms.RegistrationForm;
 
 @Controller
@@ -22,7 +22,7 @@ public class ActorController extends ActorAbstractController {
 	// Services
 
 	@Autowired
-	private HackerService	hackerService;
+	private RookieService	hackerService;
 
 	@Autowired
 	private CompanyService	companyService;
@@ -98,10 +98,10 @@ public class ActorController extends ActorAbstractController {
 	public ModelAndView createHacker() {
 		ModelAndView result;
 		String rol;
-		Hacker hacker;
+		Rookie hacker;
 
 		rol = "Hacker";
-		hacker = new Hacker();
+		hacker = new Rookie();
 		result = this.createModelAndView(hacker);
 		result.addObject("rol", rol);
 		result.addObject("urlAdmin", "");
@@ -112,7 +112,7 @@ public class ActorController extends ActorAbstractController {
 	@RequestMapping(value = "/registerHacker", method = RequestMethod.POST, params = "save")
 	public ModelAndView saveHacker(final RegistrationForm registrationForm, final BindingResult binding) {
 		ModelAndView result;
-		Hacker hacker;
+		Rookie hacker;
 
 		hacker = this.hackerService.reconstruct(registrationForm, binding);
 
@@ -147,7 +147,7 @@ public class ActorController extends ActorAbstractController {
 		return result;
 	}
 
-	protected ModelAndView createModelAndView(final Hacker hacker) {
+	protected ModelAndView createModelAndView(final Rookie hacker) {
 		ModelAndView result;
 		RegistrationForm registrationForm;
 

@@ -1,5 +1,5 @@
 
-package controllers.companyHacker;
+package controllers.companyRookie;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

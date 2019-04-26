@@ -1,5 +1,5 @@
 
-package controllers.companyHacker;
+package controllers.companyRookie;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,7 +41,7 @@ public class ApplicationCompanyHackerController extends AbstractController {
 		try {
 			result = new ModelAndView("application/display");
 			if (LoginService.getPrincipal().getAuthorities().toString().equals("[HACKER]")) {
-				application = this.applicationService.findOneToHacker(applicationId);
+				application = this.applicationService.findOneToRookie(applicationId);
 				rolActor = "hacker";
 				if (application.getAnswer() == null)
 					existAnswer = false;

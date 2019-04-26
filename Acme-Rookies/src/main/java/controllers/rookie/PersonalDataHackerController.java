@@ -1,5 +1,5 @@
 
-package controllers.hacker;
+package controllers.rookie;
 
 import javax.validation.Valid;
 

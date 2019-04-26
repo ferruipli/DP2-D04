@@ -32,6 +32,7 @@ public class Customisation extends DomainEntity {
 	private int		timeCachedResults;
 	private int		maxNumberResults;
 	private String	spamWords;
+	private Boolean	isRebrandNotificationSent;
 
 
 	@NotBlank
@@ -111,6 +112,14 @@ public class Customisation extends DomainEntity {
 
 	public void setSpamWords(final String spamWords) {
 		this.spamWords = spamWords;
+	}
+
+	public Boolean getIsRebrandNotificationSent() {
+		return this.isRebrandNotificationSent;
+	}
+
+	public void setIsRebrandNotificationSent(final Boolean isRebrandNotificationSent) {
+		this.isRebrandNotificationSent = isRebrandNotificationSent;
 	}
 
 }

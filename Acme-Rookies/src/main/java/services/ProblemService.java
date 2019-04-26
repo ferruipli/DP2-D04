@@ -14,8 +14,8 @@ import org.springframework.validation.Validator;
 import repositories.ProblemRepository;
 import domain.Application;
 import domain.Company;
-import domain.Hacker;
 import domain.Problem;
+import domain.Rookie;
 
 @Service
 @Transactional
@@ -35,7 +35,7 @@ public class ProblemService {
 	private ApplicationService	applicationService;
 
 	@Autowired
-	private HackerService		hackerService;
+	private RookieService		rookieService;
 
 	@Autowired
 	private UtilityService		utilityService;
@@ -116,16 +116,16 @@ public class ProblemService {
 		return result;
 	}
 
-	public Problem findOneToDisplayHacker(final int problemId) {
+	public Problem findOneToDisplayRookie(final int problemId) {
 		Problem result;
-		final Collection<Application> applicationsProblemHacker;
-		Hacker principal;
+		final Collection<Application> applicationsProblemRookie;
+		Rookie principal;
 
 		result = this.problemRepository.findOne(problemId);
-		principal = this.hackerService.findByPrincipal();
-		applicationsProblemHacker = this.applicationService.findApplicationsByProblemHacker(problemId, principal.getId());
+		principal = this.rookieService.findByPrincipal();
+		applicationsProblemRookie = this.applicationService.findApplicationsByProblemRookie(problemId, principal.getId());
 
-		Assert.isTrue(!applicationsProblemHacker.isEmpty());
+		Assert.isTrue(!applicationsProblemRookie.isEmpty());
 		Assert.notNull(result);
 
 		return result;

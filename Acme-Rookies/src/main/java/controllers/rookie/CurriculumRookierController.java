@@ -1,5 +1,5 @@
 
-package controllers.hacker;
+package controllers.rookie;
 
 import java.util.Collection;
 
@@ -17,7 +17,7 @@ import domain.Curriculum;
 
 @Controller
 @RequestMapping("curriculum/hacker/")
-public class CurriculumHackerController extends AbstractController {
+public class CurriculumRookierController extends AbstractController {
 
 	// Services ---------------------------------------------------------------
 
@@ -27,7 +27,7 @@ public class CurriculumHackerController extends AbstractController {
 
 	// Constructors -----------------------------------------------------------
 
-	public CurriculumHackerController() {
+	public CurriculumRookierController() {
 		super();
 	}
 
@@ -38,7 +38,7 @@ public class CurriculumHackerController extends AbstractController {
 		ModelAndView result;
 		Collection<Curriculum> curriculums;
 
-		curriculums = this.curriculumService.findOriginalByHackerPrincipal();
+		curriculums = this.curriculumService.findOriginalByRookiePrincipal();
 
 		result = new ModelAndView("curriculum/list");
 		result.addObject("requestURI", "curriculum/hacker/list.do");

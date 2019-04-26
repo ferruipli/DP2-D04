@@ -21,7 +21,7 @@ import org.hibernate.validator.constraints.SafeHtml;
 @Entity
 @Access(AccessType.PROPERTY)
 @Table(indexes = {
-	@Index(columnList = "isOriginal, hacker")
+	@Index(columnList = "isOriginal, rookie")
 })
 public class Curriculum extends DomainEntity {
 
@@ -59,7 +59,7 @@ public class Curriculum extends DomainEntity {
 
 	// Relationships
 
-	private Hacker							hacker;
+	private Rookie							rookie;
 	private Collection<MiscellaneousData>	miscellaneousDatas;
 	private Collection<EducationData>		educationDatas;
 	private Collection<PositionData>		positionDatas;
@@ -69,12 +69,12 @@ public class Curriculum extends DomainEntity {
 	@Valid
 	@NotNull
 	@ManyToOne(optional = false)
-	public Hacker getHacker() {
-		return this.hacker;
+	public Rookie getRookie() {
+		return this.rookie;
 	}
 
-	public void setHacker(final Hacker hacker) {
-		this.hacker = hacker;
+	public void setRookie(final Rookie rookie) {
+		this.rookie = rookie;
 	}
 
 	@NotNull

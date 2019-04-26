@@ -14,12 +14,12 @@ import org.springframework.web.servlet.ModelAndView;
 import services.ActorService;
 import services.AdministratorService;
 import services.CompanyService;
-import services.HackerService;
+import services.RookieService;
 import controllers.ActorAbstractController;
 import domain.Actor;
 import domain.Administrator;
 import domain.Company;
-import domain.Hacker;
+import domain.Rookie;
 import forms.RegistrationForm;
 
 @Controller
@@ -35,7 +35,7 @@ public class ActorMultiUserController extends ActorAbstractController {
 	private CompanyService			companyService;
 
 	@Autowired
-	private HackerService			hackerService;
+	private RookieService			hackerService;
 
 	@Autowired
 	private ActorService			actorService;
@@ -54,7 +54,7 @@ public class ActorMultiUserController extends ActorAbstractController {
 		ModelAndView result;
 		Administrator administrator;
 		Company company;
-		final Hacker hacker;
+		final Rookie hacker;
 		Actor actor;
 
 		result = new ModelAndView();
@@ -69,7 +69,7 @@ public class ActorMultiUserController extends ActorAbstractController {
 				company = this.companyService.findOneToDisplayEdit(actorId);
 				result = this.createModelAndView(company);
 				result.addObject("rol", "Company");
-			} else if (actor instanceof Hacker) {
+			} else if (actor instanceof Rookie) {
 				hacker = this.hackerService.findOneToDisplayEdit(actorId);
 				result = this.createModelAndView(hacker);
 				result.addObject("rol", "Hacker");
@@ -175,7 +175,7 @@ public class ActorMultiUserController extends ActorAbstractController {
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "saveHacker")
 	public ModelAndView saveHacker(final RegistrationForm registrationForm, final BindingResult binding) {
 		ModelAndView result;
-		Hacker hacker;
+		Rookie hacker;
 
 		hacker = this.hackerService.reconstruct(registrationForm, binding);
 
@@ -197,7 +197,7 @@ public class ActorMultiUserController extends ActorAbstractController {
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "deleteHacker")
 	public ModelAndView deleteHacker(final RegistrationForm registrationForm, final BindingResult binding, final HttpSession session) {
 		ModelAndView result;
-		Hacker hacker;
+		Rookie hacker;
 
 		hacker = this.hackerService.findOneToDisplayEdit(registrationForm.getId());
 
@@ -219,7 +219,7 @@ public class ActorMultiUserController extends ActorAbstractController {
 
 	// Ancillary methods
 
-	protected ModelAndView createModelAndView(final Hacker hacker) {
+	protected ModelAndView createModelAndView(final Rookie hacker) {
 		ModelAndView result;
 		RegistrationForm registrationForm;
 

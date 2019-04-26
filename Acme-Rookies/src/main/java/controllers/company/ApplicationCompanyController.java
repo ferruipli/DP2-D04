@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ApplicationService;
-import services.HackerService;
+import services.RookieService;
 import services.PositionService;
 import controllers.AbstractController;
 import domain.Application;
@@ -30,7 +30,7 @@ public class ApplicationCompanyController extends AbstractController {
 	private PositionService		positionService;
 
 	@Autowired
-	private HackerService		hackerService;
+	private RookieService		hackerService;
 
 
 	// Constructors -----------------------------------------------------------

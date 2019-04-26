@@ -1,5 +1,5 @@
 
-package controllers.hacker;
+package controllers.rookie;
 
 import java.util.Collection;
 import java.util.List;
@@ -22,7 +22,7 @@ import domain.Position;
 
 @Controller
 @RequestMapping(value = "/application/hacker")
-public class ApplicationHackerController extends AbstractController {
+public class ApplicationRookieController extends AbstractController {
 
 	// Services------------------------------------
 
@@ -38,7 +38,7 @@ public class ApplicationHackerController extends AbstractController {
 
 	// Constructors -----------------------------------------------------------
 
-	public ApplicationHackerController() {
+	public ApplicationRookieController() {
 		super();
 	}
 
@@ -52,10 +52,10 @@ public class ApplicationHackerController extends AbstractController {
 		Collection<Application> rejectedApplications;
 
 		try {
-			pendingApplications = this.applicationService.findPendingApplicationsByHacker();
-			submittedApplications = this.applicationService.findSubmittedApplicationsByHacker();
-			acceptedApplications = this.applicationService.findAcceptedApplicationsByHacker();
-			rejectedApplications = this.applicationService.findRejectedApplicationsByHacker();
+			pendingApplications = this.applicationService.findPendingApplicationsByRookie();
+			submittedApplications = this.applicationService.findSubmittedApplicationsByRookie();
+			acceptedApplications = this.applicationService.findAcceptedApplicationsByRookie();
+			rejectedApplications = this.applicationService.findRejectedApplicationsByRookie();
 
 			result = new ModelAndView("application/list");
 			result.addObject("pendingApplications", pendingApplications);
@@ -100,7 +100,7 @@ public class ApplicationHackerController extends AbstractController {
 
 		try {
 
-			application = this.applicationService.findOneToHackerEdit(applicationId);
+			application = this.applicationService.findOneToRookieEdit(applicationId);
 			result = this.createEditModelAndView(application);
 
 		} catch (final Exception e) {

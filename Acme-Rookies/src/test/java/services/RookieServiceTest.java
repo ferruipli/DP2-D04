@@ -14,29 +14,29 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
-import repositories.HackerRepository;
+import repositories.RookieRepository;
 import security.Authority;
 import security.UserAccount;
 import utilities.AbstractTest;
 import domain.CreditCard;
-import domain.Hacker;
+import domain.Rookie;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
 	"classpath:spring/junit.xml"
 })
 @Transactional
-public class HackerServiceTest extends AbstractTest {
+public class RookieServiceTest extends AbstractTest {
 
 	// The SUT ----------------------------------------------------------------
 
 	@Autowired
-	private HackerService		hackerService;
+	private RookieService		rookieService;
 
 	// Other services ---------------------------------------------------------
 
 	@Autowired
-	private HackerRepository	hackerRepository;
+	private RookieRepository	hackerRepository;
 
 
 	// Tests ------------------------------------------------------------------
@@ -55,8 +55,8 @@ public class HackerServiceTest extends AbstractTest {
 	 */
 	@Test
 	public void testFindHackerWithMoreApplications() {
-		Collection<Hacker> hackers;
-		Hacker hacker2, hacker4;
+		Collection<Rookie> hackers;
+		Rookie hacker2, hacker4;
 		int hacker2Id, hacker4Id;
 
 		hacker2Id = super.getEntityId("hacker2");
@@ -64,7 +64,7 @@ public class HackerServiceTest extends AbstractTest {
 		hacker2 = this.hackerRepository.findOne(hacker2Id);
 		hacker4 = this.hackerRepository.findOne(hacker4Id);
 
-		hackers = this.hackerService.findHackersWithMoreApplications();
+		hackers = this.rookieService.findRookiesWithMoreApplications();
 
 		Assert.isTrue(hackers.size() == 2);
 		Assert.isTrue(hackers.contains(hacker2) && hackers.contains(hacker4));
@@ -220,7 +220,7 @@ public class HackerServiceTest extends AbstractTest {
 	protected void registerHackerTemplate(final String name, final String surname, final int VATnumber, final String holder, final String make, final String number, final String month, final String year, final int cvvCode, final String photo,
 		final String email, final String phoneNumber, final String address, final Class<?> expected) {
 		Class<?> caught;
-		Hacker hacker, saved;
+		Rookie hacker, saved;
 		UserAccount userAccount;
 		Authority auth;
 		CreditCard creditCard;
@@ -238,7 +238,7 @@ public class HackerServiceTest extends AbstractTest {
 			userAccount.setUsername("testingUsername");
 			userAccount.setPassword("testingPassword");
 
-			hacker = this.hackerService.create();
+			hacker = this.rookieService.create();
 			hacker.setName(name);
 			hacker.setSurname(surname);
 			hacker.setAddress(address);
@@ -257,10 +257,10 @@ public class HackerServiceTest extends AbstractTest {
 
 			hacker.setCreditCard(creditCard);
 
-			saved = this.hackerService.save(hacker);
+			saved = this.rookieService.save(hacker);
 			this.hackerRepository.flush();
 
-			hacker = this.hackerService.findOne(saved.getId());
+			hacker = this.rookieService.findOne(saved.getId());
 			Assert.isTrue(saved.equals(hacker));
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
@@ -285,20 +285,20 @@ public class HackerServiceTest extends AbstractTest {
 	 */
 	@Test
 	public void save_positive_test() {
-		Hacker hacker, saved;
+		Rookie hacker, saved;
 		String oldName;
 
 		super.authenticate("hacker1");
 
 		this.startTransaction();
 
-		hacker = this.hackerService.findOneToDisplayEdit(super.getEntityId("hacker1"));
+		hacker = this.rookieService.findOneToDisplayEdit(super.getEntityId("hacker1"));
 
 		oldName = hacker.getName();
 
 		hacker.setName("TEST");
 
-		saved = this.hackerService.save(hacker);
+		saved = this.rookieService.save(hacker);
 
 		Assert.isTrue(!saved.getName().equals(oldName));
 
@@ -322,20 +322,20 @@ public class HackerServiceTest extends AbstractTest {
 	 */
 	@Test(expected = ConstraintViolationException.class)
 	public void save_negative_test() {
-		Hacker hacker, saved;
+		Rookie hacker, saved;
 		String oldName;
 
 		super.authenticate("hacker1");
 
 		this.startTransaction();
 
-		hacker = this.hackerService.findOneToDisplayEdit(super.getEntityId("hacker1"));
+		hacker = this.rookieService.findOneToDisplayEdit(super.getEntityId("hacker1"));
 
 		oldName = hacker.getName();
 
 		hacker.setName("");
 
-		saved = this.hackerService.save(hacker);
+		saved = this.rookieService.save(hacker);
 
 		Assert.isTrue(!saved.getName().equals(oldName));
 

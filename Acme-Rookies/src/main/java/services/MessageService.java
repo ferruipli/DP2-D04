@@ -22,9 +22,9 @@ import domain.Actor;
 import domain.Application;
 import domain.Customisation;
 import domain.Finder;
-import domain.Hacker;
 import domain.Message;
 import domain.Position;
+import domain.Rookie;
 import domain.SystemTag;
 
 @Service
@@ -50,7 +50,7 @@ public class MessageService {
 	private AdministratorService	administratorService;
 
 	@Autowired
-	private HackerService			hackerService;
+	private RookieService			rookieService;
 
 	@Autowired
 	private SystemTagService		systemTagService;
@@ -325,7 +325,7 @@ public class MessageService {
 		List<Actor> recipients;
 		String subject, body, ticker, status;
 
-		hacker = application.getHacker();
+		hacker = application.getRookie();
 		company = application.getPosition().getCompany();
 
 		recipients = new ArrayList<Actor>();
@@ -350,16 +350,16 @@ public class MessageService {
 		Assert.isTrue(position.getIsFinalMode() && !position.getIsCancelled());
 
 		Message notification, result;
-		List<Hacker> all;
+		List<Rookie> all;
 		List<Actor> recipients;
 		Collection<Position> returned_positions;
 		final String subject, body;
 		Finder finder;
 
-		all = new ArrayList<>(this.hackerService.findAll());
+		all = new ArrayList<>(this.rookieService.findAll());
 		recipients = new ArrayList<>();
-		for (final Hacker h : all) {
-			finder = this.finderService.findByHacker(h.getId());
+		for (final Rookie h : all) {
+			finder = this.finderService.findByRookie(h.getId());
 
 			returned_positions = this.positionService.matchCriteria(finder);
 

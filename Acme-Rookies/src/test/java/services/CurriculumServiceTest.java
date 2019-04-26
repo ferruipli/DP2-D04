@@ -48,10 +48,10 @@ public class CurriculumServiceTest extends AbstractTest {
 	 * D: 100% of data coverage.
 	 */
 	@Test
-	public void testDataNumberCurriculumPerHacker() {
+	public void testDataNumberCurriculumPerRookie() {
 		Double[] data;
 
-		data = this.curriculumService.findDataNumberCurriculumPerHacker();
+		data = this.curriculumService.findDataNumberCurriculumPerRookie();
 
 		Assert.isTrue(data[0] == 0.0);
 		Assert.isTrue(data[1] == 1.0);
@@ -303,7 +303,7 @@ public class CurriculumServiceTest extends AbstractTest {
 		final Curriculum res = new Curriculum();
 
 		res.setEducationDatas(curriculum.getEducationDatas());
-		res.setHacker(curriculum.getHacker());
+		res.setRookie(curriculum.getRookie());
 		res.setId(curriculum.getId());
 		res.setIsOriginal(curriculum.getIsOriginal());
 		res.setMiscellaneousDatas(curriculum.getMiscellaneousDatas());
