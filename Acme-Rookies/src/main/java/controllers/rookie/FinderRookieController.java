@@ -15,7 +15,7 @@ import domain.Customisation;
 import domain.Finder;
 
 @Controller
-@RequestMapping("finder/hacker/")
+@RequestMapping("finder/rookie/")
 public class FinderRookieController extends AbstractController {
 
 	// Services ---------------------------------------------------------------
@@ -48,7 +48,7 @@ public class FinderRookieController extends AbstractController {
 		finder = this.finderService.evaluateSearch(finder);
 
 		result = new ModelAndView("position/finder");
-		result.addObject("requestURI", "finder/hacker/display.do");
+		result.addObject("requestURI", "finder/rookie/display.do");
 		result.addObject("finder", finder);
 		result.addObject("numberOfResults", numberOfResults);
 

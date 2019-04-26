@@ -28,7 +28,7 @@ public class PositionDataService {
 	// Other supporting services -----------------------------------------
 
 	@Autowired
-	private RookieService			hackerService;
+	private RookieService			rookieService;
 
 	@Autowired
 	private CurriculumService		curriculumService;
@@ -142,8 +142,8 @@ public class PositionDataService {
 	private void checkOwner(final int positionDataId) {
 		Rookie principal, owner;
 
-		principal = this.hackerService.findByPrincipal();
-		owner = this.hackerService.findByPositionDataId(positionDataId);
+		principal = this.rookieService.findByPrincipal();
+		owner = this.rookieService.findByPositionDataId(positionDataId);
 
 		Assert.isTrue(principal.equals(owner));
 	}

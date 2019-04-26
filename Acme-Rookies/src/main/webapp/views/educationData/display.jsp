@@ -34,6 +34,6 @@
 	</li>
 </ul>
 
-<a href="educationData/hacker/backCurriculum.do?educationDataId=${educationData.id}">
+<a href="educationData/rookie/backCurriculum.do?educationDataId=${educationData.id}">
 	<spring:message code="educationData.return"/>
 </a>

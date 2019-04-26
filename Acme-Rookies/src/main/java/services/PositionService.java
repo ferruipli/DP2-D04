@@ -298,7 +298,7 @@ public class PositionService {
 		finder.setUpdatedMoment(this.utilityService.current_moment());
 	}
 
-	// This method is used to check if a hacker's finder search criteria match with a new published position 
+	// This method is used to check if a rookie's finder search criteria match with a new published position 
 	protected Collection<Position> matchCriteria(final Finder finder) {
 		Collection<Position> results;
 

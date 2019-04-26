@@ -19,7 +19,7 @@ import domain.Answer;
 import domain.Application;
 
 @Controller
-@RequestMapping(value = "/answer/hacker")
+@RequestMapping(value = "/answer/rookie")
 public class AnswerRookieController extends AbstractController {
 
 	// Services------------------------------------
@@ -91,7 +91,7 @@ public class AnswerRookieController extends AbstractController {
 			try {
 				application = this.applicationService.findOneToRookie(applicationId);
 				this.answerService.save(answer, application);
-				result = new ModelAndView("redirect:../../application/hacker/list.do");
+				result = new ModelAndView("redirect:../../application/rookie/list.do");
 			}
 
 			catch (final Throwable oops) {

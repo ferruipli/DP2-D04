@@ -24,7 +24,7 @@
 			<li><a class="fNiv"><spring:message	code="master.page.application" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="application/hacker/list.do"><spring:message code="master.page.application.list" /></a></li>			
+					<li><a href="application/rookie/list.do"><spring:message code="master.page.application.list" /></a></li>			
 				</ul>
 			</li>
 		</security:authorize>
@@ -47,9 +47,9 @@
 		</security:authorize>
 		
 		<security:authorize access="hasRole('HACKER')">
-			<li><a href="curriculum/hacker/list.do" class="fNiv"><spring:message code="master.page.curriculum.list"/></a>
+			<li><a href="curriculum/rookie/list.do" class="fNiv"><spring:message code="master.page.curriculum.list"/></a>
 			</li>
-			<li><a href="finder/hacker/display.do" class="fNiv"><spring:message code="master.page.finder"/></a>
+			<li><a href="finder/rookie/display.do" class="fNiv"><spring:message code="master.page.finder"/></a>
 			</li>
 		</security:authorize>
 		
@@ -70,7 +70,7 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="actor/registerCompany.do"><spring:message code="master.page.company.create" /></a></li>
-					<li><a href="actor/registerHacker.do"><spring:message code="master.page.hacker.create" /></a></li>
+					<li><a href="actor/registerRookie.do"><spring:message code="master.page.rookie.create" /></a></li>
 				</ul>
 			</li>
 		</security:authorize>
@@ -86,7 +86,7 @@
 				<ul>
 					<li class="arrow"></li>		
 					<li><a href="actor/display.do"><spring:message code="master.page.actor.display" /></a></li>			
-					<li><a href="message/administrator,company,hacker/list.do"><spring:message code="master.page.message.list" /></a></li>
+					<li><a href="message/administrator,company,rookie/list.do"><spring:message code="master.page.message.list" /></a></li>
 					<li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /> </a></li>
 				</ul>
 			</li>

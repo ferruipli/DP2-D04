@@ -40,7 +40,7 @@
 	</jstl:if>
 	<jstl:if test="${noCurriculum == false}">
 		<h2>
-			<a href="application/hacker/create.do?positionId=${position.id}"><spring:message code="position.apply" /></a>
+			<a href="application/rookie/create.do?positionId=${position.id}"><spring:message code="position.apply" /></a>
 		</h2>
 	</jstl:if>
 	</jstl:if>
@@ -113,7 +113,7 @@
 		pagesize="5" class="displaytag" requestURI="position/display.do">
 		
 		<display:column>
-			<a href="problem/company,hacker/display.do?problemId=${rowPoroblem.id}"><spring:message
+			<a href="problem/company,rookie/display.do?problemId=${rowPoroblem.id}"><spring:message
 					code="position.display" /> </a>
 		</display:column>
 

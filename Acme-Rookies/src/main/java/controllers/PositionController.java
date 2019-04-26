@@ -144,7 +144,7 @@ public class PositionController extends AbstractController {
 		Company principal;
 		Collection<Problem> problemList;
 		Boolean isApplied, isDeadlineFuture;
-		Rookie hackerPrincipal;
+		Rookie rookiePrincipal;
 		Boolean hasProblem;
 		Date moment;
 
@@ -164,13 +164,13 @@ public class PositionController extends AbstractController {
 			}
 
 			try {
-				hackerPrincipal = this.rookieService.findByPrincipal();
+				rookiePrincipal = this.rookieService.findByPrincipal();
 				result.addObject("noCurriculum", false);
 				final Collection<Curriculum> curriculum = this.curriculumService.findOriginalByRookiePrincipal();
 				if (curriculum.isEmpty())
 					result.addObject("noCurriculum", true);
 			} catch (final Exception e1) {
-				hackerPrincipal = null;
+				rookiePrincipal = null;
 			}
 
 			if (principal != null && principal.equals(position.getCompany())) {
@@ -181,10 +181,10 @@ public class PositionController extends AbstractController {
 				result.addObject("hasProblem", hasProblem);
 				result.addObject("principal", principal);
 				result.addObject("problemList", problemList);
-			} else if (hackerPrincipal != null && hackerPrincipal.getUserAccount().getAuthorities().toString().equals("[HACKER]")) {
+			} else if (rookiePrincipal != null && rookiePrincipal.getUserAccount().getAuthorities().toString().equals("[HACKER]")) {
 				position = this.positionService.findOne(positionId);
-				hackerPrincipal = this.rookieService.findByPrincipal();
-				isApplied = this.applicationService.isApplied(position, hackerPrincipal);
+				rookiePrincipal = this.rookieService.findByPrincipal();
+				isApplied = this.applicationService.isApplied(position, rookiePrincipal);
 				result.addObject("isApplied", isApplied);
 			}
 

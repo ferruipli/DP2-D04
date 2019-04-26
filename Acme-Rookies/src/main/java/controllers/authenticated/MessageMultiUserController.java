@@ -22,7 +22,7 @@ import domain.Actor;
 import domain.Message;
 
 @Controller
-@RequestMapping("/message/administrator,company,hacker")
+@RequestMapping("/message/administrator,company,rookie")
 public class MessageMultiUserController extends AbstractController {
 
 	@Autowired
@@ -82,7 +82,7 @@ public class MessageMultiUserController extends AbstractController {
 		result = new ModelAndView("message/list");
 		result.addObject("sentMessages", sentMessages);
 		result.addObject("receivedMessages", receivedMessages);
-		result.addObject("requestURI", "message/administrator,company,hacker/list.do");
+		result.addObject("requestURI", "message/administrator,company,rookie/list.do");
 		result.addObject("mapa", mapa);
 
 		return result;
@@ -162,7 +162,7 @@ public class MessageMultiUserController extends AbstractController {
 		result.addObject("message", message);
 		result.addObject("actors", actors);
 		result.addObject("isBroadcastMessage", false);
-		result.addObject("actionURI", "message/administrator,company,hacker/send.do");
+		result.addObject("actionURI", "message/administrator,company,rookie/send.do");
 		result.addObject("messageCode", messageCode);
 
 		return result;

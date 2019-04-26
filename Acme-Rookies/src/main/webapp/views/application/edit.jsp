@@ -21,7 +21,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<form:form action="application/hacker/edit.do"
+<form:form action="application/rookie/edit.do"
 	modelAttribute="application">
 	<form:hidden path="id" />
 	<form:hidden path="position" />
@@ -34,7 +34,7 @@
 		<div>
 			<acme:submit name="save" code="application.save" />
 			&nbsp;
-			<acme:cancel code="application.cancel" url="application/hacker/list.do" />
+			<acme:cancel code="application.cancel" url="application/rookie/list.do" />
 		</div>
 		
 </form:form>

@@ -31,7 +31,7 @@ public class EducationDataService {
 	private CurriculumService		curriculumService;
 
 	@Autowired
-	private RookieService			hackerService;
+	private RookieService			rookieService;
 
 
 	// Constructors ------------------------------------------------------
@@ -143,8 +143,8 @@ public class EducationDataService {
 	private void checkOwner(final int educationDataId) {
 		Rookie principal, owner;
 
-		principal = this.hackerService.findByPrincipal();
-		owner = this.hackerService.findByEducationDataId(educationDataId);
+		principal = this.rookieService.findByPrincipal();
+		owner = this.rookieService.findByEducationDataId(educationDataId);
 
 		Assert.isTrue(principal.equals(owner));
 	}

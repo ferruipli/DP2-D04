@@ -36,10 +36,10 @@
 		<th> <spring:message code="dashboard.deviation" /> </th>
 	</tr>
 	<tr>
-		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${findDataNumberApplicationPerHacker[0]}" /> </td>
-		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${findDataNumberApplicationPerHacker[1]}" /> </td>
-		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${findDataNumberApplicationPerHacker[2]}" /> </td>
-		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${findDataNumberApplicationPerHacker[3]}" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${findDataNumberApplicationPerRookie[0]}" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${findDataNumberApplicationPerRookie[1]}" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${findDataNumberApplicationPerRookie[2]}" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${findDataNumberApplicationPerRookie[3]}" /> </td>
 	</tr>
 </table>
 
@@ -53,7 +53,7 @@
 </display:table>
 
 <p><strong> <spring:message code="dashboard.four" />: </strong></p>
-<display:table name="findHackersWithMoreApplications" id="row" requestURI="dashboard/administrator/display.do" pagesize="5" class="displaytag">
+<display:table name="findRookiesWithMoreApplications" id="row" requestURI="dashboard/administrator/display.do" pagesize="5" class="displaytag">
 	<display:column property="fullname" titleKey="table.fullname" />
 	<display:column property="email" titleKey="table.email" />
 	<display:column property="phoneNumber" titleKey="table.phoneNumber" />
@@ -97,10 +97,10 @@
 		<th> <spring:message code="dashboard.deviation" /> </th>
 	</tr>
 	<tr>
-		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${findDataNumberCurriculumPerHacker[0]}" /> </td>
-		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${findDataNumberCurriculumPerHacker[1]}" /> </td>
-		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${findDataNumberCurriculumPerHacker[2]}" /> </td>
-		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${findDataNumberCurriculumPerHacker[3]}" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${findDataNumberCurriculumPerRookie[0]}" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${findDataNumberCurriculumPerRookie[1]}" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${findDataNumberCurriculumPerRookie[2]}" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${findDataNumberCurriculumPerRookie[3]}" /> </td>
 	</tr>
 </table>
 

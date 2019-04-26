@@ -16,7 +16,7 @@
 	</display:column>
 	
 	<display:column>
-		<a href="curriculum/hacker/delete.do?curriculumId=${row.id}" onclick="return confirm('<spring:message code="curriculum.confirm.delete"/>')">
+		<a href="curriculum/rookie/delete.do?curriculumId=${row.id}" onclick="return confirm('<spring:message code="curriculum.confirm.delete"/>')">
 			<spring:message code="curriculum.delete"/>
 		</a>
 	</display:column>
@@ -24,6 +24,6 @@
 	<display:column property="title" titleKey="curriculum.title.table" sortable="true"/>
 </display:table>
 
-<a href="curriculum/hacker/create.do">
+<a href="curriculum/rookie/create.do">
 	<spring:message code="curriculum.create.curriculum"/>
 </a>

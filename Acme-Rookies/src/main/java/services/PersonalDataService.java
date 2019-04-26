@@ -23,7 +23,7 @@ public class PersonalDataService {
 	// Other supporting services -----------------------------------------
 
 	@Autowired
-	private RookieService			hackerService;
+	private RookieService			rookieService;
 
 	@Autowired
 	private CurriculumService		curriculumService;
@@ -52,7 +52,7 @@ public class PersonalDataService {
 		this.checkProfileURL(personalData);
 		this.checkCurriculumIsOriginal(personalData);
 
-		final Rookie principal = this.hackerService.findByPrincipal();
+		final Rookie principal = this.rookieService.findByPrincipal();
 		PersonalData saved;
 
 		this.checkOwner(principal, personalData.getId());
@@ -97,8 +97,8 @@ public class PersonalDataService {
 		return res;
 	}
 
-	protected void checkFullname(final Rookie hacker, final PersonalData personalData) {
-		Assert.isTrue(hacker.getFullname().equals(personalData.getFullname()), "Fullname does not match");
+	protected void checkFullname(final Rookie rookie, final PersonalData personalData) {
+		Assert.isTrue(rookie.getFullname().equals(personalData.getFullname()), "Fullname does not match");
 	}
 
 	protected void checkProfileURL(final PersonalData personalData) {
@@ -119,15 +119,15 @@ public class PersonalDataService {
 	private void checkOwner(final int personalDataId) {
 		Rookie principal;
 
-		principal = this.hackerService.findByPrincipal();
+		principal = this.rookieService.findByPrincipal();
 		this.checkOwner(principal, personalDataId);
 	}
 
-	private void checkOwner(final Rookie hacker, final int personalDataId) {
+	private void checkOwner(final Rookie rookie, final int personalDataId) {
 		Rookie owner;
 
-		owner = this.hackerService.findByPersonalDataId(personalDataId);
+		owner = this.rookieService.findByPersonalDataId(personalDataId);
 
-		Assert.isTrue(hacker.equals(owner));
+		Assert.isTrue(rookie.equals(owner));
 	}
 }

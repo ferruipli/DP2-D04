@@ -8,7 +8,7 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
-<form:form action="curriculum/hacker/edit.do" modelAttribute="curriculum">
+<form:form action="curriculum/rookie/edit.do" modelAttribute="curriculum">
 	<form:hidden path="id" />
 
 	<fieldset>

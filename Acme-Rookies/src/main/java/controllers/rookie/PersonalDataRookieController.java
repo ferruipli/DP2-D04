@@ -17,8 +17,8 @@ import controllers.AbstractController;
 import domain.PersonalData;
 
 @Controller
-@RequestMapping("personalData/hacker/")
-public class PersonalDataHackerController extends AbstractController {
+@RequestMapping("personalData/rookie/")
+public class PersonalDataRookieController extends AbstractController {
 
 	// Services ---------------------------------------------------------------
 
@@ -31,7 +31,7 @@ public class PersonalDataHackerController extends AbstractController {
 
 	// Constructors -----------------------------------------------------------
 
-	public PersonalDataHackerController() {
+	public PersonalDataRookieController() {
 		super();
 	}
 

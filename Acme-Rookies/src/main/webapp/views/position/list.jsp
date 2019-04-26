@@ -72,9 +72,9 @@
 		</ul>
 		
 		<div>
-			<a href="finder/hacker/edit.do"><spring:message code="position.finder.edit"/></a>
+			<a href="finder/rookie/edit.do"><spring:message code="position.finder.edit"/></a>
 			&nbsp;
-			<a href="finder/hacker/clear.do"><spring:message code="position.finder.clear"/></a>
+			<a href="finder/rookie/clear.do"><spring:message code="position.finder.clear"/></a>
 		</div>
 	</fieldset>
 	

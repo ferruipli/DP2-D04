@@ -84,7 +84,7 @@ public class FinderServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * A: An actor who is authenticated as a hacker must be able to: Manage
+	 * A: An actor who is authenticated as a rookie must be able to: Manage
 	 * his or her finder, which involves UPDATING THE SEARCH CRITERIA,
 	 * listing its contents, and clearing it
 	 * 
@@ -102,7 +102,7 @@ public class FinderServiceTest extends AbstractTest {
 		Finder finder, saved;
 		int finderId;
 
-		super.authenticate("hacker9");
+		super.authenticate("rookie9");
 
 		finderId = super.getEntityId("finder9");
 
@@ -140,7 +140,7 @@ public class FinderServiceTest extends AbstractTest {
 		Finder finder, saved;
 		int finderId;
 
-		super.authenticate("hacker9");
+		super.authenticate("rookie9");
 
 		finderId = super.getEntityId("finder8");
 
@@ -176,7 +176,7 @@ public class FinderServiceTest extends AbstractTest {
 		Finder finder;
 		int finderId;
 
-		super.authenticate("hacker9");
+		super.authenticate("rookie9");
 
 		finderId = super.getEntityId("finder9");
 
@@ -194,7 +194,7 @@ public class FinderServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * A: An actor who is authenticated as a hacker must be able to: Manage
+	 * A: An actor who is authenticated as a rookie must be able to: Manage
 	 * his or her finder, which involves updating the search criteria,
 	 * listing its contents, and CLEARING IT.
 	 * 
@@ -210,7 +210,7 @@ public class FinderServiceTest extends AbstractTest {
 		Finder finder;
 		int finderId;
 
-		super.authenticate("hacker9");
+		super.authenticate("rookie9");
 
 		finderId = super.getEntityId("finder8");
 

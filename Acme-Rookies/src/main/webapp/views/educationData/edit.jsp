@@ -8,7 +8,7 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
-<form:form action="educationData/hacker/edit.do" modelAttribute="educationData">
+<form:form action="educationData/rookie/edit.do" modelAttribute="educationData">
 	<input type="hidden" name="curriculumId" value="${curriculumId}"/>
 	<form:hidden path="id" />
 	<form:hidden path="version" />
@@ -35,7 +35,7 @@
 			<acme:cancel code="educationData.cancel" url="curriculum/display.do?curriculumId=${curriculumId}"/>
 		</jstl:when>
 		<jstl:otherwise>
-			<acme:cancel code="educationData.cancel" url="educationData/hacker/backCurriculum.do?educationDataId=${educationData.id}"/>
+			<acme:cancel code="educationData.cancel" url="educationData/rookie/backCurriculum.do?educationDataId=${educationData.id}"/>
 		</jstl:otherwise>
 	</jstl:choose>
 </form:form>

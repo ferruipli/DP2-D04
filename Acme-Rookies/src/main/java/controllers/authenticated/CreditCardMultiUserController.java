@@ -16,7 +16,7 @@ import domain.CreditCard;
 import forms.CreditCardForm;
 
 @Controller
-@RequestMapping(value = "/creditCard/administrator,company,hacker")
+@RequestMapping(value = "/creditCard/administrator,company,rookie")
 public class CreditCardMultiUserController extends AbstractController {
 
 	// Services

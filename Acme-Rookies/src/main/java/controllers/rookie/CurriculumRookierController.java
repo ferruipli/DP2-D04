@@ -16,7 +16,7 @@ import controllers.AbstractController;
 import domain.Curriculum;
 
 @Controller
-@RequestMapping("curriculum/hacker/")
+@RequestMapping("curriculum/rookie/")
 public class CurriculumRookierController extends AbstractController {
 
 	// Services ---------------------------------------------------------------
@@ -41,7 +41,7 @@ public class CurriculumRookierController extends AbstractController {
 		curriculums = this.curriculumService.findOriginalByRookiePrincipal();
 
 		result = new ModelAndView("curriculum/list");
-		result.addObject("requestURI", "curriculum/hacker/list.do");
+		result.addObject("requestURI", "curriculum/rookie/list.do");
 		result.addObject("curriculums", curriculums);
 
 		return result;

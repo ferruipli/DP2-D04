@@ -62,7 +62,7 @@ public class SocialProfileServiceTest extends AbstractTest {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void findSocialProfilesByActor_negativeTest() {
-		super.authenticate("hacker1");
+		super.authenticate("rookie1");
 
 		int actorId;
 		Collection<SocialProfile> social_profiles;
@@ -79,13 +79,13 @@ public class SocialProfileServiceTest extends AbstractTest {
 
 	/*
 	 * A: Requirement 23.1 (A user can show social profiles).
-	 * B: A hacker try to display a social profile that belongs to an administrator.
+	 * B: A rookie try to display a social profile that belongs to an administrator.
 	 * C: Analysis of sentence coverage: 13/14 -> 92.85% of executed lines codes .
 	 * D: Analysis of data coverage: intentionally blank.
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void displaySocialProfile_negativeTest() {
-		super.authenticate("hacker1");
+		super.authenticate("rookie1");
 
 		int socialProfileId;
 		SocialProfile socialProfile;
@@ -127,7 +127,7 @@ public class SocialProfileServiceTest extends AbstractTest {
 	 */
 	@Test
 	public void create_test() {
-		super.authenticate("hacker1");
+		super.authenticate("rookie1");
 
 		SocialProfile socialProfile;
 
@@ -150,7 +150,7 @@ public class SocialProfileServiceTest extends AbstractTest {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void save_negativeTest() {
-		super.authenticate("hacker1");
+		super.authenticate("rookie1");
 
 		int socialProfileId;
 		SocialProfile socialProfile, saved;
@@ -198,7 +198,7 @@ public class SocialProfileServiceTest extends AbstractTest {
 	 * D: Analysis of data coverage: intentionally blank.
 	 */
 	public void delete_negativeTest() {
-		super.authenticate("hacker1");
+		super.authenticate("rookie1");
 
 		int socialProfileId;
 		SocialProfile socialProfile, found;
@@ -222,7 +222,7 @@ public class SocialProfileServiceTest extends AbstractTest {
 	 * D: Analysis of data coverage: intentionally blank.
 	 */
 	public void delete_positiveTest() {
-		super.authenticate("hacker1");
+		super.authenticate("rookie1");
 
 		int socialProfileId;
 		SocialProfile socialProfile, found;

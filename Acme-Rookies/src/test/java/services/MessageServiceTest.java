@@ -57,7 +57,7 @@ public class MessageServiceTest extends AbstractTest {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void findOneToDisplay_negativeTest_uno() {
-		super.authenticate("hacker2");
+		super.authenticate("rookie2");
 
 		int messageId;
 		Message message;
@@ -98,7 +98,7 @@ public class MessageServiceTest extends AbstractTest {
 	 */
 	@Test
 	public void findOneToDisplay_positiveTest() {
-		super.authenticate("hacker1");
+		super.authenticate("rookie1");
 
 		int messageId;
 		Message message;
@@ -118,12 +118,12 @@ public class MessageServiceTest extends AbstractTest {
 	 */
 	@Test
 	public void findMessageByActor_positiveTest() {
-		super.authenticate("hacker1");
+		super.authenticate("rookie1");
 
 		int actorId;
 		Collection<Message> sentMessages, receivedMessages;
 
-		actorId = super.getEntityId("hacker1");
+		actorId = super.getEntityId("rookie1");
 
 		sentMessages = this.messageService.findSentMessagesOrderByTags(actorId);
 		receivedMessages = this.messageService.findReceivedMessagesOrderByTags(actorId);
@@ -141,7 +141,7 @@ public class MessageServiceTest extends AbstractTest {
 	 */
 	@Test
 	public void create_positiveTest() {
-		super.authenticate("hacker1");
+		super.authenticate("rookie1");
 
 		Message message;
 
@@ -167,7 +167,7 @@ public class MessageServiceTest extends AbstractTest {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void send_negativeTest() {
-		super.authenticate("hacker1");
+		super.authenticate("rookie1");
 
 		final int messageId = super.getEntityId("message1");
 		Message message = null, sent;
@@ -302,7 +302,7 @@ public class MessageServiceTest extends AbstractTest {
 
 		caught = null;
 		try {
-			super.authenticate("hacker1");
+			super.authenticate("rookie1");
 
 			message = this.messageService.create();
 			message.setSubject(subject);
@@ -386,13 +386,13 @@ public class MessageServiceTest extends AbstractTest {
 	 */
 	@Test
 	public void delete_positiveTest_dos() {
-		super.authenticate("hacker2");
+		super.authenticate("rookie2");
 
 		Message message;
 		int messageId, actorId;
 		SystemTag deleted, hardDeleted;
 
-		actorId = super.getEntityId("hacker2");
+		actorId = super.getEntityId("rookie2");
 		messageId = super.getEntityId("message3");
 		message = this.messageService.findOne(messageId);
 
@@ -479,14 +479,14 @@ public class MessageServiceTest extends AbstractTest {
 
 		notification = this.messageService.notification_applicationStatusChanges(application);
 
-		actorId = super.getEntityId("hacker1");
+		actorId = super.getEntityId("rookie1");
 		receivedMessages = this.messageService.findReceivedMessagesOrderByTags(actorId);
 
 		Assert.isTrue(receivedMessages.contains(notification));
 	}
 
 	/*
-	 * A: Requirement 27 (A new offer that matches a hacker's finder search criteria is published).
+	 * A: Requirement 27 (A new offer that matches a rookie's finder search criteria is published).
 	 * B: The position is not published
 	 * C: Analysis of sentence coverage: 2/52 -> 3.85% of executed lines codes .
 	 * D: Analysis of data coverage: Intentionally blank.
@@ -506,7 +506,7 @@ public class MessageServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * A: Requirement 27 (A new offer that matches a hacker's finder search criteria is published).
+	 * A: Requirement 27 (A new offer that matches a rookie's finder search criteria is published).
 	 * C: Analysis of sentence coverage: 49/52 -> 94.23% of executed lines codes .
 	 * D: Analysis of data coverage: Intentionally blank.
 	 */

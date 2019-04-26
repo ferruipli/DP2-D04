@@ -32,7 +32,7 @@ import domain.Problem;
 import domain.SocialProfile;
 
 @Controller
-@RequestMapping(value = "/exportData/administrator,company,hacker")
+@RequestMapping(value = "/exportData/administrator,company,rookie")
 public class ExportDataMultiUserController extends AbstractController {
 
 	@Autowired

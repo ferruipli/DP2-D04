@@ -72,7 +72,7 @@ public class AnswerService {
 		return result;
 	}
 
-	public Answer findOneToHackerDisplay(final int answerId) {
+	public Answer findOneToRookieDisplay(final int answerId) {
 		Application application;
 		Answer result;
 

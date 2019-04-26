@@ -321,15 +321,15 @@ public class MessageService {
 		Assert.isTrue(application.getId() != 0);
 
 		Message notification, result;
-		Actor hacker, company;
+		Actor rookie, company;
 		List<Actor> recipients;
 		String subject, body, ticker, status;
 
-		hacker = application.getRookie();
+		rookie = application.getRookie();
 		company = application.getPosition().getCompany();
 
 		recipients = new ArrayList<Actor>();
-		recipients.add(hacker);
+		recipients.add(rookie);
 		recipients.add(company);
 
 		ticker = application.getPosition().getTicker();

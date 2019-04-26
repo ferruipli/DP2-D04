@@ -30,7 +30,7 @@ public class MiscellaneousDataService {
 	private CurriculumService			curriculumService;
 
 	@Autowired
-	private RookieService				hackerService;
+	private RookieService				rookieService;
 
 	@Autowired
 	private UtilityService				utilityService;
@@ -142,8 +142,8 @@ public class MiscellaneousDataService {
 	private void checkOwner(final int miscellaneousDataId) {
 		Rookie principal, owner;
 
-		principal = this.hackerService.findByPrincipal();
-		owner = this.hackerService.findByMiscellaneousDataId(miscellaneousDataId);
+		principal = this.rookieService.findByPrincipal();
+		owner = this.rookieService.findByMiscellaneousDataId(miscellaneousDataId);
 
 		Assert.isTrue(principal.equals(owner));
 	}

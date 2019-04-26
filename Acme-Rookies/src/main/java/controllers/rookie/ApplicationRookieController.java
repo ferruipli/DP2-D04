@@ -21,7 +21,7 @@ import domain.Curriculum;
 import domain.Position;
 
 @Controller
-@RequestMapping(value = "/application/hacker")
+@RequestMapping(value = "/application/rookie")
 public class ApplicationRookieController extends AbstractController {
 
 	// Services------------------------------------
@@ -63,7 +63,7 @@ public class ApplicationRookieController extends AbstractController {
 			result.addObject("acceptedApplications", acceptedApplications);
 			result.addObject("rejectedApplications", rejectedApplications);
 
-			result.addObject("requestURI", "application/hacker/list.do");
+			result.addObject("requestURI", "application/rookie/list.do");
 		} catch (final Exception e) {
 			result = new ModelAndView("redirect:../../error.do");
 		}
@@ -122,7 +122,7 @@ public class ApplicationRookieController extends AbstractController {
 		else
 			try {
 				this.applicationService.save(applicationRec);
-				result = new ModelAndView("redirect:../hacker/list.do");
+				result = new ModelAndView("redirect:../rookie/list.do");
 			}
 
 			catch (final Throwable oops) {

@@ -12,10 +12,10 @@ import domain.Rookie;
 
 @Component
 @Transactional
-public class StringToHackerConverter implements Converter<String, Rookie> {
+public class StringToRookieConverter implements Converter<String, Rookie> {
 
 	@Autowired
-	RookieRepository	hackerRepository;
+	RookieRepository	rookieRepository;
 
 
 	@Override
@@ -28,7 +28,7 @@ public class StringToHackerConverter implements Converter<String, Rookie> {
 				result = null;
 			else {
 				id = Integer.valueOf(text);
-				result = this.hackerRepository.findOne(id);
+				result = this.rookieRepository.findOne(id);
 			}
 		} catch (final Throwable oops) {
 			throw new IllegalArgumentException(oops);
