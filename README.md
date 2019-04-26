@@ -1,1 +1,2 @@
-# DP2-D04
+# Design and Testing II: Acme Rookies
+This repository contains the project corresponding to the fourth deliverable of the subject Design and Testing II of the degree in Computer Engineering - Software Engineering at the University of Seville.
