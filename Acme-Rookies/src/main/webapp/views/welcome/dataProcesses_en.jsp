@@ -23,12 +23,12 @@
 	
 	
 	<p>
-		<strong>Provision, resolution of problems and improvement of Acme-Hacker Rank Services
+		<strong>Provision, resolution of problems and improvement of Acme-Rookies Services
 		</strong>
 	</p>
 
 	<p> We use your personal information to provide functionality, analyze performance,
-		resolve errors and improve the usability and effectiveness of the Acme-Hacker Rank Services.
+		resolve errors and improve the usability and effectiveness of the Acme-Rookies Services.
 	</p>
 	
 	<p>
@@ -36,7 +36,7 @@
 	</p>
 	<p>	We use your personal information to recommend functionalities and
  		services that may interest you, identify your preferences and customize your
- 		experience with Acme-Hacker Rank Services.
+ 		experience with Acme-Rookies Services.
   	</p>
   
  	  
@@ -52,7 +52,7 @@
 		<strong>Communicate with you. </strong>
 	</p>
 	<p> We use your personal information to communicate with you in relation to the
-		Acme-Hacker Rank services through different channels (for example, by telephone,
+		Acme-Rookies services through different channels (for example, by telephone,
 		email, messaging).
  	</p>
  	
