@@ -32,8 +32,8 @@ public class Audit extends DomainEntity {
 
 	private Date	writtenMoment;
 	private String	text;
-	private Integer	score;
-	private Boolean	finalMode;
+	private int		score;
+	private boolean	finalMode;
 
 
 	@Past
@@ -57,19 +57,19 @@ public class Audit extends DomainEntity {
 	}
 
 	@Range(min = 0, max = 10)
-	public Integer getScore() {
+	public int getScore() {
 		return this.score;
 	}
 
-	public void setScore(final Integer score) {
+	public void setScore(final int score) {
 		this.score = score;
 	}
 
-	public Boolean getFinalMode() {
+	public boolean getFinalMode() {
 		return this.finalMode;
 	}
 
-	public void setFinalMode(final Boolean finalMode) {
+	public void setFinalMode(final boolean finalMode) {
 		this.finalMode = finalMode;
 	}
 

@@ -39,7 +39,7 @@ public class Company extends Actor {
 		this.commercialName = commercialName;
 	}
 
-	@Digits(integer = 4, fraction = 2)
+	@Digits(integer = 3, fraction = 2)
 	@Range(min = 0, max = 1)
 	public Double getAuditScore() {
 		return this.auditScore;

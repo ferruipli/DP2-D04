@@ -58,7 +58,6 @@ public class Item extends DomainEntity {
 		this.link = link;
 	}
 
-	@URL
 	public String getPicture() {
 		return this.picture;
 	}
