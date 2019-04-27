@@ -27,6 +27,7 @@
 		<value>/views/administrator/tiles.xml</value>
 		<value>/views/application/tiles.xml</value>
 		<value>/views/answer/tiles.xml</value>
+		<value>/views/audit/tiles.xml</value>
 <!--	<value>/views/company/tiles.xml</value> -->
 		<value>/views/curriculum/tiles.xml</value>
 		<value>/views/customisation/tiles.xml</value>
@@ -34,6 +35,7 @@
 		<value>/views/dashboard/tiles.xml</value>
 		<value>/views/educationData/tiles.xml</value> 
 		<value>/views/finder/tiles.xml</value>
+		<value>/views/item/tiles.xml</value>
 <!--	<value>/views/rookie/tiles.xml</value>  -->
 		<value>/views/message/tiles.xml</value>
  		<value>/views/miscellaneousData/tiles.xml</value>
@@ -42,6 +44,7 @@
 		<value>/views/positionData/tiles.xml</value>
 		<value>/views/problem/tiles.xml</value>
 		<value>/views/profile/tiles.xml</value>
+		<value>/views/sponsorship/tiles.xml</value>
 		<value>/views/socialProfile/tiles.xml</value>
 	</util:list>
 
