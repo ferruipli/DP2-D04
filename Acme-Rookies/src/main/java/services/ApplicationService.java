@@ -19,9 +19,9 @@ import domain.Answer;
 import domain.Application;
 import domain.Company;
 import domain.Curriculum;
-import domain.Hacker;
 import domain.Position;
 import domain.Problem;
+import domain.Rookie;
 
 @Service
 @Transactional
@@ -34,7 +34,7 @@ public class ApplicationService {
 	// Supporting services -------------------------------------------
 
 	@Autowired
-	private HackerService			hackerService;
+	private RookieService			rookieService;
 
 	@Autowired
 	private CompanyService			companyService;
@@ -63,18 +63,18 @@ public class ApplicationService {
 		Assert.isTrue(!(position.getIsCancelled()));
 
 		Application result;
-		Hacker hacker;
+		Rookie rookie;
 		Date moment;
 		final Curriculum curriculum;
 		List<Curriculum> curricula;
 		final Problem problem;
 
-		hacker = this.hackerService.findByPrincipal();
+		rookie = this.rookieService.findByPrincipal();
 
-		curricula = new ArrayList<>(this.curriculumService.originalCurricula(hacker.getId()));
+		curricula = new ArrayList<>(this.curriculumService.originalCurricula(rookie.getId()));
 
 		Assert.isTrue(!curricula.isEmpty());
-		Assert.isTrue(this.isApplied(position, hacker));
+		Assert.isTrue(this.isApplied(position, rookie));
 
 		moment = this.utilityService.current_moment();
 		Assert.isTrue(position.getDeadline().after(moment));
@@ -82,7 +82,7 @@ public class ApplicationService {
 		problem = this.getRandomProblem(position.getProblems());
 
 		result = new Application();
-		result.setHacker(hacker);
+		result.setRookie(rookie);
 		result.setCurriculum(curriculum);
 		result.setProblem(problem);
 		result.setPosition(position);
@@ -95,7 +95,7 @@ public class ApplicationService {
 		Assert.notNull(application);
 		Assert.isTrue(application.getPosition().getIsFinalMode());
 		Assert.isTrue(!(application.getPosition().getIsCancelled()));
-		Assert.isTrue(this.hackerService.findByPrincipal().equals(application.getHacker()));
+		Assert.isTrue(this.rookieService.findByPrincipal().equals(application.getRookie()));
 		Assert.isTrue(application.getStatus().equals("PENDING"));
 
 		Application result;
@@ -104,10 +104,10 @@ public class ApplicationService {
 		applicationSaved = this.applicationRepository.findOne(application.getId());
 
 		if (application.getId() == 0) {
-			Assert.isTrue(this.applicationRepository.findApplicationsByPositionByHacker(application.getPosition().getId(), application.getHacker().getId()).isEmpty());
+			Assert.isTrue(this.applicationRepository.findApplicationsByPositionByRookie(application.getPosition().getId(), application.getRookie().getId()).isEmpty());
 			Assert.isTrue(!this.problemService.notExistProblemInPosition(application.getProblem().getId(), application.getPosition().getId()));
 			Assert.isTrue(!(this.curriculumService.originalCurriculaByPrincipal().isEmpty()));
-			Assert.isTrue(application.getCurriculum().getHacker().equals(this.hackerService.findByPrincipal()));
+			Assert.isTrue(application.getCurriculum().getRookie().equals(this.rookieService.findByPrincipal()));
 			Assert.isTrue(application.getCurriculum().getIsOriginal());
 			Curriculum curriculumCopy;
 			curriculumCopy = this.curriculumService.saveCopy(application.getCurriculum());
@@ -120,7 +120,7 @@ public class ApplicationService {
 		} else {
 			Assert.isTrue(applicationSaved.getProblem().equals(application.getProblem()));
 			Assert.isTrue(applicationSaved.getPosition().equals(application.getPosition()));
-			Assert.isTrue(applicationSaved.getHacker().equals(application.getHacker()));
+			Assert.isTrue(applicationSaved.getRookie().equals(application.getRookie()));
 			Assert.isTrue(applicationSaved.getCurriculum().equals(application.getCurriculum()));
 			Assert.isTrue(applicationSaved.getApplicationMoment().equals(application.getApplicationMoment()));
 			Assert.isNull(application.getSubmittedMoment());
@@ -168,21 +168,21 @@ public class ApplicationService {
 		return result;
 	}
 
-	public Application findOneToHacker(final int applicationId) {
+	public Application findOneToRookie(final int applicationId) {
 		Application result;
 
 		result = this.findOne(applicationId);
 
 		Assert.notNull(result);
-		Assert.isTrue(this.hackerService.findByPrincipal().equals(result.getHacker()));
+		Assert.isTrue(this.rookieService.findByPrincipal().equals(result.getRookie()));
 
 		return result;
 	}
 
-	public Application findOneToHackerEdit(final int applicationId) {
+	public Application findOneToRookieEdit(final int applicationId) {
 		Application result;
 
-		result = this.findOneToHacker(applicationId);
+		result = this.findOneToRookie(applicationId);
 
 		Assert.isTrue(result.getCurriculum().equals(null));
 
@@ -218,10 +218,10 @@ public class ApplicationService {
 		this.applicationRepository.deleteInBatch(applications);
 	}
 
-	protected void deleteApplicationByHacker(final Hacker hacker) {
+	protected void deleteApplicationByRookie(final Rookie rookie) {
 		Collection<Application> applications;
 
-		applications = this.applicationRepository.findApplicationByHacker(hacker.getId());
+		applications = this.applicationRepository.findApplicationByRookie(rookie.getId());
 		this.applicationRepository.deleteInBatch(applications);
 	}
 
@@ -263,59 +263,59 @@ public class ApplicationService {
 		return result;
 	}
 
-	public Double[] findDataNumberApplicationPerHacker() {
+	public Double[] findDataNumberApplicationPerRookie() {
 		Double[] result;
 
-		result = this.applicationRepository.findDataNumberApplicationPerHacker();
+		result = this.applicationRepository.findDataNumberApplicationPerRookie();
 		Assert.notNull(result);
 
 		return result;
 	}
 
-	protected Collection<Application> findApplicationsByProblemHacker(final int idProblem, final int idHacker) {
+	protected Collection<Application> findApplicationsByProblemRookie(final int idProblem, final int idRookie) {
 		Collection<Application> result;
 
-		result = this.applicationRepository.findApplicationsByProblemHacker(idProblem, idHacker);
+		result = this.applicationRepository.findApplicationsByProblemRookie(idProblem, idRookie);
 
 		return result;
 	}
 
-	public Collection<Application> findPendingApplicationsByHacker() {
+	public Collection<Application> findPendingApplicationsByRookie() {
 		Collection<Application> applications;
-		Hacker hacker;
+		Rookie rookie;
 
-		hacker = this.hackerService.findByPrincipal();
-		applications = this.applicationRepository.findPendingApplicationsByHacker(hacker.getId());
+		rookie = this.rookieService.findByPrincipal();
+		applications = this.applicationRepository.findPendingApplicationsByRookie(rookie.getId());
 
 		return applications;
 	}
 
-	public Collection<Application> findSubmittedApplicationsByHacker() {
+	public Collection<Application> findSubmittedApplicationsByRookie() {
 		Collection<Application> applications;
-		Hacker hacker;
+		Rookie rookie;
 
-		hacker = this.hackerService.findByPrincipal();
-		applications = this.applicationRepository.findSubmittedApplicationsByHacker(hacker.getId());
+		rookie = this.rookieService.findByPrincipal();
+		applications = this.applicationRepository.findSubmittedApplicationsByRookie(rookie.getId());
 
 		return applications;
 	}
 
-	public Collection<Application> findAcceptedApplicationsByHacker() {
+	public Collection<Application> findAcceptedApplicationsByRookie() {
 		Collection<Application> applications;
-		Hacker hacker;
+		Rookie rookie;
 
-		hacker = this.hackerService.findByPrincipal();
-		applications = this.applicationRepository.findAcceptedApplicationsByHacker(hacker.getId());
+		rookie = this.rookieService.findByPrincipal();
+		applications = this.applicationRepository.findAcceptedApplicationsByRookie(rookie.getId());
 
 		return applications;
 	}
 
-	public Collection<Application> findRejectedApplicationsByHacker() {
+	public Collection<Application> findRejectedApplicationsByRookie() {
 		Collection<Application> applications;
-		Hacker hacker;
+		Rookie rookie;
 
-		hacker = this.hackerService.findByPrincipal();
-		applications = this.applicationRepository.findRejectedApplicationsByHacker(hacker.getId());
+		rookie = this.rookieService.findByPrincipal();
+		applications = this.applicationRepository.findRejectedApplicationsByRookie(rookie.getId());
 
 		return applications;
 	}
@@ -352,11 +352,11 @@ public class ApplicationService {
 		return result;
 	}
 
-	public boolean isApplied(final Position position, final Hacker hacker) {
+	public boolean isApplied(final Position position, final Rookie rookie) {
 		boolean result;
 		Collection<Application> applications;
 
-		applications = this.applicationRepository.findApplicationsByPositionByHacker(position.getId(), hacker.getId());
+		applications = this.applicationRepository.findApplicationsByPositionByRookie(position.getId(), rookie.getId());
 		result = applications.isEmpty();
 
 		return result;

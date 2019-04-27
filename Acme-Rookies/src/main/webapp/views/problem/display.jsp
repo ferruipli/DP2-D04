@@ -60,7 +60,7 @@
 		<spring:message code="problem.positions" />
 	</legend>
 	<display:table name="positionsList" id="rowPosition"
-		pagesize="5" class="displaytag" requestURI="problem/company,hacker/display.do">
+		pagesize="5" class="displaytag" requestURI="problem/company,rookie/display.do">
 
 		<security:authorize access="hasRole('COMPANY')">
 			<jstl:if test="${principal == rowPosition.company}">

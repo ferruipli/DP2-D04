@@ -12,7 +12,7 @@ import org.springframework.util.Assert;
 
 import repositories.MiscellaneousDataRepository;
 import domain.Curriculum;
-import domain.Hacker;
+import domain.Rookie;
 import domain.MiscellaneousData;
 
 @Service
@@ -30,7 +30,7 @@ public class MiscellaneousDataService {
 	private CurriculumService			curriculumService;
 
 	@Autowired
-	private HackerService				hackerService;
+	private RookieService				rookieService;
 
 	@Autowired
 	private UtilityService				utilityService;
@@ -140,10 +140,10 @@ public class MiscellaneousDataService {
 	}
 
 	private void checkOwner(final int miscellaneousDataId) {
-		Hacker principal, owner;
+		Rookie principal, owner;
 
-		principal = this.hackerService.findByPrincipal();
-		owner = this.hackerService.findByMiscellaneousDataId(miscellaneousDataId);
+		principal = this.rookieService.findByPrincipal();
+		owner = this.rookieService.findByMiscellaneousDataId(miscellaneousDataId);
 
 		Assert.isTrue(principal.equals(owner));
 	}

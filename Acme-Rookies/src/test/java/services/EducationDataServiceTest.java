@@ -43,7 +43,7 @@ public class EducationDataServiceTest extends AbstractTest {
 	// Tests ------------------------------------------------------------------
 
 	/*
-	 * A: An actor who is authenticated as a hacker must be able to: Manage his
+	 * A: An actor who is authenticated as a rookie must be able to: Manage his
 	 * or her curricula, which includes listing, showing, CREATING, updating,
 	 * and deleting them.
 	 * 
@@ -71,7 +71,7 @@ public class EducationDataServiceTest extends AbstractTest {
 		startDate = LocalDate.now().minusYears(2).toDate();
 		endDate = LocalDate.now().minusYears(1).toDate();
 
-		super.authenticate("hacker8");
+		super.authenticate("rookie8");
 
 		curriculumId = super.getEntityId("curriculum81");
 		curriculum = this.curriculumRepository.findOne(curriculumId);
@@ -93,12 +93,12 @@ public class EducationDataServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * A: An actor who is authenticated as a hacker must be able to: Manage his
+	 * A: An actor who is authenticated as a rookie must be able to: Manage his
 	 * or her curricula, which includes listing, showing, CREATING, updating,
 	 * and deleting them.
 	 * 
 	 * B: The education data can only be created in one of the curriculum in
-	 * which the hacker principal is owner.
+	 * which the rookie principal is owner.
 	 * 
 	 * C: Approximately 87% of sentence coverage, since it has been covered
 	 * 20 lines of code of 23 possible.
@@ -122,7 +122,7 @@ public class EducationDataServiceTest extends AbstractTest {
 		startDate = LocalDate.now().minusYears(2).toDate();
 		endDate = LocalDate.now().minusYears(1).toDate();
 
-		super.authenticate("hacker9");
+		super.authenticate("rookie9");
 
 		curriculumId = super.getEntityId("curriculum81");
 		curriculum = this.curriculumRepository.findOne(curriculumId);
@@ -144,7 +144,7 @@ public class EducationDataServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * A: An actor who is authenticated as a hacker must be able to: Manage his
+	 * A: An actor who is authenticated as a rookie must be able to: Manage his
 	 * or her curricula, which includes listing, showing, creating, UPDATING,
 	 * and deleting them.
 	 * 
@@ -165,7 +165,7 @@ public class EducationDataServiceTest extends AbstractTest {
 		// Data
 		degree = "Degreee Edit test";
 
-		super.authenticate("hacker8");
+		super.authenticate("rookie8");
 
 		educationDataId = super.getEntityId("educationData81");
 		educationData = this.educationDataRepository.findOne(educationDataId);
@@ -180,7 +180,7 @@ public class EducationDataServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * A: An actor who is authenticated as a hacker must be able to: Manage his
+	 * A: An actor who is authenticated as a rookie must be able to: Manage his
 	 * or her curricula, which includes listing, showing, creating, UPDATING,
 	 * and deleting them.
 	 * 
@@ -201,7 +201,7 @@ public class EducationDataServiceTest extends AbstractTest {
 		// Data
 		degree = "Degreee Edit test";
 
-		super.authenticate("hacker9");
+		super.authenticate("rookie9");
 
 		educationDataId = super.getEntityId("educationData81");
 		educationData = this.educationDataRepository.findOne(educationDataId);
@@ -216,7 +216,7 @@ public class EducationDataServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * A: An actor who is authenticated as a hacker must be able to: Manage his
+	 * A: An actor who is authenticated as a rookie must be able to: Manage his
 	 * or her curricula, which includes listing, showing, creating, updating,
 	 * and DELETING them.
 	 * 
@@ -232,7 +232,7 @@ public class EducationDataServiceTest extends AbstractTest {
 		EducationData educationData, saved;
 		int educationDataId;
 
-		super.authenticate("hacker8");
+		super.authenticate("rookie8");
 
 		educationDataId = super.getEntityId("educationData81");
 		educationData = this.educationDataRepository.findOne(educationDataId);
@@ -246,7 +246,7 @@ public class EducationDataServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * A: An actor who is authenticated as a hacker must be able to: Manage his
+	 * A: An actor who is authenticated as a rookie must be able to: Manage his
 	 * or her curricula, which includes listing, showing, creating, updating,
 	 * and DELETING them.
 	 * 
@@ -262,7 +262,7 @@ public class EducationDataServiceTest extends AbstractTest {
 		EducationData educationData, saved;
 		int educationDataId;
 
-		super.authenticate("hacker9");
+		super.authenticate("rookie9");
 
 		educationDataId = super.getEntityId("educationData81");
 		educationData = this.educationDataRepository.findOne(educationDataId);

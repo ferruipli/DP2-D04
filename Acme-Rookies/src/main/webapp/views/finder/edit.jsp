@@ -8,7 +8,7 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
-<form:form action="finder/hacker/edit.do" modelAttribute="finder">
+<form:form action="finder/rookie/edit.do" modelAttribute="finder">
 	<form:hidden path="id"/>
 	
 	<acme:textbox path="keyword" code="finder.keyword"/>
@@ -20,8 +20,8 @@
 	<div>
 		<acme:submit name="save" code="finder.save"/>
 		&nbsp;
-		<acme:cancel code="finder.clear" url="finder/hacker/clear.do"/>
+		<acme:cancel code="finder.clear" url="finder/rookie/clear.do"/>
 		&nbsp;
-		<acme:cancel code="finder.cancel" url="finder/hacker/display.do"/>
+		<acme:cancel code="finder.cancel" url="finder/rookie/display.do"/>
 	</div>
 </form:form>

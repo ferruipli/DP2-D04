@@ -1,5 +1,5 @@
 
-package controllers.companyHacker;
+package controllers.companyRookie;
 
 import java.util.Collection;
 
@@ -20,8 +20,8 @@ import domain.Position;
 import domain.Problem;
 
 @Controller
-@RequestMapping(value = "/problem/company,hacker")
-public class ProblemCompanyHackerController extends AbstractController {
+@RequestMapping(value = "/problem/company,rookie")
+public class ProblemCompanyRookieController extends AbstractController {
 
 	// Services------------------------------------
 
@@ -37,7 +37,7 @@ public class ProblemCompanyHackerController extends AbstractController {
 
 	// Constructor ------------------------------------
 
-	public ProblemCompanyHackerController() {
+	public ProblemCompanyRookieController() {
 		super();
 	}
 
@@ -65,7 +65,7 @@ public class ProblemCompanyHackerController extends AbstractController {
 				result.addObject("problem", problem);
 				result.addObject("positionsList", positionsList);
 			} else if (userPrincipal.getAuthorities().toString().equals("[HACKER]")) {
-				problem = this.problemService.findOneToDisplayHacker(problemId);
+				problem = this.problemService.findOneToDisplayRookie(problemId);
 				positionsList = this.positionService.findPositionsByProblem(problem);
 				attachments = this.utilityService.getSplittedString(problem.getAttachments());
 

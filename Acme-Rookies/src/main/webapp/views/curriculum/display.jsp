@@ -19,7 +19,7 @@
 	</p>
 	
 	<jstl:if test="${isOwner && curriculum.isOriginal}">
-		<a href="curriculum/hacker/edit.do?curriculumId=${curriculum.id}">
+		<a href="curriculum/rookie/edit.do?curriculumId=${curriculum.id}">
 			<spring:message code="curriculum.edit"/>
 		</a>
 	</jstl:if>
@@ -56,7 +56,7 @@
 	</ul>
 	
 	<jstl:if test="${isOwner && curriculum.isOriginal}">
-		<a href="personalData/hacker/edit.do?personalDataId=${curriculum.personalData.id}">
+		<a href="personalData/rookie/edit.do?personalDataId=${curriculum.personalData.id}">
 			<spring:message code="curriculum.edit"/>
 		</a>
 	</jstl:if>
@@ -74,7 +74,7 @@
 		
 		<jstl:if test="${isOwner && curriculum.isOriginal}">
 			<display:column>
-				<a href="positionData/hacker/edit.do?positionDataId=${posData.id}">
+				<a href="positionData/rookie/edit.do?positionDataId=${posData.id}">
 					<spring:message code="curriculum.edit"/>
 				</a>
 			</display:column>
@@ -86,7 +86,7 @@
 	</display:table>
 	
 	<jstl:if test="${isOwner && curriculum.isOriginal}">
-		<a href="positionData/hacker/create.do?curriculumId=${curriculum.id}">
+		<a href="positionData/rookie/create.do?curriculumId=${curriculum.id}">
 			<spring:message code="curriculum.create.positionData"/>
 		</a>
 	</jstl:if>
@@ -104,7 +104,7 @@
 		
 		<jstl:if test="${isOwner && curriculum.isOriginal}">
 			<display:column>
-				<a href="educationData/hacker/edit.do?educationDataId=${edData.id}">
+				<a href="educationData/rookie/edit.do?educationDataId=${edData.id}">
 					<spring:message code="curriculum.edit"/>
 				</a>
 			</display:column>
@@ -115,7 +115,7 @@
 	</display:table>
 	
 	<jstl:if test="${isOwner && curriculum.isOriginal}">
-		<a href="educationData/hacker/create.do?curriculumId=${curriculum.id}">
+		<a href="educationData/rookie/create.do?curriculumId=${curriculum.id}">
 			<spring:message code="curriculum.create.educationData"/>
 		</a>
 	</jstl:if>
@@ -133,7 +133,7 @@
 		
 		<jstl:if test="${isOwner && curriculum.isOriginal}">
 			<display:column>
-				<a href="miscellaneousData/hacker/edit.do?miscellaneousDataId=${miscData.id}">
+				<a href="miscellaneousData/rookie/edit.do?miscellaneousDataId=${miscData.id}">
 					<spring:message code="curriculum.edit"/>
 				</a>
 			</display:column>
@@ -143,14 +143,14 @@
 	</display:table>
 	
 	<jstl:if test="${isOwner && curriculum.isOriginal}">
-		<a href="miscellaneousData/hacker/create.do?curriculumId=${curriculum.id}">
+		<a href="miscellaneousData/rookie/create.do?curriculumId=${curriculum.id}">
 			<spring:message code="curriculum.create.miscellaneousData"/>
 		</a>
 	</jstl:if>
 </fieldset>
 
 <jstl:if test="${isOwner && curriculum.isOriginal}">
-	<a href="curriculum/hacker/list.do">
+	<a href="curriculum/rookie/list.do">
 		<spring:message code="curriculum.return"/>
 	</a>
 </jstl:if>

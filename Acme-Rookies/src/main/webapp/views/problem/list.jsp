@@ -24,7 +24,7 @@
 <display:table name="problems" id="row" requestURI="${requestURI}" class="displaytag" pagesize="5">
 
 	<display:column>
-		<a href="problem/company,hacker/display.do?problemId=${row.id}"><spring:message code="problem.display"/></a>
+		<a href="problem/company,rookie/display.do?problemId=${row.id}"><spring:message code="problem.display"/></a>
 	</display:column>	
 	
 	<display:column>

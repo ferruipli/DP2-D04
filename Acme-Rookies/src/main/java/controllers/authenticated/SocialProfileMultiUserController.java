@@ -17,7 +17,7 @@ import domain.Actor;
 import domain.SocialProfile;
 
 @Controller
-@RequestMapping(value = "/socialProfile/administrator,company,hacker")
+@RequestMapping(value = "/socialProfile/administrator,company,rookie")
 public class SocialProfileMultiUserController extends AbstractController {
 
 	@Autowired

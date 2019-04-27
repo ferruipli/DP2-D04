@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ApplicationService;
-import services.HackerService;
+import services.RookieService;
 import services.PositionService;
 import controllers.AbstractController;
 import domain.Application;
@@ -30,7 +30,7 @@ public class ApplicationCompanyController extends AbstractController {
 	private PositionService		positionService;
 
 	@Autowired
-	private HackerService		hackerService;
+	private RookieService		rookieService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -122,14 +122,14 @@ public class ApplicationCompanyController extends AbstractController {
 
 	protected ModelAndView createEditModelAndView(final Application application, final String messageCode) {
 		ModelAndView result;
-		int hackerId;
+		int rookieId;
 
-		hackerId = this.hackerService.findByPrincipal().getId();
+		rookieId = this.rookieService.findByPrincipal().getId();
 
 		result = new ModelAndView("application/edit");
 		result.addObject("application", application);
 		result.addObject("messageCode", messageCode);
-		result.addObject("hackerId", hackerId);
+		result.addObject("rookieId", rookieId);
 
 		return result;
 

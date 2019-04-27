@@ -13,14 +13,14 @@ import domain.Curriculum;
 public interface CurriculumRepository extends JpaRepository<Curriculum, Integer> {
 
 	// Req 18.1.1
-	@Query("select min(1 * (select count(c) from Curriculum c where c.isOriginal = true and c.hacker.id = h.id)), max(1 * (select count(c) from Curriculum c where c.isOriginal = true and c.hacker.id = h.id)), avg(1 * (select count(c) from Curriculum c where c.isOriginal = true and c.hacker.id = h.id)), stddev(1 * (select count(c) from Curriculum c where c.isOriginal = true and c.hacker.id = h.id)) from Hacker h")
-	Double[] findDataNumberCurriculumPerHacker();
+	@Query("select min(1 * (select count(c) from Curriculum c where c.isOriginal = true and c.rookie.id = h.id)), max(1 * (select count(c) from Curriculum c where c.isOriginal = true and c.rookie.id = h.id)), avg(1 * (select count(c) from Curriculum c where c.isOriginal = true and c.rookie.id = h.id)), stddev(1 * (select count(c) from Curriculum c where c.isOriginal = true and c.rookie.id = h.id)) from Rookie h")
+	Double[] findDataNumberCurriculumPerRookie();
 
-	@Query("select c from Curriculum c where c.hacker.id = ?1")
-	Collection<Curriculum> findAllByHacker(int hackerId);
+	@Query("select c from Curriculum c where c.rookie.id = ?1")
+	Collection<Curriculum> findAllByRookie(int rookieId);
 
-	@Query("select c from Curriculum c where c.hacker.id=?1 and c.isOriginal=true")
-	Collection<Curriculum> originalCurricula(int hackerId);
+	@Query("select c from Curriculum c where c.rookie.id=?1 and c.isOriginal=true")
+	Collection<Curriculum> originalCurricula(int rookieId);
 
 	@Query("select c.id from Curriculum c where c.personalData.id = ?1")
 	Integer findIdByPersonalDataId(int personalDataId);

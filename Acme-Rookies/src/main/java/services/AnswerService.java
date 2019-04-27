@@ -13,7 +13,7 @@ import repositories.AnswerRepository;
 import domain.Answer;
 import domain.Application;
 import domain.Company;
-import domain.Hacker;
+import domain.Rookie;
 
 @Service
 @Transactional
@@ -26,7 +26,7 @@ public class AnswerService {
 	// Supporting services -------------------------------------------
 
 	@Autowired
-	private HackerService		hackerService;
+	private RookieService		rookieService;
 
 	@Autowired
 	private CompanyService		companyService;
@@ -44,7 +44,7 @@ public class AnswerService {
 	public Answer create(final int applicationId) {
 		Application application;
 		application = this.applicationService.findOne(applicationId);
-		Assert.isTrue(application.getHacker().equals(this.hackerService.findByPrincipal()));
+		Assert.isTrue(application.getRookie().equals(this.rookieService.findByPrincipal()));
 		Assert.isTrue(application.getStatus().equals("PENDING"));
 		Answer result;
 
@@ -72,7 +72,7 @@ public class AnswerService {
 		return result;
 	}
 
-	public Answer findOneToHackerDisplay(final int answerId) {
+	public Answer findOneToRookieDisplay(final int answerId) {
 		Application application;
 		Answer result;
 
@@ -80,7 +80,7 @@ public class AnswerService {
 		result = this.findOne(answerId);
 
 		Assert.notNull(result);
-		Assert.isTrue(this.hackerService.findByPrincipal().equals(application.getHacker()));
+		Assert.isTrue(this.rookieService.findByPrincipal().equals(application.getRookie()));
 
 		return result;
 	}
@@ -112,10 +112,10 @@ public class AnswerService {
 		this.answerRepository.delete(answers);
 	}
 
-	public void deleteAnswerByHacker(final Hacker hacker) {
+	public void deleteAnswerByRookie(final Rookie rookie) {
 		Collection<Answer> answers;
 
-		answers = this.answerRepository.findAnswerByHacker(hacker.getId());
+		answers = this.answerRepository.findAnswerByRookie(rookie.getId());
 		this.answerRepository.delete(answers);
 	}
 

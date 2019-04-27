@@ -37,7 +37,7 @@ public class ApplicationServiceTest extends AbstractTest {
 	 * A: An actor who is authenticated as an administrator must be able to
 	 * display a dashboard with the following information:
 	 * The average, the minimum, the maximum and the standard deviation of the
-	 * number of application per hacker.
+	 * number of application per rookie.
 	 * 
 	 * B: Positive test
 	 * 
@@ -46,10 +46,10 @@ public class ApplicationServiceTest extends AbstractTest {
 	 * D: 100% of data coverage.
 	 */
 	@Test
-	public void testDataNumerApplicationPerHacker() {
+	public void testDataNumerApplicationPerRookie() {
 		Double[] data;
 
-		data = this.applicationService.findDataNumberApplicationPerHacker();
+		data = this.applicationService.findDataNumberApplicationPerRookie();
 
 		Assert.isTrue(data[0] == 1.5556);
 		Assert.isTrue(data[1] == 0.0);
@@ -67,16 +67,16 @@ public class ApplicationServiceTest extends AbstractTest {
 			 * D: Intencionadamente en blanco. No se comprueban datos
 			 */
 			{
-				"hacker1", "position6", "curriculum11", null
+				"rookie1", "position6", "curriculum11", null
 			},
 			/*
 			 * A: Req.10.1 Crear una solicitud
-			 * B: Test negativo: El curriculum no es del hacker
+			 * B: Test negativo: El curriculum no es del rookie
 			 * C: 32%. 25/77 Recorre 25 de las 77 líneas de código totales
 			 * D: Intencionadamente en blanco. No se comprueban datos
 			 */
 			{
-				"hacker1", "position6", "curriculum21", IllegalArgumentException.class
+				"rookie1", "position6", "curriculum21", IllegalArgumentException.class
 			},
 			/*
 			 * A: Req.10.1 Crear una solicitud
@@ -85,7 +85,7 @@ public class ApplicationServiceTest extends AbstractTest {
 			 * D: Intencionadamente en blanco. No se comprueban datos
 			 */
 			{
-				"hacker1", "position6", "curriculum12", IllegalArgumentException.class
+				"rookie1", "position6", "curriculum12", IllegalArgumentException.class
 			},
 			/*
 			 * A: Req.10.1 Crear una solicitud
@@ -94,7 +94,7 @@ public class ApplicationServiceTest extends AbstractTest {
 			 * D:Intencionadamente en blanco. No se comprueban datos
 			 */
 			{
-				"hacker1", "position5", "curriculum11", IllegalArgumentException.class
+				"rookie1", "position5", "curriculum11", IllegalArgumentException.class
 			},
 			/*
 			 * A: Req.10.1 Crear una solicitud
@@ -103,7 +103,7 @@ public class ApplicationServiceTest extends AbstractTest {
 			 * D:Intencionadamente en blanco. No se comprueban datos
 			 */
 			{
-				"hacker1", "position4", "curriculum11", IllegalArgumentException.class
+				"rookie1", "position4", "curriculum11", IllegalArgumentException.class
 			},
 			/*
 			 * A: Req.10.1 Crear una solicitud
@@ -112,7 +112,7 @@ public class ApplicationServiceTest extends AbstractTest {
 			 * D:Intencionadamente en blanco. No se comprueban datos
 			 */
 			{
-				"hacker1", "position1", "curriculum11", IllegalArgumentException.class
+				"rookie1", "position1", "curriculum11", IllegalArgumentException.class
 			},
 			/*
 			 * A: Req.10.1 Crear una solicitud

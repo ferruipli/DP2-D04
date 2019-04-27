@@ -27,6 +27,6 @@
 	</li>
 </ul>
 
-<a href="miscellaneousData/hacker/backCurriculum.do?miscellaneousDataId=${miscellaneousData.id}">
+<a href="miscellaneousData/rookie/backCurriculum.do?miscellaneousDataId=${miscellaneousData.id}">
 	<spring:message code="miscellaneousData.return"/>
 </a>

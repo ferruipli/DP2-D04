@@ -11,23 +11,23 @@ import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 
-import repositories.HackerRepository;
+import repositories.RookieRepository;
 import security.Authority;
 import security.LoginService;
 import security.UserAccount;
 import security.UserAccountService;
 import domain.CreditCard;
-import domain.Hacker;
+import domain.Rookie;
 import forms.RegistrationForm;
 
 @Service
 @Transactional
-public class HackerService {
+public class RookieService {
 
 	// Managed repository --------------------------
 
 	@Autowired
-	private HackerRepository	hackerRepository;
+	private RookieRepository	rookieRepository;
 
 	// Other supporting services -------------------
 
@@ -58,78 +58,78 @@ public class HackerService {
 
 	// Constructors -------------------------------
 
-	public HackerService() {
+	public RookieService() {
 		super();
 	}
 
 	// Simple CRUD methods ------------------------
 
-	public Hacker create() {
-		Hacker result;
+	public Rookie create() {
+		Rookie result;
 
-		result = new Hacker();
-		result.setUserAccount(this.userAccountService.createUserAccount(Authority.HACKER));
+		result = new Rookie();
+		result.setUserAccount(this.userAccountService.createUserAccount(Authority.ROOKIE));
 
 		return result;
 	}
 
-	public Hacker findOne(final int hackerId) {
-		Hacker result;
+	public Rookie findOne(final int rookieId) {
+		Rookie result;
 
-		result = this.hackerRepository.findOne(hackerId);
+		result = this.rookieRepository.findOne(rookieId);
 		Assert.notNull(result);
 
 		return result;
 	}
 
-	public Hacker findOneToDisplayEdit(final int hackerId) {
-		Assert.isTrue(hackerId != 0);
+	public Rookie findOneToDisplayEdit(final int rookieId) {
+		Assert.isTrue(rookieId != 0);
 
-		Hacker result, principal;
+		Rookie result, principal;
 
 		principal = this.findByPrincipal();
-		result = this.hackerRepository.findOne(hackerId);
+		result = this.rookieRepository.findOne(rookieId);
 		Assert.notNull(result);
-		Assert.isTrue(principal.getId() == hackerId);
+		Assert.isTrue(principal.getId() == rookieId);
 
 		return result;
 	}
 
-	public Hacker save(final Hacker hacker) {
-		Hacker result;
+	public Rookie save(final Rookie rookie) {
+		Rookie result;
 
-		result = (Hacker) this.actorService.save(hacker);
+		result = (Rookie) this.actorService.save(rookie);
 
-		if (hacker.getId() == 0)
+		if (rookie.getId() == 0)
 			this.finderService.assignNewFinder(result);
 
 		return result;
 	}
 
-	public void delete(final Hacker hacker) {
-		Assert.notNull(hacker);
-		Assert.isTrue(hacker.getId() != 0);
-		Assert.isTrue(this.findByPrincipal().equals(hacker));
+	public void delete(final Rookie rookie) {
+		Assert.notNull(rookie);
+		Assert.isTrue(rookie.getId() != 0);
+		Assert.isTrue(this.findByPrincipal().equals(rookie));
 
 		// Delete answer
-		this.answerService.deleteAnswerByHacker(hacker);
+		this.answerService.deleteAnswerByRookie(rookie);
 
 		// Delete application
-		this.applicationService.deleteApplicationByHacker(hacker);
+		this.applicationService.deleteApplicationByRookie(rookie);
 
 		// Delete finder
-		this.finderService.deleteFinder(hacker);
+		this.finderService.deleteFinder(rookie);
 
 		// Delete curriculums
-		this.curriculumService.deleteCurriculums(hacker);
+		this.curriculumService.deleteCurriculums(rookie);
 
-		this.actorService.delete(hacker);
+		this.actorService.delete(rookie);
 	}
 
-	public Collection<Hacker> findAll() {
-		Collection<Hacker> result;
+	public Collection<Rookie> findAll() {
+		Collection<Rookie> result;
 
-		result = this.hackerRepository.findAll();
+		result = this.rookieRepository.findAll();
 		Assert.notNull(result);
 
 		return result;
@@ -138,37 +138,37 @@ public class HackerService {
 
 	// Other business methods ---------------------
 
-	public Collection<Hacker> findHackersWithMoreApplications() {
-		Collection<Hacker> result;
+	public Collection<Rookie> findRookiesWithMoreApplications() {
+		Collection<Rookie> result;
 
-		result = this.hackerRepository.findHackersWithMoreApplications();
+		result = this.rookieRepository.findRookiesWithMoreApplications();
 		Assert.notNull(result);
 
 		return result;
 	}
 
-	public Hacker findByPrincipal() {
-		Hacker result;
+	public Rookie findByPrincipal() {
+		Rookie result;
 		int userAccountId;
 
 		userAccountId = LoginService.getPrincipal().getId();
 
-		result = this.findHackerByUserAccount(userAccountId);
+		result = this.findRookieByUserAccount(userAccountId);
 		Assert.notNull(result);
 
 		return result;
 	}
 
-	private Hacker findHackerByUserAccount(final int id) {
-		Hacker result;
+	private Rookie findRookieByUserAccount(final int id) {
+		Rookie result;
 
-		result = this.hackerRepository.findHackerByUserAccount(id);
+		result = this.rookieRepository.findRookieByUserAccount(id);
 
 		return result;
 	}
 
-	public Hacker reconstruct(final RegistrationForm registrationForm, final BindingResult binding) {
-		Hacker result, hackerStored;
+	public Rookie reconstruct(final RegistrationForm registrationForm, final BindingResult binding) {
+		Rookie result, rookieStored;
 		UserAccount userAccount;
 		CreditCard creditCard;
 
@@ -201,8 +201,8 @@ public class HackerService {
 			this.validateRegistration(result, registrationForm, binding);
 
 		} else {
-			result = new Hacker();
-			hackerStored = this.findOneToDisplayEdit(registrationForm.getId());
+			result = new Rookie();
+			rookieStored = this.findOneToDisplayEdit(registrationForm.getId());
 
 			result.setName(registrationForm.getName());
 			result.setSurname(registrationForm.getSurname());
@@ -211,21 +211,21 @@ public class HackerService {
 			result.setPhoneNumber(registrationForm.getPhoneNumber());
 			result.setPhoto(registrationForm.getPhoto());
 			result.setAddress(registrationForm.getAddress());
-			result.setIsSpammer(hackerStored.getIsSpammer());
-			result.setId(hackerStored.getId());
-			result.setVersion(hackerStored.getVersion());
-			result.setCreditCard(hackerStored.getCreditCard());
+			result.setIsSpammer(rookieStored.getIsSpammer());
+			result.setId(rookieStored.getId());
+			result.setVersion(rookieStored.getVersion());
+			result.setCreditCard(rookieStored.getCreditCard());
 
 			this.utilityService.validateEmail(registrationForm.getEmail(), binding);
 
 			if (registrationForm.getUserAccount().getUsername().isEmpty() && registrationForm.getUserAccount().getPassword().isEmpty() && registrationForm.getUserAccount().getConfirmPassword().isEmpty()) // No ha actualizado ningun atributo de user account
-				result.setUserAccount(hackerStored.getUserAccount());
+				result.setUserAccount(rookieStored.getUserAccount());
 			else if (!registrationForm.getUserAccount().getUsername().isEmpty() && registrationForm.getUserAccount().getPassword().isEmpty() && registrationForm.getUserAccount().getConfirmPassword().isEmpty()) {// Modifica el username
 				this.utilityService.validateUsernameEdition(registrationForm.getUserAccount().getUsername(), binding);
 				if (binding.hasErrors()) {
 
 				} else {
-					userAccount = hackerStored.getUserAccount();
+					userAccount = rookieStored.getUserAccount();
 					userAccount.setUsername(registrationForm.getUserAccount().getUsername());
 					result.setUserAccount(userAccount);
 				}
@@ -234,7 +234,7 @@ public class HackerService {
 				if (binding.hasErrors()) {
 
 				} else {
-					userAccount = hackerStored.getUserAccount();
+					userAccount = rookieStored.getUserAccount();
 					userAccount.setPassword(registrationForm.getUserAccount().getPassword());
 					result.setUserAccount(userAccount);
 				}
@@ -243,7 +243,7 @@ public class HackerService {
 				if (binding.hasErrors()) {
 
 				} else {
-					userAccount = hackerStored.getUserAccount();
+					userAccount = rookieStored.getUserAccount();
 					userAccount.setUsername(registrationForm.getUserAccount().getUsername());
 					userAccount.setPassword(registrationForm.getUserAccount().getPassword());
 					result.setUserAccount(userAccount);
@@ -255,7 +255,7 @@ public class HackerService {
 
 		return result;
 	}
-	private void validateRegistration(final Hacker hacker, final RegistrationForm registrationForm, final BindingResult binding) {
+	private void validateRegistration(final Rookie rookie, final RegistrationForm registrationForm, final BindingResult binding) {
 		String password, confirmPassword, username;
 		boolean checkBox, checkBoxData;
 
@@ -265,7 +265,7 @@ public class HackerService {
 		checkBox = registrationForm.getCheckBoxAccepted();
 		checkBoxData = registrationForm.getCheckBoxDataProcessesAccepted();
 
-		this.utilityService.validateEmail(hacker.getEmail(), binding);
+		this.utilityService.validateEmail(rookie.getEmail(), binding);
 		if (username.trim().equals(""))
 			binding.rejectValue("userAccount.username", "actor.username.blank", "Must entry a username.");
 		if (password.trim().equals("") && confirmPassword.trim().equals("")) {
@@ -280,61 +280,61 @@ public class HackerService {
 			binding.rejectValue("checkBoxDataProcessesAccepted", "actor.checkBoxData.agree", "Must agree data processes");
 		if (this.userAccountService.existUsername(username))
 			binding.rejectValue("userAccount.username", "actor.username.used", "Username already in use");
-		if (this.actorService.existEmail(hacker.getEmail()))
+		if (this.actorService.existEmail(rookie.getEmail()))
 			binding.rejectValue("email", "actor.email.used", "Email already in use");
 
 	}
 
-	public RegistrationForm createForm(final Hacker hacker) {
+	public RegistrationForm createForm(final Rookie rookie) {
 		RegistrationForm registrationForm;
 
 		registrationForm = new RegistrationForm();
 
-		registrationForm.setName(hacker.getName());
-		registrationForm.setSurname(hacker.getSurname());
-		registrationForm.setVATnumber(hacker.getVATnumber());
-		registrationForm.setEmail(hacker.getEmail());
-		registrationForm.setId(hacker.getId());
-		registrationForm.setPhoto(hacker.getPhoto());
-		registrationForm.setPhoneNumber(hacker.getPhoneNumber());
-		registrationForm.setAddress(hacker.getAddress());
+		registrationForm.setName(rookie.getName());
+		registrationForm.setSurname(rookie.getSurname());
+		registrationForm.setVATnumber(rookie.getVATnumber());
+		registrationForm.setEmail(rookie.getEmail());
+		registrationForm.setId(rookie.getId());
+		registrationForm.setPhoto(rookie.getPhoto());
+		registrationForm.setPhoneNumber(rookie.getPhoneNumber());
+		registrationForm.setAddress(rookie.getAddress());
 		registrationForm.setCheckBoxAccepted(false);
 		registrationForm.setCheckBoxDataProcessesAccepted(false);
 
 		return registrationForm;
 	}
 
-	protected Hacker findByPersonalDataId(final int personalDataId) {
-		Hacker result;
+	protected Rookie findByPersonalDataId(final int personalDataId) {
+		Rookie result;
 
-		result = this.hackerRepository.findByPersonalDataId(personalDataId);
+		result = this.rookieRepository.findByPersonalDataId(personalDataId);
 		Assert.notNull(result);
 
 		return result;
 	}
 
-	protected Hacker findByPositionDataId(final int positionDataId) {
-		Hacker result;
+	protected Rookie findByPositionDataId(final int positionDataId) {
+		Rookie result;
 
-		result = this.hackerRepository.findByPositionDataId(positionDataId);
+		result = this.rookieRepository.findByPositionDataId(positionDataId);
 		Assert.notNull(result);
 
 		return result;
 	}
 
-	protected Hacker findByEducationDataId(final int educationDataId) {
-		Hacker result;
+	protected Rookie findByEducationDataId(final int educationDataId) {
+		Rookie result;
 
-		result = this.hackerRepository.findByEducationDataId(educationDataId);
+		result = this.rookieRepository.findByEducationDataId(educationDataId);
 		Assert.notNull(result);
 
 		return result;
 	}
 
-	protected Hacker findByMiscellaneousDataId(final int miscellaneousDataId) {
-		Hacker result;
+	protected Rookie findByMiscellaneousDataId(final int miscellaneousDataId) {
+		Rookie result;
 
-		result = this.hackerRepository.findByMiscellaneousDataId(miscellaneousDataId);
+		result = this.rookieRepository.findByMiscellaneousDataId(miscellaneousDataId);
 		Assert.notNull(result);
 
 		return result;

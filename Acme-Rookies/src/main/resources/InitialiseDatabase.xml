@@ -60,7 +60,7 @@
 	</bean>
 	
 	<bean id="userAccount6" class="security.UserAccount">
-		<property name="username" value="hacker1" />
+		<property name="username" value="rookie1" />
 		<property name="password" value="2ba2a8ac968a7a2b0a7baa7f2fef18d2" />
 		<property name="authorities">
 			<list>
@@ -72,7 +72,7 @@
 	</bean>
 
 	<bean id="userAccount7" class="security.UserAccount">
-		<property name="username" value="hacker2" />
+		<property name="username" value="rookie2" />
 		<property name="password" value="91af68b69a50a98dbc0800942540342c" />
 		<property name="authorities">
 			<list>
@@ -197,12 +197,12 @@
 
 	<!-- Customisation -->
 	<bean id="customisation1" class="domain.Customisation">
-		<property name="name" value="Acme Hacker Rank" />
+		<property name="name" value="Acme Rookie Rank" />
 		<property name="banner" value="https://i.imgur.com/7b8lu4b.png" />
 		<property name="welcomeMessageEn"
-			value="Welcome to Acme Hacker Rank! We're IT hacker's favourite job marketplace!" />
+			value="Welcome to Acme Rookie Rank! We're IT rookie's favourite job marketplace!" />
 		<property name="welcomeMessageEs"
-			value="¡Bienvenidos a Acme Hacker Rank! ¡Somos el mercado de trabajo favorito de los profesionales de las TICs!" />
+			value="¡Bienvenidos a Acme Rookie Rank! ¡Somos el mercado de trabajo favorito de los profesionales de las TICs!" />
 		<property name="countryCode" value="+34" />
 		<property name="timeCachedResults" value="1" />
 		<property name="maxNumberResults" value="10" />
@@ -217,7 +217,7 @@
 		<property name="minimumSalary" value="965.24" />
 		<property name="maximumDeadline" value="2022/10/05" />
 		<property name="updatedMoment" value="2019/01/01 10:10" />
-		<property name="hacker" ref="hacker1" />
+		<property name="rookie" ref="rookie1" />
 		<property name="positions">
 			<list>
 				<null></null>
@@ -228,7 +228,7 @@
 	<bean id="finder2" class="domain.Finder">
 		<property name="keyword" value="" />
 		<property name="updatedMoment" value="2019/01/01 10:10" />
-		<property name="hacker" ref="hacker2" />
+		<property name="rookie" ref="rookie2" />
 		<property name="positions">
 			<list>
 				<null></null>
@@ -236,30 +236,30 @@
 		</property>
 	</bean>
 	
-	<!-- Hacker -->
-	<bean id="hacker1" class="domain.Hacker">
-		<property name="name" value="Hacker1" />
+	<!-- Rookie -->
+	<bean id="rookie1" class="domain.Rookie">
+		<property name="name" value="Rookie1" />
 		<property name="surname" value="Alvarez" />
 		<property name="VATnumber" value="97" />
 		<property name="creditCard" ref="creditCard6" />
 		<property name="photo"
 			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
-		<property name="email" value="hacker1@gmail.com" />
+		<property name="email" value="rookie1@gmail.com" />
 		<property name="phoneNumber" value="63015521" />
-		<property name="address" value="Calle Hacker 1" />
+		<property name="address" value="Calle Rookie 1" />
 		<property name="userAccount" ref="userAccount6" />
 	</bean>
 
-	<bean id="hacker2" class="domain.Hacker">
-		<property name="name" value="Hacker2" />
+	<bean id="rookie2" class="domain.Rookie">
+		<property name="name" value="Rookie2" />
 		<property name="surname" value="Munoz" />
 		<property name="VATnumber" value="97" />
 		<property name="creditCard" ref="creditCard7" />
 		<property name="photo"
 			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
-		<property name="email" value="hacker2@gmail.com" />
+		<property name="email" value="rookie2@gmail.com" />
 		<property name="phoneNumber" value="63015521" />
-		<property name="address" value="Calle Hacker 2" />
+		<property name="address" value="Calle Rookie 2" />
 		<property name="userAccount" ref="userAccount7" />
 	</bean>
 

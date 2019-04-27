@@ -23,12 +23,12 @@
 
 <display:table name="sentMessages" id="row" requestURI="${requestURI}" pagesize="5" class="displaytag">
 	<display:column>
-		<a href="message/administrator,company,hacker/display.do?messageId=${row.id}">
+		<a href="message/administrator,company,rookie/display.do?messageId=${row.id}">
 			<spring:message code="message.display" />
 		</a>
 	</display:column>
 	<display:column>
-		<a href="message/administrator,company,hacker/delete.do?messageId=${row.id}" onclick="return confirm('<spring:message code="message.confirm.delete"/>')">
+		<a href="message/administrator,company,rookie/delete.do?messageId=${row.id}" onclick="return confirm('<spring:message code="message.confirm.delete"/>')">
 			<spring:message code="message.delete" />
 		</a>
 	</display:column>
@@ -45,12 +45,12 @@
 
 <display:table name="receivedMessages" id="fila" requestURI="${requestURI}" pagesize="5" class="displaytag">
 	<display:column>
-		<a href="message/administrator,company,hacker/display.do?messageId=${fila.id}">
+		<a href="message/administrator,company,rookie/display.do?messageId=${fila.id}">
 			<spring:message code="message.display" />
 		</a>
 	</display:column>
 	<display:column>
-		<a href="message/administrator,company,hacker/delete.do?messageId=${fila.id}" onclick="return confirm('<spring:message code="message.confirm.delete"/>')">
+		<a href="message/administrator,company,rookie/delete.do?messageId=${fila.id}" onclick="return confirm('<spring:message code="message.confirm.delete"/>')">
 			<spring:message code="message.delete" />
 		</a>
 	</display:column>
@@ -66,7 +66,7 @@
 <br />
 
 <!-- LINKS -->
-<a href="message/administrator,company,hacker/send.do">
+<a href="message/administrator,company,rookie/send.do">
 	<spring:message code="message.send"/>
 </a>
 <br />

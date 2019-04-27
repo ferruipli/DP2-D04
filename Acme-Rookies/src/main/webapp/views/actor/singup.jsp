@@ -19,8 +19,8 @@
 		<jstl:when test="${rol == 'Company'}">
 			<h2><spring:message code="header.company"/></h2>
 		</jstl:when>
-		<jstl:when test="${rol == 'Hacker'}">
-			<h2><spring:message code="header.hacker"/></h2>
+		<jstl:when test="${rol == 'Rookie'}">
+			<h2><spring:message code="header.rookie"/></h2>
 		</jstl:when>
 		<jstl:when test="${rol == 'Administrator'}">
 			<h2><spring:message code="header.administrator"/></h2>
@@ -130,7 +130,7 @@
 			
 		</jstl:if>
 		
-		<jstl:if test="${rol == 'Hacker'}">
+		<jstl:if test="${rol == 'Rookie'}">
 		
 			<acme:textbox code="actor.authority" path="userAccount.authorities" readonly="true" value="HACKER"/>
 		

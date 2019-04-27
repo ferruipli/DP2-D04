@@ -40,7 +40,7 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 	// Tests ------------------------------------------------------------------
 
 	/*
-	 * A: An actor who is authenticated as a hacker must be able to: Manage his
+	 * A: An actor who is authenticated as a rookie must be able to: Manage his
 	 * or her curricula, which includes listing, showing, CREATING, updating,
 	 * and deleting them.
 	 * 
@@ -63,7 +63,7 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 		attachments = "https://www.attachment1.com\rhttps://www.attachments2.com\rhttps://www.attachment3.com";
 		text = "Miscellaneous text test";
 
-		super.authenticate("hacker8");
+		super.authenticate("rookie8");
 
 		curriculumId = super.getEntityId("curriculum81");
 		curriculum = this.curriculumRepository.findOne(curriculumId);
@@ -82,12 +82,12 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * A: An actor who is authenticated as a hacker must be able to: Manage his
+	 * A: An actor who is authenticated as a rookie must be able to: Manage his
 	 * or her curricula, which includes listing, showing, CREATING, updating,
 	 * and deleting them.
 	 * 
 	 * B: The miscellaneous data can only be created in one of the curriculum in
-	 * which the hacker principal is owner.
+	 * which the rookie principal is owner.
 	 * 
 	 * C: Approximately 87% of sentence coverage, since it has been covered
 	 * 20 lines of code of 23 possible.
@@ -106,7 +106,7 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 		attachments = "https://www.attachment1.com\rhttps://www.attachments2.com\rhttps://www.attachment3.com";
 		text = "Miscellaneous text test";
 
-		super.authenticate("hacker9");
+		super.authenticate("rookie9");
 
 		curriculumId = super.getEntityId("curriculum81");
 		curriculum = this.curriculumRepository.findOne(curriculumId);
@@ -125,7 +125,7 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * A: An actor who is authenticated as a hacker must be able to: Manage his
+	 * A: An actor who is authenticated as a rookie must be able to: Manage his
 	 * or her curricula, which includes listing, showing, creating, UPDATING,
 	 * and deleting them.
 	 * 
@@ -146,7 +146,7 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 		// Data
 		text = "Text Edit test";
 
-		super.authenticate("hacker7");
+		super.authenticate("rookie7");
 
 		miscellaneousDataId = super.getEntityId("miscellaneousData71");
 		miscellaneousData = this.miscellaneousDataRepository.findOne(miscellaneousDataId);
@@ -161,7 +161,7 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * A: An actor who is authenticated as a hacker must be able to: Manage his
+	 * A: An actor who is authenticated as a rookie must be able to: Manage his
 	 * or her curricula, which includes listing, showing, creating, UPDATING,
 	 * and deleting them.
 	 * 
@@ -182,7 +182,7 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 		// Data
 		text = "Text Edit test";
 
-		super.authenticate("hacker9");
+		super.authenticate("rookie9");
 
 		miscellaneousDataId = super.getEntityId("miscellaneousData71");
 		miscellaneousData = this.miscellaneousDataRepository.findOne(miscellaneousDataId);
@@ -197,7 +197,7 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * A: An actor who is authenticated as a hacker must be able to: Manage his
+	 * A: An actor who is authenticated as a rookie must be able to: Manage his
 	 * or her curricula, which includes listing, showing, creating, updating,
 	 * and DELETING them.
 	 * 
@@ -213,7 +213,7 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 		MiscellaneousData miscellaneousData, saved;
 		int miscellaneousDataId;
 
-		super.authenticate("hacker7");
+		super.authenticate("rookie7");
 
 		miscellaneousDataId = super.getEntityId("miscellaneousData71");
 		miscellaneousData = this.miscellaneousDataRepository.findOne(miscellaneousDataId);
@@ -227,7 +227,7 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * A: An actor who is authenticated as a hacker must be able to: Manage his
+	 * A: An actor who is authenticated as a rookie must be able to: Manage his
 	 * or her curricula, which includes listing, showing, creating, updating,
 	 * and DELETING them.
 	 * 
@@ -243,7 +243,7 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 		MiscellaneousData miscellaneousData, saved;
 		int miscellaneousDataId;
 
-		super.authenticate("hacker9");
+		super.authenticate("rookie9");
 
 		miscellaneousDataId = super.getEntityId("miscellaneousData71");
 		miscellaneousData = this.miscellaneousDataRepository.findOne(miscellaneousDataId);

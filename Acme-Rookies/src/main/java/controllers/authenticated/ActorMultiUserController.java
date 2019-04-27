@@ -14,16 +14,16 @@ import org.springframework.web.servlet.ModelAndView;
 import services.ActorService;
 import services.AdministratorService;
 import services.CompanyService;
-import services.HackerService;
+import services.RookieService;
 import controllers.ActorAbstractController;
 import domain.Actor;
 import domain.Administrator;
 import domain.Company;
-import domain.Hacker;
+import domain.Rookie;
 import forms.RegistrationForm;
 
 @Controller
-@RequestMapping(value = "/actor/administrator,company,hacker")
+@RequestMapping(value = "/actor/administrator,company,rookie")
 public class ActorMultiUserController extends ActorAbstractController {
 
 	// Services
@@ -35,7 +35,7 @@ public class ActorMultiUserController extends ActorAbstractController {
 	private CompanyService			companyService;
 
 	@Autowired
-	private HackerService			hackerService;
+	private RookieService			rookieService;
 
 	@Autowired
 	private ActorService			actorService;
@@ -54,7 +54,7 @@ public class ActorMultiUserController extends ActorAbstractController {
 		ModelAndView result;
 		Administrator administrator;
 		Company company;
-		final Hacker hacker;
+		final Rookie rookie;
 		Actor actor;
 
 		result = new ModelAndView();
@@ -69,10 +69,10 @@ public class ActorMultiUserController extends ActorAbstractController {
 				company = this.companyService.findOneToDisplayEdit(actorId);
 				result = this.createModelAndView(company);
 				result.addObject("rol", "Company");
-			} else if (actor instanceof Hacker) {
-				hacker = this.hackerService.findOneToDisplayEdit(actorId);
-				result = this.createModelAndView(hacker);
-				result.addObject("rol", "Hacker");
+			} else if (actor instanceof Rookie) {
+				rookie = this.rookieService.findOneToDisplayEdit(actorId);
+				result = this.createModelAndView(rookie);
+				result.addObject("rol", "Rookie");
 			}
 
 		} catch (final Throwable oops) {
@@ -172,46 +172,46 @@ public class ActorMultiUserController extends ActorAbstractController {
 		return result;
 	}
 
-	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "saveHacker")
-	public ModelAndView saveHacker(final RegistrationForm registrationForm, final BindingResult binding) {
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "saveRookie")
+	public ModelAndView saveRookie(final RegistrationForm registrationForm, final BindingResult binding) {
 		ModelAndView result;
-		Hacker hacker;
+		Rookie rookie;
 
-		hacker = this.hackerService.reconstruct(registrationForm, binding);
+		rookie = this.rookieService.reconstruct(registrationForm, binding);
 
 		if (binding.hasErrors()) {
 			result = this.createModelAndView(registrationForm);
-			result.addObject("rol", "Hacker");
+			result.addObject("rol", "Rookie");
 		} else
 			try {
-				this.hackerService.save(hacker);
+				this.rookieService.save(rookie);
 				result = new ModelAndView("redirect:/actor/display.do");
 			} catch (final Throwable oops) {
 				result = this.createModelAndView(registrationForm, "actor.commit.error");
-				result.addObject("rol", "Hacker");
+				result.addObject("rol", "Rookie");
 			}
 
 		return result;
 	}
 
-	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "deleteHacker")
-	public ModelAndView deleteHacker(final RegistrationForm registrationForm, final BindingResult binding, final HttpSession session) {
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "deleteRookie")
+	public ModelAndView deleteRookie(final RegistrationForm registrationForm, final BindingResult binding, final HttpSession session) {
 		ModelAndView result;
-		Hacker hacker;
+		Rookie rookie;
 
-		hacker = this.hackerService.findOneToDisplayEdit(registrationForm.getId());
+		rookie = this.rookieService.findOneToDisplayEdit(registrationForm.getId());
 
 		if (binding.hasErrors()) {
 			result = this.createModelAndView(registrationForm);
-			result.addObject("rol", "Hacker");
+			result.addObject("rol", "Rookie");
 		} else
 			try {
-				this.hackerService.delete(hacker);
+				this.rookieService.delete(rookie);
 				session.invalidate();
 				result = new ModelAndView("redirect:/welcome/index.do");
 			} catch (final Throwable oops) {
 				result = this.createModelAndView(registrationForm, "actor.commit.error");
-				result.addObject("rol", "Hacker");
+				result.addObject("rol", "Rookie");
 			}
 
 		return result;
@@ -219,11 +219,11 @@ public class ActorMultiUserController extends ActorAbstractController {
 
 	// Ancillary methods
 
-	protected ModelAndView createModelAndView(final Hacker hacker) {
+	protected ModelAndView createModelAndView(final Rookie rookie) {
 		ModelAndView result;
 		RegistrationForm registrationForm;
 
-		registrationForm = this.hackerService.createForm(hacker);
+		registrationForm = this.rookieService.createForm(rookie);
 
 		result = this.createModelAndView(registrationForm, null);
 

@@ -10,8 +10,8 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 
-	<strong><spring:message code="application.hacker" />:</strong>
-	<jstl:out value="${application.hacker.fullname}" />
+	<strong><spring:message code="application.rookie" />:</strong>
+	<jstl:out value="${application.rookie.fullname}" />
 	<br />
 
 
@@ -32,7 +32,7 @@
 
 <strong><spring:message code="application.answer" />:</strong>
 	<a
-		href="answer/company,hacker/display.do?answerId=${application.answer.id}"><spring:message
+		href="answer/company,rookie/display.do?answerId=${application.answer.id}"><spring:message
 			code="application.display.answer" /></a>
 	<br />
 
@@ -49,20 +49,20 @@
 	<br/>
 
 <strong><spring:message code="application.problem" />:</strong>
-<a href="problem/company,hacker/display.do?problemId=${application.problem.id}"><jstl:out value="${application.problem.title}"/></a>
+<a href="problem/company,rookie/display.do?problemId=${application.problem.id}"><jstl:out value="${application.problem.title}"/></a>
 	<br/>
 <br />
 
 <jstl:if test="${application.status=='PENDING'}">
-	<a href="answer/hacker/create.do?applicationId=${application.id}"><spring:message
+	<a href="answer/rookie/create.do?applicationId=${application.id}"><spring:message
 			code="application.answer.create" /></a>
 	<br />
 </jstl:if>
 
 <br />
 <!-- Links -->
-<jstl:if test="${rolActor=='hacker'}">
-<a href="application/hacker/list.do"> <spring:message
+<jstl:if test="${rolActor=='rookie'}">
+<a href="application/rookie/list.do"> <spring:message
 		code="application.return" />
 </a>
 </jstl:if>

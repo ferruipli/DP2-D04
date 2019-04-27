@@ -7,11 +7,11 @@ import javax.persistence.Entity;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class Hacker extends Actor {
+public class Rookie extends Actor {
 
 	// Constructor
 
-	public Hacker() {
+	public Rookie() {
 		super();
 	}
 

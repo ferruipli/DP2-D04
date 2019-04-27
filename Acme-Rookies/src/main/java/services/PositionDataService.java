@@ -13,7 +13,7 @@ import org.springframework.util.Assert;
 
 import repositories.PositionDataRepository;
 import domain.Curriculum;
-import domain.Hacker;
+import domain.Rookie;
 import domain.PositionData;
 
 @Service
@@ -28,7 +28,7 @@ public class PositionDataService {
 	// Other supporting services -----------------------------------------
 
 	@Autowired
-	private HackerService			hackerService;
+	private RookieService			rookieService;
 
 	@Autowired
 	private CurriculumService		curriculumService;
@@ -140,10 +140,10 @@ public class PositionDataService {
 	}
 
 	private void checkOwner(final int positionDataId) {
-		Hacker principal, owner;
+		Rookie principal, owner;
 
-		principal = this.hackerService.findByPrincipal();
-		owner = this.hackerService.findByPositionDataId(positionDataId);
+		principal = this.rookieService.findByPrincipal();
+		owner = this.rookieService.findByPositionDataId(positionDataId);
 
 		Assert.isTrue(principal.equals(owner));
 	}

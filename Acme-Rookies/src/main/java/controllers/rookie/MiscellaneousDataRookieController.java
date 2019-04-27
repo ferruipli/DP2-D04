@@ -1,5 +1,5 @@
 
-package controllers.hacker;
+package controllers.rookie;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -18,8 +18,8 @@ import controllers.AbstractController;
 import domain.MiscellaneousData;
 
 @Controller
-@RequestMapping("miscellaneousData/hacker/")
-public class MiscellaneousDataHackerController extends AbstractController {
+@RequestMapping("miscellaneousData/rookie/")
+public class MiscellaneousDataRookieController extends AbstractController {
 
 	// Services ---------------------------------------------------------------
 
@@ -32,7 +32,7 @@ public class MiscellaneousDataHackerController extends AbstractController {
 
 	// Constructors -----------------------------------------------------------
 
-	public MiscellaneousDataHackerController() {
+	public MiscellaneousDataRookieController() {
 		super();
 	}
 

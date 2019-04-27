@@ -1,5 +1,5 @@
 
-package controllers.hacker;
+package controllers.rookie;
 
 import java.util.Collection;
 import java.util.List;
@@ -21,8 +21,8 @@ import domain.Curriculum;
 import domain.Position;
 
 @Controller
-@RequestMapping(value = "/application/hacker")
-public class ApplicationHackerController extends AbstractController {
+@RequestMapping(value = "/application/rookie")
+public class ApplicationRookieController extends AbstractController {
 
 	// Services------------------------------------
 
@@ -38,7 +38,7 @@ public class ApplicationHackerController extends AbstractController {
 
 	// Constructors -----------------------------------------------------------
 
-	public ApplicationHackerController() {
+	public ApplicationRookieController() {
 		super();
 	}
 
@@ -52,10 +52,10 @@ public class ApplicationHackerController extends AbstractController {
 		Collection<Application> rejectedApplications;
 
 		try {
-			pendingApplications = this.applicationService.findPendingApplicationsByHacker();
-			submittedApplications = this.applicationService.findSubmittedApplicationsByHacker();
-			acceptedApplications = this.applicationService.findAcceptedApplicationsByHacker();
-			rejectedApplications = this.applicationService.findRejectedApplicationsByHacker();
+			pendingApplications = this.applicationService.findPendingApplicationsByRookie();
+			submittedApplications = this.applicationService.findSubmittedApplicationsByRookie();
+			acceptedApplications = this.applicationService.findAcceptedApplicationsByRookie();
+			rejectedApplications = this.applicationService.findRejectedApplicationsByRookie();
 
 			result = new ModelAndView("application/list");
 			result.addObject("pendingApplications", pendingApplications);
@@ -63,7 +63,7 @@ public class ApplicationHackerController extends AbstractController {
 			result.addObject("acceptedApplications", acceptedApplications);
 			result.addObject("rejectedApplications", rejectedApplications);
 
-			result.addObject("requestURI", "application/hacker/list.do");
+			result.addObject("requestURI", "application/rookie/list.do");
 		} catch (final Exception e) {
 			result = new ModelAndView("redirect:../../error.do");
 		}
@@ -100,7 +100,7 @@ public class ApplicationHackerController extends AbstractController {
 
 		try {
 
-			application = this.applicationService.findOneToHackerEdit(applicationId);
+			application = this.applicationService.findOneToRookieEdit(applicationId);
 			result = this.createEditModelAndView(application);
 
 		} catch (final Exception e) {
@@ -122,7 +122,7 @@ public class ApplicationHackerController extends AbstractController {
 		else
 			try {
 				this.applicationService.save(applicationRec);
-				result = new ModelAndView("redirect:../hacker/list.do");
+				result = new ModelAndView("redirect:../rookie/list.do");
 			}
 
 			catch (final Throwable oops) {

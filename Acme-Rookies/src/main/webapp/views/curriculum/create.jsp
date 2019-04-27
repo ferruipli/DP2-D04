@@ -8,7 +8,7 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
-<form:form action="curriculum/hacker/edit.do" modelAttribute="curriculum">
+<form:form action="curriculum/rookie/edit.do" modelAttribute="curriculum">
 	<form:hidden path="id" />
 
 	<fieldset>
@@ -31,5 +31,5 @@
 	<spring:message code="curriculum.confirm.phone" var="confirmTelephone"/>
 	<acme:submit name="save" code="curriculum.save" onclick="javascript: return checkTelephone('${confirmTelephone}');"/>
 	&nbsp;
-	<acme:cancel code="curriculum.cancel" url="curriculum/hacker/list.do"/>
+	<acme:cancel code="curriculum.cancel" url="curriculum/rookie/list.do"/>
 </form:form>

@@ -42,7 +42,7 @@ public class AnswerServiceTest extends AbstractTest {
 			 * D: Intencionadamente en blanco. No se comprueban datos
 			 */
 			{
-				"hacker4", "application13", "Text", "https:linkCode", null
+				"rookie4", "application13", "Text", "https:linkCode", null
 			},
 			/*
 			 * A: Req.10.1 Create answer
@@ -51,16 +51,16 @@ public class AnswerServiceTest extends AbstractTest {
 			 * D: Intencionadamente en blanco. No se comprueban datos
 			 */
 			{
-				"hacker4", "application12", "Text", "https:linkCode", IllegalArgumentException.class
+				"rookie4", "application12", "Text", "https:linkCode", IllegalArgumentException.class
 			},
 			/*
 			 * A: Req.10.1 Create answer
-			 * B: El hacker que quiere crear la respuesta no es el de la solicitud
+			 * B: El rookie que quiere crear la respuesta no es el de la solicitud
 			 * C: 67%. 19/28 Recorre 19 de las 28 líneas de código totales
 			 * D: Intencionadamente en blanco. No se comprueban datos
 			 */
 			{
-				"hacker1", "application13", "Text", "https:linkCode", IllegalArgumentException.class
+				"rookie1", "application13", "Text", "https:linkCode", IllegalArgumentException.class
 			},
 			/*
 			 * A: Req.10.1 Create answer
@@ -69,7 +69,7 @@ public class AnswerServiceTest extends AbstractTest {
 			 * D: Intencionadamente en blanco. No se comprueban datos
 			 */
 			{
-				"hacker4", "application13", "", "https:linkCode", IllegalArgumentException.class
+				"rookie4", "application13", "", "https:linkCode", IllegalArgumentException.class
 			},
 			/*
 			 * A: Req.10.1 Create answer
@@ -78,7 +78,7 @@ public class AnswerServiceTest extends AbstractTest {
 			 * D: Intencionadamente en blanco. No se comprueban datos
 			 */
 			{
-				"hacker4", "application13", "Texto", "linkcode", ConstraintViolationException.class
+				"rookie4", "application13", "Texto", "linkcode", ConstraintViolationException.class
 			},
 
 		};

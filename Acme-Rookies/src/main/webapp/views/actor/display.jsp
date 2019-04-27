@@ -91,12 +91,12 @@
 
 	<jstl:if test="${isAuthorized == true}">
 		<a
-			href="actor/administrator,company,hacker/edit.do?actorId=${actor.id}"><spring:message
+			href="actor/administrator,company,rookie/edit.do?actorId=${actor.id}"><spring:message
 				code="actor.edit" /></a>
 	</jstl:if>
 	
 	<jstl:if test="${isAuthorized == true}">
-		<a href="exportData/administrator,company,hacker/export.do"><spring:message code="actor.exportData" /> </a>
+		<a href="exportData/administrator,company,rookie/export.do"><spring:message code="actor.exportData" /> </a>
 	</jstl:if>
 	
 </fieldset>
@@ -154,7 +154,7 @@
 		<jstl:out value="${actor.creditCard.expirationYear}"/>
 	</p>
 
-	<a href="creditCard/administrator,company,hacker/edit.do?actorId=${actor.id}"><spring:message
+	<a href="creditCard/administrator,company,rookie/edit.do?actorId=${actor.id}"><spring:message
 				code="actor.creditCard.edit" /></a>
 
 	</fieldset>

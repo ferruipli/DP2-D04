@@ -15,12 +15,12 @@ import services.ApplicationService;
 import services.CompanyService;
 import services.CurriculumService;
 import services.FinderService;
-import services.HackerService;
 import services.PositionService;
+import services.RookieService;
 import controllers.AbstractController;
 import domain.Company;
-import domain.Hacker;
 import domain.Position;
+import domain.Rookie;
 
 @Controller
 @RequestMapping("dashboard/administrator")
@@ -38,7 +38,7 @@ public class DashboardAdministratorController extends AbstractController {
 	private ApplicationService	applicationService;
 
 	@Autowired
-	private HackerService		hackerService;
+	private RookieService		rookieService;
 
 	@Autowired
 	private CurriculumService	curriculumService;
@@ -67,9 +67,9 @@ public class DashboardAdministratorController extends AbstractController {
 		result.addObject("findDataNumberPositionsPerCompany", findDataNumberPositionsPerCompany);
 
 		// Req 11.2.2
-		Double[] findDataNumberApplicationPerHacker;
-		findDataNumberApplicationPerHacker = this.applicationService.findDataNumberApplicationPerHacker();
-		result.addObject("findDataNumberApplicationPerHacker", findDataNumberApplicationPerHacker);
+		Double[] findDataNumberApplicationPerRookie;
+		findDataNumberApplicationPerRookie = this.applicationService.findDataNumberApplicationPerRookie();
+		result.addObject("findDataNumberApplicationPerRookie", findDataNumberApplicationPerRookie);
 
 		// Req 11.2.3
 		Collection<Company> findCompaniesOfferedMorePositions;
@@ -77,9 +77,9 @@ public class DashboardAdministratorController extends AbstractController {
 		result.addObject("findCompaniesOfferedMorePositions", findCompaniesOfferedMorePositions);
 
 		// Req 11.2.4
-		Collection<Hacker> findHackersWithMoreApplications;
-		findHackersWithMoreApplications = this.hackerService.findHackersWithMoreApplications();
-		result.addObject("findHackersWithMoreApplications", findHackersWithMoreApplications);
+		Collection<Rookie> findRookiesWithMoreApplications;
+		findRookiesWithMoreApplications = this.rookieService.findRookiesWithMoreApplications();
+		result.addObject("findRookiesWithMoreApplications", findRookiesWithMoreApplications);
 
 		// Req 11.2.5
 		Double[] dataSalaryOffered;
@@ -94,9 +94,9 @@ public class DashboardAdministratorController extends AbstractController {
 		// LEVEL B --------------------------------------
 
 		// Req 18.1.1
-		Double[] findDataNumberCurriculumPerHacker;
-		findDataNumberCurriculumPerHacker = this.curriculumService.findDataNumberCurriculumPerHacker();
-		result.addObject("findDataNumberCurriculumPerHacker", findDataNumberCurriculumPerHacker);
+		Double[] findDataNumberCurriculumPerRookie;
+		findDataNumberCurriculumPerRookie = this.curriculumService.findDataNumberCurriculumPerRookie();
+		result.addObject("findDataNumberCurriculumPerRookie", findDataNumberCurriculumPerRookie);
 
 		// Req 18.1.2
 		Double[] findDataNumberResultsFinder;

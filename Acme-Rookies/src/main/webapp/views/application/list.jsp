@@ -33,7 +33,7 @@
 
 			<display:column>
 				<a
-					href="application/company,hacker/display.do?applicationId=${row.id}"><spring:message
+					href="application/company,rookie/display.do?applicationId=${row.id}"><spring:message
 						code="application.display" /></a>
 			</display:column>
 
@@ -59,7 +59,7 @@
 
 		<display:column>
 			<a
-				href="application/company,hacker/display.do?applicationId=${row1.id}"><spring:message
+				href="application/company,rookie/display.do?applicationId=${row1.id}"><spring:message
 					code="application.display" /></a>
 		</display:column>
 
@@ -87,7 +87,7 @@
 
 		<security:authorize access="hasRole('COMPANY')">
 			<display:column 
-				property="hacker.fullname" titleKey="application.hacker" />
+				property="rookie.fullname" titleKey="application.rookie" />
 		</security:authorize>
 
 	</display:table>
@@ -103,7 +103,7 @@
 
 		<display:column >
 			<a
-				href="application/company,hacker/display.do?applicationId=${row2.id}"><spring:message
+				href="application/company,rookie/display.do?applicationId=${row2.id}"><spring:message
 					code="application.display" /></a>
 		</display:column>
 
@@ -117,7 +117,7 @@
 
 		<security:authorize access="hasRole('COMPANY')">
 			<display:column 
-				property="hacker.fullname" titleKey="application.hacker" />
+				property="rookie.fullname" titleKey="application.rookie" />
 		</security:authorize>
 
 	</display:table>
@@ -134,7 +134,7 @@
 
 		<display:column>
 			<a
-				href="application/company,hacker/display.do?applicationId=${row3.id}"><spring:message
+				href="application/company,rookie/display.do?applicationId=${row3.id}"><spring:message
 					code="application.display" /></a>
 		</display:column>
 
@@ -148,7 +148,7 @@
 
 		<security:authorize access="hasRole('COMPANY')">
 			<display:column 
-				property="hacker.fullname" titleKey="application.hacker" />
+				property="rookie.fullname" titleKey="application.rookie" />
 		</security:authorize>
 
 	</display:table>

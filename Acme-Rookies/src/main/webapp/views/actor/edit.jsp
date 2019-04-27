@@ -11,16 +11,16 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 <spring:message code="confirm.telephone" var="confirmTelephone"/>
-<form:form action="actor/administrator,company,hacker/edit.do" modelAttribute="registrationForm" onsubmit="javascript:calcMD5();">
+<form:form action="actor/administrator,company,rookie/edit.do" modelAttribute="registrationForm" onsubmit="javascript:calcMD5();">
 	<jstl:choose>
 		<jstl:when test="${rol == 'Company'}">
 			<h2>
 				<spring:message code="header.company" />
 			</h2>
 		</jstl:when>
-		<jstl:when test="${rol == 'Hacker'}">
+		<jstl:when test="${rol == 'Rookie'}">
 			<h2>
-				<spring:message code="header.hacker" />
+				<spring:message code="header.rookie" />
 			</h2>
 		</jstl:when>
 		<jstl:when test="${rol == 'Administrator'}">
@@ -101,9 +101,9 @@
 			<acme:submit name="saveCompany" code="actor.save" onclick="javascript: return checkTelephone('${confirmTelephone}');"/>
 			<input type="submit" name="deleteCompany" value="<spring:message code="actor.delete"/>" onclick="return confirm('<spring:message code="actor.confirm.delete"/>')"/>
 		</jstl:when>
-		<jstl:when test="${rol == 'Hacker'}">
-			<acme:submit name="saveHacker" code="actor.save" onclick="javascript: return checkTelephone('${confirmTelephone}');"/>
-			<input type="submit" name="deleteHacker" value="<spring:message code="actor.delete"/>" onclick="return confirm('<spring:message code="actor.confirm.delete"/>')"/>
+		<jstl:when test="${rol == 'Rookie'}">
+			<acme:submit name="saveRookie" code="actor.save" onclick="javascript: return checkTelephone('${confirmTelephone}');"/>
+			<input type="submit" name="deleteRookie" value="<spring:message code="actor.delete"/>" onclick="return confirm('<spring:message code="actor.confirm.delete"/>')"/>
 		</jstl:when>
 	</jstl:choose>
 	

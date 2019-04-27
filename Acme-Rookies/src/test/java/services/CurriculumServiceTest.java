@@ -39,7 +39,7 @@ public class CurriculumServiceTest extends AbstractTest {
 	 * A: An actor who is authenticated as an administrator must be able to
 	 * display a dashboard with the following information:
 	 * The minimum, the maximum, the average and the standard deviation of the
-	 * number of curricula per hacker.
+	 * number of curricula per rookie.
 	 * 
 	 * B: Positive test
 	 * 
@@ -48,10 +48,10 @@ public class CurriculumServiceTest extends AbstractTest {
 	 * D: 100% of data coverage.
 	 */
 	@Test
-	public void testDataNumberCurriculumPerHacker() {
+	public void testDataNumberCurriculumPerRookie() {
 		Double[] data;
 
-		data = this.curriculumService.findDataNumberCurriculumPerHacker();
+		data = this.curriculumService.findDataNumberCurriculumPerRookie();
 
 		Assert.isTrue(data[0] == 0.0);
 		Assert.isTrue(data[1] == 1.0);
@@ -60,7 +60,7 @@ public class CurriculumServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * A: An actor who is authenticated as a hacker must be able to: Manage his
+	 * A: An actor who is authenticated as a rookie must be able to: Manage his
 	 * or her curricula, which includes listing, showing, CREATING, updating,
 	 * and deleting them.
 	 * 
@@ -80,13 +80,13 @@ public class CurriculumServiceTest extends AbstractTest {
 
 		// Data
 		title = "Curriculum test"; // Possible values: string, blank string, null
-		fullname = "Hacker9 Rubio"; // Possible values: string, blank string, null, string that doesn't match with fullname's actor principal
+		fullname = "Rookie9 Rubio"; // Possible values: string, blank string, null, string that doesn't match with fullname's actor principal
 		githubProf = "https://github.com/antonio"; // Possible values: string, blank string, null, string that doesn't start with https://github.com/
 		linkedinProf = "https://www.linkedin.com/antonio"; // Possible values: string, blank string, null, string that doesn't start with https://www.linkedin.com/
 		phone = "789654123"; // Possible values: string, blank string, null
 		statement = "Statement test"; // Possible values: string, blank string, null
 
-		super.authenticate("hacker9");
+		super.authenticate("rookie9");
 
 		curriculum = this.curriculumService.create();
 		personalData = curriculum.getPersonalData();
@@ -113,7 +113,7 @@ public class CurriculumServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * A: An actor who is authenticated as a hacker must be able to: Manage his
+	 * A: An actor who is authenticated as a rookie must be able to: Manage his
 	 * or her curricula, which includes listing, showing, CREATING, updating,
 	 * and deleting them.
 	 * 
@@ -133,13 +133,13 @@ public class CurriculumServiceTest extends AbstractTest {
 
 		// Data
 		title = "Curriculum test";
-		fullname = "Hacker9 Rubio";
+		fullname = "Rookie9 Rubio";
 		githubProf = "antonio GithubProfile";
 		linkedinProf = "https://www.linkedin.com/antonio";
 		phone = "789654123";
 		statement = "Statement test";
 
-		super.authenticate("hacker9");
+		super.authenticate("rookie9");
 
 		curriculum = this.curriculumService.create();
 		personalData = curriculum.getPersonalData();
@@ -166,7 +166,7 @@ public class CurriculumServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * A: An actor who is authenticated as a hacker must be able to: Manage his
+	 * A: An actor who is authenticated as a rookie must be able to: Manage his
 	 * or her curricula, which includes listing, showing, creating, UPDATING,
 	 * and deleting them.
 	 * 
@@ -187,7 +187,7 @@ public class CurriculumServiceTest extends AbstractTest {
 		// Data
 		title = "Curriculum edit test";
 
-		super.authenticate("hacker8");
+		super.authenticate("rookie8");
 
 		curriculumId = super.getEntityId("curriculum81");
 		curriculum = this.curriculumRepository.findOne(curriculumId);
@@ -202,7 +202,7 @@ public class CurriculumServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * A: An actor who is authenticated as a hacker must be able to: Manage his
+	 * A: An actor who is authenticated as a rookie must be able to: Manage his
 	 * or her curricula, which includes listing, showing, creating, UPDATING,
 	 * and deleting them.
 	 * 
@@ -223,7 +223,7 @@ public class CurriculumServiceTest extends AbstractTest {
 		// Data
 		title = "Curriculum edit test";
 
-		super.authenticate("hacker9");
+		super.authenticate("rookie9");
 
 		curriculumId = super.getEntityId("curriculum81");
 		curriculum = this.curriculumRepository.findOne(curriculumId);
@@ -238,7 +238,7 @@ public class CurriculumServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * A: An actor who is authenticated as a hacker must be able to: Manage his
+	 * A: An actor who is authenticated as a rookie must be able to: Manage his
 	 * or her curricula, which includes listing, showing, creating, updating,
 	 * and DELETING them.
 	 * 
@@ -254,7 +254,7 @@ public class CurriculumServiceTest extends AbstractTest {
 		Curriculum curriculum, saved;
 		int curriculumId;
 
-		super.authenticate("hacker8");
+		super.authenticate("rookie8");
 
 		curriculumId = super.getEntityId("curriculum81");
 		curriculum = this.curriculumRepository.findOne(curriculumId);
@@ -268,7 +268,7 @@ public class CurriculumServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * A: An actor who is authenticated as a hacker must be able to: Manage his
+	 * A: An actor who is authenticated as a rookie must be able to: Manage his
 	 * or her curricula, which includes listing, showing, creating, updating,
 	 * and DELETING them.
 	 * 
@@ -284,7 +284,7 @@ public class CurriculumServiceTest extends AbstractTest {
 		Curriculum curriculum, saved;
 		int curriculumId;
 
-		super.authenticate("hacker9");
+		super.authenticate("rookie9");
 
 		curriculumId = super.getEntityId("curriculum81");
 		curriculum = this.curriculumRepository.findOne(curriculumId);
@@ -303,7 +303,7 @@ public class CurriculumServiceTest extends AbstractTest {
 		final Curriculum res = new Curriculum();
 
 		res.setEducationDatas(curriculum.getEducationDatas());
-		res.setHacker(curriculum.getHacker());
+		res.setRookie(curriculum.getRookie());
 		res.setId(curriculum.getId());
 		res.setIsOriginal(curriculum.getIsOriginal());
 		res.setMiscellaneousDatas(curriculum.getMiscellaneousDatas());

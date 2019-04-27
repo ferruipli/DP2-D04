@@ -14,14 +14,14 @@ import org.springframework.web.servlet.ModelAndView;
 import services.ApplicationService;
 import services.CompanyService;
 import services.CurriculumService;
-import services.HackerService;
 import services.PositionService;
+import services.RookieService;
 import services.UtilityService;
 import domain.Company;
 import domain.Curriculum;
-import domain.Hacker;
 import domain.Position;
 import domain.Problem;
+import domain.Rookie;
 
 @Controller
 @RequestMapping(value = "/position")
@@ -39,7 +39,7 @@ public class PositionController extends AbstractController {
 	private ApplicationService	applicationService;
 
 	@Autowired
-	private HackerService		hackerService;
+	private RookieService		rookieService;
 
 	@Autowired
 	private CurriculumService	curriculumService;
@@ -144,7 +144,7 @@ public class PositionController extends AbstractController {
 		Company principal;
 		Collection<Problem> problemList;
 		Boolean isApplied, isDeadlineFuture;
-		Hacker hackerPrincipal;
+		Rookie rookiePrincipal;
 		Boolean hasProblem;
 		Date moment;
 
@@ -164,13 +164,13 @@ public class PositionController extends AbstractController {
 			}
 
 			try {
-				hackerPrincipal = this.hackerService.findByPrincipal();
+				rookiePrincipal = this.rookieService.findByPrincipal();
 				result.addObject("noCurriculum", false);
-				final Collection<Curriculum> curriculum = this.curriculumService.findOriginalByHackerPrincipal();
+				final Collection<Curriculum> curriculum = this.curriculumService.findOriginalByRookiePrincipal();
 				if (curriculum.isEmpty())
 					result.addObject("noCurriculum", true);
 			} catch (final Exception e1) {
-				hackerPrincipal = null;
+				rookiePrincipal = null;
 			}
 
 			if (principal != null && principal.equals(position.getCompany())) {
@@ -181,10 +181,10 @@ public class PositionController extends AbstractController {
 				result.addObject("hasProblem", hasProblem);
 				result.addObject("principal", principal);
 				result.addObject("problemList", problemList);
-			} else if (hackerPrincipal != null && hackerPrincipal.getUserAccount().getAuthorities().toString().equals("[HACKER]")) {
+			} else if (rookiePrincipal != null && rookiePrincipal.getUserAccount().getAuthorities().toString().equals("[HACKER]")) {
 				position = this.positionService.findOne(positionId);
-				hackerPrincipal = this.hackerService.findByPrincipal();
-				isApplied = this.applicationService.isApplied(position, hackerPrincipal);
+				rookiePrincipal = this.rookieService.findByPrincipal();
+				isApplied = this.applicationService.isApplied(position, rookiePrincipal);
 				result.addObject("isApplied", isApplied);
 			}
 

@@ -18,8 +18,8 @@ import org.springframework.validation.Validator;
 import repositories.FinderRepository;
 import domain.Customisation;
 import domain.Finder;
-import domain.Hacker;
 import domain.Position;
+import domain.Rookie;
 
 @Service
 @Transactional
@@ -33,7 +33,7 @@ public class FinderService {
 	// Other supporting services -----------------------------------------
 
 	@Autowired
-	private HackerService			hackerService;
+	private RookieService			rookieService;
 
 	@Autowired
 	private CustomisationService	customisationService;
@@ -108,12 +108,12 @@ public class FinderService {
 		finder.setUpdatedMoment(new Date(Integer.MIN_VALUE));
 	}
 
-	public Finder findByHackerPrincipal() {
+	public Finder findByRookiePrincipal() {
 		Finder result;
-		Hacker hacker;
+		Rookie rookie;
 
-		hacker = this.hackerService.findByPrincipal();
-		result = this.finderRepository.findByHackerId(hacker.getId());
+		rookie = this.rookieService.findByPrincipal();
+		result = this.finderRepository.findByRookieId(rookie.getId());
 		Assert.notNull(result);
 
 		return result;
@@ -149,7 +149,7 @@ public class FinderService {
 		result.setDeadline(finder.getDeadline());
 		result.setMaximumDeadline(finder.getMaximumDeadline());
 		result.setMinimumSalary(finder.getMinimumSalary());
-		result.setHacker(finderStored.getHacker());
+		result.setRookie(finderStored.getRookie());
 		result.setPositions(finderStored.getPositions());
 		result.setUpdatedMoment(finderStored.getUpdatedMoment());
 		result.setVersion(finderStored.getVersion());
@@ -182,34 +182,34 @@ public class FinderService {
 	}
 
 	private void checkOwner(final Finder finder) {
-		Hacker principal;
+		Rookie principal;
 
 		if (finder.getId() != 0) {
-			principal = this.hackerService.findByPrincipal();
-			Assert.isTrue(finder.getHacker().equals(principal));
+			principal = this.rookieService.findByPrincipal();
+			Assert.isTrue(finder.getRookie().equals(principal));
 		}
 	}
 
-	protected void assignNewFinder(final Hacker hacker) {
+	protected void assignNewFinder(final Rookie rookie) {
 		Finder finder;
 
 		finder = this.create();
-		finder.setHacker(hacker);
+		finder.setRookie(rookie);
 		this.save(finder);
 	}
 
-	protected Finder findByHacker(final int hackerId) {
+	protected Finder findByRookie(final int rookieId) {
 		Finder result;
 
-		result = this.finderRepository.findByHackerId(hackerId);
+		result = this.finderRepository.findByRookieId(rookieId);
 
 		return result;
 	}
 
-	protected void deleteFinder(final Hacker hacker) {
+	protected void deleteFinder(final Rookie rookie) {
 		Finder finder;
 
-		finder = this.finderRepository.findByHackerId(hacker.getId());
+		finder = this.finderRepository.findByRookieId(rookie.getId());
 		this.finderRepository.delete(finder);
 	}
 

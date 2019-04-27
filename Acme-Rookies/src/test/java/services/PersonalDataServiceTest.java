@@ -35,7 +35,7 @@ public class PersonalDataServiceTest extends AbstractTest {
 	// Tests ------------------------------------------------------------------
 
 	/*
-	 * A: An actor who is authenticated as a hacker must be able to: Manage his
+	 * A: An actor who is authenticated as a rookie must be able to: Manage his
 	 * or her curricula, which includes listing, showing, creating, UPDATING,
 	 * and deleting them.
 	 * 
@@ -54,9 +54,9 @@ public class PersonalDataServiceTest extends AbstractTest {
 		String fullname;
 
 		// Data
-		fullname = "Hacker8 Moreno";
+		fullname = "Rookie8 Moreno";
 
-		super.authenticate("hacker8");
+		super.authenticate("rookie8");
 
 		personalDataId = super.getEntityId("personalData81");
 		personalData = this.personalDataRepository.findOne(personalDataId);
@@ -71,7 +71,7 @@ public class PersonalDataServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * A: An actor who is authenticated as a hacker must be able to: Manage his
+	 * A: An actor who is authenticated as a rookie must be able to: Manage his
 	 * or her curricula, which includes listing, showing, creating, UPDATING,
 	 * and deleting them.
 	 * 
@@ -90,9 +90,9 @@ public class PersonalDataServiceTest extends AbstractTest {
 		String fullname;
 
 		// Data
-		fullname = "Hacker9 Rubio";
+		fullname = "Rookie9 Rubio";
 
-		super.authenticate("hacker9");
+		super.authenticate("rookie9");
 
 		personalDataId = super.getEntityId("personalData81");
 		personalData = this.personalDataRepository.findOne(personalDataId);

@@ -22,7 +22,7 @@
 <display:table name="socialProfiles" id="row" requestURI="${requestURI}"  class="displaytag" pagesize="5">
 	<jstl:if test="${isAuthorized}">
 		<display:column>
-			<a href="socialProfile/administrator,company,hacker/edit.do?socialProfileId=${row.id}">
+			<a href="socialProfile/administrator,company,rookie/edit.do?socialProfileId=${row.id}">
 				<spring:message code="socialProfile.edit"/>
 			</a>
 		</display:column>
@@ -46,7 +46,7 @@
 </display:table>
 
 <jstl:if test="${isAuthorized}">
-	<a href="socialProfile/administrator,company,hacker/create.do">
+	<a href="socialProfile/administrator,company,rookie/create.do">
 		<spring:message code="socialProfile.new"/>
 	</a>
 </jstl:if>

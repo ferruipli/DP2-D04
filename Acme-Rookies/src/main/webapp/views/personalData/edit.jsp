@@ -8,7 +8,7 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
-<form:form action="personalData/hacker/edit.do" modelAttribute="personalData">
+<form:form action="personalData/rookie/edit.do" modelAttribute="personalData">
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 
@@ -26,5 +26,5 @@
 	<spring:message code="personalData.confirm.phone" var="confirmTelephone"/>
 	<acme:submit name="save" code="personalData.save" onclick="javascript: return checkTelephone('${confirmTelephone}');"/>
 	&nbsp;
-	<acme:cancel code="personalData.cancel" url="personalData/hacker/backCurriculum.do?personalDataId=${personalData.id}"/>
+	<acme:cancel code="personalData.cancel" url="personalData/rookie/backCurriculum.do?personalDataId=${personalData.id}"/>
 </form:form>

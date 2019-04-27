@@ -1,5 +1,5 @@
 
-package controllers.companyHacker;
+package controllers.companyRookie;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,57 +9,56 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import security.LoginService;
+import services.AnswerService;
 import services.ApplicationService;
 import controllers.AbstractController;
+import domain.Answer;
 import domain.Application;
 
 @Controller
-@RequestMapping(value = "/application/company,hacker")
-public class ApplicationCompanyHackerController extends AbstractController {
+@RequestMapping(value = "/answer/company,rookie")
+public class AnswerCompanyRookieController extends AbstractController {
 
 	// Services------------------------------------
 
 	@Autowired
 	private ApplicationService	applicationService;
 
+	@Autowired
+	private AnswerService		answerService;
+
 
 	// Constructors -----------------------------------------------------------
 
-	public ApplicationCompanyHackerController() {
+	public AnswerCompanyRookieController() {
 		super();
 	}
 
-	// Application Display -----------------------------------------------------------
+	// Answer Display -----------------------------------------------------------
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
-	public ModelAndView display(@RequestParam final int applicationId) {
+	public ModelAndView display(@RequestParam final int answerId) {
 		ModelAndView result;
-		Application application;
+		final Application application;
+		final Answer answer;
 		String rolActor;
-		boolean existAnswer;
-		existAnswer = true;
 
 		try {
-			result = new ModelAndView("application/display");
+			result = new ModelAndView("answer/display");
+			application = this.applicationService.findApplicationByAnswer(answerId);
 			if (LoginService.getPrincipal().getAuthorities().toString().equals("[HACKER]")) {
-				application = this.applicationService.findOneToHacker(applicationId);
-				rolActor = "hacker";
-				if (application.getAnswer() == null)
-					existAnswer = false;
+				answer = this.answerService.findOneToRookieDisplay(answerId);
+				rolActor = "rookie";
 			} else {
-				application = this.applicationService.findOneToCompany(applicationId);
+				answer = this.answerService.findOneToCompanyDisplay(answerId);
 				rolActor = "company";
-				if (application.getAnswer() == null)
-					existAnswer = false;
 			}
+			result.addObject("answer", answer);
 			result.addObject("application", application);
 			result.addObject("rolActor", rolActor);
-			result.addObject("existAnswer", existAnswer);
-
 		} catch (final Exception e) {
 			result = new ModelAndView("redirect:../../error.do");
 		}
 
 		return result;
 	}
-
 }

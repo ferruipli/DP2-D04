@@ -24,9 +24,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Access(AccessType.PROPERTY)
 @Table(indexes = {
-	@Index(columnList = "hacker, status"), @Index(columnList = "position, status"), @Index(columnList = "problem, hacker")
+	@Index(columnList = "rookie, status"), @Index(columnList = "position, status"), @Index(columnList = "problem, rookie")
 }, uniqueConstraints = @UniqueConstraint(columnNames = {
-	"hacker", "position"
+	"rookie", "position"
 }))
 public class Application extends DomainEntity {
 
@@ -80,7 +80,7 @@ public class Application extends DomainEntity {
 
 	// Relationships
 
-	private Hacker		hacker;
+	private Rookie		rookie;
 	private Curriculum	curriculum;
 	private Position	position;
 	private Problem		problem;
@@ -90,12 +90,12 @@ public class Application extends DomainEntity {
 	@Valid
 	@NotNull
 	@ManyToOne(optional = false)
-	public Hacker getHacker() {
-		return this.hacker;
+	public Rookie getRookie() {
+		return this.rookie;
 	}
 
-	public void setHacker(final Hacker hacker) {
-		this.hacker = hacker;
+	public void setRookie(final Rookie rookie) {
+		this.rookie = rookie;
 	}
 
 	@Valid

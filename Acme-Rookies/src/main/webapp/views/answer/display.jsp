@@ -19,8 +19,8 @@
 <br />
 
 <!-- Links -->
-<jstl:if test="${rolActor=='hacker'}">
-<a href="application/hacker/list.do"> <spring:message
+<jstl:if test="${rolActor=='rookie'}">
+<a href="application/rookie/list.do"> <spring:message
 		code="application.return" />
 </a>
 </jstl:if>

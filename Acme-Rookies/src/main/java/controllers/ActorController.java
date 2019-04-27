@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.CompanyService;
-import services.HackerService;
+import services.RookieService;
 import domain.Company;
-import domain.Hacker;
+import domain.Rookie;
 import forms.RegistrationForm;
 
 @Controller
@@ -22,7 +22,7 @@ public class ActorController extends ActorAbstractController {
 	// Services
 
 	@Autowired
-	private HackerService	hackerService;
+	private RookieService	rookieService;
 
 	@Autowired
 	private CompanyService	companyService;
@@ -92,43 +92,43 @@ public class ActorController extends ActorAbstractController {
 		return result;
 	}
 
-	// Register Hacker
+	// Register Rookie
 
-	@RequestMapping(value = "/registerHacker", method = RequestMethod.GET)
-	public ModelAndView createHacker() {
+	@RequestMapping(value = "/registerRookie", method = RequestMethod.GET)
+	public ModelAndView createRookie() {
 		ModelAndView result;
 		String rol;
-		Hacker hacker;
+		Rookie rookie;
 
-		rol = "Hacker";
-		hacker = new Hacker();
-		result = this.createModelAndView(hacker);
+		rol = "Rookie";
+		rookie = new Rookie();
+		result = this.createModelAndView(rookie);
 		result.addObject("rol", rol);
 		result.addObject("urlAdmin", "");
 
 		return result;
 	}
 
-	@RequestMapping(value = "/registerHacker", method = RequestMethod.POST, params = "save")
-	public ModelAndView saveHacker(final RegistrationForm registrationForm, final BindingResult binding) {
+	@RequestMapping(value = "/registerRookie", method = RequestMethod.POST, params = "save")
+	public ModelAndView saveRookie(final RegistrationForm registrationForm, final BindingResult binding) {
 		ModelAndView result;
-		Hacker hacker;
+		Rookie rookie;
 
-		hacker = this.hackerService.reconstruct(registrationForm, binding);
+		rookie = this.rookieService.reconstruct(registrationForm, binding);
 
 		if (binding.hasErrors()) {
 			result = this.createModelAndView(registrationForm);
-			result.addObject("rol", "Hacker");
+			result.addObject("rol", "Rookie");
 		} else
 			try {
-				this.hackerService.save(hacker);
+				this.rookieService.save(rookie);
 				result = new ModelAndView("redirect:/welcome/index.do");
 			} catch (final Throwable oops) {
 				if (oops.getMessage().equals("Expired credit card"))
 					result = this.createModelAndView(registrationForm, "expired.creditCard");
 				else
 					result = this.createModelAndView(registrationForm, "actor.registration.error");
-				result.addObject("rol", "Hacker");
+				result.addObject("rol", "Rookie");
 			}
 
 		return result;
@@ -147,11 +147,11 @@ public class ActorController extends ActorAbstractController {
 		return result;
 	}
 
-	protected ModelAndView createModelAndView(final Hacker hacker) {
+	protected ModelAndView createModelAndView(final Rookie rookie) {
 		ModelAndView result;
 		RegistrationForm registrationForm;
 
-		registrationForm = this.hackerService.createForm(hacker);
+		registrationForm = this.rookieService.createForm(rookie);
 
 		result = this.createModelAndView(registrationForm, null);
 
