@@ -37,6 +37,7 @@ public class Audit extends DomainEntity {
 
 
 	@Past
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
 	public Date getWrittenMoment() {
