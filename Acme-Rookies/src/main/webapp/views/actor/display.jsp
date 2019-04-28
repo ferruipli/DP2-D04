@@ -111,6 +111,12 @@
 			</strong>
 			<jstl:out value="${actor.commercialName}" />
 		</p>
+		
+		<p>
+			<strong> <spring:message code="actor.company.auditScore" />
+			</strong>
+			<jstl:out value="${actor.auditScore}" />
+		</p>
 
 
 		<p>

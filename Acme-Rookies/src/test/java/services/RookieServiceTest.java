@@ -231,7 +231,7 @@ public class RookieServiceTest extends AbstractTest {
 
 		try {
 			auth = new Authority();
-			auth.setAuthority("HACKER");
+			auth.setAuthority("ROOKIE");
 			userAccount = new UserAccount();
 
 			userAccount.setAuthorities(Arrays.asList(auth));
