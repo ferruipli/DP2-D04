@@ -301,4 +301,16 @@ public class CompanyService {
 		return registrationForm;
 	}
 
+	public void process_auditScore() {
+		Collection<Company> all;
+
+		all = this.findAll();
+		for (final Company c : all)
+			this.run_process(c);
+	}
+
+	private void run_process(final Company company) {
+
+	}
+
 }
