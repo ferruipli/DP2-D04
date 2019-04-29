@@ -77,7 +77,7 @@
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="HACKER" />
+					<property name="authority" value="ROOKIE" />
 				</bean>
 			</list>
 		</property>
@@ -89,7 +89,7 @@
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="HACKER" />
+					<property name="authority" value="ROOKIE" />
 				</bean>
 			</list>
 		</property>
@@ -101,7 +101,7 @@
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="HACKER" />
+					<property name="authority" value="ROOKIE" />
 				</bean>
 			</list>
 		</property>
@@ -113,7 +113,7 @@
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="HACKER" />
+					<property name="authority" value="ROOKIE" />
 				</bean>
 			</list>
 		</property>
@@ -125,7 +125,7 @@
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="HACKER" />
+					<property name="authority" value="ROOKIE" />
 				</bean>
 			</list>
 		</property>
@@ -137,7 +137,7 @@
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="HACKER" />
+					<property name="authority" value="ROOKIE" />
 				</bean>
 			</list>
 		</property>
@@ -149,7 +149,7 @@
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="HACKER" />
+					<property name="authority" value="ROOKIE" />
 				</bean>
 			</list>
 		</property>
@@ -161,19 +161,67 @@
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="HACKER" />
+					<property name="authority" value="ROOKIE" />
 				</bean>
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="userAccount14" class="security.UserAccount">
 		<property name="username" value="rookie9" />
 		<property name="password" value="8d9faf0956e7eb5f9dc7583a803ec4d2" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="HACKER" />
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount15" class="security.UserAccount">
+		<property name="username" value="aditor1" />
+		<property name="password" value="67a4d37f6d3db1d36c5ed263f9b874e1" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="AUDITOR" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount16" class="security.UserAccount">
+		<property name="username" value="aditor2" />
+		<property name="password" value="584fc425d3eb613f9bb41aede77cf7e5" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="AUDITOR" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount17" class="security.UserAccount">
+		<property name="username" value="provider1" />
+		<property name="password" value="cdb82d56473901641525fbbd1d5dab56" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PROVIDER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount18" class="security.UserAccount">
+		<property name="username" value="provider2" />
+		<property name="password" value="ebfc815ee2cc6a16225105bb7b3e1e53" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PROVIDER" />
 				</bean>
 			</list>
 		</property>
@@ -208,68 +256,57 @@
 
 	<!-- Answer -->
 	<bean id="answer1" class="domain.Answer">
-		<property name="text"
-			value="Answer1, Application1" />
+		<property name="text" value="Answer1, Application1" />
 		<property name="codeLink" value="https://www.code.com" />
 	</bean>
-	
+
 	<bean id="answer2" class="domain.Answer">
-		<property name="text"
-			value="Answer2, Application2" />
+		<property name="text" value="Answer2, Application2" />
 		<property name="codeLink" value="https://www.code.com" />
 	</bean>
-	
+
 	<bean id="answer4" class="domain.Answer">
-		<property name="text"
-			value="Answer4, Application4" />
+		<property name="text" value="Answer4, Application4" />
 		<property name="codeLink" value="https://www.code.com" />
 	</bean>
-	
+
 	<bean id="answer5" class="domain.Answer">
-		<property name="text"
-			value="Answer5, Application5" />
+		<property name="text" value="Answer5, Application5" />
 		<property name="codeLink" value="https://www.code.com" />
 	</bean>
-	
+
 	<bean id="answer6" class="domain.Answer">
-		<property name="text"
-			value="Answer6, Application6" />
+		<property name="text" value="Answer6, Application6" />
 		<property name="codeLink" value="https://www.code.com" />
 	</bean>
-	
+
 	<bean id="answer7" class="domain.Answer">
-		<property name="text"
-			value="Answer7, Application7" />
+		<property name="text" value="Answer7, Application7" />
 		<property name="codeLink" value="https://www.code.com" />
 	</bean>
-	
+
 	<bean id="answer9" class="domain.Answer">
-		<property name="text"
-			value="Answer9, Application9" />
+		<property name="text" value="Answer9, Application9" />
 		<property name="codeLink" value="https://www.code.com" />
 	</bean>
-	
+
 	<bean id="answer10" class="domain.Answer">
-		<property name="text"
-			value="Answer10, Application10" />
+		<property name="text" value="Answer10, Application10" />
 		<property name="codeLink" value="https://www.code.com" />
 	</bean>
-	
+
 	<bean id="answer11" class="domain.Answer">
-		<property name="text"
-			value="Answer11, Application11" />
+		<property name="text" value="Answer11, Application11" />
 		<property name="codeLink" value="https://www.code.com" />
 	</bean>
-	
+
 	<bean id="answer12" class="domain.Answer">
-		<property name="text"
-			value="Answer12, Application12" />
+		<property name="text" value="Answer12, Application12" />
 		<property name="codeLink" value="https://www.code.com" />
 	</bean>
-	
+
 	<bean id="answer14" class="domain.Answer">
-		<property name="text"
-			value="Answer14, Application14" />
+		<property name="text" value="Answer14, Application14" />
 		<property name="codeLink" value="https://www.code.com" />
 	</bean>
 
@@ -285,7 +322,7 @@
 		<property name="problem" ref="problem1" />
 		<property name="answer" ref="answer1" />
 	</bean>
-	
+
 	<bean id="application2" class="domain.Application">
 		<property name="applicationMoment" value="2019/01/01 10:10" />
 		<property name="submittedMoment" value="2019/02/01 10:10" />
@@ -296,7 +333,7 @@
 		<property name="problem" ref="problem1" />
 		<property name="answer" ref="answer2" />
 	</bean>
-	
+
 	<bean id="application3" class="domain.Application">
 		<property name="applicationMoment" value="2019/01/01 10:10" />
 		<property name="status" value="PENDING" />
@@ -305,7 +342,7 @@
 		<property name="position" ref="position1" />
 		<property name="problem" ref="problem2" />
 	</bean>
-	
+
 	<bean id="application4" class="domain.Application">
 		<property name="applicationMoment" value="2019/01/01 10:10" />
 		<property name="submittedMoment" value="2019/02/01 10:10" />
@@ -327,7 +364,7 @@
 		<property name="problem" ref="problem3" />
 		<property name="answer" ref="answer5" />
 	</bean>
-	
+
 	<bean id="application6" class="domain.Application">
 		<property name="applicationMoment" value="2019/01/01 10:10" />
 		<property name="submittedMoment" value="2019/02/01 10:10" />
@@ -338,7 +375,7 @@
 		<property name="problem" ref="problem5" />
 		<property name="answer" ref="answer6" />
 	</bean>
-	
+
 	<bean id="application7" class="domain.Application">
 		<property name="applicationMoment" value="2019/01/01 10:10" />
 		<property name="submittedMoment" value="2019/02/01 10:10" />
@@ -349,7 +386,7 @@
 		<property name="problem" ref="problem9" />
 		<property name="answer" ref="answer7" />
 	</bean>
-	
+
 	<bean id="application8" class="domain.Application">
 		<property name="applicationMoment" value="2019/01/01 10:10" />
 		<property name="status" value="PENDING" />
@@ -358,7 +395,7 @@
 		<property name="position" ref="position7" />
 		<property name="problem" ref="problem6" />
 	</bean>
-	
+
 	<bean id="application9" class="domain.Application">
 		<property name="applicationMoment" value="2019/01/01 10:10" />
 		<property name="submittedMoment" value="2019/02/01 10:10" />
@@ -369,7 +406,7 @@
 		<property name="problem" ref="problem7" />
 		<property name="answer" ref="answer9" />
 	</bean>
-	
+
 	<bean id="application10" class="domain.Application">
 		<property name="applicationMoment" value="2019/01/01 10:10" />
 		<property name="submittedMoment" value="2019/02/01 10:10" />
@@ -391,7 +428,7 @@
 		<property name="problem" ref="problem12" />
 		<property name="answer" ref="answer11" />
 	</bean>
-	
+
 	<bean id="application12" class="domain.Application">
 		<property name="applicationMoment" value="2019/01/01 10:10" />
 		<property name="submittedMoment" value="2019/02/01 10:10" />
@@ -402,7 +439,7 @@
 		<property name="problem" ref="problem13" />
 		<property name="answer" ref="answer12" />
 	</bean>
-	
+
 	<bean id="application13" class="domain.Application">
 		<property name="applicationMoment" value="2019/01/01 10:10" />
 		<property name="status" value="PENDING" />
@@ -411,7 +448,7 @@
 		<property name="position" ref="position9" />
 		<property name="problem" ref="problem13" />
 	</bean>
-	
+
 	<bean id="application14" class="domain.Application">
 		<property name="applicationMoment" value="2019/01/01 10:10" />
 		<property name="submittedMoment" value="2019/02/01 10:10" />
@@ -422,6 +459,63 @@
 		<property name="problem" ref="problem13" />
 		<property name="answer" ref="answer14" />
 	</bean>
+	
+	<!-- Auditor -->
+	<bean id="auditor1" class="domain.Auditor">
+		<property name="name" value="Auditor1" />
+		<property name="surname" value="Garcia" />
+		<property name="VATnumber" value="97" />
+		<property name="creditCard" ref="creditCard15" />
+		<property name="photo"
+			value="http://webfeb.in/wp-content/uploads/2016/11/logo-design-for-it-company.jpg" />
+		<property name="email" value="auditor1@gmail.com" />
+		<property name="phoneNumber" value="63015471" />
+		<property name="address" value="Calle Auditor 1" />
+		<property name="userAccount" ref="userAccount15" />
+	</bean>
+	
+	<bean id="auditor2" class="domain.Auditor">
+		<property name="name" value="Auditor2" />
+		<property name="surname" value="Garcia" />
+		<property name="VATnumber" value="97" />
+		<property name="creditCard" ref="creditCard16" />
+		<property name="photo"
+			value="http://webfeb.in/wp-content/uploads/2016/11/logo-design-for-it-company.jpg" />
+		<property name="email" value="auditor2@gmail.com" />
+		<property name="phoneNumber" value="63012521" />
+		<property name="address" value="Calle Auditor 2" />
+		<property name="userAccount" ref="userAccount16" />
+	</bean>
+	
+	
+	<!-- Audit -->
+	<bean id="audit1" class="domain.Audit">
+		<property name="writtenMoment" value="2019/01/01 10:10" />
+		<property name="text" value="Text audit 1" />
+		<property name="score" value="7" />
+		<property name="finalMode"  value="true" />
+		<property name="auditor" ref="auditor1" />
+		<property name="position" ref="position1" />
+	</bean>
+	
+	<bean id="audit2" class="domain.Audit">
+		<property name="writtenMoment" value="2017/01/01 10:10" />
+		<property name="text" value="Text audit 2" />
+		<property name="score" value="5" />
+		<property name="finalMode"  value="true" />
+		<property name="auditor" ref="auditor1" />
+		<property name="position" ref="position2" />
+	</bean>
+	
+	<bean id="audit3" class="domain.Audit">
+		<property name="writtenMoment" value="2018/01/01 10:10" />
+		<property name="text" value="Text audit 2" />
+		<property name="score" value="8" />
+		<property name="finalMode"  value="false" />
+		<property name="auditor" ref="auditor2" />
+		<property name="position" ref="position5" />
+	</bean>
+	
 
 	<!-- Company -->
 	<bean id="company1" class="domain.Company">
@@ -583,11 +677,47 @@
 		<property name="expirationYear" value="21" />
 		<property name="cvvCode" value="180" />
 	</bean>
-	
+
 	<bean id="creditCard14" class="domain.CreditCard">
 		<property name="holder" value="holder14" />
 		<property name="make" value="MCARD" />
 		<property name="number" value="5363673506446743" />
+		<property name="expirationMonth" value="07" />
+		<property name="expirationYear" value="24" />
+		<property name="cvvCode" value="613" />
+	</bean>
+	
+	<bean id="creditCard15" class="domain.CreditCard">
+		<property name="holder" value="holder15" />
+		<property name="make" value="MCARD" />
+		<property name="number" value="4382235426482099" />
+		<property name="expirationMonth" value="04" />
+		<property name="expirationYear" value="21" />
+		<property name="cvvCode" value="950" />
+	</bean>
+
+	<bean id="creditCard16" class="domain.CreditCard">
+		<property name="holder" value="holder16" />
+		<property name="make" value="MCARD" />
+		<property name="number" value="4262922023905342" />
+		<property name="expirationMonth" value="03" />
+		<property name="expirationYear" value="22" />
+		<property name="cvvCode" value="124" />
+	</bean>
+
+	<bean id="creditCard17" class="domain.CreditCard">
+		<property name="holder" value="holder17" />
+		<property name="make" value="MCARD" />
+		<property name="number" value="340422775030815" />
+		<property name="expirationMonth" value="04" />
+		<property name="expirationYear" value="21" />
+		<property name="cvvCode" value="180" />
+	</bean>
+
+	<bean id="creditCard18" class="domain.CreditCard">
+		<property name="holder" value="holder18" />
+		<property name="make" value="MCARD" />
+		<property name="number" value="3559081929041845" />
 		<property name="expirationMonth" value="07" />
 		<property name="expirationYear" value="24" />
 		<property name="cvvCode" value="613" />
@@ -710,7 +840,7 @@
 		</property>
 		<property name="personalData" ref="personalData22" />
 	</bean>
-	
+
 	<bean id="curriculum23" class="domain.Curriculum">
 		<property name="isOriginal" value="false" />
 		<property name="title" value="Copia de Curriculum del Rookie 2" />
@@ -732,7 +862,7 @@
 		</property>
 		<property name="personalData" ref="personalData34" />
 	</bean>
-	
+
 	<bean id="curriculum24" class="domain.Curriculum">
 		<property name="isOriginal" value="false" />
 		<property name="title" value="Copia de Curriculum del Rookie 2" />
@@ -889,7 +1019,7 @@
 		</property>
 		<property name="personalData" ref="personalData43" />
 	</bean>
-	
+
 	<bean id="curriculum44" class="domain.Curriculum">
 		<property name="isOriginal" value="false" />
 		<property name="title" value="Copia de Curriculum del Rookie 4" />
@@ -957,7 +1087,7 @@
 		</property>
 		<property name="personalData" ref="personalData52" />
 	</bean>
-	
+
 	<bean id="curriculum53" class="domain.Curriculum">
 		<property name="isOriginal" value="false" />
 		<property name="title" value="Copia de Curriculum del Rookie 5" />
@@ -1070,7 +1200,7 @@
 		</property>
 		<property name="personalData" ref="personalData72" />
 	</bean>
-	
+
 	<bean id="curriculum81" class="domain.Curriculum">
 		<property name="isOriginal" value="true" />
 		<property name="title" value="Curriculum del Rookie 8" />
@@ -1313,7 +1443,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="finder9" class="domain.Finder">
 		<property name="keyword" value="" />
 		<property name="updatedMoment" value="2019/01/01 10:15" />
@@ -1326,6 +1456,35 @@
 			</list>
 		</property>
 	</bean>
+	
+	<!-- Item -->
+	<bean id="item1" class="domain.Item">
+		<property name="name" value="Item1" />
+		<property name="description" value="descripcion item1" />
+		<property name="link"
+			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
+		<property name="picture" value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
+		<property name="provider" ref="provider1" />
+	</bean>
+	
+	<bean id="item2" class="domain.Item">
+		<property name="name" value="Item2" />
+		<property name="description" value="descripcion item1" />
+		<property name="link"
+			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
+		<property name="picture" value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
+		<property name="provider" ref="provider1" />
+	</bean>
+	
+	<bean id="item3" class="domain.Item">
+		<property name="name" value="Item3" />
+		<property name="description" value="descripcion item1" />
+		<property name="link"
+			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
+		<property name="picture" value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
+		<property name="provider" ref="provider2" />
+	</bean>
+	
 
 	<!-- Rookie -->
 	<bean id="rookie1" class="domain.Rookie">
@@ -1451,7 +1610,7 @@
 		<property name="actor" ref="rookie2" />
 		<property name="message" ref="message1" />
 	</bean>
-	
+
 	<bean id="systemTag2" class="domain.SystemTag">
 		<property name="text" value="DELETED" />
 		<property name="actor" ref="rookie2" />
@@ -1994,7 +2153,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="position3" class="domain.Position">
 		<property name="ticker" value="ONEC-4772" />
 		<property name="title" value="Position 3 - Company 1" />
@@ -2013,7 +2172,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="position4" class="domain.Position">
 		<property name="ticker" value="ONEC-4122" />
 		<property name="title" value="Position 4 - Company 1" />
@@ -2051,7 +2210,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="position6" class="domain.Position">
 		<property name="ticker" value="TWOC-4146" />
 		<property name="title" value="Position 6 - Company 2" />
@@ -2072,7 +2231,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="position7" class="domain.Position">
 		<property name="ticker" value="TWOC-4786" />
 		<property name="title" value="Position 7 - Company 2" />
@@ -2113,7 +2272,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="position9" class="domain.Position">
 		<property name="ticker" value="THRE-2556" />
 		<property name="title" value="Position 9 - Company 3" />
@@ -2260,8 +2419,7 @@
 	<!-- Problem -->
 	<bean id="problem1" class="domain.Problem">
 		<property name="title" value="Problem 1 - Company 1" />
-		<property name="statement"
-			value="Statement" />
+		<property name="statement" value="Statement" />
 		<property name="hint" value="Propongo que el rookie esté cualificado" />
 		<property name="attachments" value="" />
 		<property name="isFinalMode" value="true" />
@@ -2270,8 +2428,7 @@
 
 	<bean id="problem2" class="domain.Problem">
 		<property name="title" value="Problem 2 - Company 1" />
-		<property name="statement"
-			value="Statement" />
+		<property name="statement" value="Statement" />
 		<property name="hint" value="Que el rookie viva en Sevilla" />
 		<property name="attachments" value="" />
 		<property name="isFinalMode" value="true" />
@@ -2280,18 +2437,16 @@
 
 	<bean id="problem3" class="domain.Problem">
 		<property name="title" value="Problem 3 - Company 1" />
-		<property name="statement"
-			value="Statement" />
+		<property name="statement" value="Statement" />
 		<property name="hint" value="Que el rookie viva en Sevilla" />
 		<property name="attachments" value="" />
 		<property name="isFinalMode" value="true" />
 		<property name="company" ref="company1" />
 	</bean>
-	
+
 	<bean id="problem4" class="domain.Problem">
 		<property name="title" value="Problem 4 - Company 1" />
-		<property name="statement"
-			value="Statement" />
+		<property name="statement" value="Statement" />
 		<property name="hint" value="Que el rookie viva en Sevilla" />
 		<property name="attachments" value="" />
 		<property name="isFinalMode" value="false" />
@@ -2300,8 +2455,7 @@
 
 	<bean id="problem5" class="domain.Problem">
 		<property name="title" value="Problem 5 - Company 2" />
-		<property name="statement"
-			value="Statement" />
+		<property name="statement" value="Statement" />
 		<property name="hint" value="Necesito que trabaje los fines de semana" />
 		<property name="attachments" value="" />
 		<property name="isFinalMode" value="true" />
@@ -2310,132 +2464,173 @@
 
 	<bean id="problem6" class="domain.Problem">
 		<property name="title" value="Problem 6 - Company 2" />
-		<property name="statement"
-			value="Statement" />
+		<property name="statement" value="Statement" />
 		<property name="hint" value="Necesito que trabaje los fines de semana" />
 		<property name="attachments" value="" />
 		<property name="isFinalMode" value="true" />
 		<property name="company" ref="company2" />
 	</bean>
-	
+
 	<bean id="problem7" class="domain.Problem">
 		<property name="title" value="Problem 7 - Company 2" />
-		<property name="statement"
-			value="Statement" />
+		<property name="statement" value="Statement" />
 		<property name="hint" value="Necesito que trabaje los fines de semana" />
 		<property name="attachments" value="" />
 		<property name="isFinalMode" value="true" />
 		<property name="company" ref="company2" />
 	</bean>
-	
+
 	<bean id="problem8" class="domain.Problem">
 		<property name="title" value="Problem 8 - Company 2" />
-		<property name="statement"
-			value="Statement" />
+		<property name="statement" value="Statement" />
 		<property name="hint" value="Necesito que trabaje los fines de semana" />
 		<property name="attachments" value="" />
 		<property name="isFinalMode" value="true" />
 		<property name="company" ref="company2" />
 	</bean>
-	
+
 	<bean id="problem9" class="domain.Problem">
 		<property name="title" value="Problem 9 - Company 2" />
-		<property name="statement"
-			value="Statement" />
+		<property name="statement" value="Statement" />
 		<property name="hint" value="Necesito que trabaje los fines de semana" />
 		<property name="attachments" value="" />
 		<property name="isFinalMode" value="true" />
 		<property name="company" ref="company2" />
 	</bean>
-	
+
 	<bean id="problem10" class="domain.Problem">
 		<property name="title" value="Problem 10 - Company 3" />
-		<property name="statement"
-			value="Statement" />
+		<property name="statement" value="Statement" />
 		<property name="hint" value="Necesito que trabaje los fines de semana" />
 		<property name="attachments" value="" />
 		<property name="isFinalMode" value="false" />
 		<property name="company" ref="company3" />
 	</bean>
-	
+
 	<bean id="problem11" class="domain.Problem">
 		<property name="title" value="Problem 11 - Company 3" />
-		<property name="statement"
-			value="Statement" />
+		<property name="statement" value="Statement" />
 		<property name="hint" value="Necesito que trabaje los fines de semana" />
 		<property name="attachments" value="" />
 		<property name="isFinalMode" value="true" />
 		<property name="company" ref="company3" />
 	</bean>
-	
+
 	<bean id="problem12" class="domain.Problem">
 		<property name="title" value="Problem 12 - Company 3" />
-		<property name="statement"
-			value="Statement" />
+		<property name="statement" value="Statement" />
 		<property name="hint" value="Necesito que trabaje los fines de semana" />
 		<property name="attachments" value="" />
 		<property name="isFinalMode" value="true" />
 		<property name="company" ref="company3" />
 	</bean>
-	
+
 	<bean id="problem13" class="domain.Problem">
 		<property name="title" value="Problem 13 - Company 3" />
-		<property name="statement"
-			value="Statement" />
+		<property name="statement" value="Statement" />
 		<property name="hint" value="Necesito que trabaje los fines de semana" />
 		<property name="attachments" value="" />
 		<property name="isFinalMode" value="true" />
 		<property name="company" ref="company3" />
 	</bean>
-	
+
 	<bean id="problem14" class="domain.Problem">
 		<property name="title" value="Problem 14 - Company 1" />
-		<property name="statement"
-			value="Statement" />
+		<property name="statement" value="Statement" />
 		<property name="hint" value="Necesito que trabaje los fines de semana" />
 		<property name="attachments" value="" />
 		<property name="isFinalMode" value="true" />
 		<property name="company" ref="company1" />
 	</bean>
-	
+
 	<bean id="problem15" class="domain.Problem">
 		<property name="title" value="Problem 15 - Company 2" />
-		<property name="statement"
-			value="Statement" />
+		<property name="statement" value="Statement" />
 		<property name="hint" value="Necesito que trabaje los fines de semana" />
 		<property name="attachments" value="" />
 		<property name="isFinalMode" value="true" />
 		<property name="company" ref="company2" />
 	</bean>
-	
+
 	<bean id="problem16" class="domain.Problem">
 		<property name="title" value="Problem 16 - Company 3" />
-		<property name="statement"
-			value="Statement" />
+		<property name="statement" value="Statement" />
 		<property name="hint" value="Necesito que trabaje los fines de semana" />
 		<property name="attachments" value="" />
 		<property name="isFinalMode" value="true" />
 		<property name="company" ref="company3" />
 	</bean>
-	
+
 	<bean id="problem17" class="domain.Problem">
 		<property name="title" value="Problem 17 - Company 1" />
-		<property name="statement"
-			value="Statement" />
+		<property name="statement" value="Statement" />
 		<property name="hint" value="Necesito que trabaje los fines de semana" />
 		<property name="attachments" value="" />
 		<property name="isFinalMode" value="false" />
 		<property name="company" ref="company1" />
 	</bean>
-	
+
 	<bean id="problem18" class="domain.Problem">
 		<property name="title" value="Problem 18 - Company 2" />
-		<property name="statement"
-			value="Statement" />
+		<property name="statement" value="Statement" />
 		<property name="hint" value="Necesito que trabaje los fines de semana" />
 		<property name="attachments" value="" />
 		<property name="isFinalMode" value="false" />
 		<property name="company" ref="company2" />
+	</bean>
+	
+		<!-- Provider -->
+	<bean id="provider1" class="domain.Provider">
+		<property name="name" value="Provider1" />
+		<property name="surname" value="Lobato" />
+		<property name="VATnumber" value="97" />
+		<property name="creditCard" ref="creditCard17" />
+		<property name="photo"
+			value="http://webfeb.in/wp-content/uploads/2016/11/logo-design-for-it-company.jpg" />
+		<property name="email" value="provider1@gmail.com" />
+		<property name="phoneNumber" value="63015521" />
+		<property name="address" value="Calle Provider 1" />
+		<property name="makee" value="Make del Provider 1" />
+		<property name="userAccount" ref="userAccount17" />
+	</bean>
+	
+	<bean id="provider2" class="domain.Provider">
+		<property name="name" value="Provider2" />
+		<property name="surname" value="Pavon" />
+		<property name="VATnumber" value="97" />
+		<property name="creditCard" ref="creditCard18" />
+		<property name="photo"
+			value="http://webfeb.in/wp-content/uploads/2016/11/logo-design-for-it-company.jpg" />
+		<property name="email" value="provider2@gmail.com" />
+		<property name="phoneNumber" value="63015521" />
+		<property name="address" value="Calle Provider 2" />
+		<property name="makee" value="Make del Provider 2" />
+		<property name="userAccount" ref="userAccount18" />
+	</bean>
+	
+	<!-- Sponsorship -->
+	<bean id="sponsorship1" class="domain.Sponsorship">
+		<property name="creditCard" ref="creditCard1" />
+		<property name="banner" value="https://www.digitalprinting.co.uk/media/images/products/slides/31/vinyl-pvc-banners-1.jpg" />
+		<property name="targetPage" value="http://www.targetpage.com" />
+		<property name="provider" ref="provider1" />
+		<property name="position" ref="position1" />
+	</bean>
+	
+	<bean id="sponsorship2" class="domain.Sponsorship">
+		<property name="creditCard" ref="creditCard2" />
+		<property name="banner" value="https://www.digitalprinting.co.uk/media/images/products/slides/31/vinyl-pvc-banners-1.jpg" />
+		<property name="targetPage" value="http://www.targetpage.com" />
+		<property name="provider" ref="provider1" />
+		<property name="position" ref="position2" />
+	</bean>
+	
+	<bean id="sponsorship3" class="domain.Sponsorship">
+		<property name="creditCard" ref="creditCard1" />
+		<property name="banner" value="https://www.digitalprinting.co.uk/media/images/products/slides/31/vinyl-pvc-banners-1.jpg" />
+		<property name="targetPage" value="http://www.targetpage.com" />
+		<property name="provider" ref="provider2" />
+		<property name="position" ref="position1" />
 	</bean>
 
 </beans>

@@ -20,16 +20,16 @@ public class Provider extends Actor {
 
 	// Attributes
 
-	private String	make;
+	private String	makee;
 
 
 	@NotBlank
-	public String getMake() {
-		return this.make;
+	public String getMakee() {
+		return this.makee;
 	}
 
-	public void setMake(final String make) {
-		this.make = make;
+	public void setMakee(final String makee) {
+		this.makee = makee;
 	}
 
 }
