@@ -20,9 +20,20 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-	<strong><spring:message code="audit.writtenMoment"/>:</strong>
-		<jstl:out value="${audit.writtenMoment}"/>
+	
+	<strong><spring:message code="audit.auditor"/>:</strong>
+		<jstl:out value="${audit.auditor.fullName}"/>
 	<br/>
+	
+	<strong><spring:message code="audit.position"/>:</strong>
+		<jstl:out value="${audit.position.title}"/>
+	<br/>
+	
+	<strong><spring:message code="audit.writtenMoment"/>:</strong>
+	<spring:message code="audit.formatMoment1" var="formatMoment1"/>
+		<fmt:formatDate value="${audit.writtenMoment}}" pattern="${formatMoment1}"/>
+	<br/>
+	
 
 	<strong><spring:message code="audit.text"/>:</strong>
 		<jstl:out value="${audit.text}"/>
