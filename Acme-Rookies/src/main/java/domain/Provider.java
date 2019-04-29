@@ -3,6 +3,9 @@ package domain;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -10,6 +13,9 @@ import org.hibernate.validator.constraints.SafeHtml;
 
 @Entity
 @Access(AccessType.PROPERTY)
+@AttributeOverrides({
+	@AttributeOverride(name = "make", column = @Column(name = "providerMake"))
+})
 public class Provider extends Actor {
 
 	// Constructor
@@ -21,17 +27,17 @@ public class Provider extends Actor {
 
 	// Attributes
 
-	private String	makee;
+	private String	make;
 
 
 	@NotBlank
 	@SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
-	public String getMakee() {
-		return this.makee;
+	public String getMake() {
+		return this.make;
 	}
 
-	public void setMakee(final String makee) {
-		this.makee = makee;
+	public void setMake(final String make) {
+		this.make = make;
 	}
 
 }

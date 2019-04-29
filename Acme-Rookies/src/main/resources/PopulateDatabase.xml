@@ -2590,7 +2590,7 @@
 		<property name="email" value="provider1@gmail.com" />
 		<property name="phoneNumber" value="63015521" />
 		<property name="address" value="Calle Provider 1" />
-		<property name="makee" value="Make del Provider 1" />
+		<property name="make" value="Make del Provider 1" />
 		<property name="userAccount" ref="userAccount17" />
 	</bean>
 	
@@ -2604,7 +2604,7 @@
 		<property name="email" value="provider2@gmail.com" />
 		<property name="phoneNumber" value="63015521" />
 		<property name="address" value="Calle Provider 2" />
-		<property name="makee" value="Make del Provider 2" />
+		<property name="make" value="Make del Provider 2" />
 		<property name="userAccount" ref="userAccount18" />
 	</bean>
 	
