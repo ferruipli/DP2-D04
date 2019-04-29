@@ -318,7 +318,7 @@ public class CompanyService {
 		value = this.auditService.avgScoreByCompany(company.getId());
 		if (value != null)
 			// Normalise: the maximum value that a company can have as auditScore is 10.
-			// So, we must d
+			// So, we must divide the value per 10.
 			value = value / 10.0;
 
 		company.setAuditScore(value);

@@ -3,9 +3,12 @@ package services;
 
 import javax.transaction.Transactional;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.Assert;
 
 import utilities.AbstractTest;
 
@@ -17,9 +20,9 @@ import utilities.AbstractTest;
 public class SponsorshipServiceTest extends AbstractTest {
 
 	// Service under testing ---------------------------------------------
+	@Autowired
+	private SponsorshipService	sponsorshipService;
 
-	//	@Autowired
-	//	private SponsorshipService	sponsorshipService;
 
 	// Other supporting services and repositories ------------------------
 
@@ -368,5 +371,28 @@ public class SponsorshipServiceTest extends AbstractTest {
 	//		
 	//		return result;
 	//	}
+
+	/*
+	 * A: Acme Rookies - Requirement 14.1.a (The average, the minimum,
+	 * the maximum and the average deviation of the number of
+	 * sponsorships per provider).
+	 * C: Analysis of sentence coverage: 3/3 -> 100.00% of executed lines codes .
+	 * D: Analysis of data coverage: Intentionally blank.
+	 */
+	@Test
+	public void dataOfSponsorshipPerProvider_positiveTest() {
+		super.authenticate("admin1");
+
+		Double[] data;
+
+		data = this.sponsorshipService.dataOfSponsorshipPerProvider();
+
+		Assert.isTrue(data[0] == 1.14286);
+		Assert.isTrue(data[1] == 0.0);
+		Assert.isTrue(data[2] == 2.0);
+		Assert.isTrue(data[3] == 0.63888);
+
+		super.unauthenticate();
+	}
 
 }

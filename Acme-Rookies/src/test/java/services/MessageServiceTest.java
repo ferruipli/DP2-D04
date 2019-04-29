@@ -525,4 +525,43 @@ public class MessageServiceTest extends AbstractTest {
 		Assert.notEmpty(notification.getRecipients());
 	}
 
+	/*
+	 * A: Acme Rookies - Requirement 4.1 (Run a procedure to notify the existing users of the rebranding).
+	 * C: Analysis of sentence coverage: 42/42 -> 100.00% of executed lines codes .
+	 * D: Analysis of data coverage: Intentionally blank.
+	 */
+	@Test
+	public void rebrandingNotification_positiveTest() {
+		super.authenticate("admin1");
+
+		Message message;
+
+		message = this.messageService.rebrandingNotification();
+
+		Assert.notNull(message);
+
+		super.unauthenticate();
+	}
+
+	/*
+	 * A: Acme Rookies - Requirement 4.1 (Run a procedure to notify the existing users of the rebranding).
+	 * B: The procedure is executed twice.
+	 * C: Analysis of sentence coverage: 13/42 -> 30.95% of executed lines codes .
+	 * D: Analysis of data coverage: Intentionally blank.
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void rebrandingNotification_negativeTest() {
+		super.authenticate("admin1");
+
+		Message message_uno, message_dos;
+
+		message_uno = this.messageService.rebrandingNotification();
+		Assert.notNull(message_uno);
+
+		message_dos = this.messageService.rebrandingNotification();
+		Assert.isNull(message_dos);
+
+		super.unauthenticate();
+	}
+
 }

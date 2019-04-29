@@ -411,4 +411,34 @@ public class CompanyServiceTest extends AbstractTest {
 
 	}
 
+	/*
+	 * A: Acme Rookies - Requirement 4.3 (Launch a process to compute an audit score for every company).
+	 * C: Analysis of sentence coverage: 12/12 -> 100.00% of executed lines codes .
+	 * D: Analysis of data coverage: Intentionally blank.
+	 */
+	@Test
+	public void process_auditScore_positiveTest() {
+		super.authenticate("admin1");
+
+		int companyId;
+		Company c_uno, c_dos, c_tres;
+
+		this.companyService.process_auditScore();
+
+		companyId = super.getEntityId("company1");
+		c_uno = this.companyService.findOne(companyId);
+
+		companyId = super.getEntityId("company2");
+		c_dos = this.companyService.findOne(companyId);
+
+		companyId = super.getEntityId("company3");
+		c_tres = this.companyService.findOne(companyId);
+
+		Assert.notNull(c_uno.getAuditScore());
+		Assert.notNull(c_dos.getAuditScore());
+		Assert.notNull(c_tres.getAuditScore());
+
+		super.unauthenticate();
+	}
+
 }
