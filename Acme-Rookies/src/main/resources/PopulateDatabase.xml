@@ -688,17 +688,62 @@
 		<property name="text" value="Text audit 2" />
 		<property name="score" value="5" />
 		<property name="finalMode" value="true" />
-		<property name="auditor" ref="auditor1" />
-		<property name="position" ref="position2" />
+		<property name="auditor" ref="auditor2" />
+		<property name="position" ref="position9" />
 	</bean>
 
 	<bean id="audit3" class="domain.Audit">
 		<property name="writtenMoment" value="2018/01/01 10:10" />
-		<property name="text" value="Text audit 2" />
+		<property name="text" value="Text audit 3" />
 		<property name="score" value="8" />
 		<property name="finalMode" value="false" />
-		<property name="auditor" ref="auditor2" />
-		<property name="position" ref="position5" />
+		<property name="auditor" ref="auditor3" />
+		<property name="position" ref="position6" />
+	</bean>
+	
+	<bean id="audit4" class="domain.Audit">
+		<property name="writtenMoment" value="2019/01/01 10:10" />
+		<property name="text" value="Text audit 4" />
+		<property name="score" value="4" />
+		<property name="finalMode" value="true" />
+		<property name="auditor" ref="auditor3" />
+		<property name="position" ref="position1" />
+	</bean>
+
+	<bean id="audit5" class="domain.Audit">
+		<property name="writtenMoment" value="2017/01/01 10:10" />
+		<property name="text" value="Text audit 5" />
+		<property name="score" value="1" />
+		<property name="finalMode" value="true" />
+		<property name="auditor" ref="auditor4" />
+		<property name="position" ref="position2" />
+	</bean>
+
+	<bean id="audit6" class="domain.Audit">
+		<property name="writtenMoment" value="2018/01/01 10:10" />
+		<property name="text" value="Text audit 6" />
+		<property name="score" value="10" />
+		<property name="finalMode" value="false" />
+		<property name="auditor" ref="auditor6" />
+		<property name="position" ref="position6" />
+	</bean>
+	
+	<bean id="audit7" class="domain.Audit">
+		<property name="writtenMoment" value="2019/01/01 10:10" />
+		<property name="text" value="Text audit 7" />
+		<property name="score" value="9" />
+		<property name="finalMode" value="true" />
+		<property name="auditor" ref="auditor7" />
+		<property name="position" ref="position7" />
+	</bean>
+
+	<bean id="audit8" class="domain.Audit">
+		<property name="writtenMoment" value="2017/01/01 10:10" />
+		<property name="text" value="Text audit 8" />
+		<property name="score" value="6" />
+		<property name="finalMode" value="true" />
+		<property name="auditor" ref="auditor7" />
+		<property name="position" ref="position8" />
 	</bean>
 
 
