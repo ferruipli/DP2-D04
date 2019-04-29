@@ -101,6 +101,14 @@ public class AuditService {
 		return result;
 	}
 
+	protected Double avgScoreByCompany(final int companyId) {
+		Double result;
+
+		result = this.auditRepository.avgScoreByCompany(companyId);
+
+		return result;
+	}
+
 	private void checkByPrincipal(final Audit audit) {
 		Auditor owner;
 		Auditor principal;

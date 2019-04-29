@@ -55,6 +55,9 @@ public class CompanyService {
 	@Autowired
 	private ApplicationService	applicationService;
 
+	@Autowired
+	private AuditService		auditService;
+
 
 	// Constructors -------------------------------
 
@@ -310,7 +313,15 @@ public class CompanyService {
 	}
 
 	private void run_process(final Company company) {
+		Double value;
 
+		value = this.auditService.avgScoreByCompany(company.getId());
+		if (value != null)
+			// Normalise: the maximum value that a company can have as auditScore is 10.
+			// So, we must d
+			value = value / 10.0;
+
+		company.setAuditScore(value);
 	}
 
 }
