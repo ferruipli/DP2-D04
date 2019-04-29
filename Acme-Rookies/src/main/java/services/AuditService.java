@@ -138,6 +138,9 @@ public class AuditService {
 
 		return audits;
 	}
+	protected void flush() {
+		this.auditRepository.flush();
+	}
 
 	public Audit reconstruct(final Audit audit, final Position position, final BindingResult binding) {
 		Audit result, auditStored;
