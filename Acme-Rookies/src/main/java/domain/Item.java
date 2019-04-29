@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
 
 @Entity
@@ -31,6 +32,7 @@ public class Item extends DomainEntity {
 
 
 	@NotBlank
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
 	public String getName() {
 		return this.name;
 	}
@@ -40,6 +42,7 @@ public class Item extends DomainEntity {
 	}
 
 	@NotBlank
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
 	public String getDescription() {
 		return this.description;
 	}
@@ -50,6 +53,7 @@ public class Item extends DomainEntity {
 
 	@NotBlank
 	@URL
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
 	public String getLink() {
 		return this.link;
 	}
@@ -58,6 +62,7 @@ public class Item extends DomainEntity {
 		this.link = link;
 	}
 
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
 	public String getPicture() {
 		return this.picture;
 	}
