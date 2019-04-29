@@ -19,6 +19,8 @@
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
+
+
 <form:form action="position/company/edit.do" modelAttribute="position">
 	<form:hidden path="id" />
 	

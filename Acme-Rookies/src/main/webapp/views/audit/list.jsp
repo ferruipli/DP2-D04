@@ -22,67 +22,6 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 
-<!------------ SEARCH ------------>
-<jstl:if test="${isSearch}">
-	<fieldset>
-		<legend><spring:message code="position.search.legend"/></legend>
-		
-		<form action="position/search.do" method="get">
-			<div>
-				<label for="keyword">
-					<spring:message code="position.search.keyword"/>
-				</label>
-				<input type="text" name="keyword" id="keyword" value="${keyword}"/>
-				
-				<spring:message code="position.search.submit" var="submitText"/>
-				<input type="submit" value="${submitText}">
-			</div>
-		</form> 
-	</fieldset>
-</jstl:if>
-
-
-<!------------ FINDER ------------>
-<spring:message code="position.formatDeadline1" var="dateFormat"/>
-<jstl:if test="${finder ne null}">
-	<fieldset>
-		<legend><spring:message code="position.finder.legend"/></legend>
-		
-		<p style="color:blue;">
-			<spring:message code="position.finder.warning"/><jstl:out value="${numberOfResults}"/>
-		</p>
-		
-		<ul>
-			<li>
-				<strong><spring:message code="position.finder.keyword"/>:</strong>
-				<jstl:out value="${finder.keyword}"/>
-			</li>
-			<li>
-				<strong><spring:message code="position.finder.deadline"/>:</strong>
-				<fmt:formatDate value="${finder.deadline}" pattern="${dateFormat}"/>
-			</li>
-			<li>
-				<strong><spring:message code="position.finder.maximum.deadline"/>:</strong>
-				<fmt:formatDate value="${finder.maximumDeadline}" pattern="${dateFormat}"/>
-			</li>
-			<li>
-				<strong><spring:message code="position.finder.minimum.salary"/>:</strong>
-				<jstl:out value="${finder.minimumSalary}"/>
-			</li>
-		</ul>
-		
-		<div>
-			<a href="finder/rookie/edit.do"><spring:message code="position.finder.edit"/></a>
-			&nbsp;
-			<a href="finder/rookie/clear.do"><spring:message code="position.finder.clear"/></a>
-		</div>
-	</fieldset>
-	
-	<jstl:set var="positions" value="${finder.positions}"/>
-</jstl:if>
-
-
-<!------------ POSITION LIST ------------>
 <display:table name="${positions}" id="row" requestURI="${requestURI}" class="displaytag" pagesize="5">
 
 	<display:column>
