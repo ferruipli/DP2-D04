@@ -16,13 +16,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.ActorService;
 import services.AdministratorService;
+import services.CustomisationService;
 import services.MessageService;
 import controllers.AbstractController;
 import domain.Actor;
+import domain.Customisation;
 import domain.Message;
 
 @Controller
-@RequestMapping("/message/administrator,company,rookie")
+@RequestMapping("/message/administrator,auditor,company,provider,rookie")
 public class MessageMultiUserController extends AbstractController {
 
 	@Autowired
@@ -33,6 +35,9 @@ public class MessageMultiUserController extends AbstractController {
 
 	@Autowired
 	private AdministratorService	administratorService;
+
+	@Autowired
+	private CustomisationService	customisationService;
 
 
 	public MessageMultiUserController() {
@@ -82,7 +87,7 @@ public class MessageMultiUserController extends AbstractController {
 		result = new ModelAndView("message/list");
 		result.addObject("sentMessages", sentMessages);
 		result.addObject("receivedMessages", receivedMessages);
-		result.addObject("requestURI", "message/administrator,company,rookie/list.do");
+		result.addObject("requestURI", "message/administrator,auditor,company,provider,rookie/list.do");
 		result.addObject("mapa", mapa);
 
 		return result;
@@ -150,9 +155,11 @@ public class MessageMultiUserController extends AbstractController {
 		ModelAndView result;
 		Collection<Actor> actors;
 		Actor principal, system;
+		Customisation customisation;
 
 		system = this.administratorService.findSystem();
 		principal = this.actorService.findPrincipal();
+		customisation = this.customisationService.find();
 
 		actors = this.actorService.findAll();
 		actors.remove(principal);
@@ -162,7 +169,8 @@ public class MessageMultiUserController extends AbstractController {
 		result.addObject("message", message);
 		result.addObject("actors", actors);
 		result.addObject("isBroadcastMessage", false);
-		result.addObject("actionURI", "message/administrator,company,rookie/send.do");
+		result.addObject("isRebranding", customisation.getIsRebrandNotificationSent());
+		result.addObject("actionURI", "message/administrator,auditor,company,provider,rookie/send.do");
 		result.addObject("messageCode", messageCode);
 
 		return result;
