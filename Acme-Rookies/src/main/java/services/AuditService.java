@@ -116,10 +116,19 @@ public class AuditService {
 		return result;
 	}
 
+
 	public void makeFinal(final Audit audit) {
 		this.checkByPrincipal(audit);
 
 		audit.setFinalMode(true);
+
+	protected Double avgScoreByCompany(final int companyId) {
+		Double result;
+
+		result = this.auditRepository.avgScoreByCompany(companyId);
+
+		return result;
+
 	}
 
 	private void checkByPrincipal(final Audit audit) {
