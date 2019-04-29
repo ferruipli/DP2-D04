@@ -65,7 +65,7 @@
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="HACKER" />
+					<property name="authority" value="ROOKIE" />
 				</bean>
 			</list>
 		</property>
@@ -77,13 +77,60 @@
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="HACKER" />
+					<property name="authority" value="ROOKIE" />
 				</bean>
 			</list>
 		</property>
 	</bean>
 	
-	
+	<bean id="userAccount8" class="security.UserAccount">
+		<property name="username" value="aditor1" />
+		<property name="password" value="67a4d37f6d3db1d36c5ed263f9b874e1" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="AUDITOR" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount9" class="security.UserAccount">
+		<property name="username" value="aditor2" />
+		<property name="password" value="584fc425d3eb613f9bb41aede77cf7e5" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="AUDITOR" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount10" class="security.UserAccount">
+		<property name="username" value="provider1" />
+		<property name="password" value="cdb82d56473901641525fbbd1d5dab56" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PROVIDER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount11" class="security.UserAccount">
+		<property name="username" value="provider2" />
+		<property name="password" value="ebfc815ee2cc6a16225105bb7b3e1e53" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PROVIDER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+		
 	<!-- Administrator -->
 	<bean id="administrator1" class="domain.Administrator">
 		<property name="name" value="Admin1" />
@@ -109,6 +156,33 @@
 		<property name="phoneNumber" value="63015521" />
 		<property name="address" value="Calle Admin 2" />
 		<property name="userAccount" ref="userAccount2" />
+	</bean>
+	
+	<!-- Auditor -->
+	<bean id="auditor1" class="domain.Auditor">
+		<property name="name" value="Auditor1" />
+		<property name="surname" value="Garcia" />
+		<property name="VATnumber" value="97" />
+		<property name="creditCard" ref="creditCard15" />
+		<property name="photo"
+			value="http://webfeb.in/wp-content/uploads/2016/11/logo-design-for-it-company.jpg" />
+		<property name="email" value="auditor1@gmail.com" />
+		<property name="phoneNumber" value="63015471" />
+		<property name="address" value="Calle Auditor 1" />
+		<property name="userAccount" ref="userAccount8" />
+	</bean>
+	
+		<bean id="auditor2" class="domain.Auditor">
+		<property name="name" value="Auditor2" />
+		<property name="surname" value="Garcia" />
+		<property name="VATnumber" value="97" />
+		<property name="creditCard" ref="creditCard16" />
+		<property name="photo"
+			value="http://webfeb.in/wp-content/uploads/2016/11/logo-design-for-it-company.jpg" />
+		<property name="email" value="auditor2@gmail.com" />
+		<property name="phoneNumber" value="63012521" />
+		<property name="address" value="Calle Auditor 2" />
+		<property name="userAccount" ref="userAccount9" />
 	</bean>
 	
 	<!-- Company -->
@@ -194,6 +268,43 @@
 		<property name="expirationYear" value="21" />
 		<property name="cvvCode" value="254" />
 	</bean>
+	
+	<bean id="creditCard15" class="domain.CreditCard">
+		<property name="holder" value="holder15" />
+		<property name="make" value="MCARD" />
+		<property name="number" value="4382235426482099" />
+		<property name="expirationMonth" value="04" />
+		<property name="expirationYear" value="21" />
+		<property name="cvvCode" value="950" />
+	</bean>
+
+	<bean id="creditCard16" class="domain.CreditCard">
+		<property name="holder" value="holder16" />
+		<property name="make" value="MCARD" />
+		<property name="number" value="4262922023905342" />
+		<property name="expirationMonth" value="03" />
+		<property name="expirationYear" value="22" />
+		<property name="cvvCode" value="124" />
+	</bean>
+
+	<bean id="creditCard17" class="domain.CreditCard">
+		<property name="holder" value="holder17" />
+		<property name="make" value="MCARD" />
+		<property name="number" value="340422775030815" />
+		<property name="expirationMonth" value="04" />
+		<property name="expirationYear" value="21" />
+		<property name="cvvCode" value="180" />
+	</bean>
+
+	<bean id="creditCard18" class="domain.CreditCard">
+		<property name="holder" value="holder18" />
+		<property name="make" value="MCARD" />
+		<property name="number" value="3559081929041845" />
+		<property name="expirationMonth" value="07" />
+		<property name="expirationYear" value="24" />
+		<property name="cvvCode" value="613" />
+	</bean>
+	
 
 	<!-- Customisation -->
 	<bean id="customisation1" class="domain.Customisation">
@@ -208,6 +319,8 @@
 		<property name="maxNumberResults" value="10" />
 		<property name="spamWords"
 			value="sex,viagra,cialis,one million,you've been selected,Nigeria,sexo,un millon,ha sido seleccionado" />
+		<property name="VATtax" value="47" />
+		<property name="isRebrandNotificationSent" value="false" />
 	</bean>
 	
 	<!-- Finder -->
@@ -261,6 +374,35 @@
 		<property name="phoneNumber" value="63015521" />
 		<property name="address" value="Calle Rookie 2" />
 		<property name="userAccount" ref="userAccount7" />
+	</bean>
+	
+		<!-- Provider -->
+	<bean id="provider1" class="domain.Provider">
+		<property name="name" value="Provider1" />
+		<property name="surname" value="Lobato" />
+		<property name="VATnumber" value="97" />
+		<property name="creditCard" ref="creditCard17" />
+		<property name="photo"
+			value="http://webfeb.in/wp-content/uploads/2016/11/logo-design-for-it-company.jpg" />
+		<property name="email" value="provider1@gmail.com" />
+		<property name="phoneNumber" value="63015521" />
+		<property name="address" value="Calle Provider 1" />
+		<property name="makee" value="Make del Provider 1" />
+		<property name="userAccount" ref="userAccount10" />
+	</bean>
+	
+	<bean id="provider2" class="domain.Provider">
+		<property name="name" value="Provider2" />
+		<property name="surname" value="Pavon" />
+		<property name="VATnumber" value="97" />
+		<property name="creditCard" ref="creditCard18" />
+		<property name="photo"
+			value="http://webfeb.in/wp-content/uploads/2016/11/logo-design-for-it-company.jpg" />
+		<property name="email" value="provider2@gmail.com" />
+		<property name="phoneNumber" value="63015521" />
+		<property name="address" value="Calle Provider 2" />
+		<property name="makee" value="Make del Provider 2" />
+		<property name="userAccount" ref="userAccount11" />
 	</bean>
 
 </beans>
