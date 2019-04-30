@@ -4,7 +4,6 @@ package controllers.auditor;
 import java.util.Collection;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -106,7 +105,7 @@ public class AuditAuditorController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid final Audit audit, final BindingResult binding, final HttpServletRequest request) {
+	public ModelAndView save(final Audit audit, final BindingResult binding, final HttpServletRequest request) {
 		ModelAndView result;
 		Audit auditRec;
 		Integer positionId;
@@ -119,12 +118,12 @@ public class AuditAuditorController extends AbstractController {
 
 		auditRec = this.auditService.reconstruct(audit, position, binding);
 		if (binding.hasErrors())
-			result = this.createEditModelAndView(audit, audit.getPosition().getId());
+			result = this.createEditModelAndView(audit, position.getId());
 		else
 			try {
 
 				this.auditService.save(auditRec);
-				result = new ModelAndView("redirect:../audit/auditor/list.do");
+				result = new ModelAndView("redirect:../../audit/auditor/list.do");
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(audit, audit.getPosition().getId(), "audit.commit.error");
 			}
