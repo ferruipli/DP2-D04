@@ -63,7 +63,7 @@
 		<security:intercept-url pattern="/area/administrator/**" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/area/display.do**" access="permitAll" /> 
 		
-		<security:intercept-url pattern="/audit/auditor/**" access="permitAll"  />
+		<security:intercept-url pattern="/audit/auditor/**" access="hasRole('AUDITOR')"   />
 		<security:intercept-url pattern="/audit/**" access="permitAll"  />
 
 		<security:intercept-url pattern="/box/**" access="isAuthenticated()" /> 

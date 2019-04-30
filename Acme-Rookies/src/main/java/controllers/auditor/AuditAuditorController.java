@@ -140,7 +140,7 @@ public class AuditAuditorController extends AbstractController {
 			auditBbdd = this.auditService.findOneToEditDelete(audit.getId());
 
 			this.auditService.delete(auditBbdd);
-			result = new ModelAndView("redirect:../audit/auditor/list.do");
+			result = new ModelAndView("redirect:../../audit/auditor/list.do");
 		} catch (final Throwable oops) {
 			result = this.createEditModelAndView(audit, audit.getPosition().getId(), "problem.delete.error");
 		}
@@ -184,8 +184,8 @@ public class AuditAuditorController extends AbstractController {
 
 		result = new ModelAndView("audit/edit");
 		result.addObject("messageCode", messageCode);
-		result.addObject("segment", audit);
-		result.addObject("paradeId", positionId);
+		result.addObject("audit", audit);
+		result.addObject("positionId", positionId);
 		result.addObject("principalId", principal.getId());
 
 		return result;

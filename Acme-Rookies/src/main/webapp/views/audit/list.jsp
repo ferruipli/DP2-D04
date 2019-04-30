@@ -25,14 +25,16 @@
 <display:table name="${audits}" id="row" requestURI="${requestURI}" class="displaytag" pagesize="5">
 
 	<display:column>
-		<a href="audit/auditor/display.do?auditId=${row.id}"><spring:message code="audit.display"/></a>
+		<a href="audit/display.do?auditId=${row.id}"><spring:message code="audit.display"/></a>
 	</display:column>	
 	
-	<display:column>
-		<a href="audit/auditor/edit.do?auditId=${row.id}"><spring:message code="audit.edit"/></a>
-	</display:column>
+	<jstl:if test="${ !row.finalMode}">
+		<display:column>
+			<a href="audit/auditor/edit.do?auditId=${row.id}"><spring:message code="audit.edit"/></a>
+		</display:column>
+	</jstl:if>
 	
-	<display:column property="auditor.fullName" titleKey="audit.auditor" />
+	<display:column property="auditor.fullname" titleKey="audit.auditor" />
 	
 	<display:column property="position.title" titleKey="audit.position" />
 	
