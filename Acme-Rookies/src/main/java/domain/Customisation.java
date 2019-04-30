@@ -33,7 +33,7 @@ public class Customisation extends DomainEntity {
 	private int		maxNumberResults;
 	private String	spamWords;
 	private int		VATtax;
-	private Boolean	isRebrandNotificationSent;
+	private boolean	isRebrandNotificationSent;
 
 
 	@NotBlank
@@ -124,11 +124,11 @@ public class Customisation extends DomainEntity {
 		this.VATtax = vATtax;
 	}
 
-	public Boolean getIsRebrandNotificationSent() {
+	public boolean getIsRebrandNotificationSent() {
 		return this.isRebrandNotificationSent;
 	}
 
-	public void setIsRebrandNotificationSent(final Boolean isRebrandNotificationSent) {
+	public void setIsRebrandNotificationSent(final boolean isRebrandNotificationSent) {
 		this.isRebrandNotificationSent = isRebrandNotificationSent;
 	}
 

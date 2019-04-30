@@ -18,4 +18,8 @@ public interface CompanyRepository extends JpaRepository<Company, Integer> {
 	// Query dashboard 11.2.3 The companies that have offered more positions.
 	@Query("select c from Company c where (select count(p) from Position p where p.company.id = c.id and p.isFinalMode = true and p.isCancelled = false) = (select max(1.0 * (select count(p) from Position p where p.company.id = c.id and p.isFinalMode = true and p.isCancelled = false)) from Company c)")
 	Collection<Company> findCompaniesOfferedMorePositions();
+
+	// Query dashboard Acme Rookies 4.4.3 The companies with the highest audit score
+	@Query("select c from Company c where c.auditScore = (select max(c.auditScore) from Company c)")
+	Collection<Company> findCompaniesHighestScore();
 }

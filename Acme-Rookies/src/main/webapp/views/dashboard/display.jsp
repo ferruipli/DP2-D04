@@ -124,3 +124,12 @@
 	<strong> <spring:message code="dashboard.nine" /> </strong>:
 	<jstl:out value="${findRatioEmptyVsNonEmpty}" />
 </p>
+
+<p><strong> <spring:message code="dashboard.twelve" />: </strong></p>
+<display:table name="findCompaniesHighestScore" id="row" requestURI="dashboard/administrator/display.do" pagesize="5" class="displaytag">
+	<display:column property="fullname" titleKey="table.fullname" />
+	<display:column property="email" titleKey="table.email" />
+	<display:column property="phoneNumber" titleKey="table.phoneNumber" />
+	<display:column property="address" titleKey="table.address"/>
+	<display:column property="auditScore" titleKey="table.auditScore"/>
+</display:table>

@@ -70,6 +70,8 @@
 		
 			<li><a class="fNiv" href="company/list.do"><spring:message code="master.page.company.list" /></a></li>
 			
+			<li><a class="fNiv" href="provider/list.do"><spring:message code="master.page.provider.list" /></a></li>
+			
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 			
 			<li><a class="fNiv"><spring:message	code="master.page.register" /></a>	
@@ -85,6 +87,9 @@
 		<security:authorize access="isAuthenticated()">
 		
 			<li><a class="fNiv" href="company/list.do"><spring:message code="master.page.company.list" /></a></li>
+			
+			<li><a class="fNiv" href="provider/list.do"><spring:message code="master.page.provider.list" /></a></li>
+			
 			<li>
 				<a class="fNiv"> 
 					<spring:message code="master.page.profile" /> 

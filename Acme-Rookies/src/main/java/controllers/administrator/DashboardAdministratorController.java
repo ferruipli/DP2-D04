@@ -108,6 +108,35 @@ public class DashboardAdministratorController extends AbstractController {
 		findRatioEmptyVsNonEmpty = this.finderService.findRatioEmptyVsNonEmpty();
 		result.addObject("findRatioEmptyVsNonEmpty", findRatioEmptyVsNonEmpty);
 
+		// -------------------- ACME ROOKIES -----------------------------------------------
+
+		// LEVEL C --------------------------------------
+
+		// Req 4.4.1
+
+		// Req 4.4.2
+
+		// Req 4.4.3
+		Collection<Company> findCompaniesHighestScore;
+		findCompaniesHighestScore = this.companyService.findCompaniesHighestScore();
+		result.addObject("findCompaniesHighestScore", findCompaniesHighestScore);
+
+		// Req 4.4.4
+
+		// LEVEL B --------------------------------------
+
+		// Req 11.1.1
+
+		// Req 11.1.2
+
+		// LEVEL A --------------------------------------
+
+		// Req 14.1.1
+
+		// Req 14.1.2
+
+		// Req 14.1.3
+
 		return result;
 	}
 }
