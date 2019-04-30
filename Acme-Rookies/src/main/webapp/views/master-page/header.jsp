@@ -14,7 +14,7 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 
 <div>
-	<a href="#"><img src="${banner}" alt="Acme-Rookies, Inc." /></a>
+	<a href="#"><img src="${banner}" alt="Acme-Rookies, Inc." height="200px" width="700px"/></a>
 </div>
 
 <div>
@@ -36,6 +36,7 @@
 					<li><a href="customisation/administrator/display.do"> <spring:message code="master.page.customisation" /> </a></li>
 					<li><a href="dashboard/administrator/display.do"> <spring:message code="master.page.dashboard" /> </a></li>
 					<li><a href="actor/administrator/registerAdministrator.do"><spring:message code="master.page.administrator.create" /></a></li>
+					<li><a href="actor/administrator/registerAuditor.do"><spring:message code="master.page.auditor.create" /></a></li>
 					<li><a href="actor/administrator/list.do"><spring:message code="master.page.administrator.list" /></a></li>
 				</ul>
 			</li>
@@ -43,6 +44,11 @@
 		
 		<security:authorize access="hasRole('COMPANY')">
 			<li><a  href="problem/company/list.do" class="fNiv"><spring:message	code="master.page.company.listAll" /></a>
+			</li>
+		</security:authorize>
+		
+		<security:authorize access="hasRole('AUDITOR')">
+			<li><a  href="audit/auditor/list.do" class="fNiv"><spring:message	code="master.page.audit.listAll" /></a>
 			</li>
 		</security:authorize>
 		
@@ -64,6 +70,8 @@
 		
 			<li><a class="fNiv" href="company/list.do"><spring:message code="master.page.company.list" /></a></li>
 			
+			<li><a class="fNiv" href="provider/list.do"><spring:message code="master.page.provider.list" /></a></li>
+			
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 			
 			<li><a class="fNiv"><spring:message	code="master.page.register" /></a>	
@@ -71,6 +79,7 @@
 					<li class="arrow"></li>
 					<li><a href="actor/registerCompany.do"><spring:message code="master.page.company.create" /></a></li>
 					<li><a href="actor/registerRookie.do"><spring:message code="master.page.rookie.create" /></a></li>
+					<li><a href="actor/registerProvider.do"><spring:message code="master.page.provider.create" /></a></li>
 				</ul>
 			</li>
 		</security:authorize>
@@ -78,6 +87,9 @@
 		<security:authorize access="isAuthenticated()">
 		
 			<li><a class="fNiv" href="company/list.do"><spring:message code="master.page.company.list" /></a></li>
+			
+			<li><a class="fNiv" href="provider/list.do"><spring:message code="master.page.provider.list" /></a></li>
+			
 			<li>
 				<a class="fNiv"> 
 					<spring:message code="master.page.profile" /> 
@@ -86,7 +98,7 @@
 				<ul>
 					<li class="arrow"></li>		
 					<li><a href="actor/display.do"><spring:message code="master.page.actor.display" /></a></li>			
-					<li><a href="message/administrator,company,rookie/list.do"><spring:message code="master.page.message.list" /></a></li>
+					<li><a href="message/administrator,auditor,company,provider,rookie/list.do"><spring:message code="master.page.message.list" /></a></li>
 					<li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /> </a></li>
 				</ul>
 			</li>

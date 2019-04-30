@@ -13,9 +13,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.ActorService;
 import services.AdministratorService;
+import services.CompanyService;
+import services.AuditorService;
 import controllers.ActorAbstractController;
 import domain.Actor;
 import domain.Administrator;
+import domain.Auditor;
 import forms.RegistrationForm;
 
 @Controller
@@ -29,6 +32,13 @@ public class ActorAdministratorController extends ActorAbstractController {
 
 	@Autowired
 	private AdministratorService	administratorService;
+
+	@Autowired
+	private CompanyService			companyService;
+
+	@Autowired
+	private AuditorService			auditorService;
+
 
 
 	// Constructors
@@ -99,14 +109,29 @@ public class ActorAdministratorController extends ActorAbstractController {
 
 		try {
 			this.actorService.spammerProcess();
+			result = new ModelAndView("redirect:list.do");
 		} catch (final Throwable oops) {
 			result = new ModelAndView("redirect:/error.do");
 		}
 
-		result = new ModelAndView("redirect:list.do");
+		return result;
+	}
+
+	@RequestMapping(value = "/auditScoreProcess", method = RequestMethod.POST, params = "audit_score")
+	public ModelAndView auditScoreProcess() {
+		ModelAndView result;
+
+		try {
+			this.companyService.process_auditScore();
+			result = new ModelAndView("redirect:list.do");
+		} catch (final Throwable oops) {
+			result = new ModelAndView("redirect:/error.do");
+		}
 
 		return result;
 	}
+
+	// Register administrator
 
 	@RequestMapping(value = "/registerAdministrator", method = RequestMethod.GET)
 	public ModelAndView createAdministrator() {
@@ -148,6 +173,48 @@ public class ActorAdministratorController extends ActorAbstractController {
 		return result;
 	}
 
+	// Register auditor
+
+	@RequestMapping(value = "/registerAuditor", method = RequestMethod.GET)
+	public ModelAndView createAuditor() {
+		ModelAndView result;
+		String rol;
+		Auditor auditor;
+
+		rol = "Auditor";
+		auditor = new Auditor();
+		result = this.createModelAndView(auditor);
+		result.addObject("rol", rol);
+		result.addObject("urlAdmin", "administrator/");
+
+		return result;
+	}
+
+	@RequestMapping(value = "/registerAuditor", method = RequestMethod.POST, params = "save")
+	public ModelAndView saveAuditor(final RegistrationForm registrationForm, final BindingResult binding) {
+		ModelAndView result;
+		final Auditor auditor;
+
+		auditor = this.auditorService.reconstruct(registrationForm, binding);
+
+		if (binding.hasErrors()) {
+			result = this.createModelAndView(registrationForm);
+			result.addObject("rol", "Auditor");
+		} else
+			try {
+				this.auditorService.save(auditor);
+				result = new ModelAndView("redirect:/welcome/index.do");
+			} catch (final Throwable oops) {
+				if (oops.getMessage().equals("Expired credit card"))
+					result = this.createModelAndView(registrationForm, "expired.creditCard");
+				else
+					result = this.createModelAndView(registrationForm, "actor.registration.error");
+				result.addObject("rol", "Auditor");
+
+			}
+		return result;
+
+	}
 	// Ancillary Methods
 
 	protected ModelAndView createModelAndView(final Administrator administrator) {
@@ -155,6 +222,17 @@ public class ActorAdministratorController extends ActorAbstractController {
 		RegistrationForm registrationForm;
 
 		registrationForm = this.administratorService.createForm(administrator);
+
+		result = this.createModelAndView(registrationForm, null);
+
+		return result;
+	}
+
+	protected ModelAndView createModelAndView(final Auditor auditor) {
+		ModelAndView result;
+		RegistrationForm registrationForm;
+
+		registrationForm = this.auditorService.createForm(auditor);
 
 		result = this.createModelAndView(registrationForm, null);
 

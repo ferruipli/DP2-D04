@@ -25,6 +25,12 @@
 		<jstl:when test="${rol == 'Administrator'}">
 			<h2><spring:message code="header.administrator"/></h2>
 		</jstl:when>
+		<jstl:when test="${rol == 'Auditor'}">
+			<h2><spring:message code="header.auditor"/></h2>
+		</jstl:when>
+		<jstl:when test="${rol == 'Provider'}">
+			<h2><spring:message code="header.provider"/></h2>
+		</jstl:when>
 		
 	
 	</jstl:choose>
@@ -78,6 +84,20 @@
 
 		</fieldset>
 	</jstl:if>
+	
+	<jstl:if test="${rol == 'Provider'}">
+		<fieldset>
+			<legend>
+				<spring:message code="actor.provider.legend" />
+			</legend>
+			
+			
+			<acme:textbox code="actor.provider.make.requested" path="make"/>
+			<br /> 
+
+
+		</fieldset>
+	</jstl:if>
 
 	<fieldset>
 		<legend><spring:message code="creditCard.legend"/></legend>
@@ -117,8 +137,13 @@
 
 		<security:authorize access="hasRole('ADMIN')" >
 			
-			<acme:textbox code="actor.authority" path="userAccount.authorities" readonly="true" value="ADMIN"/>
-				
+			<jstl:if test="${rol == 'Administrator'}">
+				<acme:textbox code="actor.authority" path="userAccount.authorities" readonly="true" value="ADMIN"/>
+			</jstl:if>
+			
+			<jstl:if test="${rol == 'Auditor'}">
+				<acme:textbox code="actor.authority" path="userAccount.authorities" readonly="true" value="AUDITOR"/>
+			</jstl:if>
 		</security:authorize>
  
  
@@ -133,6 +158,12 @@
 		<jstl:if test="${rol == 'Rookie'}">
 		
 			<acme:textbox code="actor.authority" path="userAccount.authorities" readonly="true" value="HACKER"/>
+		
+		</jstl:if>
+		
+		<jstl:if test="${rol == 'Provider'}">
+		
+			<acme:textbox code="actor.authority" path="userAccount.authorities" readonly="true" value="PROVIDER"/>
 		
 		</jstl:if>
 		

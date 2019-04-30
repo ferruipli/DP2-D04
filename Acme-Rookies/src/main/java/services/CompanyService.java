@@ -165,6 +165,14 @@ public class CompanyService {
 		return result;
 	}
 
+	public Collection<Company> findCompaniesHighestScore() {
+		Collection<Company> result;
+
+		result = this.companyRepository.findCompaniesHighestScore();
+
+		return result;
+	}
+
 	public Company reconstruct(final RegistrationForm registrationForm, final BindingResult binding) {
 		Company result, companyStored;
 		UserAccount userAccount;
@@ -183,6 +191,7 @@ public class CompanyService {
 			result.setAddress(registrationForm.getAddress());
 			result.setCommercialName(registrationForm.getCommercialName());
 			result.setIsSpammer(registrationForm.getIsSpammer());
+			result.setAuditScore(registrationForm.getAuditScore());
 
 			creditCard.setHolder(registrationForm.getCreditCard().getHolder());
 			creditCard.setMake(registrationForm.getCreditCard().getMake());
@@ -211,6 +220,7 @@ public class CompanyService {
 			result.setAddress(registrationForm.getAddress());
 			result.setCommercialName(registrationForm.getCommercialName());
 			result.setIsSpammer(companyStored.getIsSpammer());
+			result.setAuditScore(companyStored.getAuditScore());
 			result.setId(companyStored.getId());
 			result.setVersion(companyStored.getVersion());
 			result.setCreditCard(companyStored.getCreditCard());

@@ -26,6 +26,8 @@
 	<acme:textbox code="customisation.timeCached" path="timeCachedResults" />
 	<acme:textbox code="customisation.maxResults" path="maxNumberResults" />
 	<acme:textbox code="customisation.spamWords" path="spamWords" />
+	<acme:textbox code="customisation.flatRate" path="frate" />
+	<acme:textbox code="customisation.vat" path="VATtax" />
 	<br />
 	
 	<acme:submit name="save" code="customisation.save" />

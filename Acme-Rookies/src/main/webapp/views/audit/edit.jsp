@@ -21,30 +21,18 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 
-<form:form action="position/company/edit.do" modelAttribute="position">
+<form:form action="audit/auditor/edit.do" modelAttribute="audit">
 	<form:hidden path="id" />
+	<input type="hidden" name="positionId" value="${positionId}"/>
 	
-	<acme:textarea code="position.title" path="title" />
+	<acme:textarea code="audit.text" path="text" />
 	
-	<acme:textarea code="position.description" path="description" />
+	<acme:textbox code="audit.score" path="score"/>
 
-	<acme:textbox code="position.deadline" placeholder="dd/MM/yyyy" path="deadline"/>
-	
-	<acme:textbox code="position.profile" path="profile"/>
-	
-	<acme:textarea code="position.skills" path="skills"/>
-	
-	<acme:textarea code="position.technologies" path="technologies"/>
-	
-	<acme:textbox code="position.salary" path="salary"/>
-	
-	<acme:selectMandatory items="${problems}" multiple="true" 
-		 itemLabel="title" code="position.problems" path="problems"/>
-
-	<acme:submit name="save" code="position.save"/>	
-	<jstl:if test="${position.id != 0}">
-		<acme:submit name="delete" code="position.delete"/>	
+	<acme:submit name="save" code="audit.save"/>	
+	<jstl:if test="${audit.id != 0}">
+		<acme:submit name="delete" code="audit.delete"/>	
 	</jstl:if>
-	<acme:cancel url="position/list.do?companyId=${principal.id}" code="position.cancel"/>
+	<acme:cancel url="audit/auditor/list.do" code="audit.cancel"/>
 	<br />
 </form:form>

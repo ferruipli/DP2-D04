@@ -31,11 +31,21 @@
 	<security:authorize access="hasRole('ADMIN')">
 		<display:column property="isSpammer" titleKey="table.isSpammer" />
 	</security:authorize>
+	
+	<display:column titleKey="table.auditScore">
+		<jstl:if test="${row.userAccount.authorities == '[COMPANY]'}">
+			<jstl:out value="${row.auditScore}" />
+		</jstl:if>
+	</display:column>
 </display:table>
 
 <security:authorize access="hasRole('ADMIN')">
 	<form:form action="actor/administrator/spammersProcess.do">
 		<acme:submit name="spammers" code="actor.launch" />
+	</form:form>
+	
+	<form:form action="actor/administrator/auditScoreProcess.do">
+		<acme:submit name="audit_score" code="actor.process" />
 	</form:form>
 </security:authorize>
  	

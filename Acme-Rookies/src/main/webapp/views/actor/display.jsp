@@ -91,7 +91,7 @@
 
 	<jstl:if test="${isAuthorized == true}">
 		<a
-			href="actor/administrator,company,rookie/edit.do?actorId=${actor.id}"><spring:message
+			href="actor/administrator,auditor,company,provider,rookie/edit.do?actorId=${actor.id}"><spring:message
 				code="actor.edit" /></a>
 	</jstl:if>
 	
@@ -115,7 +115,13 @@
 		<p>
 			<strong> <spring:message code="actor.company.auditScore" />
 			</strong>
-			<jstl:out value="${actor.auditScore}" />
+			<jstl:if test="${actor.auditScore == null }">
+				<jstl:out value="N/A" />
+			</jstl:if>
+			<jstl:if test="${actor.auditScore != null }">
+				<jstl:out value="${actor.auditScore}" />
+			</jstl:if>
+			
 		</p>
 
 
@@ -127,6 +133,26 @@
 
 
 
+	</fieldset>
+</jstl:if>
+
+<jstl:if test="${actor.userAccount.authorities=='[PROVIDER]'}">
+	<fieldset>
+		<legend>
+			<spring:message code="actor.provider.legend" />
+		</legend>
+		<p>
+			<strong> <spring:message code="actor.provider.make" />
+			</strong>
+			<jstl:out value="${actor.make}" />
+		</p>
+		
+		<p>
+			<strong> <spring:message code="actor.provider.items" />
+			</strong> <a href="item/list.do?providerId=${actor.id}"><spring:message
+					code="provider.items" /></a>
+		</p>
+		
 	</fieldset>
 </jstl:if>
 
@@ -160,7 +186,7 @@
 		<jstl:out value="${actor.creditCard.expirationYear}"/>
 	</p>
 
-	<a href="creditCard/administrator,company,rookie/edit.do?actorId=${actor.id}"><spring:message
+	<a href="creditCard/administrator,auditor,company,provider,rookie/edit.do?actorId=${actor.id}"><spring:message
 				code="actor.creditCard.edit" /></a>
 
 	</fieldset>

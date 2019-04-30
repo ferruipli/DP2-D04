@@ -52,7 +52,7 @@ public class MessageAdministratorController extends AbstractController {
 		else
 			try {
 				this.messageService.sendBroadcast(broadcastRec);
-				result = new ModelAndView("redirect:/message/administrator,company,rookie/list.do");
+				result = new ModelAndView("redirect:/message/administrator,auditor,company,provider,rookie/list.do");
 			} catch (final Throwable oops) {
 				result = this.broadcastModelAndView(broadcastRec, "message.commit.error");
 			}
@@ -66,6 +66,20 @@ public class MessageAdministratorController extends AbstractController {
 
 		try {
 			this.messageService.breachNotification();
+			result = new ModelAndView("redirect:/welcome/index.do");
+		} catch (final Throwable oops) {
+			result = new ModelAndView("redirect:/error.do");
+		}
+
+		return result;
+	}
+
+	@RequestMapping(value = "rebrandingNotification", method = RequestMethod.GET)
+	public ModelAndView rebranding() {
+		ModelAndView result;
+
+		try {
+			this.messageService.rebrandingNotification();
 			result = new ModelAndView("redirect:/welcome/index.do");
 		} catch (final Throwable oops) {
 			result = new ModelAndView("redirect:/error.do");

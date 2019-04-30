@@ -44,6 +44,21 @@
 	<jstl:out value="${customisation.maxNumberResults}" />
 </p>
 
+<p>
+	<strong> <spring:message code="customisation.flatRate" />: </strong>
+	<jstl:out value="${customisation.frate}" />
+</p>
+
+<p>
+	<strong> <spring:message code="customisation.vat" />: </strong>
+	<jstl:out value="${customisation.VATtax}%" />
+</p>
+
+<p>
+	<strong> <spring:message code="customisation.rebranding" /> </strong>
+	<jstl:out value="${customisation.isRebrandNotificationSent}" />
+</p>
+
 <display:table name="spamWords" id="row" requestURI="customisation/administrator/display.do" pagesize="5" class="displaytag">
 	<display:column value="${row}" titleKey="customisation.spamWords"/>
 </display:table>

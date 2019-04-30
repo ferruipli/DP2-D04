@@ -8,6 +8,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.AuditorRepository;
 import security.Authority;
@@ -15,6 +17,8 @@ import security.LoginService;
 import security.UserAccount;
 import security.UserAccountService;
 import domain.Auditor;
+import domain.CreditCard;
+import forms.RegistrationForm;
 
 @Service
 @Transactional
@@ -32,6 +36,12 @@ public class AuditorService {
 
 	@Autowired
 	private ActorService		actorService;
+
+	@Autowired
+	private UtilityService		utilityService;
+
+	@Autowired
+	private Validator			validator;
 
 
 	//Constructor ----------------------------------------------------
@@ -113,4 +123,141 @@ public class AuditorService {
 		return result;
 	}
 
+	public RegistrationForm createForm(final Auditor auditor) {
+		RegistrationForm registrationForm;
+
+		registrationForm = new RegistrationForm();
+
+		registrationForm.setName(auditor.getName());
+		registrationForm.setSurname(auditor.getSurname());
+		registrationForm.setVATnumber(auditor.getVATnumber());
+		registrationForm.setEmail(auditor.getEmail());
+		registrationForm.setId(auditor.getId());
+		registrationForm.setPhoto(auditor.getPhoto());
+		registrationForm.setPhoneNumber(auditor.getPhoneNumber());
+		registrationForm.setAddress(auditor.getAddress());
+		registrationForm.setCheckBoxAccepted(false);
+		registrationForm.setCheckBoxDataProcessesAccepted(false);
+
+		return registrationForm;
+	}
+
+	public Auditor reconstruct(final RegistrationForm registrationForm, final BindingResult binding) {
+		Auditor result;
+		final Auditor auditorStored;
+		UserAccount userAccount;
+		CreditCard creditCard;
+
+		if (registrationForm.getId() == 0) {
+			result = this.create();
+			creditCard = new CreditCard();
+
+			result.setName(registrationForm.getName());
+			result.setSurname(registrationForm.getSurname());
+			result.setVATnumber(registrationForm.getVATnumber());
+			result.setEmail(registrationForm.getEmail());
+			result.setPhoneNumber(registrationForm.getPhoneNumber());
+			result.setPhoto(registrationForm.getPhoto());
+			result.setAddress(registrationForm.getAddress());
+			result.setIsSpammer(registrationForm.getIsSpammer());
+
+			creditCard.setHolder(registrationForm.getCreditCard().getHolder());
+			creditCard.setMake(registrationForm.getCreditCard().getMake());
+			creditCard.setNumber(registrationForm.getCreditCard().getNumber());
+			creditCard.setExpirationMonth(registrationForm.getCreditCard().getExpirationMonth());
+			creditCard.setExpirationYear(registrationForm.getCreditCard().getExpirationYear());
+			creditCard.setCvvCode(registrationForm.getCreditCard().getCvvCode());
+
+			result.setCreditCard(creditCard);
+
+			userAccount = result.getUserAccount();
+			userAccount.setUsername(registrationForm.getUserAccount().getUsername());
+			userAccount.setPassword(registrationForm.getUserAccount().getPassword());
+
+			this.validateRegistration(result, registrationForm, binding);
+		} else {
+			result = new Auditor();
+			auditorStored = this.findOneToDisplayEdit(registrationForm.getId());
+
+			result.setName(registrationForm.getName());
+			result.setSurname(registrationForm.getSurname());
+			result.setEmail(registrationForm.getEmail());
+			result.setVATnumber(registrationForm.getVATnumber());
+			result.setPhoneNumber(registrationForm.getPhoneNumber());
+			result.setPhoto(registrationForm.getPhoto());
+			result.setAddress(registrationForm.getAddress());
+			result.setIsSpammer(auditorStored.getIsSpammer());
+			result.setId(auditorStored.getId());
+			result.setVersion(auditorStored.getVersion());
+			result.setCreditCard(auditorStored.getCreditCard());
+
+			this.utilityService.validateEmail(registrationForm.getEmail(), binding);
+
+			if (registrationForm.getUserAccount().getUsername().isEmpty() && registrationForm.getUserAccount().getPassword().isEmpty() && registrationForm.getUserAccount().getConfirmPassword().isEmpty()) // No ha actualizado ningun atributo de user account
+				result.setUserAccount(auditorStored.getUserAccount());
+			else if (!registrationForm.getUserAccount().getUsername().isEmpty() && registrationForm.getUserAccount().getPassword().isEmpty() && registrationForm.getUserAccount().getConfirmPassword().isEmpty()) {// Modifica el username
+				this.utilityService.validateUsernameEdition(registrationForm.getUserAccount().getUsername(), binding);
+				if (binding.hasErrors()) {
+
+				} else {
+					userAccount = auditorStored.getUserAccount();
+					userAccount.setUsername(registrationForm.getUserAccount().getUsername());
+					result.setUserAccount(userAccount);
+				}
+			} else if (registrationForm.getUserAccount().getUsername().isEmpty() && !registrationForm.getUserAccount().getPassword().isEmpty() && !registrationForm.getUserAccount().getConfirmPassword().isEmpty()) { // Modifica la password
+				this.utilityService.validatePasswordEdition(registrationForm.getUserAccount().getPassword(), registrationForm.getUserAccount().getConfirmPassword(), binding);
+				if (binding.hasErrors()) {
+
+				} else {
+					userAccount = auditorStored.getUserAccount();
+					userAccount.setPassword(registrationForm.getUserAccount().getPassword());
+					result.setUserAccount(userAccount);
+				}
+			} else if (!registrationForm.getUserAccount().getUsername().isEmpty() && !registrationForm.getUserAccount().getPassword().isEmpty() && !registrationForm.getUserAccount().getConfirmPassword().isEmpty()) { // Modifica el username y la password
+				this.utilityService.validateUsernamePasswordEdition(registrationForm, binding);
+				if (binding.hasErrors()) {
+
+				} else {
+					userAccount = auditorStored.getUserAccount();
+					userAccount.setUsername(registrationForm.getUserAccount().getUsername());
+					userAccount.setPassword(registrationForm.getUserAccount().getPassword());
+					result.setUserAccount(userAccount);
+				}
+			}
+
+		}
+		this.validator.validate(result, binding);
+
+		return result;
+	}
+
+	private void validateRegistration(final Auditor auditor, final RegistrationForm registrationForm, final BindingResult binding) {
+		String password, confirmPassword, username;
+		boolean checkBox, checkBoxData;
+
+		password = registrationForm.getUserAccount().getPassword();
+		confirmPassword = registrationForm.getUserAccount().getConfirmPassword();
+		username = registrationForm.getUserAccount().getUsername();
+		checkBox = registrationForm.getCheckBoxAccepted();
+		checkBoxData = registrationForm.getCheckBoxDataProcessesAccepted();
+
+		this.utilityService.validateEmail(auditor.getEmail(), binding);
+		if (username.trim().equals(""))
+			binding.rejectValue("userAccount.username", "actor.username.blank", "Must entry a username.");
+		if (password.trim().equals("") && confirmPassword.trim().equals("")) {
+			binding.rejectValue("userAccount.password", "password.empty", "Must entry a password");
+			binding.rejectValue("userAccount.confirmPassword", "confirmPassword.empty", "Must entry a confirm password");
+		}
+		if (!password.equals(confirmPassword))
+			binding.rejectValue("userAccount.confirmPassword", "user.missmatch.password", "Does not match with password");
+		if (checkBox == false)
+			binding.rejectValue("checkBoxAccepted", "actor.checkBox.agree", "Must agree terms and conditions");
+		if (checkBoxData == false)
+			binding.rejectValue("checkBoxDataProcessesAccepted", "actor.checkBoxData.agree", "Must agree data processes");
+		if (this.userAccountService.existUsername(username))
+			binding.rejectValue("userAccount.username", "actor.username.used", "Username already in use");
+		if (this.actorService.existEmail(auditor.getEmail()))
+			binding.rejectValue("email", "actor.email.used", "Email already in use");
+
+	}
 }

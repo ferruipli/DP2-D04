@@ -6,6 +6,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.CustomisationRepository;
 import domain.Customisation;
@@ -32,10 +34,6 @@ public class CustomisationService {
 		Assert.isTrue(this.customisationRepository.exists(customisation.getId()) && customisation.equals(this.find()));
 
 		Customisation result;
-		String spamWords;
-
-		spamWords = customisation.getSpamWords().toLowerCase();
-		customisation.setSpamWords(spamWords);
 
 		result = this.customisationRepository.save(customisation);
 
@@ -51,6 +49,36 @@ public class CustomisationService {
 		Assert.isTrue(all.length == 1);
 
 		result = all[0];
+
+		return result;
+	}
+
+
+	@Autowired
+	private Validator	validator;
+
+
+	public Customisation reconstruct(final Customisation customisation, final BindingResult binding) {
+		Customisation custo, result;
+
+		custo = this.find();
+
+		result = new Customisation();
+		result.setId(custo.getId());
+		result.setVersion(custo.getVersion());
+		result.setIsRebrandNotificationSent(custo.getIsRebrandNotificationSent());
+		result.setName(customisation.getName().trim());
+		result.setBanner(customisation.getBanner().trim());
+		result.setWelcomeMessageEn(customisation.getWelcomeMessageEn().trim());
+		result.setWelcomeMessageEs(customisation.getWelcomeMessageEs().trim());
+		result.setCountryCode(customisation.getCountryCode().trim());
+		result.setTimeCachedResults(customisation.getTimeCachedResults());
+		result.setMaxNumberResults(customisation.getMaxNumberResults());
+		result.setSpamWords(customisation.getSpamWords().trim().toLowerCase());
+		result.setFrate(customisation.getFrate());
+		result.setVATtax(customisation.getVATtax());
+
+		this.validator.validate(result, binding);
 
 		return result;
 	}
