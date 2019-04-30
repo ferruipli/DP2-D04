@@ -44,6 +44,11 @@
 	<jstl:out value="${customisation.maxNumberResults}" />
 </p>
 
+<p>
+	<strong> <spring:message code="customisation.rebranding" /> </strong>
+	<jstl:out value="${customisation.isRebrandNotificationSent}" />
+</p>
+
 <display:table name="spamWords" id="row" requestURI="customisation/administrator/display.do" pagesize="5" class="displaytag">
 	<display:column value="${row}" titleKey="customisation.spamWords"/>
 </display:table>

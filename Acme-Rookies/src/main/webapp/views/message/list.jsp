@@ -79,7 +79,7 @@
 	<a href="message/administrator/breachNotification.do" onclick="return confirm('<spring:message code="message.confirm.breach"/>')">
 		<spring:message code="message.breach" />
 	</a>
-	<jstl:if test="${isRebranding}">
+	<jstl:if test="${!isRebranding}">
 		<br />
 		<a href="message/administrator/rebrandingNotification.do" onclick="return confirm('<spring:message code="message.confirm.rebranding"/>')">
 			<spring:message code="message.rebranding" />
