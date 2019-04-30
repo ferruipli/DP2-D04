@@ -10,7 +10,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<form:form action="creditCard/administrator,company,rookie/edit.do" modelAttribute="creditCardForm">
+<form:form action="creditCard/administrator,auditor,company,provider,rookie/edit.do" modelAttribute="creditCardForm">
 
 	<fieldset>
 		<legend><spring:message code="creditCard.legend"/></legend>

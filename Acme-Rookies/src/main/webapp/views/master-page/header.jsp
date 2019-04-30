@@ -14,7 +14,7 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 
 <div>
-	<a href="#"><img src="${banner}" alt="Acme-Rookies, Inc." /></a>
+	<a href="#"><img src="${banner}" alt="Acme-Rookies, Inc." height="200px" width="700px"/></a>
 </div>
 
 <div>
@@ -36,6 +36,7 @@
 					<li><a href="customisation/administrator/display.do"> <spring:message code="master.page.customisation" /> </a></li>
 					<li><a href="dashboard/administrator/display.do"> <spring:message code="master.page.dashboard" /> </a></li>
 					<li><a href="actor/administrator/registerAdministrator.do"><spring:message code="master.page.administrator.create" /></a></li>
+					<li><a href="actor/administrator/registerAuditor.do"><spring:message code="master.page.auditor.create" /></a></li>
 					<li><a href="actor/administrator/list.do"><spring:message code="master.page.administrator.list" /></a></li>
 				</ul>
 			</li>
@@ -76,6 +77,7 @@
 					<li class="arrow"></li>
 					<li><a href="actor/registerCompany.do"><spring:message code="master.page.company.create" /></a></li>
 					<li><a href="actor/registerRookie.do"><spring:message code="master.page.rookie.create" /></a></li>
+					<li><a href="actor/registerProvider.do"><spring:message code="master.page.provider.create" /></a></li>
 				</ul>
 			</li>
 		</security:authorize>

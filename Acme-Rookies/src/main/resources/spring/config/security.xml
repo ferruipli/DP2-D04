@@ -43,10 +43,11 @@
 		<security:intercept-url pattern="/welcome/terms.do" access="permitAll" /> 
 		<security:intercept-url pattern="/welcome/dataProcesses.do" access="permitAll" /> 
 		
-		<security:intercept-url pattern="/actor/administrator,company,rookie/**" access="isAuthenticated()"/>
+		<security:intercept-url pattern="/actor/administrator,auditor,company,provider,rookie/**" access="isAuthenticated()"/>
 		
 		<security:intercept-url pattern="/actor/registerCompany.do" access="isAnonymous()" /> 
 		<security:intercept-url pattern="/actor/registerRookie.do" access="isAnonymous()" /> 
+		<security:intercept-url pattern="/actor/registerProvider.do" access="isAnonymous()" /> 
 		
 		<security:intercept-url pattern="/actor/administrator/**" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/actor/display.do**" access="permitAll" />  
@@ -69,7 +70,7 @@
 		
 		<security:intercept-url pattern="/company/list.do" access="permitAll" /> 
 		
-		<security:intercept-url pattern="/creditCard/administrator,company,rookie/**" access="isAuthenticated()"/>
+		<security:intercept-url pattern="/creditCard/administrator,auditor,company,provider,rookie/**" access="isAuthenticated()"/>
 		
 		<security:intercept-url pattern="/curriculum/rookie/**" access="hasRole('HACKER')" />
 		<security:intercept-url pattern="/curriculum/**" access="permitAll" />

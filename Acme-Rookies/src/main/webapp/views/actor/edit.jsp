@@ -11,7 +11,7 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 <spring:message code="confirm.telephone" var="confirmTelephone"/>
-<form:form action="actor/administrator,company,rookie/edit.do" modelAttribute="registrationForm" onsubmit="javascript:calcMD5();">
+<form:form action="actor/administrator,auditor,company,provider,rookie/edit.do" modelAttribute="registrationForm" onsubmit="javascript:calcMD5();">
 	<jstl:choose>
 		<jstl:when test="${rol == 'Company'}">
 			<h2>
@@ -27,6 +27,12 @@
 			<h2>
 				<spring:message code="header.administrator" />
 			</h2>
+		</jstl:when>
+		<jstl:when test="${rol == 'Auditor'}">
+			<h2><spring:message code="header.auditor"/></h2>
+		</jstl:when>
+		<jstl:when test="${rol == 'Provider'}">
+			<h2><spring:message code="header.provider"/></h2>
 		</jstl:when>
 
 	</jstl:choose>
@@ -74,6 +80,14 @@
 			<br />
 		
 		</jstl:if>
+		
+		<jstl:if test="${rol == 'Provider'}">
+		
+			<acme:textbox code="actor.provider.make" path="make"/>
+		
+			<br />
+		
+		</jstl:if>
 	</fieldset>
  
 	<fieldset>
@@ -104,6 +118,14 @@
 		<jstl:when test="${rol == 'Rookie'}">
 			<acme:submit name="saveRookie" code="actor.save" onclick="javascript: return checkTelephone('${confirmTelephone}');"/>
 			<input type="submit" name="deleteRookie" value="<spring:message code="actor.delete"/>" onclick="return confirm('<spring:message code="actor.confirm.delete"/>')"/>
+		</jstl:when>
+		<jstl:when test="${rol == 'Auditor'}">
+			<acme:submit name="saveAuditor" code="actor.save" onclick="javascript: return checkTelephone('${confirmTelephone}');"/>
+			<input type="submit" name="deleteAuditor" value="<spring:message code="actor.delete"/>" onclick="return confirm('<spring:message code="actor.confirm.delete"/>')"/>
+		</jstl:when>
+		<jstl:when test="${rol == 'Provider'}">
+			<acme:submit name="saveProvider" code="actor.save" onclick="javascript: return checkTelephone('${confirmTelephone}');"/>
+			<input type="submit" name="deleteProvider" value="<spring:message code="actor.delete"/>" onclick="return confirm('<spring:message code="actor.confirm.delete"/>')"/>
 		</jstl:when>
 	</jstl:choose>
 	
