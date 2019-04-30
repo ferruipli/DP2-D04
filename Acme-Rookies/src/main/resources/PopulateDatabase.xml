@@ -1628,6 +1628,7 @@
 		<property name="maxNumberResults" value="10" />
 		<property name="spamWords"
 			value="sex,viagra,cialis,one million,you've been selected,Nigeria,sexo,un millon,ha sido seleccionado" />
+		<property name="frate" value="500.00" />
 		<property name="VATtax" value="47" />
 		<property name="isRebrandNotificationSent" value="false" />
 	</bean>

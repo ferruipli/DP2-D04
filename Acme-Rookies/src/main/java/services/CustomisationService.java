@@ -75,6 +75,7 @@ public class CustomisationService {
 		result.setTimeCachedResults(customisation.getTimeCachedResults());
 		result.setMaxNumberResults(customisation.getMaxNumberResults());
 		result.setSpamWords(customisation.getSpamWords().trim().toLowerCase());
+		result.setFrate(customisation.getFrate());
 		result.setVATtax(customisation.getVATtax());
 
 		this.validator.validate(result, binding);
