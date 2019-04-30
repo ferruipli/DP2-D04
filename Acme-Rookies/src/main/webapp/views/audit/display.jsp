@@ -22,18 +22,19 @@
 
 	
 	<strong><spring:message code="audit.auditor"/>:</strong>
-		<jstl:out value="${audit.auditor.fullName}"/>
+		<jstl:out value="${audit.auditor.fullname}"/>
 	<br/>
 	
 	<strong><spring:message code="audit.position"/>:</strong>
 		<jstl:out value="${audit.position.title}"/>
 	<br/>
-	
+
+
 	<strong><spring:message code="audit.writtenMoment"/>:</strong>
-	<spring:message code="audit.formatMoment1" var="formatMoment1"/>
-		<fmt:formatDate value="${audit.writtenMoment}}" pattern="${formatMoment1}"/>
+	<spring:message code="audit.formatMoment1" var="formatMoment"/>
+		<fmt:formatDate value="${audit.writtenMoment}" pattern="${formatMoment}"/>
+		
 	<br/>
-	
 
 	<strong><spring:message code="audit.text"/>:</strong>
 		<jstl:out value="${audit.text}"/>
@@ -60,7 +61,9 @@
 	
 	<!-- Links -->	
 	
-	<a href="audit/list.do">
-		<spring:message	code="audit.back" />			
-	</a>
+	<security:authorize access="hasRole('AUDITOR')">
+		<a href="audit/auditor/list.do">
+			<spring:message	code="audit.back" />			
+		</a>
+	</security:authorize>
 
