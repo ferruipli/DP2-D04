@@ -17,6 +17,7 @@ import services.CompanyService;
 import services.CurriculumService;
 import services.PositionService;
 import services.RookieService;
+import services.SponsorshipService;
 import services.UtilityService;
 import domain.Audit;
 import domain.Company;
@@ -24,6 +25,7 @@ import domain.Curriculum;
 import domain.Position;
 import domain.Problem;
 import domain.Rookie;
+import domain.Sponsorship;
 
 @Controller
 @RequestMapping(value = "/position")
@@ -33,6 +35,9 @@ public class PositionController extends AbstractController {
 
 	@Autowired
 	private PositionService		positionService;
+
+	@Autowired
+	private SponsorshipService	sponsorshipService;
 
 	@Autowired
 	private CompanyService		companyService;
@@ -146,8 +151,10 @@ public class PositionController extends AbstractController {
 	public ModelAndView display(@RequestParam final int positionId) {
 		ModelAndView result;
 		Position position;
+		Sponsorship sponsorship;
 		Company principal;
 		Collection<Problem> problemList;
+
 		final Collection<Audit> audits;
 		Boolean isApplied, isDeadlineFuture;
 		Rookie rookiePrincipal;
@@ -197,10 +204,11 @@ public class PositionController extends AbstractController {
 			else
 				position = this.positionService.findOneToDisplay(positionId);
 
-
 			audits = this.auditService.findByPosition(position);
-			
+			sponsorship = this.sponsorshipService.getRandomSponsorship(positionId);
+
 			result.addObject("audits", audits);
+			result.addObject("sponsorship", sponsorship);
 			result.addObject("position", position);
 		} catch (final Throwable oops) {
 			result = new ModelAndView("redirect:../error.do");

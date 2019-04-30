@@ -59,6 +59,11 @@
 			</li>
 		</security:authorize>
 		
+		<security:authorize access="hasRole('PROVIDER')">
+			<li><a href="sponsorship/provider/list.do" class="fNiv"><spring:message code="master.page.sponsorship.list"/></a>
+			</li>
+		</security:authorize>
+		
 		<!-- ALL USERS START -->
 		<li><a href="position/search.do" class="fNiv"><spring:message code="master.page.searchposition"/></a>
 		</li>

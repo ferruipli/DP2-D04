@@ -151,6 +151,12 @@
 
 	
 </fieldset>
+
+<jstl:if test="${sponsorship ne null}">
+	<div>
+		<a href="${sponsorship.targetPage}"><img src="${sponsorship.banner}" alt="Sponsorship banner" height="275px" width="525px"/></a>
+	</div>
+</jstl:if>
 	
 	
 	<!-- Links -->	

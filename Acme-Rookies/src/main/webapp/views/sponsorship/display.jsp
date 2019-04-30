@@ -18,7 +18,7 @@
 	</p>
 	
 	<p>
-		<strong><spring:message code="sponsorship.target.url"/> </strong>
+		<strong><spring:message code="sponsorship.target.page"/> </strong>
 		<a href="${sponsorship.targetPage}"><jstl:out value="${sponsorship.targetPage}"/></a>
 	</p>
 	
@@ -65,6 +65,4 @@
 	<a href="sponsorship/provider/list.do"><spring:message code="sponsorship.return.list"/></a>
 	&nbsp;
 	<a href="sponsorship/provider/edit.do?sponsorshipId=${sponsorship.id}"><spring:message code="sponsorship.edit.extended"/></a>
-	&nbsp;
-	<a href="sponsorship/provider/delete.do?sponsorshipId=${sponsorship.id}"><spring:message code="sponsorship.delete"/></a>
 </div>

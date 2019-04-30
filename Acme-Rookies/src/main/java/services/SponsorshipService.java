@@ -52,7 +52,7 @@ public class SponsorshipService {
 
 	// Simple CRUD methods -----------------------------------------------
 
-	private Sponsorship create() {
+	private Sponsorship create(final Position position) {
 		Sponsorship result;
 		Provider provider;
 
@@ -61,6 +61,7 @@ public class SponsorshipService {
 
 		result.setProvider(provider);
 		result.setCreditCard(provider.getCreditCard());
+		result.setPosition(position);
 
 		return result;
 	}
@@ -70,9 +71,7 @@ public class SponsorshipService {
 		Position position;
 
 		position = this.positionService.findOne(positionId);
-		result = this.create();
-
-		result.setPosition(position);
+		result = this.create(position);
 
 		return result;
 	}
@@ -164,7 +163,7 @@ public class SponsorshipService {
 		Sponsorship result, sponsorshipStored;
 
 		if (sponsorship.getId() == 0)
-			result = this.create();
+			result = this.create(sponsorship.getPosition());
 		else {
 			result = new Sponsorship();
 			sponsorshipStored = this.sponsorshipRepository.findOne(sponsorship.getId());
@@ -172,12 +171,12 @@ public class SponsorshipService {
 			result.setId(sponsorship.getId());
 			result.setProvider(sponsorshipStored.getProvider());
 			result.setVersion(sponsorshipStored.getVersion());
+			result.setPosition(sponsorshipStored.getPosition());
 		}
 
 		result.setBanner(sponsorship.getBanner().trim());
 		result.setCreditCard(sponsorship.getCreditCard());
 		result.setTargetPage(sponsorship.getTargetPage().trim());
-		result.setPosition(sponsorship.getPosition());
 
 		this.validator.validate(result, binding);
 

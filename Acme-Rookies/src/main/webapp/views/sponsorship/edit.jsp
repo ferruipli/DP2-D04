@@ -8,15 +8,17 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
-<form:form action="sponsorship/sponsor/edit.do" modelAttribute="sponsorship">	
+<form:form action="sponsorship/provider/edit.do" modelAttribute="sponsorship">	
 	<form:hidden path="id"/>
-	<form:hidden path="position"/>
+	<jstl:if test="${sponsorship.id == 0}">
+		<form:hidden path="position"/>
+	</jstl:if>
 	
 	<fieldset>
 		<legend><spring:message code="sponsorship.general.fields"/></legend>
 		
 		<acme:textbox code="sponsorship.banner" path="banner"/>
-		<acme:textbox code="sponsorship.target.url" path="targetPage"/>
+		<acme:textbox code="sponsorship.target.page" path="targetPage"/>
 	</fieldset>
 	
 	<fieldset>
@@ -36,7 +38,7 @@
 	<div>
 		<acme:submit name="save" code="sponsorship.save"/>
 		&nbsp;
-		<acme:submit name="delete" code="sponsorship.save"/>
+		<acme:submit name="delete" code="sponsorship.delete"/>
 		&nbsp;
 		<acme:cancel code="sponsorship.cancel" url="sponsorship/provider/list.do"/>
 	</div>
