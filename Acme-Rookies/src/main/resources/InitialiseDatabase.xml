@@ -309,7 +309,7 @@
 	<!-- Customisation -->
 	<bean id="customisation1" class="domain.Customisation">
 		<property name="name" value="Acme Rookie Rank" />
-		<property name="banner" value="https://i.imgur.com/7b8lu4b.png" />
+		<property name="banner" value="https://i.ibb.co/LQXvBrh/Copia-de-I-m-Back.png" />
 		<property name="welcomeMessageEn"
 			value="Welcome to Acme Rookie Rank! We're IT rookie's favourite job marketplace!" />
 		<property name="welcomeMessageEs"
