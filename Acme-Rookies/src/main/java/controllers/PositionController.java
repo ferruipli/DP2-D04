@@ -13,12 +13,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.ApplicationService;
 import services.AuditService;
+import services.AuditorService;
 import services.CompanyService;
 import services.CurriculumService;
 import services.PositionService;
 import services.RookieService;
 import services.UtilityService;
 import domain.Audit;
+import domain.Auditor;
 import domain.Company;
 import domain.Curriculum;
 import domain.Position;
@@ -48,6 +50,9 @@ public class PositionController extends AbstractController {
 
 	@Autowired
 	private AuditService		auditService;
+
+	@Autowired
+	private AuditorService		auditorService;
 
 	@Autowired
 	private UtilityService		utilityService;
@@ -149,10 +154,11 @@ public class PositionController extends AbstractController {
 		Company principal;
 		Collection<Problem> problemList;
 		final Collection<Audit> audits;
-		Boolean isApplied, isDeadlineFuture;
+		Boolean isApplied, isDeadlineFuture, isAuditable;
 		Rookie rookiePrincipal;
 		Boolean hasProblem;
 		Date moment;
+		Auditor auditorPrincipal;
 
 		try {
 			result = new ModelAndView("position/display");
@@ -163,6 +169,12 @@ public class PositionController extends AbstractController {
 				isDeadlineFuture = true;
 
 			result.addObject("isDeadlineFuture", isDeadlineFuture);
+			try {
+				auditorPrincipal = this.auditorService.findByPrincipal();
+			} catch (final Exception e1) {
+				auditorPrincipal = null;
+			}
+
 			try {
 				principal = this.companyService.findByPrincipal();
 			} catch (final Exception e1) {
@@ -187,19 +199,23 @@ public class PositionController extends AbstractController {
 				result.addObject("hasProblem", hasProblem);
 				result.addObject("principal", principal);
 				result.addObject("problemList", problemList);
-			} else if (rookiePrincipal != null && rookiePrincipal.getUserAccount().getAuthorities().toString().equals("[HACKER]")) {
+			} else if (rookiePrincipal != null) {
 				position = this.positionService.findOne(positionId);
 				rookiePrincipal = this.rookieService.findByPrincipal();
 				isApplied = this.applicationService.isApplied(position, rookiePrincipal);
 				result.addObject("isApplied", isApplied);
+
+			} else if (auditorPrincipal != null) {
+
+				isAuditable = this.auditService.isAuditable(position, auditorPrincipal);
+				result.addObject("isAuditable", isAuditable);
 			}
 
 			else
 				position = this.positionService.findOneToDisplay(positionId);
 
-
 			audits = this.auditService.findByPosition(position);
-			
+
 			result.addObject("audits", audits);
 			result.addObject("position", position);
 		} catch (final Throwable oops) {

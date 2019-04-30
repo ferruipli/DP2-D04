@@ -28,11 +28,17 @@
 		<a href="audit/display.do?auditId=${row.id}"><spring:message code="audit.display"/></a>
 	</display:column>	
 	
-	<jstl:if test="${ !row.finalMode}">
-		<display:column>
+	<display:column>
+		<jstl:if test="${ !row.finalMode}">
 			<a href="audit/auditor/edit.do?auditId=${row.id}"><spring:message code="audit.edit"/></a>
-		</display:column>
-	</jstl:if>
+		</jstl:if>	
+	</display:column>
+		
+	<display:column>
+		<jstl:if test="${ !row.finalMode}">
+			<a href="audit/auditor/makeFinal.do?auditId=${row.id}"><spring:message code="audit.makeFinal"/></a>
+		</jstl:if>
+	</display:column>
 	
 	<display:column property="auditor.fullname" titleKey="audit.auditor" />
 	
