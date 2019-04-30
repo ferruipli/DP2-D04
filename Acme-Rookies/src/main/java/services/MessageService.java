@@ -25,6 +25,7 @@ import domain.Finder;
 import domain.Message;
 import domain.Position;
 import domain.Rookie;
+import domain.Sponsorship;
 import domain.SystemTag;
 
 @Service
@@ -319,6 +320,37 @@ public class MessageService {
 		customisation.setIsRebrandNotificationSent(true);
 
 		return result;
+	}
+
+	//	TODO: A la espera del atributo FlatRate en Customisation 
+	public Message notificationFlatRate(final Sponsorship sponsorship) {
+		//		Assert.notNull(sponsorship);
+		//		Assert.isTrue(sponsorship.getId() != 0);
+		//
+		//		Message message, result;
+		//		Provider provider;
+		//		List<Actor> recipients;
+		//		String subject, body;
+		//		Customisation customisation;
+		//		double flatRate, vat, finalRate;
+		//
+		//		customisation = this.customisationService.find();
+		//		provider = sponsorship.getProvider();
+		//		flatRate = customisation.getFlatRate();
+		//		vat = customisation.getVATtax();
+		//		finalRate = flatRate * (1.0 + vat);
+		//		recipients = new ArrayList<Actor>();
+		//		recipients.add(provider);
+		//
+		//		subject = "Fare notification. / Notificación de tasas.";
+		//		body = "The payment of " + finalRate + " euros has been made in one of you sponsorships for the " + sponsorship.getPosition().getTitle() + " position. / Se ha realizado el cobro de " + finalRate + " euros de uno de sus patrocinios para el cargo "
+		//			+ sponsorship.getPosition().getTitle() + ".";
+		//
+		//		message = this.createNotification(recipients, subject, body);
+		//		result = this.messageRepository.save(message);
+		//
+		//		return result;
+		return null;
 	}
 
 	// This method id used when an actor want to delete all his or her data.

@@ -100,6 +100,8 @@
 		<security:intercept-url pattern="/socialProfile/administrator,company,rookie/**" access="isAuthenticated()" />
 		<security:intercept-url pattern="/socialProfile/**" access="permitAll" />
 		
+		<security:intercept-url pattern="/sponsorship/provider/**" access="hasRole('PROVIDER')"/>
+		
 		<security:intercept-url pattern="/exportData/administrator,company,rookie/export.do" access="isAuthenticated()" />
 		
 		<security:intercept-url pattern="/error.do" access="permitAll" />
