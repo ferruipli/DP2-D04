@@ -48,12 +48,12 @@
 </p>
 
 <strong> <spring:message code="message.recipients"/>: </strong>
-<display:table name="${messageToDisplay.recipients}" id="row" requestURI="message/administrator,company,rookie/display.do" pagesize="5" class="displaytag">
+<display:table name="${messageToDisplay.recipients}" id="row" requestURI="message/administrator,auditor,company,provider,rookie/display.do" pagesize="5" class="displaytag">
 	<display:column property="fullname" titleKey="actor.name"/>
 	<display:column property="email" titleKey="actor.email"/>
 </display:table>	   
 
-<a href="message/administrator,company,rookie/list.do">
+<a href="message/administrator,auditor,company,provider,rookie/list.do">
 	<spring:message code="message.return" />
 </a>
 	   

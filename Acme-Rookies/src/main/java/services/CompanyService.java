@@ -165,6 +165,14 @@ public class CompanyService {
 		return result;
 	}
 
+	public Collection<Company> findCompaniesHighestScore() {
+		Collection<Company> result;
+
+		result = this.companyRepository.findCompaniesHighestScore();
+
+		return result;
+	}
+
 	public Company reconstruct(final RegistrationForm registrationForm, final BindingResult binding) {
 		Company result, companyStored;
 		UserAccount userAccount;

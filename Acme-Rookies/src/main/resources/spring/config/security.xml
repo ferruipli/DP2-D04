@@ -101,15 +101,19 @@
 		<security:intercept-url pattern="/problem/company,rookie/**" access="hasAnyRole('COMPANY','HACKER')" />
 		<security:intercept-url pattern="/problem/company/**" access="hasRole('COMPANY')" /> 
 	
+		<security:intercept-url pattern="/provider/list.do" access="permitAll" /> 
+	
 		<security:intercept-url pattern="/socialProfile/administrator,company,rookie/**" access="isAuthenticated()" />
+
+		<security:intercept-url pattern="/socialProfile/administrator,auditor,company,provider,rookie/**" access="isAuthenticated()" />
+
 		<security:intercept-url pattern="/socialProfile/**" access="permitAll" />
 		
 		<security:intercept-url pattern="/exportData/administrator,company,rookie/export.do" access="isAuthenticated()" />
 		
 		<security:intercept-url pattern="/error.do" access="permitAll" />
 		
-
-		<security:intercept-url pattern="/**" access="hasRole('NONE')" /> 
+		<security:intercept-url pattern="/**" access="hasRole('NONE')" /> <!-- requires-channel="https" --> 
 
 
 		<security:form-login 

@@ -4,6 +4,8 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -32,8 +34,9 @@ public class Customisation extends DomainEntity {
 	private int		timeCachedResults;
 	private int		maxNumberResults;
 	private String	spamWords;
+	private double	frate;
 	private int		VATtax;
-	private Boolean	isRebrandNotificationSent;
+	private boolean	isRebrandNotificationSent;
 
 
 	@NotBlank
@@ -115,7 +118,17 @@ public class Customisation extends DomainEntity {
 		this.spamWords = spamWords;
 	}
 
-	@Range(min = 1, max = 100)
+	@Min(0)
+	@Digits(integer = 9, fraction = 2)
+	public double getFrate() {
+		return this.frate;
+	}
+
+	public void setFrate(final double frate) {
+		this.frate = frate;
+	}
+
+	@Range(min = 0, max = 100)
 	public int getVATtax() {
 		return this.VATtax;
 	}
@@ -124,11 +137,11 @@ public class Customisation extends DomainEntity {
 		this.VATtax = vATtax;
 	}
 
-	public Boolean getIsRebrandNotificationSent() {
+	public boolean getIsRebrandNotificationSent() {
 		return this.isRebrandNotificationSent;
 	}
 
-	public void setIsRebrandNotificationSent(final Boolean isRebrandNotificationSent) {
+	public void setIsRebrandNotificationSent(final boolean isRebrandNotificationSent) {
 		this.isRebrandNotificationSent = isRebrandNotificationSent;
 	}
 

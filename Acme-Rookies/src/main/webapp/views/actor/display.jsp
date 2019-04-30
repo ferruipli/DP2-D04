@@ -146,6 +146,13 @@
 			</strong>
 			<jstl:out value="${actor.make}" />
 		</p>
+		
+		<p>
+			<strong> <spring:message code="actor.provider.items" />
+			</strong> <a href="item/list.do?providerId=${actor.id}"><spring:message
+					code="provider.items" /></a>
+		</p>
+		
 	</fieldset>
 </jstl:if>
 

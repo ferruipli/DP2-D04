@@ -1,8 +1,6 @@
 
 package controllers.administrator;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -57,17 +55,19 @@ public class CustomisationAdministratorController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid final Customisation customisation, final BindingResult binding) {
+	public ModelAndView save(final Customisation customisation, final BindingResult binding) {
 		ModelAndView result;
+		Customisation custo;
 
+		custo = this.customisationService.reconstruct(customisation, binding);
 		if (binding.hasErrors())
 			result = this.editModelAndView(customisation);
 		else
 			try {
-				this.customisationService.save(customisation);
+				this.customisationService.save(custo);
 				result = new ModelAndView("redirect:display.do");
 			} catch (final Throwable oops) {
-				result = this.editModelAndView(customisation, "customisation.commit.error");
+				result = this.editModelAndView(custo, "customisation.commit.error");
 			}
 
 		return result;
