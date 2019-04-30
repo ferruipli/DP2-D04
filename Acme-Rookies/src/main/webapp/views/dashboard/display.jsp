@@ -125,6 +125,38 @@
 	<jstl:out value="${findRatioEmptyVsNonEmpty}" />
 </p>
 
+<p> <strong> <spring:message code="dashboard.ten" />: </strong> </p>
+<table>
+	<tr>
+		<th> <spring:message code="dashboard.average" /> </th>
+		<th> <spring:message code="dashboard.min" /> </th>
+		<th> <spring:message code="dashboard.max" /> </th>
+		<th> <spring:message code="dashboard.deviation" /> </th>
+	</tr>
+	<tr>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
+	</tr>
+</table>
+
+<p> <strong> <spring:message code="dashboard.eleven" />: </strong> </p>
+<table>
+	<tr>
+		<th> <spring:message code="dashboard.average" /> </th>
+		<th> <spring:message code="dashboard.min" /> </th>
+		<th> <spring:message code="dashboard.max" /> </th>
+		<th> <spring:message code="dashboard.deviation" /> </th>
+	</tr>
+	<tr>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
+	</tr>
+</table>
+
 <p><strong> <spring:message code="dashboard.twelve" />: </strong></p>
 <display:table name="findCompaniesHighestScore" id="row" requestURI="dashboard/administrator/display.do" pagesize="5" class="displaytag">
 	<display:column property="fullname" titleKey="table.fullname" />
@@ -132,4 +164,75 @@
 	<display:column property="phoneNumber" titleKey="table.phoneNumber" />
 	<display:column property="address" titleKey="table.address"/>
 	<display:column property="auditScore" titleKey="table.auditScore"/>
+</display:table>
+
+<p>
+	<strong> <spring:message code="dashboard.thirteen" /> </strong>:
+	<jstl:out value="" />
+</p>
+
+<p> <strong> <spring:message code="dashboard.fourteen" />: </strong> </p>
+<table>
+	<tr>
+		<th> <spring:message code="dashboard.min" /> </th>
+		<th> <spring:message code="dashboard.max" /> </th>
+		<th> <spring:message code="dashboard.average" /> </th>
+		<th> <spring:message code="dashboard.deviation" /> </th>
+	</tr>
+	<tr>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
+	</tr>
+</table>
+
+<p><strong> <spring:message code="dashboard.fifteen" />: </strong></p>
+<display:table name="" id="row" requestURI="dashboard/administrator/display.do" pagesize="5" class="displaytag">
+	<display:column property="fullname" titleKey="table.fullname" />
+	<display:column property="email" titleKey="table.email" />
+	<display:column property="phoneNumber" titleKey="table.phoneNumber" />
+	<display:column property="address" titleKey="table.address"/>
+	<display:column property="make" titleKey="table.make"/>
+</display:table>
+
+<p> <strong> <spring:message code="dashboard.sixteen" />: </strong> </p>
+<table>
+	<tr>
+		<th> <spring:message code="dashboard.average" /> </th>
+		<th> <spring:message code="dashboard.min" /> </th>
+		<th> <spring:message code="dashboard.max" /> </th>
+		<th> <spring:message code="dashboard.deviation" /> </th>
+	</tr>
+	<tr>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
+	</tr>
+</table>
+
+<p> <strong> <spring:message code="dashboard.seventeen" />: </strong> </p>
+<table>
+	<tr>
+		<th> <spring:message code="dashboard.average" /> </th>
+		<th> <spring:message code="dashboard.min" /> </th>
+		<th> <spring:message code="dashboard.max" /> </th>
+		<th> <spring:message code="dashboard.deviation" /> </th>
+	</tr>
+	<tr>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
+	</tr>
+</table>
+
+<p><strong> <spring:message code="dashboard.eighteen" />: </strong></p>
+<display:table name="" id="row" requestURI="dashboard/administrator/display.do" pagesize="5" class="displaytag">
+	<display:column property="fullname" titleKey="table.fullname" />
+	<display:column property="email" titleKey="table.email" />
+	<display:column property="phoneNumber" titleKey="table.phoneNumber" />
+	<display:column property="address" titleKey="table.address"/>
+	<display:column property="make" titleKey="table.make"/>
 </display:table>
