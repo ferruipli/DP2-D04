@@ -46,6 +46,11 @@
 			</li>
 		</security:authorize>
 		
+		<security:authorize access="hasRole('AUDITOR')">
+			<li><a  href="audit/auditor/list.do" class="fNiv"><spring:message	code="master.page.audit.listAll" /></a>
+			</li>
+		</security:authorize>
+		
 		<security:authorize access="hasRole('HACKER')">
 			<li><a href="curriculum/rookie/list.do" class="fNiv"><spring:message code="master.page.curriculum.list"/></a>
 			</li>
