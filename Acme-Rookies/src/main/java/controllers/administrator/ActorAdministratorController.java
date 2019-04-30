@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.ActorService;
 import services.AdministratorService;
+import services.CompanyService;
 import services.AuditorService;
 import controllers.ActorAbstractController;
 import domain.Actor;
@@ -33,7 +34,11 @@ public class ActorAdministratorController extends ActorAbstractController {
 	private AdministratorService	administratorService;
 
 	@Autowired
+	private CompanyService			companyService;
+
+	@Autowired
 	private AuditorService			auditorService;
+
 
 
 	// Constructors
@@ -104,11 +109,24 @@ public class ActorAdministratorController extends ActorAbstractController {
 
 		try {
 			this.actorService.spammerProcess();
+			result = new ModelAndView("redirect:list.do");
 		} catch (final Throwable oops) {
 			result = new ModelAndView("redirect:/error.do");
 		}
 
-		result = new ModelAndView("redirect:list.do");
+		return result;
+	}
+
+	@RequestMapping(value = "/auditScoreProcess", method = RequestMethod.POST, params = "audit_score")
+	public ModelAndView auditScoreProcess() {
+		ModelAndView result;
+
+		try {
+			this.companyService.process_auditScore();
+			result = new ModelAndView("redirect:list.do");
+		} catch (final Throwable oops) {
+			result = new ModelAndView("redirect:/error.do");
+		}
 
 		return result;
 	}

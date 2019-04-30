@@ -98,7 +98,7 @@
 				<ul>
 					<li class="arrow"></li>		
 					<li><a href="actor/display.do"><spring:message code="master.page.actor.display" /></a></li>			
-					<li><a href="message/administrator,company,rookie/list.do"><spring:message code="master.page.message.list" /></a></li>
+					<li><a href="message/administrator,auditor,company,provider,rookie/list.do"><spring:message code="master.page.message.list" /></a></li>
 					<li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /> </a></li>
 				</ul>
 			</li>

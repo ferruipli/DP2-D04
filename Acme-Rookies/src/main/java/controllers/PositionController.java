@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ApplicationService;
+import services.AuditService;
 import services.CompanyService;
 import services.CurriculumService;
 import services.PositionService;
 import services.RookieService;
 import services.UtilityService;
+import domain.Audit;
 import domain.Company;
 import domain.Curriculum;
 import domain.Position;
@@ -43,6 +45,9 @@ public class PositionController extends AbstractController {
 
 	@Autowired
 	private CurriculumService	curriculumService;
+
+	@Autowired
+	private AuditService		auditService;
 
 	@Autowired
 	private UtilityService		utilityService;
@@ -143,6 +148,7 @@ public class PositionController extends AbstractController {
 		Position position;
 		Company principal;
 		Collection<Problem> problemList;
+		final Collection<Audit> audits;
 		Boolean isApplied, isDeadlineFuture;
 		Rookie rookiePrincipal;
 		Boolean hasProblem;
@@ -191,6 +197,10 @@ public class PositionController extends AbstractController {
 			else
 				position = this.positionService.findOneToDisplay(positionId);
 
+
+			audits = this.auditService.findByPosition(position);
+			
+			result.addObject("audits", audits);
 			result.addObject("position", position);
 		} catch (final Throwable oops) {
 			result = new ModelAndView("redirect:../error.do");

@@ -122,6 +122,35 @@
 </fieldset>
 </jstl:if>
 </security:authorize>
+
+<fieldset>
+	<legend>
+		<spring:message code="position.audits" />
+	</legend>
+	
+<display:table name="${audits}" id="row" requestURI="audit/list.do" class="displaytag" pagesize="5">
+
+
+	<security:authorize access="hasRole('COMPANY')">
+		<jstl:if test="${principal == row.auditor}">
+			<display:column>
+				<a href="audit/auditor/edit.do?auditId=${row.id}"><spring:message code="audit.edit"/></a>
+			</display:column>
+		</jstl:if>
+	</security:authorize>
+	
+	<display:column>
+		<a href="audit/display.do?auditId=${row.id}"><spring:message code="audit.display"/></a>
+	</display:column>	
+		
+	<display:column property="auditor.fullname" titleKey="audit.auditor" />
+	
+	<spring:message code="audit.formatMoment" var="formatMoment" />
+	<display:column property="writtenMoment" titleKey="audit.writtenMoment" sortable="true" format="${formatMoment}"/>
+</display:table>
+
+	
+</fieldset>
 	
 	
 	<!-- Links -->	

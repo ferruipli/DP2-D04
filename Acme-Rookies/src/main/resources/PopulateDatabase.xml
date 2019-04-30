@@ -1617,12 +1617,12 @@
 
 	<!-- Customisation -->
 	<bean id="customisation1" class="domain.Customisation">
-		<property name="name" value="Acme Rookie Rank" />
+		<property name="name" value="Acme Rookie" />
 		<property name="banner" value="https://i.ibb.co/LQXvBrh/Copia-de-I-m-Back.png" />
 		<property name="welcomeMessageEn"
-			value="Welcome to Acme Rookie Rank! We're IT rookie's favourite job marketplace!" />
+			value="Welcome to Acme Rookie! We're IT rookie's favourite job marketplace!" />
 		<property name="welcomeMessageEs"
-			value="¡Bienvenidos a Acme Rookie Rank! ¡Somos el mercado de trabajo favorito de los profesionales de las TICs!" />
+			value="¡Bienvenidos a Acme Rookie! ¡Somos el mercado de trabajo favorito de los profesionales de las TICs!" />
 		<property name="countryCode" value="+34" />
 		<property name="timeCachedResults" value="1" />
 		<property name="maxNumberResults" value="10" />

@@ -20,8 +20,32 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
+
+	<security:authorize access="hasRole('AUDITOR')">
+	<jstl:if test="${isOwner && audit.finalMode}">
+		<strong><spring:message code="audit.finalMode"/></strong>
+	<br/>	
+	</jstl:if>
+	
+	<jstl:if test="${isOwner && not audit.finalMode}">
+		<strong><spring:message code="audit.draftMode"/></strong>
+	<br/>	
+	</jstl:if>
+	</security:authorize>
+	
+	<strong><spring:message code="audit.auditor"/>:</strong>
+		<jstl:out value="${audit.auditor.fullname}"/>
+	<br/>
+	
+	<strong><spring:message code="audit.position"/>:</strong>
+		<jstl:out value="${audit.position.title}"/>
+	<br/>
+
+
 	<strong><spring:message code="audit.writtenMoment"/>:</strong>
-		<jstl:out value="${audit.writtenMoment}"/>
+	<spring:message code="audit.formatMoment1" var="formatMoment"/>
+		<fmt:formatDate value="${audit.writtenMoment}" pattern="${formatMoment}"/>
+		
 	<br/>
 
 	<strong><spring:message code="audit.text"/>:</strong>
@@ -33,23 +57,15 @@
 	<br/>
 	
 	
-	<security:authorize access="hasRole('AUDITOR')">
-	<jstl:if test="${isOwner && audit.finalMode}">
-		<strong><spring:message code="audit.finalMode"/>:</strong>
-	<br/>	
-	</jstl:if>
-	
-	<jstl:if test="${isOwner && not audit.finalMode}">
-		<strong><spring:message code="audit.draftMode"/>:</strong>
-	<br/>	
-	</jstl:if>
-	</security:authorize>
+
 	
 	
 	
 	<!-- Links -->	
 	
-	<a href="audit/list.do">
-		<spring:message	code="audit.back" />			
-	</a>
+	<security:authorize access="hasRole('AUDITOR')">
+		<a href="audit/auditor/list.do">
+			<spring:message	code="audit.back" />			
+		</a>
+	</security:authorize>
 

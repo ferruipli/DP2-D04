@@ -39,5 +39,5 @@
 	
 	<!-- Buttons -->
 	<acme:submit name="send" code="message.button.send" />
-	<acme:cancel url="message/administrator,company,rookie/list.do" code="message.button.cancel" />
+	<acme:cancel url="message/administrator,auditor,company,provider,rookie/list.do" code="message.button.cancel" />
 </form:form>

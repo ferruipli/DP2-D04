@@ -63,7 +63,7 @@
 		<security:intercept-url pattern="/area/administrator/**" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/area/display.do**" access="permitAll" /> 
 		
-		<security:intercept-url pattern="/audit/auditor/**" access="permitAll"  />
+		<security:intercept-url pattern="/audit/auditor/**" access="hasRole('AUDITOR')"   />
 		<security:intercept-url pattern="/audit/**" access="permitAll"  />
 
 		<security:intercept-url pattern="/box/**" access="isAuthenticated()" /> 
@@ -104,14 +104,17 @@
 		<security:intercept-url pattern="/provider/list.do" access="permitAll" /> 
 	
 		<security:intercept-url pattern="/socialProfile/administrator,company,rookie/**" access="isAuthenticated()" />
+
+		<security:intercept-url pattern="/socialProfile/administrator,auditor,company,provider,rookie/**" access="isAuthenticated()" />
+
 		<security:intercept-url pattern="/socialProfile/**" access="permitAll" />
 		
 		<security:intercept-url pattern="/exportData/administrator,company,rookie/export.do" access="isAuthenticated()" />
 		
 		<security:intercept-url pattern="/error.do" access="permitAll" />
 		
-		
-		<security:intercept-url pattern="/**" access="hasRole('NONE')" /> 
+		<security:intercept-url pattern="/**" access="hasRole('NONE')" /> <!-- requires-channel="https" --> 
+
 
 		<security:form-login 
 			login-page="/security/login.do"
