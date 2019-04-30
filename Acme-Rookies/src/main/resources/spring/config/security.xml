@@ -61,6 +61,9 @@
 		
 		<security:intercept-url pattern="/area/administrator/**" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/area/display.do**" access="permitAll" /> 
+		
+		<security:intercept-url pattern="/audit/auditor/**" access="permitAll"  />
+		<security:intercept-url pattern="/audit/**" access="permitAll"  />
 
 		<security:intercept-url pattern="/box/**" access="isAuthenticated()" /> 
 		
@@ -103,7 +106,6 @@
 		<security:intercept-url pattern="/exportData/administrator,company,rookie/export.do" access="isAuthenticated()" />
 		
 		<security:intercept-url pattern="/error.do" access="permitAll" />
-		
 		
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" /> <!-- requires-channel="https" --> 
 

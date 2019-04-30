@@ -46,6 +46,11 @@
 			</li>
 		</security:authorize>
 		
+		<security:authorize access="hasRole('AUDITOR')">
+			<li><a  href="audit/auditor/list.do" class="fNiv"><spring:message	code="master.page.audit.listAll" /></a>
+			</li>
+		</security:authorize>
+		
 		<security:authorize access="hasRole('HACKER')">
 			<li><a href="curriculum/rookie/list.do" class="fNiv"><spring:message code="master.page.curriculum.list"/></a>
 			</li>
@@ -86,7 +91,7 @@
 				<ul>
 					<li class="arrow"></li>		
 					<li><a href="actor/display.do"><spring:message code="master.page.actor.display" /></a></li>			
-					<li><a href="message/administrator,company,rookie/list.do"><spring:message code="master.page.message.list" /></a></li>
+					<li><a href="message/administrator,auditor,company,provider,rookie/list.do"><spring:message code="master.page.message.list" /></a></li>
 					<li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /> </a></li>
 				</ul>
 			</li>
