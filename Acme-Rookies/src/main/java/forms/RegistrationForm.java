@@ -15,6 +15,8 @@ public class RegistrationForm {
 	private String			address;
 	private Boolean			isSpammer;
 	private String			commercialName;
+	private Double			auditScore;
+	private String			make;
 	private UserAccountForm	userAccount;
 	private boolean			checkBoxAccepted;
 	private boolean			checkBoxDataProcessesAccepted;
@@ -122,6 +124,22 @@ public class RegistrationForm {
 
 	public void setCreditCard(final CreditCardForm creditCard) {
 		this.creditCard = creditCard;
+	}
+
+	public Double getAuditScore() {
+		return this.auditScore;
+	}
+
+	public void setAuditScore(final Double auditScore) {
+		this.auditScore = auditScore;
+	}
+
+	public String getMake() {
+		return this.make;
+	}
+
+	public void setMake(final String make) {
+		this.make = make;
 	}
 
 	public UserAccountForm getUserAccount() {
