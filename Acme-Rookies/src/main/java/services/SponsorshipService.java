@@ -52,8 +52,7 @@ public class SponsorshipService {
 
 	// Simple CRUD methods -----------------------------------------------
 
-	// TODO: Para que sirve este create?
-	public Sponsorship create() {
+	private Sponsorship create() {
 		Sponsorship result;
 		Provider provider;
 
@@ -100,7 +99,6 @@ public class SponsorshipService {
 		this.sponsorshipRepository.delete(sponsorship);
 	}
 
-	// TODO: Este findOne es necesario?
 	public Sponsorship findOne(final int sponsorshipId) {
 		Sponsorship result;
 
