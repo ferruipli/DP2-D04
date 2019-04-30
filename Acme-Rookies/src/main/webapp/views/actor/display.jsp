@@ -91,7 +91,7 @@
 
 	<jstl:if test="${isAuthorized == true}">
 		<a
-			href="actor/administrator,company,rookie/edit.do?actorId=${actor.id}"><spring:message
+			href="actor/administrator,auditor,company,provider,rookie/edit.do?actorId=${actor.id}"><spring:message
 				code="actor.edit" /></a>
 	</jstl:if>
 	
@@ -130,6 +130,19 @@
 	</fieldset>
 </jstl:if>
 
+<jstl:if test="${actor.userAccount.authorities=='[PROVIDER]'}">
+	<fieldset>
+		<legend>
+			<spring:message code="actor.provider.legend" />
+		</legend>
+		<p>
+			<strong> <spring:message code="actor.provider.make" />
+			</strong>
+			<jstl:out value="${actor.make}" />
+		</p>
+	</fieldset>
+</jstl:if>
+
 <jstl:if test="${isAuthorized == true}">
 <fieldset>
 	<legend><spring:message code="creditCard.legend"/></legend>
@@ -160,7 +173,7 @@
 		<jstl:out value="${actor.creditCard.expirationYear}"/>
 	</p>
 
-	<a href="creditCard/administrator,company,rookie/edit.do?actorId=${actor.id}"><spring:message
+	<a href="creditCard/administrator,auditor,company,provider,rookie/edit.do?actorId=${actor.id}"><spring:message
 				code="actor.creditCard.edit" /></a>
 
 	</fieldset>
