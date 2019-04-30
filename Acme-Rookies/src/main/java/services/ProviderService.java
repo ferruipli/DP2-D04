@@ -6,6 +6,9 @@ import java.util.Collection;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
@@ -101,6 +104,18 @@ public class ProviderService {
 	}
 
 	// Other business methods ----------------------------------------
+	public Collection<Provider> topFiveProviders() {
+		Collection<Provider> results;
+		Pageable page;
+		Page<Provider> providers;
+
+		page = new PageRequest(0, 5);
+		providers = this.providerRepository.topFiveProviders(page);
+
+		results = providers.getContent();
+
+		return results;
+	}
 
 	public Provider findByPrincipal() {
 		Provider result;

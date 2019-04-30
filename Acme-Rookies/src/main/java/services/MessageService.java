@@ -295,6 +295,32 @@ public class MessageService {
 		return result;
 	}
 
+	// Requirement 4.1: Run a procedure to notify te existing users of the rebranding.
+	public Message rebrandingNotification() {
+		Customisation customisation;
+		Message message, result;
+		String subject, body;
+		boolean b;
+
+		customisation = this.customisationService.find();
+		b = customisation.getIsRebrandNotificationSent();
+
+		Assert.isTrue(!b);
+
+		subject = "Rebranding notification / Notificación de renovación de imagen";
+		body = "Dear valued user, Acme Hacker Rank, Inc. has become succesful in Spain. They have managed to move to the USA using other commercial name: Acme Rookies, Inc. / Estimado usuario, Acme Hacker Rank, Inc. se ha convertido en un éxito en España. Ellos han gestionado un traslado hacia USA usando otro nombre comercial: Acme Rookies, Inc.";
+
+		message = this.createBroadcast();
+		message.setSubject(subject);
+		message.setBody(body);
+
+		result = this.messageRepository.save(message);
+
+		customisation.setIsRebrandNotificationSent(true);
+
+		return result;
+	}
+
 	// This method id used when an actor want to delete all his or her data.
 	public void deleteMessages(final Actor actor) {
 		Collection<Message> sentMessages, receivedMessages;

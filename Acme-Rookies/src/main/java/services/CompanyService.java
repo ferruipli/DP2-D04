@@ -55,6 +55,9 @@ public class CompanyService {
 	@Autowired
 	private ApplicationService	applicationService;
 
+	@Autowired
+	private AuditService		auditService;
+
 
 	// Constructors -------------------------------
 
@@ -301,6 +304,26 @@ public class CompanyService {
 		registrationForm.setCheckBoxDataProcessesAccepted(false);
 
 		return registrationForm;
+	}
+
+	public void process_auditScore() {
+		Collection<Company> all;
+
+		all = this.findAll();
+		for (final Company c : all)
+			this.run_process(c);
+	}
+
+	private void run_process(final Company company) {
+		Double value;
+
+		value = this.auditService.avgScoreByCompany(company.getId());
+		if (value != null)
+			// Normalise: the maximum value that a company can have as auditScore is 10.
+			// So, we must divide the value per 10.
+			value = value / 10.0;
+
+		company.setAuditScore(value);
 	}
 
 }

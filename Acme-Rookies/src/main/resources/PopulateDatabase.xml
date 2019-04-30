@@ -204,6 +204,66 @@
 	</bean>
 
 	<bean id="userAccount17" class="security.UserAccount">
+		<property name="username" value="aditor3" />
+		<property name="password" value="c1ba0a5d5bdb5f01bf1f0c99eeb7f02d" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="AUDITOR" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount18" class="security.UserAccount">
+		<property name="username" value="aditor4" />
+		<property name="password" value="787a712560913c1863e49edd3f0b77c0" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="AUDITOR" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount19" class="security.UserAccount">
+		<property name="username" value="aditor5" />
+		<property name="password" value="9dd9d53265240881c272ed51e77970cb" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="AUDITOR" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount20" class="security.UserAccount">
+		<property name="username" value="aditor6" />
+		<property name="password" value="40390b80aec05f29b14877ce81e3c080" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="AUDITOR" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount21" class="security.UserAccount">
+		<property name="username" value="aditor7" />
+		<property name="password" value="0906056fbfe7cae5b1aa07f0431b0e53" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="AUDITOR" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount22" class="security.UserAccount">
 		<property name="username" value="provider1" />
 		<property name="password" value="cdb82d56473901641525fbbd1d5dab56" />
 		<property name="authorities">
@@ -215,9 +275,69 @@
 		</property>
 	</bean>
 
-	<bean id="userAccount18" class="security.UserAccount">
+	<bean id="userAccount23" class="security.UserAccount">
 		<property name="username" value="provider2" />
 		<property name="password" value="ebfc815ee2cc6a16225105bb7b3e1e53" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PROVIDER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount24" class="security.UserAccount">
+		<property name="username" value="provider3" />
+		<property name="password" value="a575bf1b9ca7d068cef7bbc8fa7f43e1" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PROVIDER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount25" class="security.UserAccount">
+		<property name="username" value="provider4" />
+		<property name="password" value="5d35a7d891c4aae477f56ebf807fbd0a" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PROVIDER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount26" class="security.UserAccount">
+		<property name="username" value="provider5" />
+		<property name="password" value="bd19ee25be71cfc77f532c4b26b4a54e" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PROVIDER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount27" class="security.UserAccount">
+		<property name="username" value="provider6" />
+		<property name="password" value="85202849e05dc23e4b80f2af8be3650c" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PROVIDER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount28" class="security.UserAccount">
+		<property name="username" value="provider7" />
+		<property name="password" value="081695deabc539ca794c3437d1937158" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -459,7 +579,7 @@
 		<property name="problem" ref="problem13" />
 		<property name="answer" ref="answer14" />
 	</bean>
-	
+
 	<!-- Auditor -->
 	<bean id="auditor1" class="domain.Auditor">
 		<property name="name" value="Auditor1" />
@@ -473,7 +593,7 @@
 		<property name="address" value="Calle Auditor 1" />
 		<property name="userAccount" ref="userAccount15" />
 	</bean>
-	
+
 	<bean id="auditor2" class="domain.Auditor">
 		<property name="name" value="Auditor2" />
 		<property name="surname" value="Garcia" />
@@ -486,36 +606,146 @@
 		<property name="address" value="Calle Auditor 2" />
 		<property name="userAccount" ref="userAccount16" />
 	</bean>
-	
-	
+
+	<bean id="auditor3" class="domain.Auditor">
+		<property name="name" value="Auditor3" />
+		<property name="surname" value="Garcia" />
+		<property name="VATnumber" value="97" />
+		<property name="creditCard" ref="creditCard17" />
+		<property name="photo"
+			value="http://webfeb.in/wp-content/uploads/2016/11/logo-design-for-it-company.jpg" />
+		<property name="email" value="auditor3@gmail.com" />
+		<property name="phoneNumber" value="63015471" />
+		<property name="address" value="Calle Auditor 3" />
+		<property name="userAccount" ref="userAccount17" />
+	</bean>
+
+	<bean id="auditor4" class="domain.Auditor">
+		<property name="name" value="Auditor4" />
+		<property name="surname" value="Garcia" />
+		<property name="VATnumber" value="97" />
+		<property name="creditCard" ref="creditCard18" />
+		<property name="photo"
+			value="http://webfeb.in/wp-content/uploads/2016/11/logo-design-for-it-company.jpg" />
+		<property name="email" value="auditor4@gmail.com" />
+		<property name="phoneNumber" value="63012521" />
+		<property name="address" value="Calle Auditor 4" />
+		<property name="userAccount" ref="userAccount18" />
+	</bean>
+
+	<bean id="auditor5" class="domain.Auditor">
+		<property name="name" value="Auditor5" />
+		<property name="surname" value="Garcia" />
+		<property name="VATnumber" value="97" />
+		<property name="creditCard" ref="creditCard19" />
+		<property name="photo"
+			value="http://webfeb.in/wp-content/uploads/2016/11/logo-design-for-it-company.jpg" />
+		<property name="email" value="auditor5@gmail.com" />
+		<property name="phoneNumber" value="63015471" />
+		<property name="address" value="Calle Auditor 5" />
+		<property name="userAccount" ref="userAccount19" />
+	</bean>
+
+	<bean id="auditor6" class="domain.Auditor">
+		<property name="name" value="Auditor6" />
+		<property name="surname" value="Garcia" />
+		<property name="VATnumber" value="97" />
+		<property name="creditCard" ref="creditCard20" />
+		<property name="photo"
+			value="http://webfeb.in/wp-content/uploads/2016/11/logo-design-for-it-company.jpg" />
+		<property name="email" value="auditor6@gmail.com" />
+		<property name="phoneNumber" value="63012521" />
+		<property name="address" value="Calle Auditor 6" />
+		<property name="userAccount" ref="userAccount20" />
+	</bean>
+
+	<bean id="auditor7" class="domain.Auditor">
+		<property name="name" value="Auditor1" />
+		<property name="surname" value="Garcia" />
+		<property name="VATnumber" value="97" />
+		<property name="creditCard" ref="creditCard21" />
+		<property name="photo"
+			value="http://webfeb.in/wp-content/uploads/2016/11/logo-design-for-it-company.jpg" />
+		<property name="email" value="auditor7@gmail.com" />
+		<property name="phoneNumber" value="63015471" />
+		<property name="address" value="Calle Auditor 7" />
+		<property name="userAccount" ref="userAccount21" />
+	</bean>
+
+
 	<!-- Audit -->
 	<bean id="audit1" class="domain.Audit">
 		<property name="writtenMoment" value="2019/01/01 10:10" />
 		<property name="text" value="Text audit 1" />
 		<property name="score" value="7" />
-		<property name="finalMode"  value="true" />
+		<property name="finalMode" value="true" />
 		<property name="auditor" ref="auditor1" />
 		<property name="position" ref="position1" />
 	</bean>
-	
+
 	<bean id="audit2" class="domain.Audit">
 		<property name="writtenMoment" value="2017/01/01 10:10" />
 		<property name="text" value="Text audit 2" />
 		<property name="score" value="5" />
-		<property name="finalMode"  value="true" />
-		<property name="auditor" ref="auditor1" />
-		<property name="position" ref="position2" />
+		<property name="finalMode" value="true" />
+		<property name="auditor" ref="auditor2" />
+		<property name="position" ref="position9" />
 	</bean>
-	
+
 	<bean id="audit3" class="domain.Audit">
 		<property name="writtenMoment" value="2018/01/01 10:10" />
-		<property name="text" value="Text audit 2" />
+		<property name="text" value="Text audit 3" />
 		<property name="score" value="8" />
-		<property name="finalMode"  value="false" />
-		<property name="auditor" ref="auditor2" />
-		<property name="position" ref="position5" />
+		<property name="finalMode" value="false" />
+		<property name="auditor" ref="auditor3" />
+		<property name="position" ref="position6" />
 	</bean>
 	
+	<bean id="audit4" class="domain.Audit">
+		<property name="writtenMoment" value="2019/01/01 10:10" />
+		<property name="text" value="Text audit 4" />
+		<property name="score" value="4" />
+		<property name="finalMode" value="true" />
+		<property name="auditor" ref="auditor3" />
+		<property name="position" ref="position1" />
+	</bean>
+
+	<bean id="audit5" class="domain.Audit">
+		<property name="writtenMoment" value="2017/01/01 10:10" />
+		<property name="text" value="Text audit 5" />
+		<property name="score" value="1" />
+		<property name="finalMode" value="true" />
+		<property name="auditor" ref="auditor4" />
+		<property name="position" ref="position2" />
+	</bean>
+
+	<bean id="audit6" class="domain.Audit">
+		<property name="writtenMoment" value="2018/01/01 10:10" />
+		<property name="text" value="Text audit 6" />
+		<property name="score" value="10" />
+		<property name="finalMode" value="false" />
+		<property name="auditor" ref="auditor6" />
+		<property name="position" ref="position6" />
+	</bean>
+	
+	<bean id="audit7" class="domain.Audit">
+		<property name="writtenMoment" value="2019/01/01 10:10" />
+		<property name="text" value="Text audit 7" />
+		<property name="score" value="9" />
+		<property name="finalMode" value="true" />
+		<property name="auditor" ref="auditor7" />
+		<property name="position" ref="position7" />
+	</bean>
+
+	<bean id="audit8" class="domain.Audit">
+		<property name="writtenMoment" value="2017/01/01 10:10" />
+		<property name="text" value="Text audit 8" />
+		<property name="score" value="6" />
+		<property name="finalMode" value="true" />
+		<property name="auditor" ref="auditor7" />
+		<property name="position" ref="position8" />
+	</bean>
+
 
 	<!-- Company -->
 	<bean id="company1" class="domain.Company">
@@ -686,7 +916,7 @@
 		<property name="expirationYear" value="24" />
 		<property name="cvvCode" value="613" />
 	</bean>
-	
+
 	<bean id="creditCard15" class="domain.CreditCard">
 		<property name="holder" value="holder15" />
 		<property name="make" value="MCARD" />
@@ -721,6 +951,168 @@
 		<property name="expirationMonth" value="07" />
 		<property name="expirationYear" value="24" />
 		<property name="cvvCode" value="613" />
+	</bean>
+
+	<bean id="creditCard19" class="domain.CreditCard">
+		<property name="holder" value="holder19" />
+		<property name="make" value="MCARD" />
+		<property name="number" value="5772487597524838" />
+		<property name="expirationMonth" value="07" />
+		<property name="expirationYear" value="24" />
+		<property name="cvvCode" value="613" />
+	</bean>
+
+	<bean id="creditCard20" class="domain.CreditCard">
+		<property name="holder" value="holder20" />
+		<property name="make" value="MCARD" />
+		<property name="number" value="4382235426482099" />
+		<property name="expirationMonth" value="04" />
+		<property name="expirationYear" value="21" />
+		<property name="cvvCode" value="950" />
+	</bean>
+
+	<bean id="creditCard21" class="domain.CreditCard">
+		<property name="holder" value="holder21" />
+		<property name="make" value="MCARD" />
+		<property name="number" value="4057772385714058" />
+		<property name="expirationMonth" value="03" />
+		<property name="expirationYear" value="22" />
+		<property name="cvvCode" value="124" />
+	</bean>
+
+	<bean id="creditCard22" class="domain.CreditCard">
+		<property name="holder" value="holder22" />
+		<property name="make" value="MCARD" />
+		<property name="number" value="4507131688273419" />
+		<property name="expirationMonth" value="04" />
+		<property name="expirationYear" value="21" />
+		<property name="cvvCode" value="180" />
+	</bean>
+
+	<bean id="creditCard23" class="domain.CreditCard">
+		<property name="holder" value="holder23" />
+		<property name="make" value="MCARD" />
+		<property name="number" value="4737888229428065" />
+		<property name="expirationMonth" value="07" />
+		<property name="expirationYear" value="24" />
+		<property name="cvvCode" value="613" />
+	</bean>
+
+	<bean id="creditCard24" class="domain.CreditCard">
+		<property name="holder" value="holder24" />
+		<property name="make" value="MCARD" />
+		<property name="number" value="4436860896310276" />
+		<property name="expirationMonth" value="07" />
+		<property name="expirationYear" value="24" />
+		<property name="cvvCode" value="613" />
+	</bean>
+
+	<bean id="creditCard25" class="domain.CreditCard">
+		<property name="holder" value="holder25" />
+		<property name="make" value="MCARD" />
+		<property name="number" value="4393228453922746" />
+		<property name="expirationMonth" value="04" />
+		<property name="expirationYear" value="21" />
+		<property name="cvvCode" value="950" />
+	</bean>
+
+	<bean id="creditCard26" class="domain.CreditCard">
+		<property name="holder" value="holder26" />
+		<property name="make" value="MCARD" />
+		<property name="number" value="6991117604891978" />
+		<property name="expirationMonth" value="03" />
+		<property name="expirationYear" value="22" />
+		<property name="cvvCode" value="124" />
+	</bean>
+
+	<bean id="creditCard27" class="domain.CreditCard">
+		<property name="holder" value="holder27" />
+		<property name="make" value="MCARD" />
+		<property name="number" value="6686452513127994" />
+		<property name="expirationMonth" value="04" />
+		<property name="expirationYear" value="21" />
+		<property name="cvvCode" value="180" />
+	</bean>
+
+	<bean id="creditCard28" class="domain.CreditCard">
+		<property name="holder" value="holder28" />
+		<property name="make" value="MCARD" />
+		<property name="number" value="6372154754847707" />
+		<property name="expirationMonth" value="07" />
+		<property name="expirationYear" value="24" />
+		<property name="cvvCode" value="613" />
+	</bean>
+
+	<bean id="creditCard29" class="domain.CreditCard">
+		<property name="holder" value="holder29" />
+		<property name="make" value="VISA" />
+		<property name="number" value="4931301939300792" />
+		<property name="expirationMonth" value="08" />
+		<property name="expirationYear" value="21" />
+		<property name="cvvCode" value="724" />
+	</bean>
+
+	<bean id="creditCard30" class="domain.CreditCard">
+		<property name="holder" value="holder30" />
+		<property name="make" value="VISA" />
+		<property name="number" value="4149491757454652" />
+		<property name="expirationMonth" value="10" />
+		<property name="expirationYear" value="22" />
+		<property name="cvvCode" value="587" />
+	</bean>
+
+	<bean id="creditCard31" class="domain.CreditCard">
+		<property name="holder" value="holder31" />
+		<property name="make" value="VISA" />
+		<property name="number" value="4868000464935082" />
+		<property name="expirationMonth" value="03" />
+		<property name="expirationYear" value="22" />
+		<property name="cvvCode" value="587" />
+	</bean>
+
+	<bean id="creditCard32" class="domain.CreditCard">
+		<property name="holder" value="holder32" />
+		<property name="make" value="VISA" />
+		<property name="number" value="4507260447657628" />
+		<property name="expirationMonth" value="02" />
+		<property name="expirationYear" value="21" />
+		<property name="cvvCode" value="147" />
+	</bean>
+
+	<bean id="creditCard33" class="domain.CreditCard">
+		<property name="holder" value="holder33" />
+		<property name="make" value="MCARD" />
+		<property name="number" value="4937251840717218" />
+		<property name="expirationMonth" value="01" />
+		<property name="expirationYear" value="20" />
+		<property name="cvvCode" value="258" />
+	</bean>
+
+	<bean id="creditCard34" class="domain.CreditCard">
+		<property name="holder" value="holder34" />
+		<property name="make" value="MCARD" />
+		<property name="number" value="4774207809404400" />
+		<property name="expirationMonth" value="02" />
+		<property name="expirationYear" value="22" />
+		<property name="cvvCode" value="258" />
+	</bean>
+
+	<bean id="creditCard35" class="domain.CreditCard">
+		<property name="holder" value="holder35" />
+		<property name="make" value="MCARD" />
+		<property name="number" value="5506947852834563" />
+		<property name="expirationMonth" value="02" />
+		<property name="expirationYear" value="21" />
+		<property name="cvvCode" value="254" />
+	</bean>
+
+	<bean id="creditCard36" class="domain.CreditCard">
+		<property name="holder" value="holder36" />
+		<property name="make" value="MCARD" />
+		<property name="number" value="5257782243656891" />
+		<property name="expirationMonth" value="03" />
+		<property name="expirationYear" value="22" />
+		<property name="cvvCode" value="218" />
 	</bean>
 
 	<!-- Curriculum -->
@@ -1458,35 +1850,138 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<!-- Item -->
 	<bean id="item1" class="domain.Item">
 		<property name="name" value="Item1" />
 		<property name="description" value="descripcion item1" />
 		<property name="link"
 			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
-		<property name="picture" value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
+		<property name="picture"
+			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
 		<property name="provider" ref="provider1" />
 	</bean>
-	
+
 	<bean id="item2" class="domain.Item">
 		<property name="name" value="Item2" />
-		<property name="description" value="descripcion item1" />
+		<property name="description" value="descripcion item2" />
 		<property name="link"
 			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
-		<property name="picture" value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
+		<property name="picture"
+			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
 		<property name="provider" ref="provider1" />
 	</bean>
-	
+
 	<bean id="item3" class="domain.Item">
 		<property name="name" value="Item3" />
-		<property name="description" value="descripcion item1" />
+		<property name="description" value="descripcion item3" />
 		<property name="link"
 			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
-		<property name="picture" value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
+		<property name="picture"
+			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
+		<property name="provider" ref="provider1" />
+	</bean>
+
+	<bean id="item4" class="domain.Item">
+		<property name="name" value="Item4" />
+		<property name="description" value="descripcion item4" />
+		<property name="link"
+			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
+		<property name="picture"
+			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
 		<property name="provider" ref="provider2" />
 	</bean>
-	
+
+	<bean id="item5" class="domain.Item">
+		<property name="name" value="Item5" />
+		<property name="description" value="descripcion item5" />
+		<property name="link"
+			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
+		<property name="picture"
+			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
+		<property name="provider" ref="provider2" />
+	</bean>
+
+	<bean id="item6" class="domain.Item">
+		<property name="name" value="Item6" />
+		<property name="description" value="descripcion item6" />
+		<property name="link"
+			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
+		<property name="picture"
+			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
+		<property name="provider" ref="provider3" />
+	</bean>
+
+	<bean id="item7" class="domain.Item">
+		<property name="name" value="Item7" />
+		<property name="description" value="descripcion item7" />
+		<property name="link"
+			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
+		<property name="picture"
+			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
+		<property name="provider" ref="provider4" />
+	</bean>
+
+	<bean id="item8" class="domain.Item">
+		<property name="name" value="Item8" />
+		<property name="description" value="descripcion item8" />
+		<property name="link"
+			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
+		<property name="picture"
+			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
+		<property name="provider" ref="provider5" />
+	</bean>
+
+	<bean id="item9" class="domain.Item">
+		<property name="name" value="Item9" />
+		<property name="description" value="descripcion item9" />
+		<property name="link"
+			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
+		<property name="picture"
+			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
+		<property name="provider" ref="provider5" />
+	</bean>
+
+	<bean id="item10" class="domain.Item">
+		<property name="name" value="Item10" />
+		<property name="description" value="descripcion item10" />
+		<property name="link"
+			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
+		<property name="picture"
+			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
+		<property name="provider" ref="provider5" />
+	</bean>
+
+	<bean id="item11" class="domain.Item">
+		<property name="name" value="Item11" />
+		<property name="description" value="descripcion item11" />
+		<property name="link"
+			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
+		<property name="picture"
+			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
+		<property name="provider" ref="provider5" />
+	</bean>
+
+	<bean id="item12" class="domain.Item">
+		<property name="name" value="Item12" />
+		<property name="description" value="descripcion item12" />
+		<property name="link"
+			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
+		<property name="picture"
+			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
+		<property name="provider" ref="provider6" />
+	</bean>
+
+	<bean id="item13" class="domain.Item">
+		<property name="name" value="Item13" />
+		<property name="description" value="descripcion item13" />
+		<property name="link"
+			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
+		<property name="picture"
+			value="https://www.madmen-onlinemarketing.de/wp-content/uploads/jan-madmen-onlinemarketing-e1525337078609.jpg" />
+		<property name="provider" ref="provider6" />
+	</bean>
+
 
 	<!-- Rookie -->
 	<bean id="rookie1" class="domain.Rookie">
@@ -2580,59 +3075,179 @@
 		<property name="isFinalMode" value="false" />
 		<property name="company" ref="company2" />
 	</bean>
-	
-		<!-- Provider -->
+
+	<!-- Provider -->
 	<bean id="provider1" class="domain.Provider">
 		<property name="name" value="Provider1" />
 		<property name="surname" value="Lobato" />
 		<property name="VATnumber" value="97" />
-		<property name="creditCard" ref="creditCard17" />
+		<property name="creditCard" ref="creditCard22" />
 		<property name="photo"
 			value="http://webfeb.in/wp-content/uploads/2016/11/logo-design-for-it-company.jpg" />
 		<property name="email" value="provider1@gmail.com" />
 		<property name="phoneNumber" value="63015521" />
 		<property name="address" value="Calle Provider 1" />
 		<property name="make" value="Make del Provider 1" />
-		<property name="userAccount" ref="userAccount17" />
+		<property name="userAccount" ref="userAccount22" />
 	</bean>
-	
+
 	<bean id="provider2" class="domain.Provider">
 		<property name="name" value="Provider2" />
 		<property name="surname" value="Pavon" />
 		<property name="VATnumber" value="97" />
-		<property name="creditCard" ref="creditCard18" />
+		<property name="creditCard" ref="creditCard23" />
 		<property name="photo"
 			value="http://webfeb.in/wp-content/uploads/2016/11/logo-design-for-it-company.jpg" />
 		<property name="email" value="provider2@gmail.com" />
 		<property name="phoneNumber" value="63015521" />
 		<property name="address" value="Calle Provider 2" />
 		<property name="make" value="Make del Provider 2" />
-		<property name="userAccount" ref="userAccount18" />
+		<property name="userAccount" ref="userAccount23" />
 	</bean>
-	
+
+	<bean id="provider3" class="domain.Provider">
+		<property name="name" value="Provider3" />
+		<property name="surname" value="Lobato" />
+		<property name="VATnumber" value="97" />
+		<property name="creditCard" ref="creditCard24" />
+		<property name="photo"
+			value="http://webfeb.in/wp-content/uploads/2016/11/logo-design-for-it-company.jpg" />
+		<property name="email" value="provider3@gmail.com" />
+		<property name="phoneNumber" value="63015521" />
+		<property name="address" value="Calle Provider 3" />
+		<property name="make" value="Make del Provider 3" />
+		<property name="userAccount" ref="userAccount24" />
+	</bean>
+
+	<bean id="provider4" class="domain.Provider">
+		<property name="name" value="Provider4" />
+		<property name="surname" value="Pavon" />
+		<property name="VATnumber" value="97" />
+		<property name="creditCard" ref="creditCard25" />
+		<property name="photo"
+			value="http://webfeb.in/wp-content/uploads/2016/11/logo-design-for-it-company.jpg" />
+		<property name="email" value="provider4@gmail.com" />
+		<property name="phoneNumber" value="63015521" />
+		<property name="address" value="Calle Provider 4" />
+		<property name="make" value="Make del Provider 4" />
+		<property name="userAccount" ref="userAccount25" />
+	</bean>
+
+	<bean id="provider5" class="domain.Provider">
+		<property name="name" value="Provider5" />
+		<property name="surname" value="Lobato" />
+		<property name="VATnumber" value="97" />
+		<property name="creditCard" ref="creditCard26" />
+		<property name="photo"
+			value="http://webfeb.in/wp-content/uploads/2016/11/logo-design-for-it-company.jpg" />
+		<property name="email" value="provider5@gmail.com" />
+		<property name="phoneNumber" value="63015521" />
+		<property name="address" value="Calle Provider 5" />
+		<property name="make" value="Make del Provider 5" />
+		<property name="userAccount" ref="userAccount26" />
+	</bean>
+
+	<bean id="provider6" class="domain.Provider">
+		<property name="name" value="Provider6" />
+		<property name="surname" value="Pavon" />
+		<property name="VATnumber" value="97" />
+		<property name="creditCard" ref="creditCard27" />
+		<property name="photo"
+			value="http://webfeb.in/wp-content/uploads/2016/11/logo-design-for-it-company.jpg" />
+		<property name="email" value="provider6@gmail.com" />
+		<property name="phoneNumber" value="63015521" />
+		<property name="address" value="Calle Provider 6" />
+		<property name="make" value="Make del Provider 6" />
+		<property name="userAccount" ref="userAccount27" />
+	</bean>
+
+	<bean id="provider7" class="domain.Provider">
+		<property name="name" value="Provider7" />
+		<property name="surname" value="Lobato" />
+		<property name="VATnumber" value="97" />
+		<property name="creditCard" ref="creditCard28" />
+		<property name="photo"
+			value="http://webfeb.in/wp-content/uploads/2016/11/logo-design-for-it-company.jpg" />
+		<property name="email" value="provider7@gmail.com" />
+		<property name="phoneNumber" value="63015521" />
+		<property name="address" value="Calle Provider 7" />
+		<property name="make" value="Make del Provider 7" />
+		<property name="userAccount" ref="userAccount28" />
+	</bean>
+
+
 	<!-- Sponsorship -->
 	<bean id="sponsorship1" class="domain.Sponsorship">
-		<property name="creditCard" ref="creditCard1" />
-		<property name="banner" value="https://www.digitalprinting.co.uk/media/images/products/slides/31/vinyl-pvc-banners-1.jpg" />
+		<property name="creditCard" ref="creditCard29" />
+		<property name="banner"
+			value="https://www.digitalprinting.co.uk/media/images/products/slides/31/vinyl-pvc-banners-1.jpg" />
 		<property name="targetPage" value="http://www.targetpage.com" />
 		<property name="provider" ref="provider1" />
 		<property name="position" ref="position1" />
 	</bean>
-	
+
 	<bean id="sponsorship2" class="domain.Sponsorship">
-		<property name="creditCard" ref="creditCard2" />
-		<property name="banner" value="https://www.digitalprinting.co.uk/media/images/products/slides/31/vinyl-pvc-banners-1.jpg" />
+		<property name="creditCard" ref="creditCard30" />
+		<property name="banner"
+			value="https://www.digitalprinting.co.uk/media/images/products/slides/31/vinyl-pvc-banners-1.jpg" />
 		<property name="targetPage" value="http://www.targetpage.com" />
 		<property name="provider" ref="provider1" />
 		<property name="position" ref="position2" />
 	</bean>
-	
+
 	<bean id="sponsorship3" class="domain.Sponsorship">
-		<property name="creditCard" ref="creditCard1" />
-		<property name="banner" value="https://www.digitalprinting.co.uk/media/images/products/slides/31/vinyl-pvc-banners-1.jpg" />
+		<property name="creditCard" ref="creditCard31" />
+		<property name="banner"
+			value="https://www.digitalprinting.co.uk/media/images/products/slides/31/vinyl-pvc-banners-1.jpg" />
 		<property name="targetPage" value="http://www.targetpage.com" />
 		<property name="provider" ref="provider2" />
+		<property name="position" ref="position2" />
+	</bean>
+	
+	<bean id="sponsorship4" class="domain.Sponsorship">
+		<property name="creditCard" ref="creditCard32" />
+		<property name="banner"
+			value="https://www.digitalprinting.co.uk/media/images/products/slides/31/vinyl-pvc-banners-1.jpg" />
+		<property name="targetPage" value="http://www.targetpage.com" />
+		<property name="provider" ref="provider3" />
+		<property name="position" ref="position6" />
+	</bean>
+
+	<bean id="sponsorship5" class="domain.Sponsorship">
+		<property name="creditCard" ref="creditCard33" />
+		<property name="banner"
+			value="https://www.digitalprinting.co.uk/media/images/products/slides/31/vinyl-pvc-banners-1.jpg" />
+		<property name="targetPage" value="http://www.targetpage.com" />
+		<property name="provider" ref="provider4" />
 		<property name="position" ref="position1" />
 	</bean>
+
+	<bean id="sponsorship6" class="domain.Sponsorship">
+		<property name="creditCard" ref="creditCard34" />
+		<property name="banner"
+			value="https://www.digitalprinting.co.uk/media/images/products/slides/31/vinyl-pvc-banners-1.jpg" />
+		<property name="targetPage" value="http://www.targetpage.com" />
+		<property name="provider" ref="provider5" />
+		<property name="position" ref="position7" />
+	</bean>
+	
+	<bean id="sponsorship7" class="domain.Sponsorship">
+		<property name="creditCard" ref="creditCard35" />
+		<property name="banner"
+			value="https://www.digitalprinting.co.uk/media/images/products/slides/31/vinyl-pvc-banners-1.jpg" />
+		<property name="targetPage" value="http://www.targetpage.com" />
+		<property name="provider" ref="provider5" />
+		<property name="position" ref="position8" />
+	</bean>
+	
+	<bean id="sponsorship8" class="domain.Sponsorship">
+		<property name="creditCard" ref="creditCard36" />
+		<property name="banner"
+			value="https://www.digitalprinting.co.uk/media/images/products/slides/31/vinyl-pvc-banners-1.jpg" />
+		<property name="targetPage" value="http://www.targetpage.com" />
+		<property name="provider" ref="provider7" />
+		<property name="position" ref="position7" />
+	</bean>
+	
 
 </beans>
