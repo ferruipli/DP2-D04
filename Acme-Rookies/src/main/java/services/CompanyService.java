@@ -180,6 +180,7 @@ public class CompanyService {
 			result.setAddress(registrationForm.getAddress());
 			result.setCommercialName(registrationForm.getCommercialName());
 			result.setIsSpammer(registrationForm.getIsSpammer());
+			result.setAuditScore(registrationForm.getAuditScore());
 
 			creditCard.setHolder(registrationForm.getCreditCard().getHolder());
 			creditCard.setMake(registrationForm.getCreditCard().getMake());
@@ -208,6 +209,7 @@ public class CompanyService {
 			result.setAddress(registrationForm.getAddress());
 			result.setCommercialName(registrationForm.getCommercialName());
 			result.setIsSpammer(companyStored.getIsSpammer());
+			result.setAuditScore(companyStored.getAuditScore());
 			result.setId(companyStored.getId());
 			result.setVersion(companyStored.getVersion());
 			result.setCreditCard(companyStored.getCreditCard());
