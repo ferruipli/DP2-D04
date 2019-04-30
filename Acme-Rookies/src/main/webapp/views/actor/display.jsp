@@ -115,7 +115,13 @@
 		<p>
 			<strong> <spring:message code="actor.company.auditScore" />
 			</strong>
-			<jstl:out value="${actor.auditScore}" />
+			<jstl:if test="${actor.auditScore == null }">
+				<jstl:out value="N/A" />
+			</jstl:if>
+			<jstl:if test="${actor.auditScore != null }">
+				<jstl:out value="${actor.auditScore}" />
+			</jstl:if>
+			
 		</p>
 
 

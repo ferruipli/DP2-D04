@@ -84,6 +84,20 @@
 
 		</fieldset>
 	</jstl:if>
+	
+	<jstl:if test="${rol == 'Provider'}">
+		<fieldset>
+			<legend>
+				<spring:message code="actor.provider.legend" />
+			</legend>
+			
+			
+			<acme:textbox code="actor.provider.make.requested" path="make"/>
+			<br /> 
+
+
+		</fieldset>
+	</jstl:if>
 
 	<fieldset>
 		<legend><spring:message code="creditCard.legend"/></legend>
