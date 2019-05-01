@@ -33,6 +33,13 @@
 	</jstl:if>
 	</security:authorize>
 	
+
+	<security:authorize access="hasRole('PROVIDER')">
+		<jstl:if test="${!position.isCancelled && position.isFinalMode}">
+			<h2><a href="sponsorship/provider/create.do?positionId=${position.id}"><spring:message code="position.provider" /></a></h2>
+		</jstl:if>
+	</security:authorize>
+	
 	<security:authorize access="hasRole('ROOKIE')">
 	<jstl:if test="${!position.isCancelled && position.isFinalMode && isApplied && isDeadlineFuture}">
 	<jstl:if test="${noCurriculum}">
