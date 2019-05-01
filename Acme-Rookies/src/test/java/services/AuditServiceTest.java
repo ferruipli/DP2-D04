@@ -2,6 +2,7 @@
 package services;
 
 import javax.transaction.Transactional;
+import javax.validation.ConstraintViolationException;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -42,17 +43,45 @@ public class AuditServiceTest extends AbstractTest {
 			 * D:
 			 */
 			{
-				"auditor1", "position1", "text", "5", null
+				"auditor1", "position2", "text", "5", null
+			},
+
+			/*
+			 * A:Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to create an audits
+			 * B: Negative Score
+			 * C:
+			 * D:
+			 */
+			{
+				"auditor1", "position2", "text", "-5", ConstraintViolationException.class
+			},
+			/*
+			 * A:Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to create an audits
+			 * B: Blank text
+			 * C:
+			 * D:
+			 */
+			{
+				"auditor1", "position2", "", "3", ConstraintViolationException.class
+			},
+			/*
+			 * A:Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to create an audits
+			 * B: A una position que ya tiene auditoría del principal
+			 * C:
+			 * D:
+			 */
+			{
+				"auditor1", "position1", "text", "3", IllegalArgumentException.class
 			},
 
 		};
 
 		for (int i = 0; i < testingData.length; i++)
-			this.templateCreate((String) testingData[i][0], super.getEntityId((String) testingData[i][1]), (String) testingData[i][2], (Integer) testingData[i][3], (Class<?>) testingData[i][4]);
+			this.templateCreate((String) testingData[i][0], super.getEntityId((String) testingData[i][1]), (String) testingData[i][2], (String) testingData[i][3], (Class<?>) testingData[i][4]);
 
 	}
 
-	protected void templateCreate(final String username, final Integer positionId, final String text, final Integer score, final Class<?> expected) {
+	protected void templateCreate(final String username, final Integer positionId, final String text, final String score, final Class<?> expected) {
 		Class<?> caught;
 		final Audit audit;
 		final Audit auditSaved;
@@ -64,11 +93,11 @@ public class AuditServiceTest extends AbstractTest {
 		try {
 			super.authenticate(username);
 
-			position = this.positionService.findOneToEditDelete(positionId);
+			position = this.positionService.findOne(positionId);
 			audit = this.auditService.create(position);
 
 			audit.setText(text);
-			audit.setScore(score);
+			audit.setScore(Integer.parseInt(score));
 
 			auditSaved = this.auditService.save(audit);
 
@@ -95,17 +124,53 @@ public class AuditServiceTest extends AbstractTest {
 			 * D:
 			 */
 			{
-				"auditor1", "audit1", "text", "5", null
+				"auditor3", "audit3", "text", "5", null
+			},
+			/*
+			 * A:Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to edit her/his audits
+			 * B: Negative Score
+			 * C:
+			 * D:
+			 */
+			{
+				"auditor3", "audit3", "text", "-5", ConstraintViolationException.class
+			},
+			/*
+			 * A:Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to edit her/his audits
+			 * B: Blank text
+			 * C:
+			 * D:
+			 */
+			{
+				"auditor3", "audit3", "", "3", ConstraintViolationException.class
+			},
+			/*
+			 * A:Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to edit her/his audits
+			 * B: Edit an audit to another auditor
+			 * C:
+			 * D:
+			 */
+			{
+				"auditor1", "audit3", "text", "3", IllegalArgumentException.class
+			},
+			/*
+			 * A:Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to edit her/his audits
+			 * B: Edit an audit in final mode
+			 * C:
+			 * D:
+			 */
+			{
+				"auditor1", "audit1", "text", "3", IllegalArgumentException.class
 			},
 
 		};
 
 		for (int i = 0; i < testingData.length; i++)
-			this.templateCreate((String) testingData[i][0], super.getEntityId((String) testingData[i][1]), (String) testingData[i][2], (Integer) testingData[i][3], (Class<?>) testingData[i][4]);
+			this.templateEdit((String) testingData[i][0], super.getEntityId((String) testingData[i][1]), (String) testingData[i][2], (String) testingData[i][3], (Class<?>) testingData[i][4]);
 
 	}
 
-	protected void templateEdit(final String username, final Integer auditId, final String text, final Integer score, final Class<?> expected) {
+	protected void templateEdit(final String username, final Integer auditId, final String text, final String score, final Class<?> expected) {
 		Class<?> caught;
 		final Audit audit;
 		final Audit auditSaved;
@@ -119,7 +184,7 @@ public class AuditServiceTest extends AbstractTest {
 			audit = this.auditService.findOneToEditDelete(auditId);
 
 			audit.setText(text);
-			audit.setScore(score);
+			audit.setScore(Integer.parseInt(score));
 
 			auditSaved = this.auditService.save(audit);
 
@@ -137,100 +202,133 @@ public class AuditServiceTest extends AbstractTest {
 		super.checkExceptions(expected, caught);
 	}
 
-	//	/*
-	//	 * A: Req 9.2 Delete a problem
-	//	 * C: 21/21 -> 100% of executed lines codes
-	//	 * D:intentionally blank.there's nothing to check
-	//	 */
-	//	@Test
-	//	public void delete_positive_test() {
-	//		super.authenticate("company1");
-	//
-	//		int problemId;
-	//		Problem problem;
-	//
-	//		problemId = super.getEntityId("problem4");
-	//		problem = this.problemService.findOneToEditDelete(problemId);
-	//
-	//		this.problemService.delete(problem);
-	//
-	//		super.unauthenticate();
-	//	}
-	//
-	//	/*
-	//	 * A: Req 9.2 Delete a problem
-	//	 * B: Delete a problem from another user
-	//	 * C: 9/21 -> 42% of executed lines codes
-	//	 * D:intentionally blank.there's nothing to check
-	//	 */
-	//	@Test(expected = IllegalArgumentException.class)
-	//	public void delete_negative_test() {
-	//		super.authenticate("company2");
-	//
-	//		int problemId;
-	//		Problem problem;
-	//
-	//		problemId = super.getEntityId("problem4");
-	//		problem = this.problemService.findOneToEditDelete(problemId);
-	//
-	//		this.problemService.delete(problem);
-	//
-	//		super.unauthenticate();
-	//	}
-	//
-	//	/*
-	//	 * A: Req 9.2 Delete a problem
-	//	 * B: Delete a problem in final mode
-	//	 * C: 10/21 -> 47% of executed lines codes
-	//	 * D:intentionally blank.there's nothing to check
-	//	 */
-	//	@Test(expected = IllegalArgumentException.class)
-	//	public void delete_negative1_test() {
-	//		super.authenticate("company1");
-	//
-	//		int problemId;
-	//		Problem problem;
-	//
-	//		problemId = super.getEntityId("problem1");
-	//		problem = this.problemService.findOneToEditDelete(problemId);
-	//
-	//		this.problemService.delete(problem);
-	//
-	//		super.unauthenticate();
-	//	}
-	//
-	//	/*
-	//	 * A: Req 9.2 Display a problem
-	//	 * C: 10/10 -> 100% of executed lines codes
-	//	 * D:intentionally blank.there's nothing to check
-	//	 */
-	//	@Test
-	//	public void display_positive_test() {
-	//		super.authenticate("company1");
-	//
-	//		int problemId;
-	//
-	//		problemId = super.getEntityId("problem1");
-	//		this.problemService.findOneToPrincipal(problemId);
-	//
-	//		super.unauthenticate();
-	//	}
-	//
-	//	/*
-	//	 * A: Req 9.2 Display a problem
-	//	 * B: Display a from from another user
-	//	 * C: 8/10 -> 80% of executed lines codes
-	//	 * D:intentionally blank.there's nothing to check
-	//	 */
-	//	@Test(expected = IllegalArgumentException.class)
-	//	public void display_negative_test() {
-	//		super.authenticate("company2");
-	//
-	//		int problemId;
-	//
-	//		problemId = super.getEntityId("problem1");
-	//		this.problemService.findOneToPrincipal(problemId);
-	//
-	//		super.unauthenticate();
-	//	}
+	/*
+	 * A: Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to delete her/his audits in draft mode
+	 * C:
+	 * D:intentionally blank.there's nothing to check
+	 */
+	@Test
+	public void display_positiveAuthenticate_test() {
+		super.authenticate("auditor3");
+
+		int auditId;
+
+		auditId = super.getEntityId("audit3");
+		this.auditService.findOne(auditId);
+
+		super.unauthenticate();
+	}
+
+	/*
+	 * A: Req Acme-Rookies
+	 * C:
+	 * D:intentionally blank.there's nothing to check
+	 */
+	@Test
+	public void display_positiveUnauthenticate_test() {
+
+		int auditId;
+
+		auditId = super.getEntityId("audit1");
+		this.auditService.findOneToDisplay(auditId);
+
+	}
+
+	/*
+	 * A:
+	 * B: Autenticado puede ver uno en modo no final de otro
+	 * C:
+	 * D:intentionally blank.there's nothing to check
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void display_negativeAuthenticate_test() {
+		super.authenticate("auditor3");
+
+		int auditId;
+
+		auditId = super.getEntityId("audit2");
+		this.auditService.findOne(auditId);
+		super.unauthenticate();
+	}
+
+	/*
+	 * A:
+	 * B: sin Autenticado puede ver uno en modo no final
+	 * C:
+	 * D:intentionally blank.there's nothing to check
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void display_negativeUnauthenticate_test() {
+
+		int auditId;
+
+		auditId = super.getEntityId("audit2");
+		this.auditService.findOneToDisplay(auditId);
+
+	}
+
+	/*
+	 * A: Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to display her/his audits
+	 * C:
+	 * D:intentionally blank.there's nothing to check
+	 */
+	@Test
+	public void delete_positive_test() {
+		super.authenticate("auditor3");
+
+		int auditId;
+		Audit audit;
+
+		auditId = super.getEntityId("audit3");
+		audit = this.auditService.findOneToEditDelete(auditId);
+
+		this.auditService.delete(audit);
+
+		super.unauthenticate();
+	}
+
+	/*
+	 * A: Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to delete her/his audits
+	 * B: Delete an audit to another auditor
+	 * C:
+	 * D:intentionally blank.there's nothing to check
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void delete_negative_test() {
+		super.authenticate("auditor2");
+
+		int auditId;
+		Audit audit;
+
+		auditId = super.getEntityId("audit3");
+		audit = this.auditService.findOneToEditDelete(auditId);
+
+		this.auditService.delete(audit);
+
+		super.unauthenticate();
+	}
+
+	/*
+	 * A: Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to delete her/his audits
+	 * B: Delete an audit in final mode
+	 * C:
+	 * D:intentionally blank.there's nothing to check
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void delete_negative1_test() {
+		super.authenticate("auditor2");
+
+		int auditId;
+		Audit audit;
+
+		auditId = super.getEntityId("audit2");
+		audit = this.auditService.findOneToEditDelete(auditId);
+
+		this.auditService.delete(audit);
+
+		super.unauthenticate();
+	}
+
+	//TODO: MAKE FINAL, LIST, QUERIES,
+	//TODO: cobertura
 }
