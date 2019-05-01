@@ -37,14 +37,14 @@
 	
 	<display:column property="name" titleKey="item.name" />
 	
-	<display:column property="provider.name" titleKey="item.provider" />
+	<display:column>
+		<a href="actor/display.do?actorId=${row.provider.id}"><jstl:out value="${row.provider.name}"/></a>
+	</display:column>
 
 </display:table>
 
 	<security:authorize access="hasRole('PROVIDER')">
-		<jstl:if test="${principal == owner}">
  			<a href="item/provider/create.do"><spring:message code="item.create"/></a>
- 		</jstl:if>
  	</security:authorize>
 
 

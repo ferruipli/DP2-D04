@@ -96,4 +96,20 @@ public class ItemController extends AbstractController {
 		return result;
 	}
 
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView display(@RequestParam final int itemId) {
+		ModelAndView result;
+		final Item item;
+
+		try {
+			result = new ModelAndView("item/display");
+			item = this.itemService.findOne(itemId);
+			result.addObject("item", item);
+		} catch (final Exception e) {
+			result = new ModelAndView("redirect:../../error.do");
+		}
+
+		return result;
+	}
+
 }

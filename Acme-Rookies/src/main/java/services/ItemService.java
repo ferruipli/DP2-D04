@@ -85,7 +85,7 @@ public class ItemService {
 
 	public void delete(final Item item) {
 		Assert.notNull(item);
-		Assert.isTrue(this.itemRepository.exists(item.getId()));
+		//Assert.isTrue(this.itemRepository.exists(item.getId()));
 		this.checkByPrincipal(item);
 
 		this.itemRepository.delete(item);
