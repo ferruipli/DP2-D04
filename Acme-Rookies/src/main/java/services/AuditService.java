@@ -186,6 +186,14 @@ public class AuditService {
 		return audits;
 	}
 
+	public Double[] findDataNumberAuditScore() {
+		Double[] res;
+
+		res = this.auditRepository.findDataNumberAuditScore();
+
+		return res;
+	}
+
 	protected void flush() {
 		this.auditRepository.flush();
 	}
