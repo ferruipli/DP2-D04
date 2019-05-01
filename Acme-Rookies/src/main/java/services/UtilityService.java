@@ -10,6 +10,9 @@ import java.util.Random;
 
 import javax.transaction.Transactional;
 
+import org.joda.time.LocalDate;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -19,6 +22,7 @@ import org.springframework.validation.BindingResult;
 import security.UserAccountService;
 import domain.Actor;
 import domain.Administrator;
+import domain.CreditCard;
 import domain.Position;
 import forms.RegistrationForm;
 
@@ -62,6 +66,24 @@ public class UtilityService {
 			Assert.isTrue(actor.getEmail().matches("[A-Za-z0-9]+@[a-zA-Z0-9.-]+|[\\w]+[\\s]*[\\<][A-Za-z0-9]+@[a-zA-Z0-9.-]+[\\>]|[A-Za-z0-9]+@|[\\w\\s]+[\\<][A-Za-z0-9]+@+[\\>]"));
 		else
 			Assert.isTrue(actor.getEmail().matches("[A-Za-z0-9]+@[a-zA-Z0-9.-]+|[\\w]+[\\s]*[\\<][A-Za-z0-9]+@[a-zA-Z0-9.-]+[\\>]"));
+	}
+
+	protected boolean checkIsExpired(final CreditCard creditCard) {
+		String year, month;
+		LocalDate expiration, now;
+		boolean result;
+		DateTimeFormatter formatter;
+
+		year = creditCard.getExpirationYear();
+		month = creditCard.getExpirationMonth();
+		formatter = DateTimeFormat.forPattern("yy-MM-dd");
+		expiration = LocalDate.parse(year + "-" + month + "-" + "01", formatter);
+		expiration = expiration.plusMonths(1).minusDays(1);
+		now = LocalDate.now();
+
+		result = now.isAfter(expiration);
+
+		return result;
 	}
 
 	public String getValidPhone(String phone) {

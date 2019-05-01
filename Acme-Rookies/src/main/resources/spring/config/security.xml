@@ -53,12 +53,12 @@
 		<security:intercept-url pattern="/actor/display.do**" access="permitAll" />  
 		<security:intercept-url pattern="/actor/display.do" access="hasAnyRole('ADMIN')" /> 
 		
-		<security:intercept-url pattern="/answer/rookie/**" access="hasRole('HACKER')" /> 
-		<security:intercept-url pattern="/answer/company,rookie/**" access="hasAnyRole('COMPANY','HACKER')" />
+		<security:intercept-url pattern="/answer/rookie/**" access="hasRole('ROOKIE')" /> 
+		<security:intercept-url pattern="/answer/company,rookie/**" access="hasAnyRole('COMPANY','ROOKIE')" />
 		
-		<security:intercept-url pattern="/application/company,rookie/**" access="hasAnyRole('COMPANY','HACKER')" />
+		<security:intercept-url pattern="/application/company,rookie/**" access="hasAnyRole('COMPANY','ROOKIE')" />
 		<security:intercept-url pattern="/application/company/**" access="hasRole('COMPANY')" /> 
-		<security:intercept-url pattern="/application/rookie/**" access="hasRole('HACKER')" /> 
+		<security:intercept-url pattern="/application/rookie/**" access="hasRole('ROOKIE')" /> 
 		
 		<security:intercept-url pattern="/area/administrator/**" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/area/display.do**" access="permitAll" /> 
@@ -72,42 +72,45 @@
 		
 		<security:intercept-url pattern="/creditCard/administrator,auditor,company,provider,rookie/**" access="isAuthenticated()"/>
 		
-		<security:intercept-url pattern="/curriculum/rookie/**" access="hasRole('HACKER')" />
+		<security:intercept-url pattern="/curriculum/rookie/**" access="hasRole('ROOKIE')" />
 		<security:intercept-url pattern="/curriculum/**" access="permitAll" />
 		
 		<security:intercept-url pattern="/customisation/**" access="hasRole('ADMIN')" />
 		
 		<security:intercept-url pattern="/dashboard/**" access="hasRole('ADMIN')" />
 		
-		<security:intercept-url pattern="/educationData/rookie/**" access="hasRole('HACKER')" /> 
+		<security:intercept-url pattern="/educationData/rookie/**" access="hasRole('ROOKIE')" /> 
 		<security:intercept-url pattern="/educationData/**" access="permitAll" /> 
 		
-		<security:intercept-url pattern="/finder/rookie/**" access="hasRole('HACKER')" />
+		<security:intercept-url pattern="/finder/rookie/**" access="hasRole('ROOKIE')" />
+		
+		<security:intercept-url pattern="/item/**" access="permitAll" /> 
+		<security:intercept-url pattern="/item/provider/**" access="hasRole('PROVIDER')" />
 		
 		<security:intercept-url pattern="/message/administrator/**" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/message/**" access="isAuthenticated()" />
 		
-		<security:intercept-url pattern="/miscellaneousData/rookie/**" access="hasRole('HACKER')" /> 
+		<security:intercept-url pattern="/miscellaneousData/rookie/**" access="hasRole('ROOKIE')" /> 
 		<security:intercept-url pattern="/miscellaneousData/**" access="permitAll" /> 
 		
-		<security:intercept-url pattern="/personalData/rookie/**" access="hasRole('HACKER')" /> 
+		<security:intercept-url pattern="/personalData/rookie/**" access="hasRole('ROOKIE')" /> 
 		
 		<security:intercept-url pattern="/position/company/**" access="hasRole('COMPANY')" /> 
 		<security:intercept-url pattern="/position/**" access="permitAll" /> 
 		
-		<security:intercept-url pattern="/positionData/rookie/**" access="hasRole('HACKER')" /> 
+		<security:intercept-url pattern="/positionData/rookie/**" access="hasRole('ROOKIE')" /> 
 		<security:intercept-url pattern="/positionData/**" access="permitAll" /> 
 		
-		<security:intercept-url pattern="/problem/company,rookie/**" access="hasAnyRole('COMPANY','HACKER')" />
+		<security:intercept-url pattern="/problem/company,rookie/**" access="hasAnyRole('COMPANY','ROOKIE')" />
 		<security:intercept-url pattern="/problem/company/**" access="hasRole('COMPANY')" /> 
 	
 		<security:intercept-url pattern="/provider/list.do" access="permitAll" /> 
 	
-		<security:intercept-url pattern="/socialProfile/administrator,company,rookie/**" access="isAuthenticated()" />
-
+		
 		<security:intercept-url pattern="/socialProfile/administrator,auditor,company,provider,rookie/**" access="isAuthenticated()" />
-
 		<security:intercept-url pattern="/socialProfile/**" access="permitAll" />
+		
+		<security:intercept-url pattern="/sponsorship/provider/**" access="hasRole('PROVIDER')"/>
 		
 		<security:intercept-url pattern="/exportData/administrator,company,rookie/export.do" access="isAuthenticated()" />
 		

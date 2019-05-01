@@ -45,7 +45,7 @@ public class AnswerCompanyRookieController extends AbstractController {
 		try {
 			result = new ModelAndView("answer/display");
 			application = this.applicationService.findApplicationByAnswer(answerId);
-			if (LoginService.getPrincipal().getAuthorities().toString().equals("[HACKER]")) {
+			if (LoginService.getPrincipal().getAuthorities().toString().equals("[ROOKIE]")) {
 				answer = this.answerService.findOneToRookieDisplay(answerId);
 				rolActor = "rookie";
 			} else {

@@ -164,7 +164,7 @@ public class ExportDataMultiUserController extends AbstractController {
 
 		}
 
-		if (actor.getUserAccount().getAuthorities().toString().equals("[HACKER]")) {
+		if (actor.getUserAccount().getAuthorities().toString().equals("[ROOKIE]")) {
 			Collection<Curriculum> curricula;
 
 			curricula = this.curriculumService.originalCurriculaByPrincipal();

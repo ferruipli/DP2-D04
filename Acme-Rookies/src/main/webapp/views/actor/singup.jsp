@@ -157,7 +157,7 @@
 		
 		<jstl:if test="${rol == 'Rookie'}">
 		
-			<acme:textbox code="actor.authority" path="userAccount.authorities" readonly="true" value="HACKER"/>
+			<acme:textbox code="actor.authority" path="userAccount.authorities" readonly="true" value="ROOKIE"/>
 		
 		</jstl:if>
 		

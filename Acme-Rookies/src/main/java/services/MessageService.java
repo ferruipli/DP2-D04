@@ -24,7 +24,9 @@ import domain.Customisation;
 import domain.Finder;
 import domain.Message;
 import domain.Position;
+import domain.Provider;
 import domain.Rookie;
+import domain.Sponsorship;
 import domain.SystemTag;
 
 @Service
@@ -85,7 +87,7 @@ public class MessageService {
 		Assert.notNull(result);
 		this.checkSenderOrRecipient(result);
 
-		// If actor "has removed" the message, then it's not visible to him
+		// If actor "has removed" the message, then it's not visible to him/her
 		principal = this.actorService.findPrincipal();
 		systemTag = this.systemTagService.findMessageTaggedAsHARDDELETED(principal.getId(), result.getId());
 		Assert.isNull(systemTag);
@@ -295,7 +297,7 @@ public class MessageService {
 		return result;
 	}
 
-	// Requirement 4.1: Run a procedure to notify te existing users of the rebranding.
+	// Requirement 4.1: Run a procedure to notify the existing users of the rebranding.
 	public Message rebrandingNotification() {
 		Customisation customisation;
 		Message message, result;
@@ -321,7 +323,36 @@ public class MessageService {
 		return result;
 	}
 
-	// This method id used when an actor want to delete all his or her data.
+	public Message notificationFlatRate(final Sponsorship sponsorship) {
+		Assert.notNull(sponsorship);
+		Assert.isTrue(sponsorship.getId() != 0);
+
+		Message message, result;
+		Provider provider;
+		List<Actor> recipients;
+		String subject, body;
+		Customisation customisation;
+		double flatRate, vat, finalRate;
+
+		customisation = this.customisationService.find();
+		provider = sponsorship.getProvider();
+		flatRate = customisation.getFrate();
+		vat = customisation.getVATtax();
+		finalRate = flatRate * (1.0 + vat);
+		recipients = new ArrayList<Actor>();
+		recipients.add(provider);
+
+		subject = "Fare notification. / Notificación de tasas.";
+		body = "The payment of " + finalRate + " euros has been made in one of you sponsorships for the " + sponsorship.getPosition().getTitle() + " position. / Se ha realizado el cobro de " + finalRate + " euros de uno de sus patrocinios para el cargo "
+			+ sponsorship.getPosition().getTitle() + ".";
+
+		message = this.createNotification(recipients, subject, body);
+		result = this.messageRepository.save(message);
+
+		return result;
+	}
+
+	// This method is used when an actor wants to delete all his or her data.
 	public void deleteMessages(final Actor actor) {
 		Collection<Message> sentMessages, receivedMessages;
 
