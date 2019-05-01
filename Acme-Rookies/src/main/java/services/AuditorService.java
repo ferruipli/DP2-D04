@@ -114,7 +114,7 @@ public class AuditorService {
 		Assert.isTrue(this.findByPrincipal().equals(auditor));
 
 		// Delete audits
-		this.auditService.deleteAll();
+		this.auditService.deleteByAuditor();
 
 		this.actorService.delete(auditor);
 	}
