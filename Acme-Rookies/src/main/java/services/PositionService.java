@@ -55,7 +55,7 @@ public class PositionService {
 
 	@Autowired
 	private AuditService		auditService;
-	
+
 	@Autowired
 	private SponsorshipService	sponsorshipService;
 
@@ -108,7 +108,6 @@ public class PositionService {
 		Assert.isTrue(this.positionRepository.exists(position.getId()));
 		this.checkByPrincipal(position);
 		Assert.isTrue(!position.getIsFinalMode());
-		this.auditService.deleteByPosition(position);
 
 		this.positionRepository.delete(position);
 	}
