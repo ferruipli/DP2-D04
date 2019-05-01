@@ -93,18 +93,9 @@ public class SponsorshipService {
 	public void delete(final Sponsorship sponsorship) {
 		Assert.notNull(sponsorship);
 		Assert.isTrue(this.sponsorshipRepository.exists(sponsorship.getId()));
-		this.checkOwner(sponsorship);
+		this.checkOwnerStored(sponsorship);
 
 		this.sponsorshipRepository.delete(sponsorship);
-	}
-
-	public Sponsorship findOne(final int sponsorshipId) {
-		Sponsorship result;
-
-		result = this.sponsorshipRepository.findOne(sponsorshipId);
-		Assert.notNull(result);
-
-		return result;
 	}
 
 	public Sponsorship findOneToEditDisplay(final int sponsorshipId) {
@@ -213,5 +204,12 @@ public class SponsorshipService {
 
 		principal = this.providerService.findByPrincipal();
 		Assert.isTrue(sponsorship.getProvider().equals(principal));
+	}
+
+	private void checkOwnerStored(final Sponsorship sponsorship) {
+		Sponsorship stored;
+
+		stored = this.sponsorshipRepository.findOne(sponsorship.getId());
+		this.checkOwner(stored);
 	}
 }
