@@ -1,8 +1,10 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 import javax.transaction.Transactional;
 import javax.validation.ConstraintViolationException;
@@ -19,6 +21,7 @@ import security.Authority;
 import security.UserAccount;
 import utilities.AbstractTest;
 import domain.CreditCard;
+import domain.Item;
 import domain.Provider;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -37,6 +40,9 @@ public class ProviderServiceTest extends AbstractTest {
 
 	@Autowired
 	private ProviderRepository	providerRepository;
+
+	@Autowired
+	private ItemService			itemService;
 
 
 	// Tests -------------------------------------------------------------
@@ -364,6 +370,31 @@ public class ProviderServiceTest extends AbstractTest {
 
 		super.unauthenticate();
 
+	}
+
+	/*
+	 * A: An actor who is not authenticated must be able to:
+	 * Browse the list of providers and navigate to their items
+	 * 
+	 * B: Positive test
+	 * 
+	 * C: Approximately 100% of sentence coverage, since it has been
+	 * covered 7 lines of code of 7 possible.
+	 * 
+	 * D: Approximately 100% of data coverage
+	 */
+	@Test
+	public void listProvidersAndNavigateItems() {
+		List<Provider> providers;
+		List<Item> items;
+		Provider provider;
+
+		providers = new ArrayList<>(this.providerService.findAll());
+		Assert.notNull(providers);
+
+		provider = providers.get(0);
+		items = new ArrayList<>(this.itemService.f);
+		Assert.notNull(positions);
 	}
 
 }
