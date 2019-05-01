@@ -21,109 +21,29 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-
-<!------------ SEARCH ------------>
-<jstl:if test="${isSearch}">
-	<fieldset>
-		<legend><spring:message code="position.search.legend"/></legend>
-		
-		<form action="position/search.do" method="get">
-			<div>
-				<label for="keyword">
-					<spring:message code="position.search.keyword"/>
-				</label>
-				<input type="text" name="keyword" id="keyword" value="${keyword}"/>
-				
-				<spring:message code="position.search.submit" var="submitText"/>
-				<input type="submit" value="${submitText}">
-			</div>
-		</form> 
-	</fieldset>
-</jstl:if>
-
-
-<!------------ FINDER ------------>
-<spring:message code="position.formatDeadline1" var="dateFormat"/>
-<jstl:if test="${finder ne null}">
-	<fieldset>
-		<legend><spring:message code="position.finder.legend"/></legend>
-		
-		<p style="color:blue;">
-			<spring:message code="position.finder.warning"/><jstl:out value="${numberOfResults}"/>
-		</p>
-		
-		<ul>
-			<li>
-				<strong><spring:message code="position.finder.keyword"/>:</strong>
-				<jstl:out value="${finder.keyword}"/>
-			</li>
-			<li>
-				<strong><spring:message code="position.finder.deadline"/>:</strong>
-				<fmt:formatDate value="${finder.deadline}" pattern="${dateFormat}"/>
-			</li>
-			<li>
-				<strong><spring:message code="position.finder.maximum.deadline"/>:</strong>
-				<fmt:formatDate value="${finder.maximumDeadline}" pattern="${dateFormat}"/>
-			</li>
-			<li>
-				<strong><spring:message code="position.finder.minimum.salary"/>:</strong>
-				<jstl:out value="${finder.minimumSalary}"/>
-			</li>
-		</ul>
-		
-		<div>
-			<a href="finder/rookie/edit.do"><spring:message code="position.finder.edit"/></a>
-			&nbsp;
-			<a href="finder/rookie/clear.do"><spring:message code="position.finder.clear"/></a>
-		</div>
-	</fieldset>
-	
-	<jstl:set var="positions" value="${finder.positions}"/>
-</jstl:if>
-
-
-<!------------ POSITION LIST ------------>
-<display:table name="${positions}" id="row" requestURI="${requestURI}" class="displaytag" pagesize="5">
+<display:table name="${items}" id="row" requestURI="${requestURI}" class="displaytag" pagesize="5">
 
 	<display:column>
-		<a href="position/display.do?positionId=${row.id}"><spring:message code="position.table.display"/></a>
+		<a href="item/display.do?itemId=${row.id}"><spring:message code="item.table.display"/></a>
 	</display:column>	
 	
-	<security:authorize access="hasRole('COMPANY')">
+	<security:authorize access="hasRole('PROVIDER')">
 	<display:column>
-		<jstl:if test="${principal == row.company && !row.isFinalMode}">
-			<a href="position/company/edit.do?positionId=${row.id}"><spring:message code="position.edit"/></a>
+		<jstl:if test="${principal == row.provider}">
+			<a href="item/provider/edit.do?itemId=${row.id}"><spring:message code="item.edit"/></a>
 		</jstl:if>
-	</display:column>
-	
-	<display:column>	
-		<jstl:if test="${principal == row.company && row.isCancelled!=true && row.isFinalMode}">
-			<a href="position/company/cancel.do?positionId=${row.id}"><spring:message code="position.cancel"/></a>
-		</jstl:if>
-	</display:column>
-	
+	</display:column>	
 	</security:authorize>
 	
-	<display:column property="company.name" titleKey="position.company" />
+	<display:column property="name" titleKey="item.name" />
 	
-	<display:column property="ticker" titleKey="position.ticker" />
-	
-	<display:column property="title" titleKey="position.title" />
-	
-	<spring:message code="position.formatDeadline" var="formatMomentDeadline" />
-	<display:column property="deadline" titleKey="position.deadline" sortable="true" format="${formatMomentDeadline}"/>
-			
-	<display:column property="profile" titleKey="position.profile" />
-	
-	<display:column property="skills" titleKey="position.skills" />
-	
-	<display:column property="technologies" titleKey="position.technologies" />
+	<display:column property="provider.name" titleKey="item.provider" />
 
 </display:table>
 
-	<security:authorize access="hasRole('COMPANY')">
+	<security:authorize access="hasRole('PROVIDER')">
 		<jstl:if test="${principal == owner}">
- 			<a href="position/company/create.do"><spring:message code="position.create"/></a>
+ 			<a href="item/provider/create.do"><spring:message code="item.create"/></a>
  		</jstl:if>
  	</security:authorize>
 
