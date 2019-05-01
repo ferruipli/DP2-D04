@@ -318,7 +318,8 @@ public class MessageService {
 
 		result = this.messageRepository.save(message);
 
-		customisation.setIsRebrandNotificationSent(true);
+		// Now, customisation::isRebrandNotificationSent is true
+		this.customisationService.update_rebrandingNotification(customisation);
 
 		return result;
 	}
