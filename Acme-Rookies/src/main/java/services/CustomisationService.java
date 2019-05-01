@@ -87,4 +87,9 @@ public class CustomisationService {
 	protected void flush() {
 		this.customisationRepository.flush();
 	}
+
+	protected void update_rebrandingNotification(final Customisation customisation) {
+		customisation.setIsRebrandNotificationSent(true);
+	}
+
 }
