@@ -180,15 +180,15 @@
 		<th> <spring:message code="dashboard.deviation" /> </th>
 	</tr>
 	<tr>
-		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
-		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
-		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
-		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${dataItemsPerProvider[0]}" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${dataItemsPerProvider[1]}" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${dataItemsPerProvider[2]}" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${dataItemsPerProvider[3]}" /> </td>
 	</tr>
 </table>
 
 <p><strong> <spring:message code="dashboard.fifteen" />: </strong></p>
-<display:table name="" id="row" requestURI="dashboard/administrator/display.do" pagesize="5" class="displaytag">
+<display:table name="topFiveProviders" id="row" requestURI="dashboard/administrator/display.do" pagesize="5" class="displaytag">
 	<display:column property="fullname" titleKey="table.fullname" />
 	<display:column property="email" titleKey="table.email" />
 	<display:column property="phoneNumber" titleKey="table.phoneNumber" />
@@ -205,10 +205,10 @@
 		<th> <spring:message code="dashboard.deviation" /> </th>
 	</tr>
 	<tr>
-		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
-		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
-		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
-		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${dataOfSponsorshipPerProvider[0]}" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${dataOfSponsorshipPerProvider[1]}" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${dataOfSponsorshipPerProvider[2]}" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${dataOfSponsorshipPerProvider[3]}" /> </td>
 	</tr>
 </table>
 

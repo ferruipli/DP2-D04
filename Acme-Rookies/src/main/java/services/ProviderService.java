@@ -49,6 +49,9 @@ public class ProviderService {
 	@Autowired
 	private SponsorshipService	sponsorshipService;
 
+	@Autowired
+	private ItemService			itemService;
+
 
 	//Constructor ----------------------------------------------------
 
@@ -112,6 +115,7 @@ public class ProviderService {
 		Assert.isTrue(this.findByPrincipal().equals(provider));
 
 		// Delete items
+		this.itemService.deleteItemsByProvider(provider);
 
 		// Delete sponsorships
 		this.sponsorshipService.deleteSponsorships(provider);

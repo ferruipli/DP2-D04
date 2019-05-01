@@ -69,12 +69,12 @@ public class SponsorshipSponsorController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public ModelAndView create(@RequestParam final int paradeId) {
+	public ModelAndView create(@RequestParam final int positionId) {
 		ModelAndView result;
 		Sponsorship sponsorship;
 
 		try {
-			sponsorship = this.sponsorshipService.create(paradeId);
+			sponsorship = this.sponsorshipService.create(positionId);
 			result = this.createEditModelAndView(sponsorship);
 		} catch (final Throwable oops) {
 			result = new ModelAndView("redirect:/error.do");
@@ -120,13 +120,11 @@ public class SponsorshipSponsorController extends AbstractController {
 		return result;
 	}
 
-	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public ModelAndView delete(@RequestParam final int sponsorshipId) {
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
+	public ModelAndView delete(final Sponsorship sponsorship) {
 		ModelAndView result;
-		Sponsorship sponsorship;
 
 		try {
-			sponsorship = this.sponsorshipService.findOne(sponsorshipId);
 			this.sponsorshipService.delete(sponsorship);
 			result = new ModelAndView("redirect:list.do");
 		} catch (final Throwable oops) {

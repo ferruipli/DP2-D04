@@ -55,6 +55,9 @@ public class PositionService {
 
 	@Autowired
 	private AuditService		auditService;
+	
+	@Autowired
+	private SponsorshipService	sponsorshipService;
 
 
 	// Other supporting services -------------------
@@ -256,8 +259,10 @@ public class PositionService {
 		Collection<Position> positions;
 
 		positions = this.positionRepository.findPositionByCompany(company.getId());
-		for (final Position p : positions)
+		for (final Position p : positions) {
 			this.finderService.deleteFromFinders(p);
+			this.sponsorshipService.deleteSponsorships(p);
+		}
 
 		for (final Position p : positions)
 			this.auditService.deleteByPosition(p);
