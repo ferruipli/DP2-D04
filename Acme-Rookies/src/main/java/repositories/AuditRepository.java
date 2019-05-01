@@ -33,4 +33,7 @@ public interface AuditRepository extends JpaRepository<Audit, Integer> {
 	@Query("select avg(1 * (select count(a.score) from Audit a where a.position.id = p.id)), min(1 * (select count(a.score) from Audit a where a.position.id = p.id)), max(1 * (select count(a.score) from Audit a where a.position.id = p.id)), stddev(1 * (select count(a.score) from Audit a where a.position.id = p.id)) from Position p")
 	Double[] findDataNumberAuditScorePerPosition();
 
+	@Query("select avg(a.score) from Audit a")
+	Collection<Double> findAvgSalaryByHighestPosition();
+
 }

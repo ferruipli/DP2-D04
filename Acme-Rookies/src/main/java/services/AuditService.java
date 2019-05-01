@@ -101,6 +101,15 @@ public class AuditService {
 		this.auditRepository.delete(audits);
 	}
 
+	public Audit findOne(final int auditId) {
+		Audit result;
+
+		result = this.auditRepository.findOne(auditId);
+		Assert.notNull(result);
+
+		return result;
+	}
+
 	public Audit findOneToEditDelete(final int auditId) {
 		Audit result;
 
@@ -108,15 +117,6 @@ public class AuditService {
 		this.checkByPrincipal(result);
 		Assert.isTrue(!result.getFinalMode());
 
-		Assert.notNull(result);
-
-		return result;
-	}
-
-	public Audit findOne(final int auditId) {
-		Audit result;
-
-		result = this.auditRepository.findOne(auditId);
 		Assert.notNull(result);
 
 		return result;
@@ -133,36 +133,25 @@ public class AuditService {
 		return result;
 	}
 
-	public void makeFinal(final Audit audit) {
-		this.checkByPrincipal(audit);
-
-		audit.setFinalMode(true);
-	}
-
-	protected Double avgScoreByCompany(final int companyId) {
-		Double result;
-
-		result = this.auditRepository.avgScoreByCompany(companyId);
-
-		return result;
-
-	}
-
-	private void checkByPrincipal(final Audit audit) {
-		Auditor owner;
-		Auditor principal;
-
-		owner = audit.getAuditor();
-		principal = this.auditorService.findByPrincipal();
-
-		Assert.isTrue(owner.equals(principal));
-	}
 	public Collection<Audit> findAuditsByAuditor(final Auditor auditor) {
 		Collection<Audit> audits;
 
 		audits = this.auditRepository.findAuditsByAuditor(auditor.getId());
 
 		return audits;
+	}
+	public Collection<Audit> findFinalByPosition(final Position position) {
+		Collection<Audit> audits;
+
+		audits = this.auditRepository.findFinalAuditsByPosition(position.getId());
+
+		return audits;
+	}
+
+	public void makeFinal(final Audit audit) {
+		this.checkByPrincipal(audit);
+
+		audit.setFinalMode(true);
 	}
 
 	public boolean isAuditable(final Position position, final Auditor auditor) {
@@ -177,15 +166,8 @@ public class AuditService {
 
 		return result;
 	}
-
-	public Collection<Audit> findByPosition(final Position position) {
-		Collection<Audit> audits;
-
-		audits = this.auditRepository.findFinalAuditsByPosition(position.getId());
-
-		return audits;
-	}
-
+	// Req 4.4.1 The average, the minimum, the maximum, and the standard deviation of the audit score
+	//	of the positions stored in the system
 	public Double[] findDataNumberAuditScore() {
 		Double[] res;
 
@@ -194,8 +176,13 @@ public class AuditService {
 		return res;
 	}
 
-	protected void flush() {
-		this.auditRepository.flush();
+	// Req 4.4.4 The average salary offered by the positions that have the highest average audit score
+	public Collection<Double> findAvgSalaryByHighestPosition() {
+		Collection<Double> res;
+
+		res = this.auditRepository.findAvgSalaryByHighestPosition();
+
+		return res;
 	}
 
 	public Audit reconstruct(final Audit audit, final Position position, final BindingResult binding) {
@@ -220,6 +207,26 @@ public class AuditService {
 		this.validator.validate(result, binding);
 
 		return result;
+	}
+	private void checkByPrincipal(final Audit audit) {
+		Auditor owner;
+		Auditor principal;
+
+		owner = audit.getAuditor();
+		principal = this.auditorService.findByPrincipal();
+
+		Assert.isTrue(owner.equals(principal));
+	}
+	protected void flush() {
+		this.auditRepository.flush();
+	}
+	protected Double avgScoreByCompany(final int companyId) {
+		Double result;
+
+		result = this.auditRepository.avgScoreByCompany(companyId);
+
+		return result;
+
 	}
 
 }
