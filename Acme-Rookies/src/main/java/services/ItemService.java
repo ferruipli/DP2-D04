@@ -116,4 +116,12 @@ public class ItemService {
 
 		Assert.isTrue(provider.equals(item.getProvider()));
 	}
+
+	public Collection<Item> findItemsByProvider(final int providerId) {
+		Collection<Item> results;
+
+		results = this.itemRepository.findItemsByProvider(providerId);
+
+		return results;
+	}
 }
