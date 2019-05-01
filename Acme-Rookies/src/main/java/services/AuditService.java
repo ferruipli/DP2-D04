@@ -81,6 +81,18 @@ public class AuditService {
 		this.auditRepository.delete(audit);
 	}
 
+	public void deleteAll() {
+		Auditor principal;
+		Collection<Audit> audits;
+
+		principal = this.auditorService.findByPrincipal();
+		Assert.notNull(principal);
+
+		audits = this.auditRepository.findAuditsByAuditor(principal.getId());
+
+		this.auditRepository.delete(audits);
+	}
+
 	public Audit findOneToEditDelete(final int auditId) {
 		Audit result;
 
@@ -165,6 +177,7 @@ public class AuditService {
 
 		return audits;
 	}
+
 	protected void flush() {
 		this.auditRepository.flush();
 	}
