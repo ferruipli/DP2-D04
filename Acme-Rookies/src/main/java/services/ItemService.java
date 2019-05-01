@@ -92,7 +92,7 @@ public class ItemService {
 	}
 
 	// This method id used when an actor want to delete all his or her data.
-	public void deleteAnswerByProvider(final Provider provider) {
+	public void deleteItemsByProvider(final Provider provider) {
 		Collection<Item> items;
 
 		items = this.itemRepository.findItemsByProvider(provider.getId());
