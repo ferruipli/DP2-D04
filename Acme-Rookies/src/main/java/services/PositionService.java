@@ -261,10 +261,8 @@ public class PositionService {
 		for (final Position p : positions) {
 			this.finderService.deleteFromFinders(p);
 			this.sponsorshipService.deleteSponsorships(p);
-		}
-
-		for (final Position p : positions)
 			this.auditService.deleteByPosition(p);
+		}
 
 		this.positionRepository.delete(positions);
 
