@@ -155,7 +155,7 @@ public class SocialProfileService {
 		return result;
 	}
 
-	// This method id used when an actor want to delete all his or her data.
+	// This method is used when an actor wants to delete all his or her data.
 	public void deleteSocialProfiles(final Actor actor) {
 		Collection<SocialProfile> socialProfiles;
 
