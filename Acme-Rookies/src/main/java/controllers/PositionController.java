@@ -223,7 +223,7 @@ public class PositionController extends AbstractController {
 			else
 				position = this.positionService.findOneToDisplay(positionId);
 
-			audits = this.auditService.findByPosition(position);
+			audits = this.auditService.findFinalByPosition(position);
 			sponsorship = this.sponsorshipService.getRandomSponsorship(positionId);
 
 			result.addObject("audits", audits);
