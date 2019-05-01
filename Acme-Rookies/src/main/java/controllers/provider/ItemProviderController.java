@@ -64,33 +64,35 @@ public class ItemProviderController extends AbstractController {
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(final Item item, final BindingResult binding) {
 		ModelAndView result;
-		Item saved;
+		Item itemRec;
 
 		try {
+			itemRec = this.itemService.reconstruct(item, binding);
+
 			if (binding.hasErrors())
 				result = this.createEditModelAndView(item);
 			else
 				try {
-					saved = this.itemService.save(item);
-					result = new ModelAndView("redirect:../display.do?itemId=" + saved.getId());
+					this.itemService.save(itemRec);
+					result = new ModelAndView("redirect:../allItemsList.do");
 				} catch (final Throwable oops) {
-					result = this.createEditModelAndView(item, "item.commit.error");
+					result = this.createEditModelAndView(itemRec, "item.commit.error");
+
 				}
 		} catch (final Exception e) {
 			result = new ModelAndView("redirect:../../error.do");
 		}
+
 		return result;
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
 	public ModelAndView delete(final Item item) {
 		ModelAndView result;
-		int providerId;
 
 		try {
-			providerId = item.getProvider().getId();
 			this.itemService.delete(item);
-			result = new ModelAndView("redirect:../list.do?providerId=" + providerId);
+			result = new ModelAndView("redirect:../allItemsList.do");
 		} catch (final Throwable oops) {
 			result = new ModelAndView("redirect:../../error.do");
 		}
