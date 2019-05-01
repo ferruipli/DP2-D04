@@ -22,7 +22,7 @@ public class ItemService {
 	private ItemRepository	itemRepository;
 
 	// Supporting services -------------------------------------------
-
+	@Autowired
 	private ProviderService	providerService;
 
 
@@ -100,6 +100,14 @@ public class ItemService {
 	}
 
 	// Other business methods ---------------------
+
+	public Double[] dataItemsPerProvider() {
+		Double[] results;
+
+		results = this.itemRepository.dataItemsPerProvider();
+
+		return results;
+	}
 
 	private void checkByPrincipal(final Item item) {
 		Provider provider;
