@@ -197,6 +197,7 @@
 		<property name="phoneNumber" value="63015521" />
 		<property name="address" value="Calle Company 1" />
 		<property name="commercialName" value="One Commercial Name" />
+		<property name="auditScore" value="0.4" />
 		<property name="userAccount" ref="userAccount3" />
 	</bean>
 

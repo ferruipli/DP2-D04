@@ -441,4 +441,23 @@ public class CompanyServiceTest extends AbstractTest {
 		super.unauthenticate();
 	}
 
+	/*
+	 * A: An actor who is authenticated as an administrator muest be able to:
+	 * Display a dashboard with the following information:
+	 * The companies with the highest audit score.
+	 * 
+	 * B: Positive test
+	 * 
+	 * C: 100% of sentence coverage
+	 * 
+	 * D: 100% of data coverage
+	 */
+	@Test
+	public void companiesHighestAuditScore() {
+		Collection<Company> companies;
+
+		companies = this.companyService.findCompaniesHighestScore();
+		Assert.isTrue(companies.size() == 1);
+	}
+
 }

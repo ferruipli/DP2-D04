@@ -393,8 +393,8 @@ public class ProviderServiceTest extends AbstractTest {
 		Assert.notNull(providers);
 
 		provider = providers.get(0);
-		items = new ArrayList<>(this.itemService.f);
-		Assert.notNull(positions);
+		items = new ArrayList<>(this.itemService.findItemsByProvider(provider.getId()));
+		Assert.notNull(items);
 	}
 
 }
