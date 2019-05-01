@@ -259,6 +259,29 @@ public class ActorMultiUserController extends ActorAbstractController {
 		return result;
 	}
 
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "deleteAuditor")
+	public ModelAndView deleteAuditor(final RegistrationForm registrationForm, final BindingResult binding, final HttpSession session) {
+		ModelAndView result;
+		Auditor auditor;
+
+		auditor = this.auditorService.findOneToDisplayEdit(registrationForm.getId());
+
+		if (binding.hasErrors()) {
+			result = this.createModelAndView(registrationForm);
+			result.addObject("rol", "Auditor");
+		} else
+			try {
+				this.auditorService.delete(auditor);
+				session.invalidate();
+				result = new ModelAndView("redirect:/welcome/index.do");
+			} catch (final Throwable oops) {
+				result = this.createModelAndView(registrationForm, "actor.commit.error");
+				result.addObject("rol", "Auditor");
+			}
+
+		return result;
+	}
+
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "saveProvider")
 	public ModelAndView saveProvider(final RegistrationForm registrationForm, final BindingResult binding) {
 		ModelAndView result;
@@ -273,6 +296,29 @@ public class ActorMultiUserController extends ActorAbstractController {
 			try {
 				this.providerService.save(provider);
 				result = new ModelAndView("redirect:/actor/display.do");
+			} catch (final Throwable oops) {
+				result = this.createModelAndView(registrationForm, "actor.commit.error");
+				result.addObject("rol", "Provider");
+			}
+
+		return result;
+	}
+
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "deleteProvider")
+	public ModelAndView deleteProvider(final RegistrationForm registrationForm, final BindingResult binding, final HttpSession session) {
+		ModelAndView result;
+		Provider provider;
+
+		provider = this.providerService.findOneToDisplayEdit(registrationForm.getId());
+
+		if (binding.hasErrors()) {
+			result = this.createModelAndView(registrationForm);
+			result.addObject("rol", "Provider");
+		} else
+			try {
+				this.providerService.delete(provider);
+				session.invalidate();
+				result = new ModelAndView("redirect:/welcome/index.do");
 			} catch (final Throwable oops) {
 				result = this.createModelAndView(registrationForm, "actor.commit.error");
 				result.addObject("rol", "Provider");
