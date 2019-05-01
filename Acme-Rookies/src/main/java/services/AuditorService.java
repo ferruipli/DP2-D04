@@ -44,6 +44,9 @@ public class AuditorService {
 	@Autowired
 	private Validator			validator;
 
+	@Autowired
+	private AuditService		auditService;
+
 
 	//Constructor ----------------------------------------------------
 
@@ -111,6 +114,7 @@ public class AuditorService {
 		Assert.isTrue(this.findByPrincipal().equals(auditor));
 
 		// Delete audits
+		this.auditService.deleteAll();
 
 		this.actorService.delete(auditor);
 	}
