@@ -194,7 +194,7 @@ public class PositionController extends AbstractController {
 				result.addObject("hasProblem", hasProblem);
 				result.addObject("principal", principal);
 				result.addObject("problemList", problemList);
-			} else if (rookiePrincipal != null && rookiePrincipal.getUserAccount().getAuthorities().toString().equals("[HACKER]")) {
+			} else if (rookiePrincipal != null && rookiePrincipal.getUserAccount().getAuthorities().toString().equals("[ROOKIE]")) {
 				position = this.positionService.findOne(positionId);
 				rookiePrincipal = this.rookieService.findByPrincipal();
 				isApplied = this.applicationService.isApplied(position, rookiePrincipal);

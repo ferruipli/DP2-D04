@@ -40,7 +40,7 @@ public class ApplicationCompanyRookieController extends AbstractController {
 
 		try {
 			result = new ModelAndView("application/display");
-			if (LoginService.getPrincipal().getAuthorities().toString().equals("[HACKER]")) {
+			if (LoginService.getPrincipal().getAuthorities().toString().equals("[ROOKIE]")) {
 				application = this.applicationService.findOneToRookie(applicationId);
 				rolActor = "rookie";
 				if (application.getAnswer() == null)

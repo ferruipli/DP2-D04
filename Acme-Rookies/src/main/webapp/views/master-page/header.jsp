@@ -20,7 +20,7 @@
 <div>
 	<ul id="jMenu">
 		<!-- Do not forget the "fNiv" class for the first level links !! -->
-		<security:authorize access="hasRole('HACKER')">
+		<security:authorize access="hasRole('ROOKIE')">
 			<li><a class="fNiv"><spring:message	code="master.page.application" /></a>
 				<ul>
 					<li class="arrow"></li>
@@ -52,7 +52,7 @@
 			</li>
 		</security:authorize>
 		
-		<security:authorize access="hasRole('HACKER')">
+		<security:authorize access="hasRole('ROOKIE')">
 			<li><a href="curriculum/rookie/list.do" class="fNiv"><spring:message code="master.page.curriculum.list"/></a>
 			</li>
 			<li><a href="finder/rookie/display.do" class="fNiv"><spring:message code="master.page.finder"/></a>
