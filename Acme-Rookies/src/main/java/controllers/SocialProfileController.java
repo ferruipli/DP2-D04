@@ -45,6 +45,7 @@ public class SocialProfileController extends AbstractController {
 			} catch (final Throwable ups) {
 			}
 
+			// We check if actor principal is owner's social profiles
 			isAuthorized = actorAuthenticateId != null && actorAuthenticateId == actorId;
 
 			result = new ModelAndView("socialProfile/list");
