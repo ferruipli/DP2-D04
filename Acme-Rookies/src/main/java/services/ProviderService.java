@@ -104,6 +104,16 @@ public class ProviderService {
 	}
 
 	// Other business methods ----------------------------------------
+
+	public Collection<Provider> findProvidersWithMoreSponsorships() {
+		Collection<Provider> result;
+
+		result = this.providerRepository.findProvidersWithMoreSponsorships();
+		Assert.notNull(result);
+
+		return result;
+	}
+
 	public Collection<Provider> topFiveProviders() {
 		Collection<Provider> results;
 		Pageable page;
