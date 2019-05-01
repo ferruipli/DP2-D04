@@ -21,4 +21,7 @@ public interface AuditRepository extends JpaRepository<Audit, Integer> {
 	@Query("select avg(a.score) from Audit a where a.position.company.id=?1")
 	Double avgScoreByCompany(int companyId);
 
+	@Query("select a from Audit a where a.auditor.id =?1 and a.position.id =?2 ")
+	Collection<Audit> findAuditsByAuditorPosition(int idAuditor, int idPos);
+
 }

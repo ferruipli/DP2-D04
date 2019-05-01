@@ -87,7 +87,7 @@ public class MessageService {
 		Assert.notNull(result);
 		this.checkSenderOrRecipient(result);
 
-		// If actor "has removed" the message, then it's not visible to him
+		// If actor "has removed" the message, then it's not visible to him/her
 		principal = this.actorService.findPrincipal();
 		systemTag = this.systemTagService.findMessageTaggedAsHARDDELETED(principal.getId(), result.getId());
 		Assert.isNull(systemTag);
@@ -297,7 +297,7 @@ public class MessageService {
 		return result;
 	}
 
-	// Requirement 4.1: Run a procedure to notify te existing users of the rebranding.
+	// Requirement 4.1: Run a procedure to notify the existing users of the rebranding.
 	public Message rebrandingNotification() {
 		Customisation customisation;
 		Message message, result;
@@ -318,7 +318,8 @@ public class MessageService {
 
 		result = this.messageRepository.save(message);
 
-		customisation.setIsRebrandNotificationSent(true);
+		// Now, customisation::isRebrandNotificationSent is true
+		this.customisationService.update_rebrandingNotification(customisation);
 
 		return result;
 	}
@@ -338,7 +339,7 @@ public class MessageService {
 		provider = sponsorship.getProvider();
 		flatRate = customisation.getFrate();
 		vat = customisation.getVATtax();
-		finalRate = flatRate * (1.0 + vat);
+		finalRate = flatRate * (1.0 + vat / 100);
 		recipients = new ArrayList<Actor>();
 		recipients.add(provider);
 
@@ -352,7 +353,7 @@ public class MessageService {
 		return result;
 	}
 
-	// This method id used when an actor want to delete all his or her data.
+	// This method is used when an actor wants to delete all his or her data.
 	public void deleteMessages(final Actor actor) {
 		Collection<Message> sentMessages, receivedMessages;
 

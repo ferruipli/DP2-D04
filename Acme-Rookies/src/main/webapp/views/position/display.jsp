@@ -33,7 +33,14 @@
 	</jstl:if>
 	</security:authorize>
 	
-
+	<security:authorize access="hasRole('AUDITOR')">
+	<jstl:if test="${!position.isCancelled && isAuditable}">
+		<h2>
+			<a href="audit/auditor/create.do?positionId=${position.id}"><spring:message code="position.audit" /></a>
+		</h2>
+	</jstl:if>
+	</security:authorize>
+	
 	<security:authorize access="hasRole('PROVIDER')">
 		<jstl:if test="${!position.isCancelled && position.isFinalMode}">
 			<h2><a href="sponsorship/provider/create.do?positionId=${position.id}"><spring:message code="position.provider" /></a></h2>
@@ -139,11 +146,11 @@
 
 
 	<security:authorize access="hasRole('COMPANY')">
-		<jstl:if test="${principal == row.auditor}">
-			<display:column>
+		<display:column>
+			<jstl:if test="${principal == row.auditor}">
 				<a href="audit/auditor/edit.do?auditId=${row.id}"><spring:message code="audit.edit"/></a>
-			</display:column>
-		</jstl:if>
+			</jstl:if>
+		</display:column>
 	</security:authorize>
 	
 	<display:column>

@@ -16,6 +16,7 @@ import security.Authority;
 import security.LoginService;
 import security.UserAccount;
 import security.UserAccountService;
+import domain.Administrator;
 import domain.Auditor;
 import domain.CreditCard;
 import forms.RegistrationForm;
@@ -87,6 +88,9 @@ public class AuditorService {
 	public Auditor save(final Auditor auditor) {
 		Auditor result;
 
+		if (auditor.getId() == 0)
+			Assert.isTrue(this.actorService.findPrincipal() instanceof Administrator);
+
 		result = (Auditor) this.actorService.save(auditor);
 
 		return result;
@@ -99,6 +103,16 @@ public class AuditorService {
 		Assert.notNull(result);
 
 		return result;
+	}
+
+	public void delete(final Auditor auditor) {
+		Assert.notNull(auditor);
+		Assert.isTrue(auditor.getId() != 0);
+		Assert.isTrue(this.findByPrincipal().equals(auditor));
+
+		// Delete audits
+
+		this.actorService.delete(auditor);
 	}
 
 	// Other business methods ---------------------
@@ -259,5 +273,9 @@ public class AuditorService {
 		if (this.actorService.existEmail(auditor.getEmail()))
 			binding.rejectValue("email", "actor.email.used", "Email already in use");
 
+	}
+
+	protected void flush() {
+		this.auditorRepository.flush();
 	}
 }

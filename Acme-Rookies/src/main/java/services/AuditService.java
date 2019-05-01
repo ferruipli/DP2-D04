@@ -49,11 +49,10 @@ public class AuditService {
 		Audit result;
 		final Auditor auditor;
 
-		Assert.isTrue(position.getIsFinalMode());
-		Assert.isTrue(!position.getIsCancelled());
-
 		result = new Audit();
 		auditor = this.auditorService.findByPrincipal();
+
+		Assert.isTrue(this.isAuditable(position, auditor));
 
 		result.setWrittenMoment(this.utilityService.current_moment());
 		result.setAuditor(auditor);
@@ -65,8 +64,6 @@ public class AuditService {
 		Assert.notNull(audit);
 		this.checkByPrincipal(audit);
 		Assert.isTrue(!audit.getFinalMode());
-
-		//TODO
 
 		final Audit result;
 
@@ -82,6 +79,18 @@ public class AuditService {
 		Assert.isTrue(!audit.getFinalMode());
 
 		this.auditRepository.delete(audit);
+	}
+
+	public void deleteAll() {
+		Auditor principal;
+		Collection<Audit> audits;
+
+		principal = this.auditorService.findByPrincipal();
+		Assert.notNull(principal);
+
+		audits = this.auditRepository.findAuditsByAuditor(principal.getId());
+
+		this.auditRepository.delete(audits);
 	}
 
 	public Audit findOneToEditDelete(final int auditId) {
@@ -148,6 +157,19 @@ public class AuditService {
 		return audits;
 	}
 
+	public boolean isAuditable(final Position position, final Auditor auditor) {
+		boolean result;
+		Collection<Audit> audits;
+
+		Assert.isTrue(position.getIsFinalMode());
+		Assert.isTrue(!position.getIsCancelled());
+
+		audits = this.auditRepository.findAuditsByAuditorPosition(auditor.getId(), position.getId());
+		result = !audits.contains(position);
+
+		return result;
+	}
+
 	public Collection<Audit> findByPosition(final Position position) {
 		Collection<Audit> audits;
 
@@ -155,6 +177,7 @@ public class AuditService {
 
 		return audits;
 	}
+
 	protected void flush() {
 		this.auditRepository.flush();
 	}

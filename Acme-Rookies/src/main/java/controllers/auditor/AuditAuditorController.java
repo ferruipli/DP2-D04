@@ -4,7 +4,6 @@ package controllers.auditor;
 import java.util.Collection;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -67,18 +66,18 @@ public class AuditAuditorController extends AbstractController {
 
 		return result;
 	}
-	// Create
+	// Create  ------------------------------------
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public ModelAndView create(@RequestParam final int auditId) {
+	public ModelAndView create(@RequestParam final int positionId) {
 		ModelAndView result;
 		Audit audit;
 		Position position;
 
 		try {
-			position = this.positionService.findOne(auditId);
+			position = this.positionService.findOne(positionId);
 			audit = this.auditService.create(position);
 
-			result = this.createEditModelAndView(audit, auditId);
+			result = this.createEditModelAndView(audit, positionId);
 
 		} catch (final Exception e) {
 			result = new ModelAndView("redirect:../../error.do");
@@ -87,7 +86,7 @@ public class AuditAuditorController extends AbstractController {
 		return result;
 	}
 
-	// Edit
+	// Edit ------------------------------------
 
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public ModelAndView edit(@RequestParam final int auditId) {
@@ -105,8 +104,9 @@ public class AuditAuditorController extends AbstractController {
 		return result;
 	}
 
+	// Save ------------------------------------
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid final Audit audit, final BindingResult binding, final HttpServletRequest request) {
+	public ModelAndView save(final Audit audit, final BindingResult binding, final HttpServletRequest request) {
 		ModelAndView result;
 		Audit auditRec;
 		Integer positionId;
@@ -119,18 +119,20 @@ public class AuditAuditorController extends AbstractController {
 
 		auditRec = this.auditService.reconstruct(audit, position, binding);
 		if (binding.hasErrors())
-			result = this.createEditModelAndView(audit, audit.getPosition().getId());
+			result = this.createEditModelAndView(audit, position.getId());
 		else
 			try {
 
 				this.auditService.save(auditRec);
-				result = new ModelAndView("redirect:../audit/auditor/list.do");
+				result = new ModelAndView("redirect:../../audit/auditor/list.do");
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(audit, audit.getPosition().getId(), "audit.commit.error");
 			}
 
 		return result;
 	}
+
+	//Delete ------------------------------------
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
 	public ModelAndView delete(final Audit audit, final BindingResult binding, final HttpServletRequest request) {
 		ModelAndView result;
@@ -147,7 +149,7 @@ public class AuditAuditorController extends AbstractController {
 
 		return result;
 	}
-
+	// Make final ------------------------------------
 	@RequestMapping(value = "/makeFinal", method = RequestMethod.GET)
 	public ModelAndView makeFinal(@RequestParam final int auditId, final RedirectAttributes redir) {
 		ModelAndView result;

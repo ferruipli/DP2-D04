@@ -55,11 +55,7 @@
 	<strong><spring:message code="audit.score"/>:</strong>
 		<jstl:out value="${audit.score}"/>
 	<br/>
-	
-	
 
-	
-	
 	
 	<!-- Links -->	
 	

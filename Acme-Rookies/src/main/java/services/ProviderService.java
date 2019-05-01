@@ -46,6 +46,9 @@ public class ProviderService {
 	@Autowired
 	private UtilityService		utilityService;
 
+	@Autowired
+	private SponsorshipService	sponsorshipService;
+
 
 	//Constructor ----------------------------------------------------
 
@@ -101,6 +104,20 @@ public class ProviderService {
 		Assert.notNull(result);
 
 		return result;
+	}
+
+	public void delete(final Provider provider) {
+		Assert.notNull(provider);
+		Assert.isTrue(provider.getId() != 0);
+		Assert.isTrue(this.findByPrincipal().equals(provider));
+
+		// Delete items
+
+		// Delete sponsorships
+		this.sponsorshipService.deleteSponsorships(provider);
+
+		this.actorService.delete(provider);
+
 	}
 
 	// Other business methods ----------------------------------------
@@ -287,6 +304,10 @@ public class ProviderService {
 		if (this.actorService.existEmail(provider.getEmail()))
 			binding.rejectValue("email", "actor.email.used", "Email already in use");
 
+	}
+
+	protected void flush() {
+		this.providerRepository.flush();
 	}
 
 }

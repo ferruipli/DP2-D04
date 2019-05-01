@@ -60,7 +60,7 @@ public class MessageAdministratorController extends AbstractController {
 		return result;
 	}
 
-	@RequestMapping(value = "breachNotification", method = RequestMethod.GET)
+	@RequestMapping(value = "/breachNotification", method = RequestMethod.GET)
 	public ModelAndView breach() {
 		ModelAndView result;
 
@@ -74,7 +74,7 @@ public class MessageAdministratorController extends AbstractController {
 		return result;
 	}
 
-	@RequestMapping(value = "rebrandingNotification", method = RequestMethod.GET)
+	@RequestMapping(value = "/rebrandingNotification", method = RequestMethod.GET)
 	public ModelAndView rebranding() {
 		ModelAndView result;
 

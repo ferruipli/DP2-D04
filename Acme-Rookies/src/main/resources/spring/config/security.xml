@@ -106,10 +106,8 @@
 	
 		<security:intercept-url pattern="/provider/list.do" access="permitAll" /> 
 	
-		<security:intercept-url pattern="/socialProfile/administrator,company,rookie/**" access="isAuthenticated()" />
-
+		
 		<security:intercept-url pattern="/socialProfile/administrator,auditor,company,provider,rookie/**" access="isAuthenticated()" />
-
 		<security:intercept-url pattern="/socialProfile/**" access="permitAll" />
 		
 		<security:intercept-url pattern="/sponsorship/provider/**" access="hasRole('PROVIDER')"/>
