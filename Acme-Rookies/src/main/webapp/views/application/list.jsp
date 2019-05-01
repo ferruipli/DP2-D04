@@ -22,7 +22,7 @@
 
 
 
-<security:authorize access="hasRole('HACKER')">
+<security:authorize access="hasRole('ROOKIE')">
 	<fieldset>
 		<legend>
 			<spring:message code="application.pending" />
@@ -40,7 +40,7 @@
 			<display:column property="problem.title"
 				titleKey="application.problem" />
 
-			<security:authorize access="hasRole('HACKER')">
+			<security:authorize access="hasRole('ROOKIE')">
 				<display:column property="position.title"
 					titleKey="application.position" />
 			</security:authorize>
@@ -80,7 +80,7 @@
 		<display:column
 					property="problem.title" titleKey="application.problem" />
 
-		<security:authorize access="hasRole('HACKER')">
+		<security:authorize access="hasRole('ROOKIE')">
 			<display:column 
 				property="position.title" titleKey="application.position" />
 		</security:authorize>
@@ -110,7 +110,7 @@
 		<display:column 
 			property="problem.title" titleKey="application.problem" />
 
-		<security:authorize access="hasRole('HACKER')">
+		<security:authorize access="hasRole('ROOKIE')">
 			<display:column 
 				property="position.title" titleKey="application.position" />
 		</security:authorize>
@@ -141,7 +141,7 @@
 		<display:column 
 			property="problem.title" titleKey="application.problem" />
 
-		<security:authorize access="hasRole('HACKER')">
+		<security:authorize access="hasRole('ROOKIE')">
 			<display:column 
 				property="position.title" titleKey="application.position" />
 		</security:authorize>

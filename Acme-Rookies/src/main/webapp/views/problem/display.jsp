@@ -20,7 +20,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-	<security:authorize access="hasRole('HACKER')">
+	<security:authorize access="hasRole('ROOKIE')">
 		<strong><spring:message code="problem.company.commercialName"/>:</strong>
 			<a href="actor/display.do?actorId=${problem.company.id}"><jstl:out value="${problem.company.commercialName}"/></a>
 		<br/>
@@ -100,7 +100,7 @@
 		</a>
 	</security:authorize>
 	
-	<security:authorize access="hasRole('HACKER')">
+	<security:authorize access="hasRole('ROOKIE')">
 		<a href="position/list.do?companyId=${problem.company.id}">
 			<spring:message	code="position.back" />			
 		</a>

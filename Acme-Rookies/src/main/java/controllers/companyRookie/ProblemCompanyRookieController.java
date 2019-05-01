@@ -64,7 +64,7 @@ public class ProblemCompanyRookieController extends AbstractController {
 				result.addObject("attachments", attachments);
 				result.addObject("problem", problem);
 				result.addObject("positionsList", positionsList);
-			} else if (userPrincipal.getAuthorities().toString().equals("[HACKER]")) {
+			} else if (userPrincipal.getAuthorities().toString().equals("[ROOKIE]")) {
 				problem = this.problemService.findOneToDisplayRookie(problemId);
 				positionsList = this.positionService.findPositionsByProblem(problem);
 				attachments = this.utilityService.getSplittedString(problem.getAttachments());
