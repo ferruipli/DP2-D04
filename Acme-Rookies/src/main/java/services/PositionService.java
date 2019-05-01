@@ -53,6 +53,9 @@ public class PositionService {
 	@Autowired
 	private ProblemService		problemService;
 
+	@Autowired
+	private AuditService		auditService;
+
 
 	// Other supporting services -------------------
 
@@ -102,6 +105,7 @@ public class PositionService {
 		Assert.isTrue(this.positionRepository.exists(position.getId()));
 		this.checkByPrincipal(position);
 		Assert.isTrue(!position.getIsFinalMode());
+		this.auditService.deleteByPosition(position);
 
 		this.positionRepository.delete(position);
 	}
@@ -254,6 +258,9 @@ public class PositionService {
 		positions = this.positionRepository.findPositionByCompany(company.getId());
 		for (final Position p : positions)
 			this.finderService.deleteFromFinders(p);
+
+		for (final Position p : positions)
+			this.auditService.deleteByPosition(p);
 
 		this.positionRepository.delete(positions);
 
