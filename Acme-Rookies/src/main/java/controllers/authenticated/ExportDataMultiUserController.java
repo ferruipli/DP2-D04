@@ -14,22 +14,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import services.ActorService;
+import services.AuditService;
+import services.AuditorService;
 import services.CurriculumService;
+import services.ItemService;
 import services.MessageService;
 import services.PositionService;
 import services.ProblemService;
+import services.ProviderService;
 import services.SocialProfileService;
+import services.SponsorshipService;
 import controllers.AbstractController;
 import domain.Actor;
+import domain.Audit;
+import domain.Auditor;
 import domain.Curriculum;
 import domain.EducationData;
+import domain.Item;
 import domain.Message;
 import domain.MiscellaneousData;
 import domain.PersonalData;
 import domain.Position;
 import domain.PositionData;
 import domain.Problem;
+import domain.Provider;
 import domain.SocialProfile;
+import domain.Sponsorship;
 
 @Controller
 @RequestMapping(value = "/exportData/administrator,company,rookie")
@@ -52,6 +62,21 @@ public class ExportDataMultiUserController extends AbstractController {
 
 	@Autowired
 	private CurriculumService		curriculumService;
+
+	@Autowired
+	private AuditService			auditService;
+
+	@Autowired
+	private AuditorService			auditorService;
+
+	@Autowired
+	private ProviderService			providerService;
+
+	@Autowired
+	private SponsorshipService		sponsorshipService;
+
+	@Autowired
+	private ItemService				itemService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -205,6 +230,70 @@ public class ExportDataMultiUserController extends AbstractController {
 
 				ss++;
 				if (ss < curricula.size())
+					data += "\r\n" + "......................." + "\r\n\r\n";
+			}
+
+		}
+		if (actor.getUserAccount().getAuthorities().toString().equals("[AUDITOR]")) {
+			final Collection<Audit> audits;
+			Auditor principal;
+
+			principal = this.auditorService.findByPrincipal();
+			audits = this.auditService.findAuditsByAuditor(principal);
+
+			data += "\r\n";
+			data += "-------------------------------------------------------------";
+			data += "\r\n\r\n";
+
+			data += "Audits:\r\n\r\n";
+			Integer ss = 0;
+			for (final Audit audit : audits) {
+				data += "Score: " + audit.getScore() + " \r\n" + "Text: " + audit.getText() + " \r\n" + "Final mode: " + audit.getFinalMode() + " \r\n" + "Written moment : " + audit.getWrittenMoment() + "\r\n" + "Position: "
+					+ audit.getPosition().getTitle() + " \r\n";
+				ss++;
+				if (ss < audits.size())
+					data += "\r\n" + "......................." + "\r\n\r\n";
+			}
+
+		}
+
+		if (actor.getUserAccount().getAuthorities().toString().equals("[PROVIDER]")) {
+			final Collection<Sponsorship> sponsorships;
+			final Collection<Item> items;
+			Provider principal;
+
+			principal = this.providerService.findByPrincipal();
+			sponsorships = this.sponsorshipService.findAllByPrincipal();
+			items = this.itemService.findItemsByProvider(principal.getId());
+
+			data += "\r\n";
+			data += "-------------------------------------------------------------";
+			data += "\r\n\r\n";
+
+			data += "Sponsorships:\r\n\r\n";
+			Integer ss = 0;
+			for (final Sponsorship sponsorship : sponsorships) {
+				data += "Banner: " + sponsorship.getBanner() + " \r\n" + "Targer page: " + sponsorship.getTargetPage() + " \r\n" + "Position: " + sponsorship.getPosition().getTitle() + " \r\n";
+				data += "\r\n";
+				data += "Holder name: " + sponsorship.getCreditCard().getHolder() + " \r\n" + "Make: " + sponsorship.getCreditCard().getMake() + " \r\n" + "Number: " + sponsorship.getCreditCard().getNumber() + " \r\n" + "Expiration month: "
+					+ sponsorship.getCreditCard().getExpirationMonth() + " \r\n" + "Expiration year: " + sponsorship.getCreditCard().getExpirationYear() + " \r\n" + "CVV Code: " + sponsorship.getCreditCard().getCvvCode() + " \r\n";
+
+				ss++;
+				if (ss < sponsorships.size())
+					data += "\r\n" + "......................." + "\r\n\r\n";
+			}
+
+			data += "\r\n";
+			data += "-------------------------------------------------------------";
+			data += "\r\n\r\n";
+
+			data += "Items:\r\n\r\n";
+			Integer ss1 = 0;
+			for (final Item item : items) {
+				data += "Name: " + item.getName() + " \r\n" + "Description: " + item.getDescription() + " \r\n" + "Link: " + item.getLink() + " \r\n" + "Picture:" + item.getPicture() + " \r\n";
+
+				ss1++;
+				if (ss1 < items.size())
 					data += "\r\n" + "......................." + "\r\n\r\n";
 			}
 

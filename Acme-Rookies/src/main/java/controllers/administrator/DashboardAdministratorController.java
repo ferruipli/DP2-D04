@@ -15,15 +15,19 @@ import services.ApplicationService;
 import services.CompanyService;
 import services.CurriculumService;
 import services.FinderService;
+import services.ItemService;
 import services.PositionService;
+import services.ProviderService;
 import services.RookieService;
+import services.SponsorshipService;
 import controllers.AbstractController;
 import domain.Company;
 import domain.Position;
+import domain.Provider;
 import domain.Rookie;
 
 @Controller
-@RequestMapping("dashboard/administrator")
+@RequestMapping("/dashboard/administrator")
 public class DashboardAdministratorController extends AbstractController {
 
 	// Services ------------------
@@ -45,6 +49,15 @@ public class DashboardAdministratorController extends AbstractController {
 
 	@Autowired
 	private FinderService		finderService;
+
+	@Autowired
+	private ItemService			itemService;
+
+	@Autowired
+	private ProviderService		providerService;
+
+	@Autowired
+	private SponsorshipService	sponsorshipService;
 
 
 	// Constructors --------------
@@ -126,13 +139,21 @@ public class DashboardAdministratorController extends AbstractController {
 		// LEVEL B --------------------------------------
 
 		// Req 11.1.1
+		Double[] dataItemsPerProvider;
+		dataItemsPerProvider = this.itemService.dataItemsPerProvider();
+		result.addObject("dataItemsPerProvider", dataItemsPerProvider);
 
 		// Req 11.1.2
+		Collection<Provider> topFiveProviders;
+		topFiveProviders = this.providerService.topFiveProviders();
+		result.addObject("topFiveProviders", topFiveProviders);
 
 		// LEVEL A --------------------------------------
 
 		// Req 14.1.1
-
+		Double[] dataOfSponsorshipPerProvider;
+		dataOfSponsorshipPerProvider = this.sponsorshipService.dataOfSponsorshipPerProvider();
+		result.addObject("dataOfSponsorshipPerProvider", dataOfSponsorshipPerProvider);
 		// Req 14.1.2
 
 		// Req 14.1.3

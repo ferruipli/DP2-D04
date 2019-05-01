@@ -37,7 +37,6 @@ public class SponsorshipServiceTest extends AbstractTest {
 
 	// Tests -------------------------------------------------------------
 
-	//	TODO: Test funcional
 	/*
 	 * A: An actor who is authenticated as a provider must be able to
 	 * manage his or her sponsorships, which includes LISTING, showing,
@@ -45,9 +44,10 @@ public class SponsorshipServiceTest extends AbstractTest {
 	 * 
 	 * B: Positive test
 	 * 
-	 * C: x% of sentence coverage.
+	 * C: 100% of sentence coverage, since it has been covered
+	 * 13 lines of code of 13 possible.
 	 * 
-	 * D: x% of data coverage.
+	 * D: 100% of data coverage.
 	 */
 	@Test
 	public void testPositiveListSponsorship() {
@@ -78,9 +78,10 @@ public class SponsorshipServiceTest extends AbstractTest {
 	 * 
 	 * B: The actor principal must be authenticated as Provider
 	 * 
-	 * C: x% of sentence coverage.
+	 * C: 100% of sentence coverage, since it has been covered
+	 * 13 lines of code of 13 possible.
 	 * 
-	 * D: x% of data coverage.
+	 * D: 100% of data coverage.
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testNegativeListSponsorship() {
@@ -111,9 +112,10 @@ public class SponsorshipServiceTest extends AbstractTest {
 	 * 
 	 * B: Positive test
 	 * 
-	 * C: x% of sentence coverage.
+	 * C: 100% of sentence coverage, since it has been covered
+	 * 4 lines of code of 4 possible.
 	 * 
-	 * D: x% of data coverage.
+	 * D: 100% of data coverage.
 	 */
 	@Test
 	public void testPositiveDisplaySponsorship() {
@@ -138,9 +140,10 @@ public class SponsorshipServiceTest extends AbstractTest {
 	 * 
 	 * B: The sponsorship to display must belong to the provider principal.
 	 * 
-	 * C: x% of sentence coverage.
+	 * C: 100% of sentence coverage, since it has been covered
+	 * 4 lines of code of 4 possible.
 	 * 
-	 * D: x% of data coverage.
+	 * D: 100% of data coverage.
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testNegativeDisplaySponsorship() {
@@ -165,9 +168,11 @@ public class SponsorshipServiceTest extends AbstractTest {
 	 * 
 	 * B: Positive test
 	 * 
-	 * C: x% of sentence coverage.
+	 * C: 100% of sentence coverage, since it has been covered
+	 * 28 lines of code of 28 possible.
 	 * 
-	 * D: x% of data coverage.
+	 * D: Approximately 26.7% of data coverage, since it has been used 8
+	 * values in the data of 30 different possible values.
 	 */
 	@Test
 	public void testPositiveCreateSponsorship() {
@@ -196,9 +201,11 @@ public class SponsorshipServiceTest extends AbstractTest {
 	 * B: For every sponsorship, the system must store a valid credit
 	 * card.
 	 * 
-	 * C: x% of sentence coverage.
+	 * C: 53.57% of sentence coverage, since it has been covered
+	 * 15 lines of code of 28 possible.
 	 * 
-	 * D: x% of data coverage.
+	 * D: Approximately 26.7% of data coverage, since it has been used 8
+	 * values in the data of 30 different possible values.
 	 */
 	@Test(expected = ConstraintViolationException.class)
 	public void testNegativeCreateSponsorship() {
@@ -230,9 +237,11 @@ public class SponsorshipServiceTest extends AbstractTest {
 	 * 
 	 * B: Positive test
 	 * 
-	 * C: x% of sentence coverage.
+	 * C: 100% of sentence coverage, since it has been covered
+	 * 28 lines of code of 28 possible.
 	 * 
-	 * D: x% of data coverage.
+	 * D: Approximately 26.7% of data coverage, since it has been used 8
+	 * values in the data of 30 different possible values.
 	 */
 	@Test
 	public void testPositiveUpdateSponsorship() {
@@ -266,9 +275,11 @@ public class SponsorshipServiceTest extends AbstractTest {
 	 * 
 	 * B: The target page must be a valid URL.
 	 * 
-	 * C: x% of sentence coverage.
+	 * C: 53.57% of sentence coverage, since it has been covered
+	 * 15 lines of code of 28 possible.
 	 * 
-	 * D: x% of data coverage.
+	 * D: Approximately 26.7% of data coverage, since it has been used 8
+	 * values in the data of 30 different possible values.
 	 */
 	@Test(expected = ConstraintViolationException.class)
 	public void testNegativeUpdateSponsorship() {
@@ -302,9 +313,11 @@ public class SponsorshipServiceTest extends AbstractTest {
 	 * 
 	 * B: Positive test
 	 * 
-	 * C: x% of sentence coverage.
+	 * C: 100% of sentence coverage, since it has been covered
+	 * 15 lines of code of 15 possible.
 	 * 
-	 * D: x% of data coverage.
+	 * D: Approximately 26.7% of data coverage, since it has been used 8
+	 * values in the data of 30 different possible values.
 	 */
 	@Test
 	public void testPositiveDeleteSponsorship() {
@@ -330,9 +343,11 @@ public class SponsorshipServiceTest extends AbstractTest {
 	 * 
 	 * B: The sponsorship to delete must belong to the provider principal.
 	 * 
-	 * C: x% of sentence coverage.
+	 * C: Approximately 93.33% of sentence coverage, since it has been covered
+	 * 14 lines of code of 15 possible.
 	 * 
-	 * D: x% of data coverage.
+	 * D: Approximately 26.7% of data coverage, since it has been used 8
+	 * values in the data of 30 different possible values.
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testNegativeDeleteSponsorship() {

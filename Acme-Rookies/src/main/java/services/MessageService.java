@@ -343,7 +343,7 @@ public class MessageService {
 		recipients = new ArrayList<Actor>();
 		recipients.add(provider);
 
-		subject = "Fare notification. / Notificación de tasas.";
+		subject = "Rate notification. / Notificación de tasas.";
 		body = "The payment of " + finalRate + " euros has been made in one of you sponsorships for the " + sponsorship.getPosition().getTitle() + " position. / Se ha realizado el cobro de " + finalRate + " euros de uno de sus patrocinios para el cargo "
 			+ sponsorship.getPosition().getTitle() + ".";
 

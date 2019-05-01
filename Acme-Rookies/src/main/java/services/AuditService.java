@@ -81,7 +81,7 @@ public class AuditService {
 		this.auditRepository.delete(audit);
 	}
 
-	public void deleteAll() {
+	public void deleteByAuditor() {
 		Auditor principal;
 		Collection<Audit> audits;
 
@@ -89,6 +89,14 @@ public class AuditService {
 		Assert.notNull(principal);
 
 		audits = this.auditRepository.findAuditsByAuditor(principal.getId());
+
+		this.auditRepository.delete(audits);
+	}
+
+	public void deleteByPosition(final Position position) {
+		Collection<Audit> audits;
+
+		audits = this.auditRepository.findAuditsByPosition(position.getId());
 
 		this.auditRepository.delete(audits);
 	}
@@ -165,7 +173,7 @@ public class AuditService {
 		Assert.isTrue(!position.getIsCancelled());
 
 		audits = this.auditRepository.findAuditsByAuditorPosition(auditor.getId(), position.getId());
-		result = !audits.contains(position);
+		result = audits.isEmpty();
 
 		return result;
 	}
@@ -173,9 +181,17 @@ public class AuditService {
 	public Collection<Audit> findByPosition(final Position position) {
 		Collection<Audit> audits;
 
-		audits = this.auditRepository.findAuditsByPosition(position.getId());
+		audits = this.auditRepository.findFinalAuditsByPosition(position.getId());
 
 		return audits;
+	}
+
+	public Double[] findDataNumberAuditScore() {
+		Double[] res;
+
+		res = this.auditRepository.findDataNumberAuditScore();
+
+		return res;
 	}
 
 	protected void flush() {
