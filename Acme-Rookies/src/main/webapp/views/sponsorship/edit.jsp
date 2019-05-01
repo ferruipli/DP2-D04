@@ -38,8 +38,10 @@
 	<div>
 		<acme:submit name="save" code="sponsorship.save"/>
 		&nbsp;
-		<acme:submit name="delete" code="sponsorship.delete"/>
-		&nbsp;
+		<jstl:if test="${sponsorship.id != 0}">
+			<acme:submit name="delete" code="sponsorship.delete"/>
+			&nbsp;
+		</jstl:if>
 		<acme:cancel code="sponsorship.cancel" url="sponsorship/provider/list.do"/>
 	</div>
 </form:form>

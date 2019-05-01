@@ -338,7 +338,7 @@ public class MessageService {
 		provider = sponsorship.getProvider();
 		flatRate = customisation.getFrate();
 		vat = customisation.getVATtax();
-		finalRate = flatRate * (1.0 + vat);
+		finalRate = flatRate * (1.0 + vat / 100);
 		recipients = new ArrayList<Actor>();
 		recipients.add(provider);
 
