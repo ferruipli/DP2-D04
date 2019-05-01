@@ -27,7 +27,7 @@ import domain.Provider;
 import domain.Rookie;
 
 @Controller
-@RequestMapping("dashboard/administrator")
+@RequestMapping("/dashboard/administrator")
 public class DashboardAdministratorController extends AbstractController {
 
 	// Services ------------------
