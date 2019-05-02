@@ -1,6 +1,8 @@
 
 package services;
 
+import java.util.Collection;
+
 import javax.transaction.Transactional;
 import javax.validation.ConstraintViolationException;
 
@@ -13,6 +15,7 @@ import org.springframework.util.Assert;
 
 import utilities.AbstractTest;
 import domain.Audit;
+import domain.Auditor;
 import domain.Position;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -28,6 +31,9 @@ public class AuditServiceTest extends AbstractTest {
 
 	@Autowired
 	private PositionService	positionService;
+
+	@Autowired
+	private AuditorService	auditorService;
 
 
 	// Other services ------------------------------------------
@@ -242,11 +248,11 @@ public class AuditServiceTest extends AbstractTest {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void display_negativeAuthenticate_test() {
-		super.authenticate("auditor3");
+		super.authenticate("auditor2");
 
 		int auditId;
 
-		auditId = super.getEntityId("audit2");
+		auditId = super.getEntityId("audit3");
 		this.auditService.findOne(auditId);
 		super.unauthenticate();
 	}
@@ -262,7 +268,7 @@ public class AuditServiceTest extends AbstractTest {
 
 		int auditId;
 
-		auditId = super.getEntityId("audit2");
+		auditId = super.getEntityId("audit3");
 		this.auditService.findOneToDisplay(auditId);
 
 	}
@@ -329,6 +335,111 @@ public class AuditServiceTest extends AbstractTest {
 		super.unauthenticate();
 	}
 
-	//TODO: MAKE FINAL, LIST, QUERIES,
+	/*
+	 * A: Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to make final her/his audits
+	 * C:
+	 * D:intentionally blank.there's nothing to check
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void makeFinal_positive_test() {
+		super.authenticate("auditor3");
+
+		int auditId;
+		Audit audit;
+
+		auditId = super.getEntityId("audit3");
+		audit = this.auditService.findOne(auditId);
+
+		this.auditService.makeFinal(audit);
+
+		super.unauthenticate();
+	}
+
+	/*
+	 * A: Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to make final her/his audits
+	 * B: Make final an audit to another auditor
+	 * C:
+	 * D:intentionally blank.there's nothing to check
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void makeFinal_negative_test() {
+		super.authenticate("auditor2");
+
+		int auditId;
+		Audit audit;
+
+		auditId = super.getEntityId("audit3");
+		audit = this.auditService.findOne(auditId);
+
+		this.auditService.makeFinal(audit);
+
+		super.unauthenticate();
+	}
+
+	/*
+	 * A: Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to list her/his audits
+	 * C:
+	 * D:intentionally blank.there's nothing to check
+	 */
+	@Test
+	public void list_positive_test() {
+		Collection<Audit> audits;
+		int auditId;
+		int sizeAudits;
+		Audit audit1;
+		Auditor auditor;
+
+		super.authenticate("auditor1");
+
+		auditor = this.auditorService.findByPrincipal();
+		auditId = super.getEntityId("audit1");
+		audit1 = this.auditService.findOne(auditId);
+		sizeAudits = 1;
+
+		audits = this.auditService.findAuditsByAuditor(auditor);
+
+		super.unauthenticate();
+
+		Assert.isTrue(audits.contains(audit1));
+		Assert.isTrue(audits.size() == sizeAudits);
+	}
+
+	/*
+	 * A:
+	 * C:
+	 * D:intentionally blank.there's nothing to check
+	 */
+	@Test
+	public void findDataNumberAuditScore_positive_est() {
+		super.authenticate("admin1");
+
+		Double[] data;
+
+		data = this.auditService.findDataNumberAuditScore();
+
+		Assert.isTrue(data[0] == 0.0);
+		Assert.isTrue(data[1] == 0.0);
+		Assert.isTrue(data[2] == 0.0);
+		Assert.isTrue(data[3] == 0.0);
+
+		super.unauthenticate();
+	}
+
+	/*
+	 * A:
+	 * C:
+	 * D:intentionally blank.there's nothing to check
+	 */
+	@Test
+	public void findAvgSalaryByHighestPosition_positive_est() {
+		super.authenticate("admin1");
+
+		Collection<Double> data;
+
+		data = this.auditService.findAvgSalaryByHighestPosition();
+
+		super.unauthenticate();
+	}
+
 	//TODO: cobertura
 }
