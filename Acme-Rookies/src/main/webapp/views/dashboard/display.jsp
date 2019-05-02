@@ -150,10 +150,10 @@
 		<th> <spring:message code="dashboard.deviation" /> </th>
 	</tr>
 	<tr>
-		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
-		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
-		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
-		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${findDataNumberAuditScoreOfCompany[0]}" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${findDataNumberAuditScoreOfCompany[1]}" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${findDataNumberAuditScoreOfCompany[2]}" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${findDataNumberAuditScoreOfCompany[3]}" /> </td>
 	</tr>
 </table>
 

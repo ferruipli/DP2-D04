@@ -135,6 +135,9 @@ public class DashboardAdministratorController extends AbstractController {
 		result.addObject("findDataNumberAuditScore", findDataNumberAuditScore);
 
 		// Req 4.4.2
+		Double[] findDataNumberAuditScoreOfCompany;
+		findDataNumberAuditScoreOfCompany = this.auditService.findDataNumberAuditScoreOfCompany();
+		result.addObject("findDataNumberAuditScoreOfCompany", findDataNumberAuditScoreOfCompany);
 
 		// Req 4.4.3
 		Collection<Company> findCompaniesHighestScore;

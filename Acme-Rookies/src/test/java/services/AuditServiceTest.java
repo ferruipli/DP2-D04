@@ -434,7 +434,7 @@ public class AuditServiceTest extends AbstractTest {
 	public void findAvgSalaryByHighestPosition_positive_est() {
 		super.authenticate("admin1");
 
-		Collection<Double> data;
+		Double data;
 
 		data = this.auditService.findAvgSalaryByHighestPosition();
 
