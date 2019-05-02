@@ -27,6 +27,9 @@ public class ItemService {
 	@Autowired
 	private ProviderService	providerService;
 
+	@Autowired
+	private UtilityService	utilityService;
+
 
 	//Constructor ----------------------------------------------------
 	public ItemService() {
@@ -48,11 +51,11 @@ public class ItemService {
 
 	public Item save(final Item item) {
 		Assert.notNull(item);
+		this.utilityService.checkURLS(item.getPicture());
+		this.checkByPrincipal(item);
 		Item result;
 
 		result = this.itemRepository.save(item);
-
-		this.checkByPrincipal(result);
 
 		return result;
 	}
@@ -87,7 +90,7 @@ public class ItemService {
 
 	public void delete(final Item item) {
 		Assert.notNull(item);
-		//Assert.isTrue(this.itemRepository.exists(item.getId()));
+		Assert.isTrue(this.itemRepository.exists(item.getId()));
 		this.checkByPrincipal(item);
 
 		this.itemRepository.delete(item);
@@ -154,5 +157,9 @@ public class ItemService {
 		results = this.itemRepository.findItemsByProvider(providerId);
 
 		return results;
+	}
+
+	protected void flush() {
+		this.itemRepository.flush();
 	}
 }

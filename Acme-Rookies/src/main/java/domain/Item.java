@@ -3,6 +3,7 @@ package domain;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
@@ -62,6 +63,7 @@ public class Item extends DomainEntity {
 		this.link = link;
 	}
 
+	@Column(length = 30000)
 	@SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
 	public String getPicture() {
 		return this.picture;
