@@ -91,10 +91,14 @@ public class ItemProviderController extends AbstractController {
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
 	public ModelAndView delete(final Item item) {
 		ModelAndView result;
+		Item itemBd;
+		int providerId;
 
 		try {
-			this.itemService.delete(item);
-			result = new ModelAndView("redirect:../list.do?providerId=" + item.getProvider().getId());
+			itemBd = this.itemService.findOneToProviderEdit(item.getId());
+			providerId = itemBd.getProvider().getId();
+			this.itemService.delete(itemBd);
+			result = new ModelAndView("redirect:../list.do?providerId=" + providerId);
 		} catch (final Throwable oops) {
 			result = new ModelAndView("redirect:../../error.do");
 		}
