@@ -16,10 +16,16 @@
 <p><strong><spring:message code="item.link" />:</strong>
 <a href="${item.link}"><jstl:out value="${item.link}"/></a></p>
 
-<p><strong><spring:message code="item.picture"/>:</strong>
+<jstl:if test="${not empty pictures}">
+		<p><strong><spring:message code="item.pictures"/>:</strong>
 		<br>
-				<img src="${item.picture}" alt="picture" height="250px" width="250px">	</p>
-
+		<ul>
+			<jstl:forEach var="picture" items="${pictures}">
+				<img src="${picture}" alt="picture" height="300px" width="500px">	</p>			
+			</jstl:forEach>
+		</ul>
+	</jstl:if>
+	
 <br />
 
 <!-- Links -->

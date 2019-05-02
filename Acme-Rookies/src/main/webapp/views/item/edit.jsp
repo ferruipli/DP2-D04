@@ -22,7 +22,6 @@
 
 <form:form action="item/provider/edit.do" modelAttribute="item">
 	<form:hidden path="id" />
-	<form:hidden path="provider" />
 	<form:hidden path="version" />
 	
 	<acme:textbox code="item.name" path="name" />
