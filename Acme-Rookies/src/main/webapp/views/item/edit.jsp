@@ -19,30 +19,25 @@
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
-<form:form action="position/company/edit.do" modelAttribute="position">
+
+<form:form action="item/provider/edit.do" modelAttribute="item">
 	<form:hidden path="id" />
+	<form:hidden path="provider" />
+	<form:hidden path="version" />
 	
-	<acme:textarea code="position.title" path="title" />
+	<acme:textbox code="item.name" path="name" />
 	
-	<acme:textarea code="position.description" path="description" />
+	<acme:textbox code="item.description" path="description" />
 
-	<acme:textbox code="position.deadline" placeholder="dd/MM/yyyy" path="deadline"/>
+	<acme:textbox code="item.link" path="link"/>
 	
-	<acme:textbox code="position.profile" path="profile"/>
-	
-	<acme:textarea code="position.skills" path="skills"/>
-	
-	<acme:textarea code="position.technologies" path="technologies"/>
-	
-	<acme:textbox code="position.salary" path="salary"/>
-	
-	<acme:selectMandatory items="${problems}" multiple="true" 
-		 itemLabel="title" code="position.problems" path="problems"/>
+	<acme:textbox code="item.picture" path="picture"/>
 
-	<acme:submit name="save" code="position.save"/>	
-	<jstl:if test="${position.id != 0}">
-		<acme:submit name="delete" code="position.delete"/>	
+	<br />
+	<acme:submit name="save" code="item.save"/>	
+	<jstl:if test="${item.id != 0}">
+		<acme:submit name="delete" code="item.delete"/>	
 	</jstl:if>
-	<acme:cancel url="position/list.do?companyId=${principal.id}" code="position.cancel"/>
+	<acme:cancel url="item/list.do?providerId=${item.provider.id}" code="item.cancel"/>
 	<br />
 </form:form>

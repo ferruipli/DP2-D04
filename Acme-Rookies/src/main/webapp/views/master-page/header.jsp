@@ -67,6 +67,8 @@
 		<!-- ALL USERS START -->
 		<li><a href="position/search.do" class="fNiv"><spring:message code="master.page.searchposition"/></a>
 		</li>
+		<li><a  href="item/allItemsList.do" class="fNiv"><spring:message	code="master.page.allItemsList" /></a>
+		</li>
 		<li><a  href="position/availableList.do" class="fNiv"><spring:message	code="master.page.availableposition" /></a>
 		</li>
 		<!-- ALL USERS END -->

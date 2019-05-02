@@ -148,6 +148,14 @@ public class SponsorshipService {
 		return results;
 	}
 
+	public Double[] dataOfSponsorshipPerPosition() {
+		Double[] results;
+
+		results = this.sponsorshipRepository.dataOfSponsorshipPerPosition();
+
+		return results;
+	}
+
 	// Ancillary methods ----------------------------------
 
 	public Sponsorship reconstruct(final Sponsorship sponsorship, final BindingResult binding) {

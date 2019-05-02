@@ -8,6 +8,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.ItemRepository;
 import domain.Item;
@@ -85,7 +87,7 @@ public class ItemService {
 
 	public void delete(final Item item) {
 		Assert.notNull(item);
-		Assert.isTrue(this.itemRepository.exists(item.getId()));
+		//Assert.isTrue(this.itemRepository.exists(item.getId()));
 		this.checkByPrincipal(item);
 
 		this.itemRepository.delete(item);
@@ -99,7 +101,36 @@ public class ItemService {
 		this.itemRepository.delete(items);
 	}
 
+
 	// Other business methods ---------------------
+
+	@Autowired
+	private Validator	validator;
+
+
+	public Item reconstruct(final Item item, final BindingResult binding) {
+		Item result, stored_item;
+
+		if (item.getId() == 0)
+			result = this.create();
+		else {
+			stored_item = this.findOne(item.getId());
+
+			result = new Item();
+			result.setId(stored_item.getId());
+			result.setVersion(stored_item.getVersion());
+			result.setProvider(stored_item.getProvider());
+		}
+
+		result.setName(item.getName().trim());
+		result.setDescription(item.getDescription().trim());
+		result.setLink(item.getLink().trim());
+		result.setPicture(item.getPicture().trim());
+
+		this.validator.validate(result, binding);
+
+		return result;
+	}
 
 	public Double[] dataItemsPerProvider() {
 		Double[] results;
