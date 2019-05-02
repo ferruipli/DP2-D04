@@ -407,4 +407,25 @@ public class SponsorshipServiceTest extends AbstractTest {
 		super.unauthenticate();
 	}
 
+	/*
+	 * A: Acme Rookies - Requirement 14.1.b (The average, the minimum, the maximum, and the standard deviation of the number of sponsorships per position.).
+	 * C: Analysis of sentence coverage: 3/3 -> 100.00% of executed lines codes .
+	 * D: Analysis of data coverage: Intentionally blank.
+	 */
+	@Test
+	public void dataOfSponsorshipPerPosition_positiveTest() {
+		super.authenticate("admin1");
+
+		Double[] data;
+
+		data = this.sponsorshipService.dataOfSponsorshipPerPosition();
+
+		Assert.isTrue(data[0] == 0.88889);
+		Assert.isTrue(data[1] == 0.0);
+		Assert.isTrue(data[2] == 2.0);
+		Assert.isTrue(data[3] == 0.87489);
+
+		super.unauthenticate();
+	}
+
 }

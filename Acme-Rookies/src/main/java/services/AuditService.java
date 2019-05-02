@@ -176,6 +176,16 @@ public class AuditService {
 		return res;
 	}
 
+	// Req 4.4.2 The average, the minimum, the maximum, and the standard deviation of the audit score
+	//	of the companies that are registered in the system.
+	public Double[] findDataNumberAuditScoreOfCompany() {
+		Double[] res;
+
+		res = this.auditRepository.findDataNumberAuditScoreOfCompany();
+
+		return res;
+	}
+
 	// Req 4.4.4 The average salary offered by the positions that have the highest average audit score
 	public Double findAvgSalaryByHighestPosition() {
 		Double res;
