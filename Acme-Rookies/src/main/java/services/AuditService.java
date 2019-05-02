@@ -171,7 +171,7 @@ public class AuditService {
 	public Double[] findDataNumberAuditScore() {
 		Double[] res;
 
-		res = this.auditRepository.findDataNumberAuditScore();
+		res = this.auditRepository.findDataNumberAuditScorePerPosition();
 
 		return res;
 	}
