@@ -217,6 +217,7 @@ public class AuditService {
 
 		return result;
 	}
+
 	private void checkByPrincipal(final Audit audit) {
 		Auditor owner;
 		Auditor principal;
@@ -226,9 +227,11 @@ public class AuditService {
 
 		Assert.isTrue(owner.equals(principal));
 	}
+
 	protected void flush() {
 		this.auditRepository.flush();
 	}
+
 	protected Double avgScoreByCompany(final int companyId) {
 		Double result;
 
