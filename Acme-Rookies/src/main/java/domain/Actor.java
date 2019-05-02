@@ -75,7 +75,7 @@ public abstract class Actor extends DomainEntity {
 		this.fullname = fullname;
 	}
 
-	@Range(min = 1, max = 100)
+	@Range(min = 0, max = 100)
 	public int getVATnumber() {
 		return this.VATnumber;
 	}
