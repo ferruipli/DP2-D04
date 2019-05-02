@@ -253,7 +253,7 @@ public class AuditServiceTest extends AbstractTest {
 		int auditId;
 
 		auditId = super.getEntityId("audit3");
-		this.auditService.findOne(auditId);
+		this.auditService.findOneToDisplay(auditId);
 		super.unauthenticate();
 	}
 
@@ -340,7 +340,7 @@ public class AuditServiceTest extends AbstractTest {
 	 * C:
 	 * D:intentionally blank.there's nothing to check
 	 */
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void makeFinal_positive_test() {
 		super.authenticate("auditor3");
 
@@ -417,10 +417,10 @@ public class AuditServiceTest extends AbstractTest {
 
 		data = this.auditService.findDataNumberAuditScore();
 
-		Assert.isTrue(data[0] == 0.0);
-		Assert.isTrue(data[1] == 0.0);
-		Assert.isTrue(data[2] == 0.0);
-		Assert.isTrue(data[3] == 0.0);
+		Assert.isTrue(data[0] == 0.45);
+		Assert.isTrue(data[1] == 0.4);
+		Assert.isTrue(data[2] == 0.55);
+		Assert.isTrue(data[3] == 0.07071067811865475);
 
 		super.unauthenticate();
 	}
@@ -434,12 +434,9 @@ public class AuditServiceTest extends AbstractTest {
 	public void findAvgSalaryByHighestPosition_positive_est() {
 		super.authenticate("admin1");
 
-		Double data;
-
-		data = this.auditService.findAvgSalaryByHighestPosition();
+		this.auditService.findAvgSalaryByHighestPosition();
 
 		super.unauthenticate();
 	}
 
-	//TODO: cobertura
 }

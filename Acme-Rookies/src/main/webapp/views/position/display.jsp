@@ -123,11 +123,11 @@
 	<legend>
 		<spring:message code="position.problems" />
 	</legend>
-	<display:table name="problemList" id="rowPoroblem"
+	<display:table name="problemList" id="rowProblem"
 		pagesize="5" class="displaytag" requestURI="position/display.do">
 		
 		<display:column>
-			<a href="problem/company,rookie/display.do?problemId=${rowPoroblem.id}"><spring:message
+			<a href="problem/company,rookie/display.do?problemId=${rowProblem.id}"><spring:message
 					code="position.display" /> </a>
 		</display:column>
 
@@ -142,19 +142,10 @@
 		<spring:message code="position.audits" />
 	</legend>
 	
-<display:table name="${audits}" id="row" requestURI="audit/list.do" class="displaytag" pagesize="5">
+<display:table name="audits" id="row1" requestURI="position/display.do" class="displaytag" pagesize="5">
 
-
-	<security:authorize access="hasRole('COMPANY')">
-		<display:column>
-			<jstl:if test="${principal == row.auditor}">
-				<a href="audit/auditor/edit.do?auditId=${row.id}"><spring:message code="audit.edit"/></a>
-			</jstl:if>
-		</display:column>
-	</security:authorize>
-	
 	<display:column>
-		<a href="audit/display.do?auditId=${row.id}"><spring:message code="audit.display"/></a>
+		<a href="audit/display.do?auditId=${row1.id}"><spring:message code="audit.display"/></a>
 	</display:column>	
 		
 	<display:column property="auditor.fullname" titleKey="audit.auditor" />

@@ -145,7 +145,7 @@ public class DashboardAdministratorController extends AbstractController {
 		result.addObject("findCompaniesHighestScore", findCompaniesHighestScore);
 
 		// Req 4.4.4
-		Double findAvgSalaryByHighestPosition;
+		Collection<Double> findAvgSalaryByHighestPosition;
 		findAvgSalaryByHighestPosition = this.auditService.findAvgSalaryByHighestPosition();
 		result.addObject("findAvgSalaryByHighestPosition", findAvgSalaryByHighestPosition);
 

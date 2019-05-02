@@ -30,8 +30,8 @@ public interface AuditRepository extends JpaRepository<Audit, Integer> {
 	@Query("select avg(c.auditScore), min(c.auditScore), max(c.auditScore) ,stddev(c.auditScore)  from Position p join p.company c")
 	Double[] findDataNumberAuditScorePerPosition();
 
-	@Query("select avg(a.score) from Audit a")
-	Double findAvgSalaryByHighestPosition();
+	@Query("select avg(p.salary) from Position p join p.company c where c.auditScore = (select max(c.auditScore) from Company c)")
+	Collection<Double> findAvgSalaryByHighestPosition();
 
 	@Query("select avg(1.0* c.auditScore), min(1.0*c.auditScore), max(1.0*c.auditScore), stddev(1.0*c.auditScore)  from Company c")
 	Double[] findDataNumberAuditScoreOfCompany();
