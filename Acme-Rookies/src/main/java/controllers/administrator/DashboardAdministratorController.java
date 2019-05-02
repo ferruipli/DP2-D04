@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ApplicationService;
+import services.AuditService;
 import services.CompanyService;
 import services.CurriculumService;
 import services.FinderService;
@@ -58,6 +59,9 @@ public class DashboardAdministratorController extends AbstractController {
 
 	@Autowired
 	private SponsorshipService	sponsorshipService;
+
+	@Autowired
+	private AuditService		auditService;
 
 
 	// Constructors --------------
@@ -126,6 +130,9 @@ public class DashboardAdministratorController extends AbstractController {
 		// LEVEL C --------------------------------------
 
 		// Req 4.4.1
+		Double[] findDataNumberAuditScore;
+		findDataNumberAuditScore = this.auditService.findDataNumberAuditScore();
+		result.addObject("findDataNumberAuditScore", findDataNumberAuditScore);
 
 		// Req 4.4.2
 
@@ -135,6 +142,9 @@ public class DashboardAdministratorController extends AbstractController {
 		result.addObject("findCompaniesHighestScore", findCompaniesHighestScore);
 
 		// Req 4.4.4
+		Double findAvgSalaryByHighestPosition;
+		findAvgSalaryByHighestPosition = this.auditService.findAvgSalaryByHighestPosition();
+		result.addObject("findAvgSalaryByHighestPosition", findAvgSalaryByHighestPosition);
 
 		// LEVEL B --------------------------------------
 
@@ -154,9 +164,16 @@ public class DashboardAdministratorController extends AbstractController {
 		Double[] dataOfSponsorshipPerProvider;
 		dataOfSponsorshipPerProvider = this.sponsorshipService.dataOfSponsorshipPerProvider();
 		result.addObject("dataOfSponsorshipPerProvider", dataOfSponsorshipPerProvider);
+
 		// Req 14.1.2
+		Double[] dataOfSponsorshipPerPosition;
+		dataOfSponsorshipPerPosition = this.sponsorshipService.dataOfSponsorshipPerPosition();
+		result.addObject("dataOfSponsorshipPerPosition", dataOfSponsorshipPerPosition);
 
 		// Req 14.1.3
+		Collection<Provider> findProvidersWithMoreSponsorships;
+		findProvidersWithMoreSponsorships = this.providerService.findProvidersWithMoreSponsorships();
+		result.addObject("findProvidersWithMoreSponsorships", findProvidersWithMoreSponsorships);
 
 		return result;
 	}

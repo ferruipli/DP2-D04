@@ -177,8 +177,8 @@ public class AuditService {
 	}
 
 	// Req 4.4.4 The average salary offered by the positions that have the highest average audit score
-	public Collection<Double> findAvgSalaryByHighestPosition() {
-		Collection<Double> res;
+	public Double findAvgSalaryByHighestPosition() {
+		Double res;
 
 		res = this.auditRepository.findAvgSalaryByHighestPosition();
 

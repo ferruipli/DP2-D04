@@ -34,6 +34,6 @@ public interface AuditRepository extends JpaRepository<Audit, Integer> {
 	Double[] findDataNumberAuditScorePerPosition();
 
 	@Query("select avg(a.score) from Audit a")
-	Collection<Double> findAvgSalaryByHighestPosition();
+	Double findAvgSalaryByHighestPosition();
 
 }

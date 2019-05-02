@@ -134,10 +134,10 @@
 		<th> <spring:message code="dashboard.deviation" /> </th>
 	</tr>
 	<tr>
-		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
-		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
-		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
-		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${findDataNumberAuditScore[0]}" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${findDataNumberAuditScore[1]}" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${findDataNumberAuditScore[2]}" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${findDataNumberAuditScore[3]}" /> </td>
 	</tr>
 </table>
 
@@ -168,7 +168,7 @@
 
 <p>
 	<strong> <spring:message code="dashboard.thirteen" /> </strong>:
-	<jstl:out value="" />
+	<jstl:out value="${findAvgSalaryByHighestPosition}" />
 </p>
 
 <p> <strong> <spring:message code="dashboard.fourteen" />: </strong> </p>
@@ -221,15 +221,15 @@
 		<th> <spring:message code="dashboard.deviation" /> </th>
 	</tr>
 	<tr>
-		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
-		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
-		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
-		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${dataOfSponsorshipPerPosition[0]}" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${dataOfSponsorshipPerPosition[1]}" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${dataOfSponsorshipPerPosition[2]}" /> </td>
+		<td> <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3" value = "${dataOfSponsorshipPerPosition[3]}" /> </td>
 	</tr>
 </table>
 
 <p><strong> <spring:message code="dashboard.eighteen" />: </strong></p>
-<display:table name="" id="row" requestURI="dashboard/administrator/display.do" pagesize="5" class="displaytag">
+<display:table name="findProvidersWithMoreSponsorships" id="row" requestURI="dashboard/administrator/display.do" pagesize="5" class="displaytag">
 	<display:column property="fullname" titleKey="table.fullname" />
 	<display:column property="email" titleKey="table.email" />
 	<display:column property="phoneNumber" titleKey="table.phoneNumber" />
