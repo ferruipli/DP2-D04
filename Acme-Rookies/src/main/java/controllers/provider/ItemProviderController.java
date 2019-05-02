@@ -2,7 +2,6 @@
 package controllers.provider;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -76,7 +75,7 @@ public class ItemProviderController extends AbstractController {
 				try {
 					this.itemService.save(itemRec);
 					result = new ModelAndView("redirect:../list.do?providerId=" + itemRec.getProvider().getId());
-				} catch (final DataIntegrityViolationException e1) {
+				} catch (final IllegalArgumentException e1) {
 					result = this.createEditModelAndView(itemRec, "item.commit.url");
 				} catch (final Throwable oops) {
 					result = this.createEditModelAndView(itemRec, "item.commit.error");
