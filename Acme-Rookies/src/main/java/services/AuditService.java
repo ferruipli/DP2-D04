@@ -201,6 +201,7 @@ public class AuditService {
 		if (audit.getId() != 0) {
 			result = new Audit();
 			auditStored = this.findOne(audit.getId());
+			result.setId(auditStored.getId());
 			result.setVersion(auditStored.getVersion());
 			result.setAuditor(auditStored.getAuditor());
 			result.setFinalMode(auditStored.getFinalMode());
@@ -211,7 +212,7 @@ public class AuditService {
 			result = this.create(position);
 
 		result.setScore(audit.getScore());
-		result.setText(audit.getText());
+		result.setText(audit.getText().trim());
 
 		this.validator.validate(result, binding);
 
