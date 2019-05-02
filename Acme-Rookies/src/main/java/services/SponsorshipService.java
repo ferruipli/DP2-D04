@@ -95,7 +95,7 @@ public class SponsorshipService {
 		Assert.isTrue(this.sponsorshipRepository.exists(sponsorship.getId()));
 		this.checkOwnerStored(sponsorship);
 
-		this.sponsorshipRepository.delete(sponsorship);
+		this.sponsorshipRepository.delete(sponsorship.getId());
 	}
 
 	public Sponsorship findOneToEditDisplay(final int sponsorshipId) {

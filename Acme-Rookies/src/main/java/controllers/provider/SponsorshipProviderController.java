@@ -16,8 +16,8 @@ import controllers.AbstractController;
 import domain.Sponsorship;
 
 @Controller
-@RequestMapping("sponsorship/provider")
-public class SponsorshipSponsorController extends AbstractController {
+@RequestMapping("/sponsorship/provider")
+public class SponsorshipProviderController extends AbstractController {
 
 	// Services ---------------------------------------------------------------
 
@@ -27,7 +27,7 @@ public class SponsorshipSponsorController extends AbstractController {
 
 	// Constructors -----------------------------------------------------------
 
-	public SponsorshipSponsorController() {
+	public SponsorshipProviderController() {
 		super();
 	}
 
