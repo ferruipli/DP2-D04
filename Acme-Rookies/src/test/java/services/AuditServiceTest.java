@@ -46,7 +46,7 @@ public class AuditServiceTest extends AbstractTest {
 			/*
 			 * A:Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to create an audits
 			 * C:
-			 * D:
+			 * D:25% 1/4 we test 1 of the 4 possible combinations that can take in total.
 			 */
 			{
 				"auditor1", "position2", "text", "5", null
@@ -54,27 +54,27 @@ public class AuditServiceTest extends AbstractTest {
 
 			/*
 			 * A:Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to create an audits
-			 * B: Negative Score
+			 * B: Create an audits with blank score
 			 * C:
-			 * D:
+			 * D:25% 1/4 we test 1 of the 4 possible combinations that can take in total.
 			 */
 			{
 				"auditor1", "position2", "text", "-5", ConstraintViolationException.class
 			},
 			/*
 			 * A:Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to create an audits
-			 * B: Blank text
+			 * B: Create an audits with blank text
 			 * C:
-			 * D:
+			 * D:25% 1/4 we test 1 of the 4 possible combinations that can take in total.
 			 */
 			{
 				"auditor1", "position2", "", "3", ConstraintViolationException.class
 			},
 			/*
 			 * A:Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to create an audits
-			 * B: A una position que ya tiene auditoría del principal
+			 * B: Create an audit with a position to which he has already done an audit
 			 * C:
-			 * D:
+			 * D: intentionally blank.there's nothing to check
 			 */
 			{
 				"auditor1", "position1", "text", "3", IllegalArgumentException.class
@@ -127,25 +127,25 @@ public class AuditServiceTest extends AbstractTest {
 			/*
 			 * A:Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to edit his or her audits
 			 * C:
-			 * D:
+			 * D: 25% 1/4 we test 1 of the 4 possible combinations that can take in total.
 			 */
 			{
 				"auditor3", "audit3", "text", "5", null
 			},
 			/*
 			 * A:Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to edit her/his audits
-			 * B: Negative Score
+			 * B: Create an audits with negative score
 			 * C:
-			 * D:
+			 * D:25% 1/4 we test 1 of the 4 possible combinations that can take in total.
 			 */
 			{
 				"auditor3", "audit3", "text", "-5", ConstraintViolationException.class
 			},
 			/*
 			 * A:Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to edit her/his audits
-			 * B: Blank text
+			 * B: Create an audits with blank text
 			 * C:
-			 * D:
+			 * D: 25% 1/4 we test 1 of the 4 possible combinations that can take in total.
 			 */
 			{
 				"auditor3", "audit3", "", "3", ConstraintViolationException.class
@@ -154,7 +154,7 @@ public class AuditServiceTest extends AbstractTest {
 			 * A:Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to edit her/his audits
 			 * B: Edit an audit to another auditor
 			 * C:
-			 * D:
+			 * D: intentionally blank.there's nothing to check
 			 */
 			{
 				"auditor1", "audit3", "text", "3", IllegalArgumentException.class
@@ -163,7 +163,7 @@ public class AuditServiceTest extends AbstractTest {
 			 * A:Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to edit her/his audits
 			 * B: Edit an audit in final mode
 			 * C:
-			 * D:
+			 * D: intentionally blank.there's nothing to check
 			 */
 			{
 				"auditor1", "audit1", "text", "3", IllegalArgumentException.class
@@ -209,9 +209,9 @@ public class AuditServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * A: Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to delete her/his audits in draft mode
-	 * C:
-	 * D:intentionally blank.there's nothing to check
+	 * A: Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to display her/his audits
+	 * C: (5/5 lines) 100% of sentence coverage.
+	 * D: intentionally blank.there's nothing to check
 	 */
 	@Test
 	public void display_positiveAuthenticate_test() {
@@ -226,8 +226,9 @@ public class AuditServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * A: Req Acme-Rookies
-	 * C:
+	 * A: Req 5 Acme-Rookies Everywhere a position is shown,
+	 * the corresponding actor must be able to browse its audits, if any
+	 * C:(5/5 lines) 100% of sentence coverage.
 	 * D:intentionally blank.there's nothing to check
 	 */
 	@Test
@@ -241,9 +242,9 @@ public class AuditServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * A:
-	 * B: Autenticado puede ver uno en modo no final de otro
-	 * C:
+	 * A: Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to display her/his audits
+	 * B: An auditor who is not the owner of the draft mode audit
+	 * C: (3/5 lines) 6% of sentence coverage.
 	 * D:intentionally blank.there's nothing to check
 	 */
 	@Test(expected = IllegalArgumentException.class)
@@ -258,9 +259,10 @@ public class AuditServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * A:
-	 * B: sin Autenticado puede ver uno en modo no final
-	 * C:
+	 * A: Req 5 Acme-Rookies Everywhere a position is shown,
+	 * the corresponding actor must be able to browse its audits, if any
+	 * B: An actor who is not authenticated cant display the draft mode audit
+	 * C: (3/5 lines) 6% of sentence coverage.
 	 * D:intentionally blank.there's nothing to check
 	 */
 	@Test(expected = IllegalArgumentException.class)
@@ -274,8 +276,8 @@ public class AuditServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * A: Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to display her/his audits
-	 * C:
+	 * A: Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to delete her/his audits
+	 * C: (11/11 lines) 100% of sentence coverage.
 	 * D:intentionally blank.there's nothing to check
 	 */
 	@Test
@@ -296,7 +298,7 @@ public class AuditServiceTest extends AbstractTest {
 	/*
 	 * A: Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to delete her/his audits
 	 * B: Delete an audit to another auditor
-	 * C:
+	 * C: (6/11 lines) 54.5% of sentence coverage.
 	 * D:intentionally blank.there's nothing to check
 	 */
 	@Test(expected = IllegalArgumentException.class)
@@ -317,7 +319,7 @@ public class AuditServiceTest extends AbstractTest {
 	/*
 	 * A: Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to delete her/his audits
 	 * B: Delete an audit in final mode
-	 * C:
+	 * C: (8/11 lines) 72% of sentence coverage.
 	 * D:intentionally blank.there's nothing to check
 	 */
 	@Test(expected = IllegalArgumentException.class)
@@ -337,7 +339,7 @@ public class AuditServiceTest extends AbstractTest {
 
 	/*
 	 * A: Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to make final her/his audits
-	 * C:
+	 * C: (10/10 lines) 100% of sentence coverage.
 	 * D:intentionally blank.there's nothing to check
 	 */
 	@Test
@@ -358,7 +360,7 @@ public class AuditServiceTest extends AbstractTest {
 	/*
 	 * A: Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to make final her/his audits
 	 * B: Make final an audit to another auditor
-	 * C:
+	 * C: (9/10 lines) 90% of sentence coverage.
 	 * D:intentionally blank.there's nothing to check
 	 */
 	@Test(expected = IllegalArgumentException.class)
@@ -378,7 +380,7 @@ public class AuditServiceTest extends AbstractTest {
 
 	/*
 	 * A: Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to list her/his audits
-	 * C:
+	 * C: 100% of sentence coverage.
 	 * D:intentionally blank.there's nothing to check
 	 */
 	@Test
@@ -405,8 +407,8 @@ public class AuditServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * A:
-	 * C:
+	 * A: Req 4.4.1: The average, the minimum, the maximum and the standard deviation of the audit score of hte positions stored in the system
+	 * C: 100% of sentence coverage.
 	 * D:intentionally blank.there's nothing to check
 	 */
 	@Test
@@ -426,8 +428,8 @@ public class AuditServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * A:
-	 * C:
+	 * A: Req 4.4.4: The average salary offered by the positions that have the hightest average audit score.
+	 * C: 100% of sentence coverage.
 	 * D:intentionally blank.there's nothing to check
 	 */
 	@Test
