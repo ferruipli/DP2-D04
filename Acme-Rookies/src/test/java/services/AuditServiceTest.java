@@ -442,4 +442,25 @@ public class AuditServiceTest extends AbstractTest {
 	}
 
 	//TODO: cobertura
+
+	/*
+	 * A: Acme Rookies - Requirement 4.4.1 (The average, the minimum, the maximum, and the standard deviation of the audit score of the companies that are registered in the system.).
+	 * C: Analysis of sentence coverage: 3/3 -> 100.00% of executed lines codes .
+	 * D: Analysis of data coverage: Intentionally blank.
+	 */
+	@Test
+	public void findDataNumberAuditScoreOfCompany_positiveTest() {
+		super.authenticate("admin1");
+
+		Double[] data;
+
+		data = this.auditService.findDataNumberAuditScoreOfCompany();
+
+		Assert.isTrue(data[0] == 0.47500000000000003);
+		Assert.isTrue(data[1] == 0.4);
+		Assert.isTrue(data[2] == 0.55);
+		Assert.isTrue(data[3] == 0.07500000000000001);
+
+		super.unauthenticate();
+	}
 }

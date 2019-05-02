@@ -31,7 +31,12 @@
 
 	<acme:textbox code="item.link" path="link"/>
 	
-	<acme:textbox code="item.picture" path="picture"/>
+	<p style="color:blue;"><spring:message code="item.info.pictures"/></p>
+		<acme:textarea code="item.pictures" path="picture"/>
+
+		<br />
+	
+	
 
 	<br />
 	<acme:submit name="save" code="item.save"/>	

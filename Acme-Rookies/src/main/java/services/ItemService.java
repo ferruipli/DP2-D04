@@ -27,6 +27,9 @@ public class ItemService {
 	@Autowired
 	private ProviderService	providerService;
 
+	@Autowired
+	private UtilityService	utilityService;
+
 
 	//Constructor ----------------------------------------------------
 	public ItemService() {
@@ -48,6 +51,7 @@ public class ItemService {
 
 	public Item save(final Item item) {
 		Assert.notNull(item);
+		this.utilityService.checkURLS(item.getPicture());
 		Item result;
 
 		result = this.itemRepository.save(item);
@@ -154,5 +158,9 @@ public class ItemService {
 		results = this.itemRepository.findItemsByProvider(providerId);
 
 		return results;
+	}
+
+	protected void flush() {
+		this.itemRepository.flush();
 	}
 }
