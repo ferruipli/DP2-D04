@@ -37,7 +37,7 @@
 	
 	<display:column property="name" titleKey="item.name" />
 	
-	<display:column>
+	<display:column titleKey="item.provider">
 		<a href="actor/display.do?actorId=${row.provider.id}"><jstl:out value="${row.provider.name}"/></a>
 	</display:column>
 

@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.ItemService;
 import services.ProviderService;
+import services.UtilityService;
 import domain.Item;
 import domain.Provider;
 
@@ -26,6 +27,9 @@ public class ItemController extends AbstractController {
 
 	@Autowired
 	private ProviderService	providerService;
+
+	@Autowired
+	private UtilityService	utilityService;
 
 
 	// Constructor
@@ -53,8 +57,6 @@ public class ItemController extends AbstractController {
 				principal = null;
 			}
 
-			if (principal != null && principal.getId() == providerId)
-				result.addObject("principal", principal);
 			result.addObject("principal", principal);
 			result.addObject("owner", owner);
 			result.addObject("items", items);
@@ -100,10 +102,14 @@ public class ItemController extends AbstractController {
 	public ModelAndView display(@RequestParam final int itemId) {
 		ModelAndView result;
 		final Item item;
+		Collection<String> pictures;
 
 		try {
 			result = new ModelAndView("item/display");
 			item = this.itemService.findOne(itemId);
+			pictures = this.utilityService.getSplittedString(item.getPicture());
+
+			result.addObject("pictures", pictures);
 			result.addObject("item", item);
 		} catch (final Exception e) {
 			result = new ModelAndView("redirect:../../error.do");

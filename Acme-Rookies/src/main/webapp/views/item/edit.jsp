@@ -22,7 +22,6 @@
 
 <form:form action="item/provider/edit.do" modelAttribute="item">
 	<form:hidden path="id" />
-	<form:hidden path="provider" />
 	<form:hidden path="version" />
 	
 	<acme:textbox code="item.name" path="name" />
@@ -31,7 +30,12 @@
 
 	<acme:textbox code="item.link" path="link"/>
 	
-	<acme:textbox code="item.picture" path="picture"/>
+	<p style="color:blue;"><spring:message code="item.info.pictures"/></p>
+		<acme:textarea code="item.pictures" path="picture"/>
+
+		<br />
+	
+	
 
 	<br />
 	<acme:submit name="save" code="item.save"/>	
