@@ -26,7 +26,7 @@
 	
 	<acme:textbox code="item.name" path="name" />
 	
-	<acme:textbox code="item.description" path="description" />
+	<acme:textarea code="item.description" path="description" />
 
 	<acme:textbox code="item.link" path="link"/>
 	
@@ -42,6 +42,6 @@
 	<jstl:if test="${item.id != 0}">
 		<acme:submit name="delete" code="item.delete"/>	
 	</jstl:if>
-	<acme:cancel url="item/list.do?providerId=${item.provider.id}" code="item.cancel"/>
+	<acme:cancel url="item/list.do?providerId=${providerId}" code="item.cancel"/>
 	<br />
 </form:form>

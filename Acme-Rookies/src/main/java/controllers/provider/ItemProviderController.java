@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ItemService;
+import services.ProviderService;
 import controllers.AbstractController;
 import domain.Item;
 
@@ -21,7 +22,10 @@ public class ItemProviderController extends AbstractController {
 	// Services ---------------------------------------------------------------
 
 	@Autowired
-	private ItemService	itemService;
+	private ItemService		itemService;
+
+	@Autowired
+	private ProviderService	providerService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -119,9 +123,13 @@ public class ItemProviderController extends AbstractController {
 
 	protected ModelAndView createEditModelAndView(final Item item, final String messageCode) {
 		ModelAndView result;
+		int providerId;
 
+		providerId = this.providerService.findByPrincipal().getId();
 		result = new ModelAndView("item/edit");
+
 		result.addObject("item", item);
+		result.addObject("providerId", providerId);
 		result.addObject("messageCode", messageCode);
 
 		return result;
