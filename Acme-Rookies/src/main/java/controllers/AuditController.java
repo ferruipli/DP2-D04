@@ -12,7 +12,6 @@ import security.LoginService;
 import security.UserAccount;
 import services.AuditService;
 import services.AuditorService;
-import services.PositionService;
 import domain.Audit;
 import domain.Auditor;
 
@@ -27,9 +26,6 @@ public class AuditController extends AbstractController {
 
 	@Autowired
 	private AuditorService	auditorService;
-
-	@Autowired
-	private PositionService	positionService;
 
 
 	// Constructor ------------------------------------
