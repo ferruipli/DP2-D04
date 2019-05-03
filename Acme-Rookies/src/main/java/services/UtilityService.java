@@ -113,7 +113,7 @@ public class UtilityService {
 			try {
 				new URL(at);
 			} catch (final MalformedURLException e) {
-				throw new IllegalArgumentException("Invalid URL");
+				throw new DataIntegrityViolationException("Invalid URL");
 			}
 	}
 
