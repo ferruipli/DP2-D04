@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -82,6 +83,8 @@ public class MiscellaneousDataRookieController extends AbstractController {
 				else
 					saved = this.miscellaneousDataService.save(miscellaneousData, curriculumId);
 				result = new ModelAndView("redirect:backCurriculum.do?miscellaneousDataId=" + saved.getId());
+			} catch (final DataIntegrityViolationException oops) {
+				result = this.createEditModelAndView(miscellaneousData, curriculumId, "miscellaneousData.url.error");
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(miscellaneousData, curriculumId, "miscellaneousData.commit.error");
 			}
