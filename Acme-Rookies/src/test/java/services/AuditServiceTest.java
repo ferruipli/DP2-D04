@@ -419,10 +419,10 @@ public class AuditServiceTest extends AbstractTest {
 
 		data = this.auditService.findDataNumberAuditScore();
 
-		Assert.isTrue(data[0] == 0.45);
-		Assert.isTrue(data[1] == 0.4);
-		Assert.isTrue(data[2] == 0.55);
-		Assert.isTrue(data[3] == 0.07071067811865475);
+		Assert.isTrue(data[0] == 5.916666667);
+		Assert.isTrue(data[1] == 1.0);
+		Assert.isTrue(data[2] == 9.0);
+		Assert.isTrue(data[3] == 2.714416246);
 
 		super.unauthenticate();
 	}
@@ -440,7 +440,6 @@ public class AuditServiceTest extends AbstractTest {
 
 		super.unauthenticate();
 	}
-
 
 	//TODO: cobertura
 
