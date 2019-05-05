@@ -22,6 +22,6 @@ public interface ProviderRepository extends JpaRepository<Provider, Integer> {
 	Page<Provider> topFiveProviders(Pageable page);
 
 	// Req. 14.1.3
-	@Query("select p from Provider p where (select count(s) from Sponsorship s where s.provider.id = p.id) > (select avg(1.0 * (select count(s) from Sponsorship s where s.provider.id = p.id)) from Provider p))")
+	@Query("select p from Provider p where (select count(s) from Sponsorship s where s.provider.id = p.id) > (select (1.1 * avg(1.0 * (select count(s) from Sponsorship s where s.provider.id = p.id))) from Provider p)")
 	Collection<Provider> findProvidersWithMoreSponsorships();
 }
