@@ -29,7 +29,17 @@
 		<display:column property="commercialName" titleKey="table.commercialName"/>
 	</jstl:if>
 	<security:authorize access="hasRole('ADMIN')">
-		<display:column property="isSpammer" titleKey="table.isSpammer" />
+		<jstl:if test="${row.isSpammer == null}">
+			<display:column value="" titleKey="table.isSpammer" />
+		</jstl:if>
+		<jstl:if test="${row.isSpammer != null && row.isSpammer}">
+			<spring:message code="actor.yes" var="b" />
+			<display:column value="${b}" titleKey="table.isSpammer" />
+		</jstl:if>
+		<jstl:if test="${row.isSpammer != null && !row.isSpammer}">
+			<spring:message code="actor.no" var="b" />
+			<display:column value="${b}" titleKey="table.isSpammer" />
+		</jstl:if>
 	</security:authorize>
 	
 	<display:column titleKey="table.auditScore">
