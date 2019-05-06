@@ -45,7 +45,7 @@ public class AuditServiceTest extends AbstractTest {
 		final Object testingData[][] = {
 			/*
 			 * A:Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to create an audits
-			 * C:
+			 * C: (25/25 lines) 100% of sentence coverage.
 			 * D:25% 1/4 we test 1 of the 4 possible combinations that can take in total.
 			 */
 			{
@@ -55,7 +55,7 @@ public class AuditServiceTest extends AbstractTest {
 			/*
 			 * A:Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to create an audits
 			 * B: Create an audits with blank score
-			 * C:
+			 * C: (23/25 lines) 92% of sentence coverage.
 			 * D:25% 1/4 we test 1 of the 4 possible combinations that can take in total.
 			 */
 			{
@@ -64,7 +64,7 @@ public class AuditServiceTest extends AbstractTest {
 			/*
 			 * A:Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to create an audits
 			 * B: Create an audits with blank text
-			 * C:
+			 * C: (23/25 lines) 92% of sentence coverage.
 			 * D:25% 1/4 we test 1 of the 4 possible combinations that can take in total.
 			 */
 			{
@@ -73,7 +73,7 @@ public class AuditServiceTest extends AbstractTest {
 			/*
 			 * A:Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to create an audits
 			 * B: Create an audit with a position to which he has already done an audit
-			 * C:
+			 * C: (21/25 lines) 84% of sentence coverage.
 			 * D: intentionally blank.there's nothing to check
 			 */
 			{
@@ -126,7 +126,7 @@ public class AuditServiceTest extends AbstractTest {
 		final Object testingData[][] = {
 			/*
 			 * A:Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to edit his or her audits
-			 * C:
+			 * C: (27/27 lines) 100% of sentence coverage.
 			 * D: 25% 1/4 we test 1 of the 4 possible combinations that can take in total.
 			 */
 			{
@@ -135,7 +135,7 @@ public class AuditServiceTest extends AbstractTest {
 			/*
 			 * A:Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to edit her/his audits
 			 * B: Create an audits with negative score
-			 * C:
+			 * C: (24/27 lines) 88% of sentence coverage.
 			 * D:25% 1/4 we test 1 of the 4 possible combinations that can take in total.
 			 */
 			{
@@ -144,7 +144,7 @@ public class AuditServiceTest extends AbstractTest {
 			/*
 			 * A:Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to edit her/his audits
 			 * B: Create an audits with blank text
-			 * C:
+			 * C: (24/27 lines) 88% of sentence coverage.
 			 * D: 25% 1/4 we test 1 of the 4 possible combinations that can take in total.
 			 */
 			{
@@ -153,7 +153,7 @@ public class AuditServiceTest extends AbstractTest {
 			/*
 			 * A:Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to edit her/his audits
 			 * B: Edit an audit to another auditor
-			 * C:
+			 * C: (21/27 lines) 77% of sentence coverage.
 			 * D: intentionally blank.there's nothing to check
 			 */
 			{
@@ -162,7 +162,7 @@ public class AuditServiceTest extends AbstractTest {
 			/*
 			 * A:Req 3.2 Acme-Rookies An actor who is authenticated as an auditor must be able to edit her/his audits
 			 * B: Edit an audit in final mode
-			 * C:
+			 * C: (20/27 lines) 74% of sentence coverage.
 			 * D: intentionally blank.there's nothing to check
 			 */
 			{
