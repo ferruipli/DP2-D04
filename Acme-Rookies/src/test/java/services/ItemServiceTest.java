@@ -118,7 +118,7 @@ public class ItemServiceTest extends AbstractTest {
 	 * B: Positive test
 	 * 
 	 * C: 100% of sentence coverage, since it has been covered
-	 * 28 lines of code of 28 possible.
+	 * 33 lines of code of 33 possible.
 	 * 
 	 * D: Approximately 26.7% of data coverage, since it has been used 8
 	 * values in the data of 30 different possible values.
@@ -150,8 +150,8 @@ public class ItemServiceTest extends AbstractTest {
 	 * 
 	 * B: For every item, the system must store a name
 	 * 
-	 * C: 53.57% of sentence coverage, since it has been covered
-	 * 15 lines of code of 28 possible.
+	 * C: 32.14% of sentence coverage, since it has been covered
+	 * 9 lines of code of 33 possible.
 	 * 
 	 * D: Approximately 26.7% of data coverage, since it has been used 8
 	 * values in the data of 30 different possible values.
@@ -183,7 +183,7 @@ public class ItemServiceTest extends AbstractTest {
 	 * B: Positive test
 	 * 
 	 * C: 100% of sentence coverage, since it has been covered
-	 * 28 lines of code of 28 possible.
+	 * 33 lines of code of 33 possible.
 	 * 
 	 * D: Approximately 26.7% of data coverage, since it has been used 8
 	 * values in the data of 30 different possible values.
@@ -223,8 +223,8 @@ public class ItemServiceTest extends AbstractTest {
 	 * 
 	 * B: The link page must be a valid URL.
 	 * 
-	 * C: 53.57% of sentence coverage, since it has been covered
-	 * 15 lines of code of 28 possible.
+	 * C: 32.14% of sentence coverage, since it has been covered
+	 * 9 lines of code of 33 possible.
 	 * 
 	 * D: Approximately 26.7% of data coverage, since it has been used 8
 	 * values in the data of 30 different possible values.
@@ -265,7 +265,7 @@ public class ItemServiceTest extends AbstractTest {
 	 * B: Positive test
 	 * 
 	 * C: 100% of sentence coverage, since it has been covered
-	 * 15 lines of code of 15 possible.
+	 * 10 lines of code of 10 possible.
 	 * 
 	 * D: Approximately 26.7% of data coverage, since it has been used 8
 	 * values in the data of 30 different possible values.
@@ -294,8 +294,8 @@ public class ItemServiceTest extends AbstractTest {
 	 * 
 	 * B: The item to delete must belong to the provider principal.
 	 * 
-	 * C: Approximately 93.33% of sentence coverage, since it has been covered
-	 * 14 lines of code of 15 possible.
+	 * C: Approximately 20.00% of sentence coverage, since it has been covered
+	 * 2 lines of code of 10 possible.
 	 * 
 	 * D: Approximately 26.7% of data coverage, since it has been used 8
 	 * values in the data of 30 different possible values.
