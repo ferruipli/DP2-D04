@@ -56,10 +56,6 @@ public class ActorService {
 		Assert.isTrue(!this.utilityService.checkIsExpired(actor.getCreditCard()), "Expired credit card");
 
 		final Actor result;
-		boolean isUpdating;
-
-		isUpdating = this.actorRepository.exists(actor.getId());
-		Assert.isTrue(!isUpdating || this.isOwnerAccount(actor));
 
 		result = this.actorRepository.save(actor);
 		if (actor.getAddress() != null)
@@ -138,16 +134,8 @@ public class ActorService {
 		return result;
 	}
 
-	private boolean isOwnerAccount(final Actor actor) {
-		int principalId;
-
-		principalId = LoginService.getPrincipal().getId();
-		return principalId == actor.getUserAccount().getId();
-	}
-
 	public void ban(final Actor actor) {
 		Assert.notNull(actor);
-		Assert.isTrue(actor.getIsSpammer());
 
 		final UserAccount userAccount;
 

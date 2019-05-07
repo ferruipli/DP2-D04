@@ -202,7 +202,7 @@ public class RookieService {
 
 		} else {
 			result = new Rookie();
-			rookieStored = this.findOneToDisplayEdit(registrationForm.getId());
+			rookieStored = this.findOne(registrationForm.getId());
 
 			result.setName(registrationForm.getName());
 			result.setSurname(registrationForm.getSurname());

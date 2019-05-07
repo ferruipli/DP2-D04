@@ -44,7 +44,6 @@ public abstract class Actor extends DomainEntity {
 
 
 	@NotBlank
-	@SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
 	public String getName() {
 		return this.name;
 	}

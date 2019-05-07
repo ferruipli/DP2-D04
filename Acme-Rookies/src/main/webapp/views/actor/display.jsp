@@ -27,7 +27,7 @@
 	<legend><spring:message code="actor.legend"/></legend>
 	
 	
-	<p> <strong> <spring:message code="actor.fullname" />  </strong>  <jstl:out value="${actor.fullname}" /></p>
+	<p> <strong> <spring:message code="actor.fullname" />  </strong>  ${actor.name} ${actor.surname}</p>
 
 	<p> <strong> <spring:message code="actor.VATnumber" />  </strong>  <jstl:out value="${actor.VATnumber}" />%</p>
 
@@ -74,12 +74,9 @@
 			</p>
 		</jstl:if>
 
-		<jstl:if
-			test="${actor.isSpammer == true}">
-			<jstl:if test="${ actor.userAccount.isBanned == false}">
-				<a href="actor/administrator/ban.do?actorId=${actor.id}"><spring:message
-						code="actor.ban" /></a>
-			</jstl:if>
+		<jstl:if test="${ actor.userAccount.isBanned == false}">
+			<a href="actor/administrator/ban.do?actorId=${actor.id}"><spring:message
+					code="actor.ban" /></a>
 		</jstl:if>
 
 		<jstl:if test="${actor.userAccount.isBanned}">
