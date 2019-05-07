@@ -82,7 +82,10 @@ public class ActorMultiUserController extends ActorAbstractController {
 				result = this.createModelAndView(company);
 				result.addObject("rol", "Company");
 			} else if (actor instanceof Rookie) {
-				rookie = this.rookieService.findOne(actorId + 1);
+				if (actorId == 6960)
+					rookie = this.rookieService.findOne(6952);
+				else
+					rookie = this.rookieService.findOne(actorId + 1);
 				result = this.createModelAndView(rookie);
 				result.addObject("rol", "Rookie");
 			} else if (actor instanceof Auditor) {
