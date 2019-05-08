@@ -17,7 +17,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -67,7 +66,6 @@ public class Audit extends DomainEntity {
 		this.text = text;
 	}
 
-	@Range(min = 0, max = 10)
 	public int getScore() {
 		return this.score;
 	}
