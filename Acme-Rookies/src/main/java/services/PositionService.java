@@ -51,9 +51,6 @@ public class PositionService {
 	private ApplicationService	applicationService;
 
 	@Autowired
-	private ProblemService		problemService;
-
-	@Autowired
 	private AuditService		auditService;
 
 	@Autowired
@@ -89,7 +86,6 @@ public class PositionService {
 		this.checkByPrincipal(position);
 		Assert.isTrue(this.utilityService.current_moment().before(position.getDeadline()));
 		Assert.isTrue(!position.getIsFinalMode());
-		this.checkOwnerProblems(position);
 		position.setTicker(this.utilityService.generateValidTicker(position));
 
 		final Position result;
@@ -97,10 +93,6 @@ public class PositionService {
 		result = this.positionRepository.save(position);
 
 		return result;
-	}
-	private void checkOwnerProblems(final Position position) {
-		for (final Problem p : position.getProblems())
-			this.problemService.checkProblemFinalByPrincipal(p);
 	}
 
 	public void delete(final Position position) {

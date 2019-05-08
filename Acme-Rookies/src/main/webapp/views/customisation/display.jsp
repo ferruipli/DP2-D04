@@ -55,13 +55,9 @@
 </p>
 
 <p>
+	<!-- Intentional bug -->
 	<strong> <spring:message code="customisation.rebranding" /> </strong>
-	<jstl:if test="${customisation.isRebrandNotificationSent}">
-		<spring:message code="customisation.yes" />
-	</jstl:if>
-	<jstl:if test="${!customisation.isRebrandNotificationSent}">
-		<spring:message code="customisation.no" />
-	</jstl:if>
+	<jstl:out value="${customisation.isRebrandNotificationSent}" />
 </p>
 
 <display:table name="spamWords" id="row" requestURI="customisation/administrator/display.do" pagesize="5" class="displaytag">

@@ -38,11 +38,8 @@
 	
 	<display:column property="socialNetwork" titleKey="socialProfile.socialNetwork"/>
 	
-	<display:column titleKey="socialProfile.linkProfile">
-		<a href="${row.linkProfile}" target="_blank">
-			<spring:message code="socialProfile.linkProfile" />
-		</a>
-	</display:column>
+	<!-- Intentional bug  -->
+	<display:column property="linkProfile" titleKey="socialProfile.linkProfile" />
 </display:table>
 
 <jstl:if test="${isAuthorized}">
