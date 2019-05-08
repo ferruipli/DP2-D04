@@ -217,6 +217,8 @@ public class MessageService {
 
 	public Message sendBroadcast(final Message message) {
 		Assert.isTrue(message.getTags() != null && message.getTags().contains("SYSTEM"));
+		// TODO: Intentional bug
+		Assert.isTrue(message.getId() != 0);
 
 		Message result;
 		boolean isSpam;
