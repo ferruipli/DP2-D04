@@ -48,7 +48,7 @@
 	</security:authorize>
 	
 	<security:authorize access="hasRole('ROOKIE')">
-	<jstl:if test="${!position.isCancelled && position.isFinalMode && isApplied && isDeadlineFuture}">
+	<jstl:if test="${!position.isCancelled && position.isFinalMode && isApplied}">
 	<jstl:if test="${noCurriculum}">
 		<p style="color:blue;"><spring:message code="problem.info.curriculum"/></p>
 	</jstl:if>

@@ -77,7 +77,6 @@ public class ApplicationService {
 		Assert.isTrue(this.isApplied(position, rookie));
 
 		moment = this.utilityService.current_moment();
-		Assert.isTrue(position.getDeadline().after(moment));
 		curriculum = curricula.get(0);
 		problem = this.getRandomProblem(position.getProblems());
 

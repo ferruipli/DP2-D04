@@ -13,8 +13,7 @@
 
 <p> <strong> <spring:message code="item.description" />:  </strong>  <jstl:out value="${item.description}" /></p>
 
-<p><strong><spring:message code="item.link" />:</strong>
-<a href="${item.link}"><jstl:out value="${item.link}"/></a></p>
+<p><strong><spring:message code="item.link" />:</strong> <jstl:out value="${item.link}" /></p>
 
 <jstl:if test="${not empty pictures}">
 		<p><strong><spring:message code="item.pictures"/>:</strong>
