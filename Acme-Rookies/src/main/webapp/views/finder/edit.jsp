@@ -22,6 +22,6 @@
 		&nbsp;
 		<acme:cancel code="finder.clear" url="finder/rookie/clear.do"/>
 		&nbsp;
-		<acme:cancel code="finder.cancel" url="finder/rookie/display.do"/>
+		<acme:cancel code="finder.cancel" url="/"/>
 	</div>
 </form:form>

@@ -24,10 +24,8 @@
 	
 	<!-- Buttons -->
 	<acme:submit name="save" code="miscellaneousData.save"/>
-	<jstl:if test="${miscellaneousData.id != 0}">
-		&nbsp;
-		<acme:submit name="delete" code="miscellaneousData.delete"/>
-	</jstl:if>
+	&nbsp;
+	<acme:submit name="delete" code="miscellaneousData.delete"/>
 	&nbsp;
 	<jstl:choose>
 		<jstl:when test="${curriculumId ne null}">

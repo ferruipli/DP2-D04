@@ -81,8 +81,8 @@
 		</jstl:if>
 		
 		<display:column property="title" titleKey="curriculum.positionData.title" sortable="true"/>
-		<display:column property="startDate" titleKey="curriculum.positionData.startDate" sortable="true" format="${tableDateFormat}"/>
-		<display:column property="endDate" titleKey="curriculum.positionData.endDate" sortable="true" format="${tableDateFormat}"/>
+		<display:column property="startDate" titleKey="curriculum.positionData.startDate" sortable="true"/>
+		<display:column property="endDate" titleKey="curriculum.positionData.endDate" sortable="true"/>
 	</display:table>
 	
 	<jstl:if test="${isOwner && curriculum.isOriginal}">
