@@ -142,7 +142,7 @@ public class PositionServiceTest extends AbstractTest {
 		Assert.isTrue(data[0] == 2843.3728571428574);
 		Assert.isTrue(data[1] == 1586.23);
 		Assert.isTrue(data[2] == 3586.23);
-		Assert.isTrue(data[3] == 625.3162465211225);
+		Assert.isTrue(data[3] == 625.3162465211226);
 
 	}
 
