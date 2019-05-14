@@ -441,8 +441,6 @@ public class AuditServiceTest extends AbstractTest {
 		super.unauthenticate();
 	}
 
-	//TODO: cobertura
-
 	/*
 	 * A: Acme Rookies - Requirement 4.4.1 (The average, the minimum, the maximum, and the standard deviation of the audit score of the companies that are registered in the system.).
 	 * C: Analysis of sentence coverage: 3/3 -> 100.00% of executed lines codes .
