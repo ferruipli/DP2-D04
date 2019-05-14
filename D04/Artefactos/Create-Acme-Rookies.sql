@@ -406,7 +406,7 @@ CREATE TABLE `customisation` (
 
 LOCK TABLES `customisation` WRITE;
 /*!40000 ALTER TABLE `customisation` DISABLE KEYS */;
-INSERT INTO `customisation` VALUES (76,0,47,'https://i.ibb.co/LQXvBrh/Copia-de-I-m-Back.png','+34',0,'\0',10,'Acme Rookie Rank','sex,viagra,cialis,one million,you\'ve been selected,Nigeria,sexo,un millon,ha sido seleccionado',1,'Welcome to Acme Rookie Rank! We\'re IT rookie\'s favourite job marketplace!','¡Bienvenidos a Acme Rookie Rank! ¡Somos el mercado de trabajo favorito de los profesionales de las TICs!');
+INSERT INTO `customisation` VALUES (76,0,47,'https://i.ibb.co/LQXvBrh/Copia-de-I-m-Back.png','+34',500,'\0',10,'Acme Rookie','sex,viagra,cialis,one million,you\'ve been selected,Nigeria,sexo,un millon,ha sido seleccionado',1,'Welcome to Acme Rookie! We\'re IT rookie\'s favourite job marketplace!','¡Bienvenidos a Acme Rookie! ¡Somos el mercado de trabajo favorito de los profesionales de las TICs!');
 /*!40000 ALTER TABLE `customisation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -822,7 +822,7 @@ CREATE TABLE `provider` (
 
 LOCK TABLES `provider` WRITE;
 /*!40000 ALTER TABLE `provider` DISABLE KEYS */;
-INSERT INTO `provider` VALUES (79,0,97,'Calle Provider 1',180,'04','21','holder17','MCARD','340422775030815','provider1@gmail.com',NULL,'Provider1','63015521','http://webfeb.in/wp-content/uploads/2016/11/logo-design-for-it-company.jpg','Lobato',68,'Make del Provider 1'),(80,0,97,'Calle Provider 2',613,'07','24','holder18','MCARD','3559081929041845','provider2@gmail.com',NULL,'Provider2','63015521','http://webfeb.in/wp-content/uploads/2016/11/logo-design-for-it-company.jpg','Pavon',69,'Make del Provider 2');
+INSERT INTO `provider` VALUES (79,0,97,'Calle Provider 1',180,'04','21','holder22','MCARD','4507131688273419','provider1@gmail.com',NULL,'Provider1','63015521','http://webfeb.in/wp-content/uploads/2016/11/logo-design-for-it-company.jpg','Lobato',68,'Make del Provider 1'),(80,0,97,'Calle Provider 2',613,'07','24','holder23','MCARD','4737888229428065','provider2@gmail.com',NULL,'Provider2','63015521','http://webfeb.in/wp-content/uploads/2016/11/logo-design-for-it-company.jpg','Pavon',69,'Make del Provider 2');
 /*!40000 ALTER TABLE `provider` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -986,7 +986,7 @@ CREATE TABLE `user_account` (
 
 LOCK TABLES `user_account` WRITE;
 /*!40000 ALTER TABLE `user_account` DISABLE KEYS */;
-INSERT INTO `user_account` VALUES (60,0,'\0','e00cf25ad42683b3df678c61f42c6bda','admin1'),(61,0,'\0','54b53072540eeeb8f8e9343e71f28176','system'),(62,0,'\0','df655f976f7c9d3263815bd981225cd9','company1'),(63,0,'\0','d196a28097115067fefd73d25b0c0be8','company2'),(64,0,'\0','2ba2a8ac968a7a2b0a7baa7f2fef18d2','rookie1'),(65,0,'\0','91af68b69a50a98dbc0800942540342c','rookie2'),(66,0,'\0','67a4d37f6d3db1d36c5ed263f9b874e1','aditor1'),(67,0,'\0','584fc425d3eb613f9bb41aede77cf7e5','aditor2'),(68,0,'\0','cdb82d56473901641525fbbd1d5dab56','provider1'),(69,0,'\0','ebfc815ee2cc6a16225105bb7b3e1e53','provider2');
+INSERT INTO `user_account` VALUES (60,0,'\0','e00cf25ad42683b3df678c61f42c6bda','admin1'),(61,0,'\0','54b53072540eeeb8f8e9343e71f28176','system'),(62,0,'\0','df655f976f7c9d3263815bd981225cd9','company1'),(63,0,'\0','d196a28097115067fefd73d25b0c0be8','company2'),(64,0,'\0','9701eb1802a4c63f51e1501512fbdd30','rookie1'),(65,0,'\0','124be4fa2a59341a1d7e965ac49b2923','rookie2'),(66,0,'\0','175d2e7a63f386554a4dd66e865c3e14','auditor1'),(67,0,'\0','04dd94ba3212ac52ad3a1f4cbfb52d4f','auditor2'),(68,0,'\0','cdb82d56473901641525fbbd1d5dab56','provider1'),(69,0,'\0','ebfc815ee2cc6a16225105bb7b3e1e53','provider2');
 /*!40000 ALTER TABLE `user_account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1024,6 +1024,7 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-03  6:09:14
+-- Dump completed on 2019-05-14 16:41:30
+
 
 commit;
