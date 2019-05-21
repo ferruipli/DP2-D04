@@ -14,6 +14,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 
 import repositories.CurriculumRepository;
+import security.Authority;
+import security.LoginService;
+import security.UserAccount;
 import domain.Application;
 import domain.Curriculum;
 import domain.EducationData;
@@ -199,10 +202,21 @@ public class CurriculumService {
 
 	public boolean checkIsOwner(final Curriculum curriculum) {
 		Rookie rookie;
+		UserAccount principal;
+		Authority auth;
+		boolean res;
 
-		rookie = this.rookieService.findByPrincipal();
+		principal = LoginService.getPrincipal();
+		auth = new Authority();
+		auth.setAuthority(Authority.ROOKIE);
 
-		return curriculum.getRookie().equals(rookie);
+		if (principal != null && principal.getAuthorities().contains(auth)) {
+			rookie = this.rookieService.findByPrincipal();
+			res = curriculum.getRookie().equals(rookie);
+		} else
+			res = false;
+
+		return res;
 	}
 
 	public Curriculum reconstruct(final Curriculum curriculum, final BindingResult binding) {
